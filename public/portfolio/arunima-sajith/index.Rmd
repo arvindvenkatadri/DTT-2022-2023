@@ -20,7 +20,15 @@ description: Anika's Journey using graphs, Mapping and Networks.
 ---
 
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(osmplotr)
+library(osmdata)
+library(prettymapr)
+library(sf)
+```
 
 ## Introduction
 
@@ -30,70 +38,14 @@ description: Anika's Journey using graphs, Mapping and Networks.
 
 I used `geom_sf` to make the graph of Jaipur City, it was more fun than i expected. The way graph came up looked satisfying. 
 
-
-```r
+```{r cache=TRUE}
 bbox_jaipur <- getbb("Jaipur, India")
 dat_jaipur_H <- extract_osm_objects(bbox_jaipur, "highway")
-```
-
-```
-## Issuing query to Overpass API ...
-```
-
-```
-## Rate limit: 2
-```
-
-```
-## Query complete!
-```
-
-```
-## converting OSM data to sf format
-```
-
-```r
 dat_jaipur_B <- extract_osm_objects(bbox_jaipur, "building")
-```
-
-```
-## Issuing query to Overpass API ...
-```
-
-```
-## Rate limit: 2
-```
-
-```
-## Query complete!
-```
-
-```
-## converting OSM data to sf format
-```
-
-```r
 dat_jaipur_R <- extract_osm_objects(bbox = bbox_jaipur, key = "amenity", value = "restaurant", return_type = "point")
 ```
 
-```
-## Issuing query to Overpass API ...
-```
-
-```
-## Rate limit: 2
-```
-
-```
-## Query complete!
-```
-
-```
-## converting OSM data to sf format
-```
-
-
-```r
+```{r, message=FALSE}
 ## Using geom_sf()
 ggplot() + 
   geom_sf(data = dat_jaipur_H, colour = "dodger blue") + 
@@ -103,24 +55,19 @@ ggplot() +
   labs(title = "Pink City is not so pink anymore", subtitle = "food is everywhere")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="480" />
-
 
 ## Graph 2
 
 This graph is about the sleeping patterns of mammals. I used ggplot to make the graph.
 The fun part about the graph is, it's also sleeping the way I want to. 
 
-
-```r
+```{r}
 ggplot(msleep) + 
     geom_density(aes(y = sleep_total, 
                  color = vore, 
                  fill = vore), 
                  alpha = 0.5)
 ```
-
-<img src="index_files/figure-html/unnamed-chunk-3-1.png" width="480" />
 
 The graph shows the the different sleep patterns.
 
@@ -129,49 +76,29 @@ This graph is about the the number of hours animals sleep in a day.
 FUN FACT: I don't get to sleep for 4 hours straight. 
 p.s.: These mammals are lucky I must say. huh.
 
-
-```r
+```{r}
 ggplot(msleep) + geom_line(aes(sleep_cycle, sleep_total, group= vore, color= vore))
-```
 
 ```
-## Warning: Removed 51 row(s) containing missing values (geom_path).
-```
-
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="480" />
 
 ## Graph 3
 
 This dataset is about the diamonds. Related to color and carat. 
 
-
-```r
+```{r}
 ggplot(diamonds, 
        mapping = aes(x = color, 
            y = x)) +
   geom_point() +
   geom_smooth(method = "lm")
-```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-<img src="index_files/figure-html/unnamed-chunk-5-1.png" width="480" />
-
-```r
 ggplot(diamonds, 
        mapping = aes(x = carat, 
            y = z)) +
   geom_point() +
   geom_smooth(method = "lm")
-```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-<img src="index_files/figure-html/unnamed-chunk-5-2.png" width="480" />
 
 
 ## My Course Reflection

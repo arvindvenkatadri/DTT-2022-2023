@@ -1,0 +1,153 @@
+---
+title: Deepti Kapadia
+author: Deepti Kapadia
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/5.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: These are some of the best works from this course.
+
+---
+
+### Set up chunk
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+
+data(diamonds)
+
+library(osmdata) 
+library(rnaturalearth)
+library(prettymapr)
+library(osmplotr)
+library(tmap) 
+library(sf)
+
+library(tidygraph)
+library(ggraph)
+
+```
+
+
+### Graph 1 
+
+Graph using geometric objects. I used the diamonds dataset for this graph. In the graph, I plotted the carat of the diamond on the x axis and the price on the y axis. The cut is depicted in different colours and the color of each diamond is depicted in different shapes.
+
+
+```{r}
+(diamonds)
+```
+
+```{r}
+ggplot(diamonds) + geom_point(aes(x = carat,  y = price, color = cut, shape = color)) 
+```
+
+The colour and the carat of each diamond is plotted on this graph.
+
+## Graph 2
+
+### 1.Graph using geometric objects. 
+
+I used the diamonds dataset for this graph. In the graph, I plotted the carat of the diamond on the x axis and the price on the y axis. The cut is depicted in different colours and the color of each diamond is depicted in different shapes.
+
+```{r}
+(diamonds)
+```
+
+
+```{r}
+ggplot(diamonds) + geom_point(aes(x = carat,  y = price, color = cut, shape = color)) 
+```
+
+The colour and the carat of each diamond is plotted on this graph.
+
+
+
+### 2. Plotting the map of Thane with restaurants and buildings. 
+
+```{r}
+
+bbox_thane <- osmdata::getbb("Thane, India")
+dat_thane_H <- extract_osm_objects(bbox = bbox_thane, key = "highway")
+dat_thane_R <- extract_osm_objects(bbox = bbox_thane, key = "amenity", value = "restaurant", return_type = "point")
+
+```
+
+
+```{r}
+tmap_mode("plot")
+tm_shape(dat_thane_H) + tm_lines(col = "dodgerblue", lwd = 1) + tm_shape(dat_thane_R) + tm_dots(size = 0.5, col = "pink", shape = 20) + tm_text("name", auto.placement = TRUE, size = 0.40) +
+  
+  tm_scale_bar(
+    width = 0.25,
+    position = c("left", "bottom"),
+    text.size = 0.35
+  ) +
+  tm_add_legend(type = "symbol", col = "pink",
+                title = "restaurants") +
+  
+  tm_layout(main.title = "Restaurants in Thane",
+            bg.color = "lightgrey")
+
+
+```
+
+
+In this map, I have shown the restaurants in pink and the roads in blue in Thane.
+
+
+## Graph 3
+
+Network Graphs for Bojack Horseman. I created two datasets - one with nodes and the other with edges.The nodes dataset consists of the names, sex, species and job. The edges dataset consists of the number of times a conversation has taken place between each character has a conversation.
+
+*Reading the Data*
+
+```{r 1.Read-bojack-data}
+bojack_nodes <- read_csv("bojack_nodes.csv", col_names = TRUE)
+bojack_edges <- read_csv("bojack_edges.csv", col_names = TRUE)
+bojack_nodes
+bojack_edges
+```
+
+*creating the graph*
+
+```{r 2.Create-bojack-graph-object}
+bh <- tbl_graph(nodes = bojack_nodes, 
+                edges = bojack_edges, 
+                directed = FALSE)
+bh
+```
+
+
+*In the graphs plotted below I have depicted the conversations had by the characters og Bojack Horseman in Season 2 episode 1. The thickness of each line connecting the names shows the amount of conversations they have had in that one episode. In the graph using ggraph I have specified their jobs.*
+
+
+```{r}
+ggraph(graph = bh, layout = "fr") +
+  geom_edge_link0(aes(width = weight)) + 
+  
+  geom_node_point(aes( colour = job), size = 5) + 
+
+  geom_node_label(aes(label = name), 
+                  repel = TRUE, max.overlaps = 20,
+                  alpha = 0.9,
+                  size = 2)
+```
+
+
+### Reflection
+This workshop has been like a rollercoaster ride. There were many ups and downs. It started off with the basics but later on even though I was finding it a bit hard to keep up I am glad I still did. With each assignment I understood more and more as I made mistakes and thus had to go through many trial and error runs. This made every code chunk running without an error almost feel like an eureka moment The process was slow but I finally did manage to get along with R studio. Joining the class every morning while Arvind would blast music really kept me motivated somehow. 
+Overall the entire class was something new as I had never ventured so deep into the digital world. 
+

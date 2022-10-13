@@ -18,7 +18,11 @@ description: This is an analysis of the family relationships in Game of Thrones,
 ---
 
 
-
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+```
 
 ## Instructions
 
@@ -39,7 +43,9 @@ The easiest option is to use the `blogdown` _Insert Image_ RStudio addin to add 
 
 Another way: use a code chunk, if you already have the image downloaded and ready. Place the image in the **same folder** as this Post, and link to it with the chunk below:
 
-<img src="./default.jpg" width="100%" />
+```{r echo=FALSE, out.width='100%', fig.align = "centre"}
+knitr::include_graphics('./default.jpg')
+```
 
 ### Narrative Text and Futher Code chunks
 
@@ -47,6 +53,10 @@ Start typing/pasting text here.
 
 Diamonds are forever. We can see that from this graph below:
 
-<img src="unnamed-chunk-2-1.png" width="480" />
+```{r}
+diamonds %>% 
+   ggplot(aes(x = carat, y = price, color = cut)) + 
+   geom_point(alpha = 0.1)
+```
 
 

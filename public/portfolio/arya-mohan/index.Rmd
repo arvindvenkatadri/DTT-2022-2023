@@ -20,7 +20,48 @@ description: Here's my three graphs, I have a line plot, a map and a interactive
 ---
 
 
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(extrafont)
+# Run this one time
+# extrafont::font_import()
+loadfonts()
+########################################
+# For General Data Manipulation
+library(tidyverse)
 
+########################################
+# Network Analysis Library (Handle data and Viz)
+library(igraph)
+library(netrankr)
+
+########################################
+# For Network "Manipulation"
+library(tidygraph)
+
+# For Network Visualization
+library(ggraph)
+library(graphlayouts)
+
+# For "Network" Datasets
+library(igraphdata)
+
+library(downloadthis)
+
+# Plotting Maps
+
+library(osmplotr) # "Bespoke" Maps using OSM data
+library(tmap) # Thematic Maps, static and interactive
+
+# Getting Map Data into R
+library(osmdata) # Import Open Street Data
+library(rnaturalearth)
+
+library(prettymapr) # to search for map data based on location
+
+# For Spatial Data Frame Processing
+library(sf)
+```
 
 
 # GRAPH 1
@@ -29,22 +70,21 @@ description: Here's my three graphs, I have a line plot, a map and a interactive
 >
 >~Bernie Siegel
 
+```{r, include=FALSE}
+# IMPORTING DATASET
 
+cancer <- readxl::read_xlsx("./cancer.xlsx")
+cancer
 
+```
 
-```r
+```{r}
 #GRAPH FUNCTION
 
 ggplot(data = cancer, mapping = aes(x = Age, y = Alcoholuse))+
 geom_point(size = 5)+
   geom_smooth(colour = "red")
 ```
-
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="480" />
 
 
 I figured that writing about cancer might make me come off as *important*, and plus it was pretty easy for me to *get my hands on this data set*.  
@@ -56,10 +96,30 @@ Boy, am i tempted to put something political here, but really here's what a canc
 
 > સુરતનો નકશો
 
+```{r, include=FALSE}
+# PRETTYMAP SEARCH
+bbox_p <- prettymapr::searchbbox("Surat")
+bbox_p
 
 
+#DOWNLOADING DATA FROM OPEN STREET MAP AND ASSIGNING TO VARIABLES
+dat_B <- extract_osm_objects (key = "building", bbox = bbox_p) 
+dat_H <- extract_osm_objects (key = 'highway', bbox = bbox_p)
+dat_P <- extract_osm_objects (key = 'park', bbox = bbox_p)
+dat_G <- extract_osm_objects (key = 'landuse', value = 'grass', bbox = bbox_p)
+dat_T <- extract_osm_objects (key = 'natural', value = 'tree', bbox = bbox_p)
 
-```r
+
+#DOWNLOADING RESTAURANT POINTS
+dat_R <- extract_osm_objects(bbox = bbox_p, 
+                             key = "amenity", 
+                             value = "restaurant", 
+                             return_type = "point") #<<
+dat_R %>%  nrow()
+
+```
+
+```{r}
 SURAT_TMAP <- tm_shape (dat_B) +
   tm_fill(col = "red") +
 tm_shape (dat_H) +
@@ -78,12 +138,6 @@ tm_scale_bar (width = 4, text.size = 1) +
 SURAT_TMAP
 ```
 
-```
-## Scale bar width set to 0.25 of the map width
-```
-
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="480" />
-
 
 In this graph, I made a map of Surat using data from Open Source Map and plotted all the restaurants on the map. all the green dots indicate the presence of a restaurant in that area, along with the name of the restaurant.  
 Now, i case you're in surat, and you're searching for one of the 53 recorded restaurants, you can just use m map to find out the approximate location :D
@@ -95,9 +149,44 @@ Now, i case you're in surat, and you're searching for one of the 53 recorded res
 
 ![HIMYM](https://m.media-amazon.com/images/M/MV5BNjg1MDQ5MjQ2N15BMl5BanBnXkFtZTYwNjI5NjA3._V1_.jpg)
 
+```{r, include=FALSE}
+HIMYM_nodes <- read.csv("HIMYM nodes.csv" )
+HIMYM_edges <- read.csv("HIMYM edges.csv" )
 
 
-```r
+HIMYM <- tbl_graph(nodes = HIMYM_nodes, 
+                edges = HIMYM_edges, 
+                directed = FALSE)
+
+
+library(visNetwork)
+
+
+HIMYM_edges
+HIMYM_nodes
+
+HIMYM_nodes_vis <- HIMYM_nodes %>% 
+  rowid_to_column(var = "id") %>% 
+  rename("label" = name) %>% 
+  mutate(sex = case_when(sex == "F" ~ "Female",
+                         sex == "M" ~ "Male")) %>% 
+  replace_na(., list(sex = "Transgender?")) %>% 
+  rename("group" = sex)
+HIMYM_nodes_vis
+HIMYM_edges_vis <- HIMYM_edges %>% 
+  select(from, to) %>% 
+  left_join(., HIMYM_nodes_vis, by = c("from" = "label")) %>% 
+  left_join(., HIMYM_nodes_vis, by = c("to" = "label")) %>%
+  select("from"= id.x, "to" = id.y)
+HIMYM_edges_vis
+
+
+
+
+
+
+```
+```{r}
 #seperation
 HIMYM_nodes_vis %>%
 
@@ -127,11 +216,6 @@ HIMYM_nodes_vis %>%
                  selectConnectedEdges = TRUE,
                  hoverConnectedEdges = TRUE,
                  zoomView = TRUE)
-```
-
-```{=html}
-<div id="htmlwidget-a5e606017d5ca60e21c3" style="width:480px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5e606017d5ca60e21c3">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"X":[1,2,3,4,5,6,7,8,9,10],"label":["Barney","Ted Mosby","Lily Aldrin","Marshall","Robin","Yasmin","Ranjit","Son","Daughter","Mother"],"group":["Male","Male","Female","Male","Female","Female","Male","Male","Female","Female"],"occupation":["Bank","Architect","Teacher","Lawyer","Reporter","","Cab driver","","","Bass player"]},"edges":{"from":[1,1,1,1,1,2,2,2,2,2,2,2,2,4,2,10,10],"to":[7,2,3,4,5,1,3,4,5,6,7,8,9,3,10,8,9]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","font":{"size":40}},"manipulation":{"enabled":false},"groups":{"Female":{"shape":"icon","icon":{"code":"f182","size":75,"color":"tomato"},"shadow":{"enabled":true}},"Male":{"shape":"icon","icon":{"code":"f183","size":75,"color":"slateblue"},"shadow":{"enabled":true}},"useDefaultGroups":true,"Transgender?":{"shape":"icon","icon":{"code":"f22c","size":75,"color":"fuchsia"},"shadow":{"enabled":true}}},"interaction":{"hover":true,"hoverConnectedEdges":true,"navigationButtons":true,"selectConnectedEdges":true,"zoomView":true}},"groups":["Male","Female"],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","iconsRedraw":true,"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 ```
 
 
