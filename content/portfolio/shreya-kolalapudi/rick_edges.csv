@@ -1,0 +1,60 @@
+﻿from;to;weight;type
+Rick Sanchez;Morty Smith;9;family
+Rick Sanchez;Summer Smith;7;family
+Rick Sanchez;Beth Smith;7;family
+Rick Sanchez;Jerry Smith;2;family
+Rick Sanchez;Dr. Wong;2;professional
+Morty Smith;Jessica;6;romantic
+Brad;Jessica;7;romantic
+Morty Smith;Dr. Wong;4;professional
+Summer Smith;Dr. Wong;4;professional
+Beth Smith;Dr. Wong;7;professional
+Jerry Smith;Dr. Wong;7;professional
+Eli;Summer Smith;6;neighbour
+Eli;Hemorrhage;7;neighbour
+Eli;Eli's Girlfriend;9;romantic
+Summer Smith;Ethan;5;romantic
+Gene;Morty Smith;3;neighbour
+Gene;Summer Smith;3;neighbour
+Gene;Beth Smith;3;neighbour
+Gene;Jerry Smith;7;neighbour
+Gene;Rick Sanchez;2;neighbour
+Hemorrhage;Summer Smith;7;romantic
+Joyce Smith;Jerry Smith;4;family
+Jacob;Joyce Smith;2;romantic
+Morty Smith;Jacqueline;5;romantic
+Leonard Smith;Jerry Smith;5;family
+Leonard Smith;Joyce Smith;2;romantic
+Rick K-22;Morty K-22;7;family
+Mrs. Lipkip;Joseph Eli Lipkip;6;family
+Mr. Benson;Morty Smith;5;neighbour
+Mr. Benson;Summer Smith;5;neighbour
+Mr. Benson;Beth Smith;5;neighbour
+Mr. Benson;Jerry Smith;7;neighbour
+Mr. Benson;Rick Sanchez;5;neighbour
+Eli;Rick Sanchez;4;neighbour
+Mr. Goldenfold;Morty Smith;3;professional
+Mr. Marklovitz;Jerry Smith;3;professional
+Mrs. Pancakes;Mr. Goldenfold;5;romantic
+Nancy;Summer Smith;6;friend
+Orthodox Jew;Father Bob;5;professional
+Principal Vagina;Summer Smith;4;professional
+Principal Vagina;Morty Smith;4;professional
+Stacy;Morty Smith;3;romantic
+Steve;Rick Sanchez;2;professional
+Tammy Guetermann;Summer Smith;4;friend
+The President;Rick Sanchez;8;friend
+The President;Morty Smith;8;professional
+Summer Smith;Toby Matthews;6;romantic
+Tricia Lange;Jessica;5;friend
+Tricia Lange;Morty Smith;2;friend
+Pro trunk people marriage guy;Trunkphobic guy;2;friend
+Michael;Michael's Lawyer;7;professional
+Veterinary;Veterinary Nurse;6;professional
+Simon;The President;8;professional
+Morty Smith;Summer Smith;7;family
+Morty Smith;Beth Smith;7;family
+Morty Smith;Jerry Smith;3;family
+Jerry Smith;Beth Smith;5;family
+Summer Smith;Jerry Smith;3;family
+Summer Smith;Beth Smith;7;family

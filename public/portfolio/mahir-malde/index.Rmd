@@ -1,0 +1,115 @@
+---
+title: Mark Tharakan
+author: Mark Tharakan
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/4.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is Mark Tharakan's R language portfolio
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(igraph)
+library(tidygraph)
+library(ggraph)
+library(osmplotr)
+library(osmdata)
+library(sf)
+```
+
+## Graph 1.
+
+```{r}
+diamonds
+```
+
+
+```{r}
+ggplot(diamonds) +
+  geom_point(aes(x = depth,
+                 y = price,
+                 color = cut),
+             size = 0.4)
+   ggtitle("Depth")
+```
+
+
+## Graph 2 
+
+
+```{r}
+bbox_bom <- getbb("Mumbai")
+
+dat_b <- extract_osm_objects(bbox = bbox_bom, key = "building")
+
+dat_h <- extract_osm_objects(bbox = bbox_bom, key = "highway")
+
+dat_r <- extract_osm_objects(bbox_bom, key = "amenity", value = "restaurant", return_type = "point")
+
+dat_r <- dat_r %>% drop_na(cuisine)
+
+ggplot() +
+  geom_sf(data = dat_b, fill = "blue") +
+  geom_sf(data = dat_h, color = "orange" ) +
+  geom_sf(data = dat_r, color = "black", fill = "red", size = 1) +
+  theme_dark() +
+  labs(title = "Mumbai", subtitle = "Taste kahaan hai?")
+```
+
+## Graph 3 
+
+
+```{r include=FALSE, eval=FALSE}
+naruto_edges <- read_csv("naruto-edges2.csv")
+naruto_nodes <- read.csv("naruto-nodes.csv")
+naruto_nodes
+naruto_edges
+
+
+ns <- tbl_graph(nodes = naruto_nodes,
+                edges = naruto_edges,
+                directed = FALSE)
+```
+
+
+
+
+
+
+
+```{r}
+ggraph(graph = ns, layout = "kk") +
+       geom_edge_link(aes(width = Weight)) +
+  geom_node_point(aes(fill = Village),
+    shape = 21, size = 6,
+                  
+                  
+                  ) +
+  labs(title = "Naruto") +
+  geom_node_label(aes(label = Name),
+                  repel = TRUE,
+                  max.overlaps = 20,
+                  size = 3,
+                  alpha = 0.6
+                  ) 
+   
+```
+
+## Reflection 
+
+I found the workshop a lot of fun. I have a bit of prior experience with coding, so it was quite interesting to get the hang of a new language. R is quite fun to use, it is also very intuitive. I never needed help with the syntax, since all the commands were easy to grasp and made sense. My experience with the class itself was pretty amazing. I've never had a teacher start the day with music sessions, it was honestly quite refreshing, especially early in the morning when I was still a bit sleepy. Also the recorded sessions were a blessing since i could immediately clarify any doubts I had.

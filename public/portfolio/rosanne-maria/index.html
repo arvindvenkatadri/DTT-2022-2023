@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Creative portfolio</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://example.org/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://example.org/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://example.org/css/owl.carousel.css">
+<link rel="stylesheet" href="https://example.org/css/owl.theme.css">
+
+
+  <link href="https://example.org/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://example.org/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://example.org/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://example.org/">Creative portfolio</a></h1>
+    
+      <p class="sidebar-p">I am a creative illustrator and graphic designer with more than 10 years of experience.</p>
+    
+      <p class="sidebar-p">Originally from Toronto, currently based in London.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://example.org/portfolio/">Home</a></li>
+      
+        <li><a href="https://example.org/about/">About</a></li>
+      
+        <li><a href="https://example.org/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="full%20page%20or%20profile%20url%20in%20facebook" data-animate-hover="pulse" class="external facebook" title="Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20googleplus" data-animate-hover="pulse" class="external gplus" title="Google Plus">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20twitter" data-animate-hover="pulse" class="external twitter" title="Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20instagram" title="" class="external instagram" title="Instagram">
+    <i class="fa fa-instagram"></i>
+  </a>
+  
+  
+  <a href="mailto:email@example.com" data-animate-hover="pulse" class="email" title="E-mail">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20linkedin" data-animate-hover="pulse" class="external" title="LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20stackoverflow" data-animate-hover="pulse" class="external" title="Stack Overflow">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20github" data-animate-hover="pulse" class="external" title="GitHub">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20gitlab" data-animate-hover="pulse" class="external" title="GitLab">
+    <i class="fa fa-gitlab"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20youtube" data-animate-hover="pulse" class="external" title="YouTube">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a href="wa.me%20service%20link" data-animate-hover="pulse" class="external" title="WhatsApp">
+    <i class="fa fa-whatsapp"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2016 Your name or company |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://example.org/">Creative portfolio</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Ruhi Raisoni</h1>
+         
+<script src="https://example.org/portfolio/rosanne-maria/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<blockquote>
+<p>Hi, I’m Ruhi Raisoni. Below are some graphs whose code I learnt in R studio with the help and guidance of our facilitator Mr. Arvind Venkatadri.</p>
+</blockquote>
+<p> </p>
+</div>
+<div id="graph-1--plotting-a-line-graph-to-show-the-amount-of-time-spent-awake-by-animals-of-different-diets" class="section level2">
+<h2>Graph 1- Plotting a line graph to show the amount of time spent awake by animals of different diets:</h2>
+<pre class="r"><code>ggplot(msleep) + 
+    geom_density(aes(x = awake, 
+                 color = vore, 
+                 fill = vore), 
+                 alpha = 0.3) +
+  labs(title = &quot;Points plotted with Alpha&quot;)</code></pre>
+<p><img src="https://example.org/portfolio/rosanne-maria/index_files/figure-html/G3-1.png" width="480" /></p>
+<p>I have used an updated and expanded version of the mammals sleep dataset. Updated sleep times and weights were taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.
+About the dataset:</p>
+<pre class="r"><code>head(msleep)</code></pre>
+<pre><code>## # A tibble: 6 × 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<p><strong>The above graph shows the amount of hours spent awake by animals of different diets like carnivore, herbivore and omnivore.The geometric aesthetic used in the graph is alpha. This aesthetic makes the graph translucent showing the plotted lines hidden as well.</strong>
+ </p>
+</div>
+<div id="graph-2--to-find-longitude-and-latitude-for-pune" class="section level2">
+<h2>Graph 2- To find longitude and latitude for Pune:</h2>
+<pre class="r"><code>getbb(&quot;Pune Maharashtra&quot;)</code></pre>
+<pre><code>##        min      max
+## x 73.74985 74.02021
+## y 18.42950 18.62087</code></pre>
+<p>A positive latitude i.e. a positive y value indicates that Pune is above the equator.</p>
+<div id="exporting-roads-from-the-coordinate-system" class="section level3">
+<h3>Exporting roads from the coordinate system:</h3>
+<pre class="r"><code>streets &lt;- getbb(&quot;Pune Maharashtra&quot;)%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;motorway&quot;, &quot;primary&quot;, 
+                            &quot;secondary&quot;, &quot;tertiary&quot;)) %&gt;%
+  osmdata_sf()
+streets</code></pre>
+<pre><code>## Object of class &#39;osmdata&#39; with:
+##                  $bbox : 18.429497,73.7498473,18.6208699,74.020214
+##         $overpass_call : The call submitted to the overpass API
+##                  $meta : metadata including timestamp and version numbers
+##            $osm_points : &#39;sf&#39; Simple Features Collection with 22802 points
+##             $osm_lines : &#39;sf&#39; Simple Features Collection with 2052 linestrings
+##          $osm_polygons : &#39;sf&#39; Simple Features Collection with 56 polygons
+##        $osm_multilines : NULL
+##     $osm_multipolygons : NULL</code></pre>
+</div>
+<div id="now-we-get-the-streets-and-waterways-from-the-database" class="section level3">
+<h3>Now we get the streets and waterways from the database:</h3>
+<pre class="r"><code>small_streets &lt;- getbb(&quot;Pune Maharashtra&quot;)%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, value = c(&quot;residential&quot;, &quot;living_street&quot;,
+                            &quot;unclassified&quot;,
+                            &quot;service&quot;, &quot;footway&quot;)) %&gt;%
+  osmdata_sf()
+
+river &lt;- getbb(&quot;Pune Maharashtra&quot;)%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;waterway&quot;, value = &quot;river&quot;) %&gt;%
+  osmdata_sf()</code></pre>
+</div>
+<div id="lets-create-our-first-streetmap" class="section level3">
+<h3>Let’s create our first streetmap:</h3>
+<pre class="r"><code>#group1
+ggplot() +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;#7fc0ff&quot;,
+          size = .4,
+          alpha = .8) +
+
+#group2
+ geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+         color = &quot;#ffbe7f&quot;,
+          size = .4,
+          alpha = .6) +
+  geom_sf(data = river$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;#ffbe7f&quot;,
+          size = .2,
+          alpha = .5) +
+ coord_sf(xlim = c(73.85, 74.00), #Didn&#39;t used original values to get a more spaced out map. This is a slightly zoomed in map of Pune.
+           ylim = c(18.50, 18.62), #Use getbb(&quot;Pune Maharashtra&quot;) to find original values.
+           expand = FALSE) + 
+  labs(title= &quot;My first Street Map&quot;, subtitle = &quot;Highways and waterways&quot;) +
+   theme_void() + #to hide the x and y axis
+theme(plot.background = element_rect(fill = &quot;#282828&quot;))</code></pre>
+<p><img src="https://example.org/portfolio/rosanne-maria/index_files/figure-html/strtmap-1.png" width="480" /></p>
+<p>I have used Imports OpenStreetMap (OSM) data into R as either ‘sf’ or ‘sp’ objects. OSM data are extracted from the overpass API and processed with very fast C++ routines for return to R. The package enables simple overpass queries to be constructed without the user necessarily understanding the syntax of the overpass query language, while retaining the ability to handle arbitrarily complex queries. Functions are also provided to enable recursive searching between different kinds of OSM data (for example, to find all lines which intersect a given point).</p>
+<p><strong>The above map shows highways and waterways in the city of Pune, Maharashtra.</strong>
+ </p>
+</div>
+</div>
+<div id="graph-3--reading-the-data" class="section level2">
+<h2>Graph 3- Reading the data:</h2>
+<pre class="r"><code>mh_nodes &lt;-read_csv(&quot;./Data/moneyheist-nodes.csv&quot;)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...6
+## * `` -&gt; ...7</code></pre>
+<pre><code>## Rows: 19 Columns: 7</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (3): Names, Sex, Race
+## dbl (2): Born, Part
+## lgl (2): ...6, ...7</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>mh_edges &lt;- read_csv(&quot;./Data/moneyheist-edges.csv&quot;)</code></pre>
+<pre><code>## Rows: 48 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (3): From, To, Type
+## dbl (1): Weight</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>mh_nodes</code></pre>
+<pre><code>## # A tibble: 19 × 7
+##    Names     Sex   Race   Born  Part ...6  ...7 
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1 Professor M     White  1975     1 NA    NA   
+##  2 Tokyo     F     White  1989     1 NA    NA   
+##  3 Berlin    M     White  1971     1 NA    NA   
+##  4 Denver    M     White  1991     1 NA    NA   
+##  5 Nairobi   F     Black  1986     1 NA    NA   
+##  6 Moscow    M     White  1964     1 NA    NA   
+##  7 Rio       M     White  1996     1 NA    NA   
+##  8 Helsinki  M     Black  1977     1 NA    NA   
+##  9 Oslo      M     Black  1979     1 NA    NA   
+## 10 Monica    F     White  1983     1 NA    NA   
+## 11 Artorito  M     White  1978     1 NA    NA   
+## 12 Ariadna   F     White  1984     1 NA    NA   
+## 13 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 14 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 15 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 16 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 17 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 18 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA   
+## 19 &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;     NA    NA NA    NA</code></pre>
+<pre class="r"><code>mh_edges</code></pre>
+<pre><code>## # A tibble: 48 × 4
+##    From      To        Weight Type                    
+##    &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                   
+##  1 Professor Tokyo         13 Guardian Angel          
+##  2 Professor Berlin        21 Right Hand              
+##  3 Professor Denver        10 Acquaintances           
+##  4 Professor Moscow         8 Acquaintances           
+##  5 Denver    Moscow         5 Son                     
+##  6 Helsinki  Oslo           4 Twins                   
+##  7 Oslo      Professor      1 Soldier                 
+##  8 Nairobi   Professor      4 Quality Control  Manager
+##  9 Rio       Professor      5 Coding                  
+## 10 Helsinki  Professor      3 Soldier                 
+## # … with 38 more rows</code></pre>
+<div id="about-the-dataset" class="section level3">
+<h3>About the dataset:</h3>
+<pre class="r"><code>head(mh_nodes)#The first six rows of the nodes dataset</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##   Names     Sex   Race   Born  Part ...6  ...7 
+##   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
+## 1 Professor M     White  1975     1 NA    NA   
+## 2 Tokyo     F     White  1989     1 NA    NA   
+## 3 Berlin    M     White  1971     1 NA    NA   
+## 4 Denver    M     White  1991     1 NA    NA   
+## 5 Nairobi   F     Black  1986     1 NA    NA   
+## 6 Moscow    M     White  1964     1 NA    NA</code></pre>
+<pre class="r"><code>head(mh_edges)#The first six rows of the edges dataset</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   From      To     Weight Type          
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;         
+## 1 Professor Tokyo      13 Guardian Angel
+## 2 Professor Berlin     21 Right Hand    
+## 3 Professor Denver     10 Acquaintances 
+## 4 Professor Moscow      8 Acquaintances 
+## 5 Denver    Moscow      5 Son           
+## 6 Helsinki  Oslo        4 Twins</code></pre>
+<pre class="r"><code>dim(mh_nodes)#Dimensions of the nodes dataset</code></pre>
+<pre><code>## [1] 19  7</code></pre>
+<pre class="r"><code>dim(mh_edges)#Dimensions of the edges dataset</code></pre>
+<pre><code>## [1] 48  4</code></pre>
+</div>
+<div id="creating-a-network-object-using-tidygraph" class="section level3">
+<h3>Creating a network object using tidygraph:</h3>
+<pre><code>## # A tbl_graph: 19 nodes and 48 edges
+## #
+## # An undirected multigraph with 8 components
+## #
+## # Node Data: 19 × 7 (active)
+##   Names     Sex   Race   Born  Part ...6  ...7 
+##   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
+## 1 Professor M     White  1975     1 NA    NA   
+## 2 Tokyo     F     White  1989     1 NA    NA   
+## 3 Berlin    M     White  1971     1 NA    NA   
+## 4 Denver    M     White  1991     1 NA    NA   
+## 5 Nairobi   F     Black  1986     1 NA    NA   
+## 6 Moscow    M     White  1964     1 NA    NA   
+## # … with 13 more rows
+## #
+## # Edge Data: 48 × 4
+##    from    to Weight Type          
+##   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;         
+## 1     1     2     13 Guardian Angel
+## 2     1     3     21 Right Hand    
+## 3     1     4     10 Acquaintances 
+## # … with 45 more rows</code></pre>
+<pre class="r"><code># setting theme_graph 
+set_graph_style()
+
+mh %&gt;% 
+  activate(nodes) %&gt;% 
+  
+  # Who has the most connections?
+  mutate(degree = centrality_degree()) %&gt;% 
+  
+  activate(edges) %&gt;% 
+  # Who is the go-through person?
+  mutate(betweenness = centrality_edge_betweenness()) %&gt;%
+  
+  # Now to continue with plotting
+  ggraph(layout = &quot;nicely&quot;) +
+  geom_edge_link(aes(alpha = betweenness)) +
+  geom_node_point(aes(size = degree, colour = degree)) + 
+  
+  # discrete colour legend
+  scale_color_gradient(guide = &quot;legend&quot;)</code></pre>
+<p><img src="https://example.org/portfolio/rosanne-maria/index_files/figure-html/Using-Centrality-1.png" width="480" /></p>
+<pre class="r"><code># or even less typing
+  ggraph(mh,layout = &quot;nicely&quot;) +
+  geom_edge_link(aes(alpha = centrality_edge_betweenness())) +
+  geom_node_point(aes(colour = centrality_degree(), 
+                      size = centrality_degree())) + 
+  scale_color_gradient(guide = &quot;legend&quot;,
+                       low = &quot;lightskyblue&quot;,
+                       high = &quot;magenta&quot;)</code></pre>
+<p><img src="https://example.org/portfolio/rosanne-maria/index_files/figure-html/Using-Centrality-2.png" width="480" /></p>
+<p>About the datasets:</p>
+<pre class="r"><code>head(mh_nodes)</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##   Names     Sex   Race   Born  Part ...6  ...7 
+##   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
+## 1 Professor M     White  1975     1 NA    NA   
+## 2 Tokyo     F     White  1989     1 NA    NA   
+## 3 Berlin    M     White  1971     1 NA    NA   
+## 4 Denver    M     White  1991     1 NA    NA   
+## 5 Nairobi   F     Black  1986     1 NA    NA   
+## 6 Moscow    M     White  1964     1 NA    NA</code></pre>
+<pre class="r"><code>head(mh_edges)</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   From      To     Weight Type          
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;         
+## 1 Professor Tokyo      13 Guardian Angel
+## 2 Professor Berlin     21 Right Hand    
+## 3 Professor Denver     10 Acquaintances 
+## 4 Professor Moscow      8 Acquaintances 
+## 5 Denver    Moscow      5 Son           
+## 6 Helsinki  Oslo        4 Twins</code></pre>
+<p>We draw a conclusion that the biggest circle-light blue is of Professor who forms a bond with the core members of the heist. The second biggest circle is of Berlin who has connections with three hostages.<br />
+ </p>
+</div>
+</div>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>This course was about R, a language and environment for statistical computing and graphics. I learnt how to code graphs and maps in R Markdown. It’s always difficult to find your own mistakes and that made me impatient several times through this course. Having learnt how to make my own datasets, I am confident that in future as a designer I can use my own data for reasoning and evaluating to attain a conclusion.
+ </p>
+<div id="thank-you" class="section level3">
+<h3>Thank you!</h3>
+</div>
+</div>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://example.org/js/jquery.min.js"></script>
+<script src="https://example.org/js/bootstrap.min.js"></script>
+<script src="https://example.org/js/jquery.cookie.js"> </script>
+<script src="https://example.org/js/ekko-lightbox.js"></script>
+<script src="https://example.org/js/jquery.scrollTo.min.js"></script>
+<script src="https://example.org/js/masonry.pkgd.min.js"></script>
+<script src="https://example.org/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://example.org/js/owl.carousel.min.js"></script>
+<script src="https://example.org/js/front.js"></script>
+
+
+
+</body>
+</html>

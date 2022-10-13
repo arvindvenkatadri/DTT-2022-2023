@@ -1,0 +1,72 @@
+---
+title: Rachel Thomas
+author: Rachel Thomas
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/2book7.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: A colourful array of formulated figures.
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(ggplot2)
+library(palmerpenguins)
+```
+
+### **Graphs explored during the course of this worshop**
+
+#### **GRAPH- 1**
+Using the diamonds data set to analyse data and create graphs showing the colour and depth of the diamonds. I used a colour palette for this graph as well using ggplot and geom_bar
+
+
+```{r}
+ggplot(data = diamonds,
+       mapping = aes(x = cut, fill = color)) +
+  geom_bar() +
+  scale_colour_fermenter()
+```
+
+#### **GRAPH- 2**
+Using the penguins data set to analyse data and create graphs showing the island, species and sex of the penguins.
+I have made a code for these graphs- geom_bar with fill 
+
+```{r}
+ggplot(penguins) + geom_bar(aes(x = species, fill = sex),position = "stack")
+ggplot(penguins) + geom_bar(aes(x = island, fill = sex),position = "stack")
+```
+
+#### **GRAPH- 3**
+Using the diamonds data set to analyse data and create graphs showing the depth, colour and carat of the diamonds. I used a colour palette for this graph using ggplot and geom_point.
+
+```{r}
+ggplot(data = diamonds,
+       mapping = aes(x = carat, y = price, color = carat)) +
+  geom_point(size = 3) +
+  scale_colour_binned()
+```
+
+### **REFLECTION**
+
+This workshop has been a very new and enriching experience for me. Learning a new language and seeing the various outputs using different data sets was interesting. I did find some parts of the workshop a bit challenging but figuring out a way to come around those problems to get to the end result was satisfying. 
+
+Personally, my favourite part of the studio was having to hear Arvind’s music playing in the background which definitely made for a good kick start in the morning. The studio was very well curated for one’s understanding. Realizing the various possibilities and outcomes by using just code was fascinating.  
+
+Despite the challenges I came across in this studio, I did find this experience new and interesting so I would love to explore creative coding in the future and this workshop was a great way of instilling that curiosity in me. 
+
+
+

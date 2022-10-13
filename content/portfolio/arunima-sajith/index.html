@@ -1,0 +1,101 @@
+---
+title: Anika Jain
+author: Anika Jain
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/141.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: Anika's Journey using graphs, Mapping and Networks.
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<blockquote>
+<p>I’m going to show few graphs and plots. It was fun exausting myself and work whole night. I get it that i still suck at it. Duh I think i’ll try to get better at this and keep practicing as the outcome of the chunks are pretty cool.</p>
+</blockquote>
+</div>
+<div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>I used <code>geom_sf</code> to make the graph of Jaipur City, it was more fun than i expected. The way graph came up looked satisfying.</p>
+<pre class="r"><code>bbox_jaipur &lt;- getbb(&quot;Jaipur, India&quot;)
+dat_jaipur_H &lt;- extract_osm_objects(bbox_jaipur, &quot;highway&quot;)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_jaipur_B &lt;- extract_osm_objects(bbox_jaipur, &quot;building&quot;)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_jaipur_R &lt;- extract_osm_objects(bbox = bbox_jaipur, key = &quot;amenity&quot;, value = &quot;restaurant&quot;, return_type = &quot;point&quot;)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>## Using geom_sf()
+ggplot() + 
+  geom_sf(data = dat_jaipur_H, colour = &quot;dodger blue&quot;) + 
+  geom_sf(data = dat_jaipur_B, fill = &quot;orange&quot;) + 
+  geom_sf(data = dat_jaipur_R, colour = &quot;Yellow&quot;, fill = &quot;red&quot;) + 
+  theme(panel.background = element_rect(fill = &quot;palegreen&quot;)) + 
+  labs(title = &quot;Pink City is not so pink anymore&quot;, subtitle = &quot;food is everywhere&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
+</div>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
+<p>This graph is about the sleeping patterns of mammals. I used ggplot to make the graph.
+The fun part about the graph is, it’s also sleeping the way I want to.</p>
+<pre class="r"><code>ggplot(msleep) + 
+    geom_density(aes(y = sleep_total, 
+                 color = vore, 
+                 fill = vore), 
+                 alpha = 0.5)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="480" /></p>
+<p>The graph shows the the different sleep patterns.</p>
+<p>This graph is about the the number of hours animals sleep in a day.
+FUN FACT: I don’t get to sleep for 4 hours straight.
+p.s.: These mammals are lucky I must say. huh.</p>
+<pre class="r"><code>ggplot(msleep) + geom_line(aes(sleep_cycle, sleep_total, group= vore, color= vore))</code></pre>
+<pre><code>## Warning: Removed 51 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="480" /></p>
+</div>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p>This dataset is about the diamonds. Related to color and carat.</p>
+<pre class="r"><code>ggplot(diamonds, 
+       mapping = aes(x = color, 
+           y = x)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="480" /></p>
+<pre class="r"><code>ggplot(diamonds, 
+       mapping = aes(x = carat, 
+           y = z)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-2.png" width="480" /></p>
+</div>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>This course was all about patience and sitting still on your chair and work with keen eyes cause one single comma will ruin your whole work.
+It was a fun workshop. Arvind made it much easy than i thought.
+Definitely helped me with the patience thing.</p>
+<p>Thank you.</p>
+</div>

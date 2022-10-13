@@ -1,0 +1,21 @@
+names,sex,condition,sign,id
+Rachel Green,F,employed,Libra,1
+Monica Geller,F,employed,Virgo,2
+Phoebe Buffay,F,self-emplyed,Aquarius,3
+Joey Tribbiani,M,self-employed,Leo,4
+Chandler Bing,M,employed,Gemini,5
+Ross Geller,M,employed,Taurus,6
+Gunther,M,self-employed,Scorpio,7
+Jack Geller,M,unemployed,Virgo,8
+Judy Geller,F,unemployed,Aquarius,9
+Janice Litman Goralnik,F,unemployed,Sagittarius,10
+Carol,F,unemployed,Cancer,11
+Susan,F,employed,Virgo,12
+Professor,M,self-employed,NA,13
+Client1,M,NA,NA,14
+Richard,M,self-employed,Capricorn,15
+Girl,F,NA,NA,16
+Donald,M,NA,NA,17
+Michelle,F,NA,NA,18
+Classmate,F,NA,NA,19
+Duck,M,NA,NA,20

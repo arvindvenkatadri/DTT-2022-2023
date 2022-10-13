@@ -1,0 +1,107 @@
+---
+title: Tara Sperber
+author: Tara Sperber
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/2book17.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is Tara"s R portfolio.
+---
+
+```{r setup , include=FALSE}
+library(osmdata)
+library(rnaturalearth)
+library(osmdata)
+library(prettymapr) 
+library(tidyverse) 
+library(osmplotr) 
+library(tmap) 
+library(sf)
+library(tidygraph)
+library(ggraph)
+```
+
+## 3 of my favourite graphs
+
+1.  Graph 1
+
+    A graph of the American Indian population in the midwest USA.
+
+```{r}
+ggplot(midwest, aes(x = poptotal, y = popamerindian)) + geom_point(colour = "red") + geom_smooth(colour = "yellow") 
+```
+
+2.  Graph 2
+
+
+```{r osm}
+bbox_l <- bbox <- osmplotr::get_bbox(c(77.56,12.93,77.63,12.96))
+bbox_l
+```
+
+```{r data}
+dat_B <- extract_osm_objects(key = "building", bbox = bbox_l) 
+dat_H <- extract_osm_objects(key = 'highway', bbox = bbox_l)
+dat_P <- extract_osm_objects(key = 'park', bbox = bbox_l)
+dat_G <- extract_osm_objects(key = 'landuse', value = 'grass', bbox = bbox_l)
+dat_T <- extract_osm_objects(key = 'natural', value = 'tree', bbox = bbox_l)
+```
+
+
+#### Bangalore map
+
+This map visualises the highways, parks and trees around Bangalore, my hometown. The gray are the highways, orange the parks and purple are the trees.
+
+```{r plot}
+
+tm_shape(dat_B) + tm_polygons(col = "gray40") +
+tm_shape(dat_G) + tm_fill(size = 4, col = "orange") +
+tm_shape(dat_H) + tm_dots(col = "purple") +
+tm_shape(dat_T) + tm_dots(col = "green") +
+
+tm_layout(title = "Bangalore", title.size = 6, frame = TRUE, frame.lwd = 5, bg.color = "lightyellow")
+```
+
+### Network Graph
+
+```{r read data, indlude = FALSE}
+bojack_nodes <- read_csv("./Data/bojack-nodes.csv",trim_ws = TRUE) %>% 
+  select(1:4) %>% 
+  drop_na()
+bojack_edges <- read_csv("./Data/bojack-edges.csv",trim_ws = TRUE)%>% 
+  select(1:4) %>% 
+  drop_na()
+bojack_nodes
+bojack_edges
+```
+
+3.  Graph 3
+
+    This graph shows the connections/interactions between characters appearing in Season 1, Episode 12 of Bojack Horseman.
+
+```{r}
+bojack <- tbl_graph(nodes = bojack_nodes, 
+                    edges = bojack_edges,
+                    directed = FALSE)
+
+ggraph(graph = bojack,  layout = "kk") +
+geom_edge_link(width = 2, color = "black") +
+geom_node_point(shape = 21, size = 8, fill = "pink", color = "red", stroke = 2) 
+```
+
+## Reflection
+
+Learning this particular language of code was a different experience for me. I've had several encounters with code and they were always very stressful. This course was also stressful but one thing different is that I enjoyed learning and working with it.
+
+

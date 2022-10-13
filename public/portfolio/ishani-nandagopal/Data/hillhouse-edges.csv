@@ -1,0 +1,19 @@
+from,to,type,ID
+Theodora Crain,Trish Park,benefits,1
+Shirley Crain Harris,Kevin Harris,married,2
+Luke Crain,Abigail,friends,3
+Luke Crain,Joey,friends,4
+Hugh Desmond Lester Crain,Olivia Crain,married,5
+Steven Crain,Leigh Crain,married,6
+Clara Dudley,Horace Dudley,married,7
+Ryan Quale,Shirley Crain Harris,benefits,8
+Jayden Harris,Allie Harris,siblings,9
+Olivia Crain,Clara Dudley,owners,10
+Theodora Crain,Dr. John Montague,associates,11
+Shirley Crain Harris,Theodora Crain,siblings,12
+Steven Crain,Shirley Crain Harris,siblings,13
+Eleanor Crain Vance,Luke Crain,twins,14
+Eleanor Crain Vance,Steven Crain,siblings,15
+Theodora Crain,Eleanor Crain Vance,siblings,16
+Luke Crain,Shirley Crain Harris,siblings,17
+Eleanor Crain Vance,Arthur Vance,married,18

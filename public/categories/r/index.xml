@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Creative portfolio</title>
+    <link>https://example.org/categories/r/</link>
+    <description>Recent content in R on Creative portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.org/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nidhee Deshak</title>
+      <link>https://example.org/portfolio/nalini-rajeev/</link>
+      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/nalini-rajeev/</guid>
+      <description>IntroductionHello. I am Nidhee Deshak, an oddball who freaks out if my code isn’t running XD. Below are the works that according to me are my best and for which I’ve put in my maximum efforts.
+Graph 1I created a dataset where I chose the famous TV show “Friends”. I chose the six main characters and looked at their sex, relationship status, birthyear and zodiac signs.</description>
+    </item>
+    
+    <item>
+      <title>Aarushi Paingankar</title>
+      <link>https://example.org/portfolio/aabha-deshmukh/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/aabha-deshmukh/</guid>
+      <description>IntroductionHello.
+Im Aarushi and I’ve opted for IADP. I’m pretty new to coding in general. The following works are the ones I made based on what we learnt in this course. I have tried to include different graphs for a bit more variety.
+Graph 1The diamonds dataset contains the prices of over 50,000 round cut diamonds.
+1.It inclused the price of diamonds(in USD)
+2.carat
+weight of the diamond)</description>
+    </item>
+    
+    <item>
+      <title>Abhiram Jois</title>
+      <link>https://example.org/portfolio/aakarsh-shetty/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/aakarsh-shetty/</guid>
+      <description>Aren’t we all just rows in a larger dataset?
+Graph 1:Concised FIFA datasetThe following is a datset of all the players in the game FIFA-19 and their player attributes. The initial dataset was very large, this is a concised version of the same.
+## # A tibble: 18,207 x 17## Name Age Nationality Overall Potential Club Value Wage Position## &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 L.</description>
+    </item>
+    
+    <item>
+      <title>Aditi Garg</title>
+      <link>https://example.org/portfolio/adit-joshi/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/adit-joshi/</guid>
+      <description>IntroductionHI!! I’m Aditi and you’re going to see a few of my favorite graphs and maps that I made using R Studio.
+Graph 1How are characters related to each other?
+## from to weight type## 1 Jake Amy 3 romantic## 2 Jake Charles 3 friends## 3 Jake Raymond 3 friends## 4 Jake Rosa 2 friends## 5 Jake Terry 2 friends## 6 Jake Gina 2 friends## 7 Jake Hitchcock 1 friends## 8 Jake Scully 1 friends## 9 Amy Charles 2 friends## 10 Amy Raymond 3 friends## 11 Amy Rosa 2 friends## 12 Amy Terry 1 friends## 13 Amy Gina 1 friends## 14 Amy Hitchcock 1 friends## 15 Amy Scully 1 friends## 16 Rosa Raymond 2 friends## 17 Rosa Terry 1 friends## 18 Rosa Charles 2 friends## 19 Rosa Gina 2 friends## 20 Rosa Hitchcock 1 friends## 21 Rosa Scully 1 friends## 22 Terry Charles 3 friends## 23 Terry Gina 2 friends## 24 Terry Raymond 3 friends## 25 Terry Hitchcock 1 friends## 26 Terry Scully 1 friends## 27 Charles Gina 3 romantic## 28 Charles Raymond 2 friends## 29 Charles Hitchcock 1 friends## 30 Charles Scully 1 friends## 31 Gina Raymond 3 friends## 32 Gina Hitchcock 1 friends## 33 Gina Scully 1 friends## 34 Raymond Hitchcock 1 friends## 35 Raymond Scully 1 friends## 36 Hitchcock Scully 3 friends## X name sex occupation## 1 1 Jake M Detective## 2 2 Amy F Sergeant## 3 3 Rosa F Detective## 4 4 Terry M Lieutenant## 5 5 Charles M Detective## 6 6 Gina F Civilian Administrator## 7 7 Raymond M Captain## 8 8 Hitchcock M Detective## 9 9 Scully M Detective## from to weight type## 1 Jake Amy 3 romantic## 2 Jake Charles 3 friends## 3 Jake Raymond 3 friends## 4 Jake Rosa 2 friends## 5 Jake Terry 2 friends## 6 Jake Gina 2 friends## 7 Jake Hitchcock 1 friends## 8 Jake Scully 1 friends## 9 Amy Charles 2 friends## 10 Amy Raymond 3 friends## 11 Amy Rosa 2 friends## 12 Amy Terry 1 friends## 13 Amy Gina 1 friends## 14 Amy Hitchcock 1 friends## 15 Amy Scully 1 friends## 16 Rosa Raymond 2 friends## 17 Rosa Terry 1 friends## 18 Rosa Charles 2 friends## 19 Rosa Gina 2 friends## 20 Rosa Hitchcock 1 friends## 21 Rosa Scully 1 friends## 22 Terry Charles 3 friends## 23 Terry Gina 2 friends## 24 Terry Raymond 3 friends## 25 Terry Hitchcock 1 friends## 26 Terry Scully 1 friends## 27 Charles Gina 3 romantic## 28 Charles Raymond 2 friends## 29 Charles Hitchcock 1 friends## 30 Charles Scully 1 friends## 31 Gina Raymond 3 friends## 32 Gina Hitchcock 1 friends## 33 Gina Scully 1 friends## 34 Raymond Hitchcock 1 friends## 35 Raymond Scully 1 friends## 36 Hitchcock Scully 3 friends## X name sex occupation## 1 1 Jake M Detective## 2 2 Amy F Sergeant## 3 3 Rosa F Detective## 4 4 Terry M Lieutenant## 5 5 Charles M Detective## 6 6 Gina F Civilian Administrator## 7 7 Raymond M Captain## 8 8 Hitchcock M Detective## 9 9 Scully M Detective## id X label group occupation## 1 1 1 Jake Male Detective## 2 2 2 Amy Female Sergeant## 3 3 3 Rosa Female Detective## 4 4 4 Terry Male Lieutenant## 5 5 5 Charles Male Detective## 6 6 6 Gina Female Civilian Administrator## 7 7 7 Raymond Male Captain## 8 8 8 Hitchcock Male Detective## 9 9 9 Scully Male Detective## from to## 1 1 2## 2 1 5## 3 1 7## 4 1 3## 5 1 4## 6 1 6## 7 1 8## 8 1 9## 9 2 5## 10 2 7## 11 2 3## 12 2 4## 13 2 6## 14 2 8## 15 2 9## 16 3 7## 17 3 4## 18 3 5## 19 3 6## 20 3 8## 21 3 9## 22 4 5## 23 4 6## 24 4 7## 25 4 8## 26 4 9## 27 5 6## 28 5 7## 29 5 8## 30 5 9## 31 6 7## 32 6 8## 33 6 9## 34 7 8## 35 7 9## 36 8 9{&#34;</description>
+    </item>
+    
+    <item>
+      <title>Akanksha Bhushan</title>
+      <link>https://example.org/portfolio/adit-maheshwari/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/adit-maheshwari/</guid>
+      <description>Graph 1For this map i took the star wars data set which had the variables name, height, mass, hair color, skin color, eye color, birth year, sex , gender, homeworld, species, films, vehicles and starships.
+My intent in this graph was to find out which all species have lived on the planet of Naboo.
+## # A tibble: 87 x 14## name height mass hair_color skin_color eye_color birth_year sex gender## &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 Luke S~ 172 77 blond fair blue 19 male mascu~## 2 C-3PO 167 75 &amp;lt;NA&amp;gt; gold yellow 112 none mascu~## 3 R2-D2 96 32 &amp;lt;NA&amp;gt; white, bl~ red 33 none mascu~## 4 Darth ~ 202 136 none white yellow 41.</description>
+    </item>
+    
+    <item>
+      <title>Ananya Duggal</title>
+      <link>https://example.org/portfolio/ananya-salian/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/ananya-salian/</guid>
+      <description>IntroductionHi! I’m Ananya and in the following sections you’ll see what I’ve done in the last two weeks. Every graph represnts an answer to a question that I’ve included aabove the graph. Enjoy :)
+Graph 1 - Using the Gapminder DatasetGapminder consists of data like population,life expentancy and GDP per capita of 142 countries collected between 1952-2007 in increments of 5 years.</description>
+    </item>
+    
+    <item>
+      <title>Anika Jain</title>
+      <link>https://example.org/portfolio/arunima-sajith/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/arunima-sajith/</guid>
+      <description>IntroductionI’m going to show few graphs and plots. It was fun exausting myself and work whole night. I get it that i still suck at it. Duh I think i’ll try to get better at this and keep practicing as the outcome of the chunks are pretty cool.
+Graph 1I used geom_sf to make the graph of Jaipur City, it was more fun than i expected.</description>
+    </item>
+    
+    <item>
+      <title>Aryan Joshua</title>
+      <link>https://example.org/portfolio/arya-chandrasekaran/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/arya-chandrasekaran/</guid>
+      <description>IntroductionHi, I’m Aryan and here I have a few graphs on different topics that show my progress in being able to visualize data through various methods that I’ve learnt in this workshop.
+Graph 1I have chosen the diamond data set which contains the prices and other attributes of almost 54000 diamonds. The variety of attributes are the price of the diamond in US dollars, the carat of the diamond, the quality of the diamond (cut of the diamond), the colour and clarity and various dimensions of the diamonds.</description>
+    </item>
+    
+    <item>
+      <title>Avi Parmar</title>
+      <link>https://example.org/portfolio/arya-mohan/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/arya-mohan/</guid>
+      <description>GRAPH 1“No matter what the statistics say, there is always a way.”
+~Bernie Siegel
+#GRAPH FUNCTIONggplot(data = cancer, mapping = aes(x = Age, y = Alcoholuse))+geom_point(size = 5)+geom_smooth(colour = &amp;quot;red&amp;quot;)## `geom_smooth()` using method = &amp;#39;gam&amp;#39; and formula &amp;#39;y ~ s(x, bs = &amp;quot;cs&amp;quot;)&amp;#39;I figured that writing about cancer might make me come off as important, and plus it was pretty easy for me to get my hands on this data set.</description>
+    </item>
+    
+    <item>
+      <title>Deepti Kapadia</title>
+      <link>https://example.org/portfolio/awani-kshirsagar/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/awani-kshirsagar/</guid>
+      <description>Set up chunkGraph 1Graph using geometric objects. I used the diamonds dataset for this graph. In the graph, I plotted the carat of the diamond on the x axis and the price on the y axis. The cut is depicted in different colours and the color of each diamond is depicted in different shapes.
+## # A tibble: 53,940 x 10## carat cut color clarity depth table price x y z## &amp;lt;dbl&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 0.</description>
+    </item>
+    
+    <item>
+      <title>Devanshi Makhija</title>
+      <link>https://example.org/portfolio/gayatri-jadhav/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/gayatri-jadhav/</guid>
+      <description>IntroductionHello, I am Devanshi, below are some graphs I did using Rstudio.
+tMAPSWe learnt how to create a map with code using ‘tmaps’.I created an interactive map of Khar, Mumbai and plotted buildings,roads, fast-food places, cafes and cemeteries.
+Getting the coordinatesbbox_khar &amp;lt;- getbb(&amp;quot;Khar, Mumbai, India&amp;quot;)bbox_khar## min max## x 72.81371 72.85371## y 19.05246 19.09246Extracting the Datadat_khar_B &amp;lt;- extract_osm_objects(bbox_khar, &amp;quot;building&amp;quot;)dat_khar_H &amp;lt;- extract_osm_objects(bbox_khar, &amp;quot;highway&amp;quot;)dat_khar_R &amp;lt;- extract_osm_objects(bbox_khar, key = &amp;quot;amenity&amp;quot;, value = &amp;quot;fast_food&amp;quot;, return_type = &amp;quot;points&amp;quot;)dat_khar_E &amp;lt;- extract_osm_objects(bbox_khar, key = &amp;quot;amenity&amp;quot;, value = &amp;quot;cafe&amp;quot;, return_type = &amp;quot;points&amp;quot;)dat_khar_G &amp;lt;- extract_osm_objects (bbox = bbox_khar, key = &amp;quot;landuse&amp;quot;, value = &amp;quot;cemetery&amp;quot;) tmap_mode(&amp;quot;plot&amp;quot;)tm_shape(dat_khar_B)+tm_bubbles(col = &amp;quot;lightsteelblue&amp;quot;)+tm_shape(dat_khar_H) +tm_lines(col = &amp;quot;darkblue&amp;quot;, lwd = 1.</description>
+    </item>
+    
+    <item>
+      <title>Ishita Sabharwal</title>
+      <link>https://example.org/portfolio/ishani-nandagopal/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/ishani-nandagopal/</guid>
+      <description>Graph No 1.In this graph, we’ve explored a total of three variables, i.e., clarity, cut and the price of the diamonds dataset. Using the RColorBrewer package, colours have also been added. Via LAB04
+ggplot(diamonds) + geom_point(aes(x = clarity, y = price, color = cut), size = 3) + scale_colour_viridis_d(option = &amp;quot;inferno&amp;quot;) + labs(title = &amp;quot;Viridis Palette&amp;quot;, subtitle = &amp;quot;Option Inferno&amp;quot;) + facet_wrap(~cut)Graph No 2.Adding the longitude and latitude of Delhi to create maps of my surrounding areas</description>
+    </item>
+    
+    <item>
+      <title>Jayaditya Thotli</title>
+      <link>https://example.org/portfolio/ishita-devulapalli/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/ishita-devulapalli/</guid>
+      <description>h1.title {font-size: 48px;font-family: &#34;Arial&#34;color: Black;text-align: center;}h4.author { font-size: 20px;font-family: &#34;Times New Roman&#34;, Times, serif;color: gray;text-align: right;}h4.date { font-size: 15px;font-family: &#34;Times New Roman&#34;, Times, serif;color: grey;text-align: right;}
+
+Height and Weight of the Heroes along with their Hair colour## Rows: 817## Columns: 25## $ X1 &amp;lt;dbl&amp;gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1~## $ name &amp;lt;chr&amp;gt; &amp;quot;A-Bomb&amp;quot;, &amp;quot;Abe Sapien&amp;quot;, &amp;quot;Abin Sur&amp;quot;, &amp;quot;Abomination&amp;quot;, ~## $ Gender &amp;lt;chr&amp;gt; &amp;quot;Male&amp;quot;, &amp;quot;Male&amp;quot;, &amp;quot;Male&amp;quot;, &amp;quot;Male&amp;quot;, &amp;quot;Male&amp;quot;, &amp;quot;Male&amp;quot;, &amp;quot;Ma~## $ Eyecolor &amp;lt;chr&amp;gt; &amp;quot;yellow&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;blue&amp;quot;, ~## $ Race &amp;lt;chr&amp;gt; &amp;quot;Human&amp;quot;, &amp;quot;Icthyo Sapien&amp;quot;, &amp;quot;Ungaran&amp;quot;, &amp;quot;Human / Radia~## $ Haircolor &amp;lt;chr&amp;gt; &amp;quot;No Hair&amp;quot;, &amp;quot;No Hair&amp;quot;, &amp;quot;No Hair&amp;quot;, &amp;quot;No Hair&amp;quot;, &amp;quot;Black&amp;quot;~## $ Height &amp;lt;dbl&amp;gt; 203, 191, 185, 203, -99, 193, -99, 185, 173, 178, 1~## $ Publisher &amp;lt;chr&amp;gt; &amp;quot;Marvel Comics&amp;quot;, &amp;quot;Dark Horse Comics&amp;quot;, &amp;quot;DC Comics&amp;quot;, ~## $ Skincolor &amp;lt;chr&amp;gt; &amp;quot;-&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;red&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;~## $ Alignment &amp;lt;chr&amp;gt; &amp;quot;good&amp;quot;, &amp;quot;good&amp;quot;, &amp;quot;good&amp;quot;, &amp;quot;bad&amp;quot;, &amp;quot;bad&amp;quot;, &amp;quot;bad&amp;quot;, &amp;quot;good&amp;quot;~## $ Weight &amp;lt;dbl&amp;gt; 441, 65, 90, 441, -99, 122, -99, 88, 61, 81, 104, 1~## $ intelligence &amp;lt;chr&amp;gt; &amp;quot;85&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;80&amp;quot;, &amp;quot;80&amp;quot;, &amp;quot;80&amp;quot;, &amp;quot;90&amp;quot;, &amp;quot;95&amp;quot;, &amp;quot;75&amp;quot;, &amp;quot;8~## $ strength &amp;lt;chr&amp;gt; &amp;quot;30&amp;quot;, &amp;quot;20&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;50&amp;quot;, &amp;quot;10&amp;quot;, &amp;quot;40&amp;quot;, &amp;quot;30&amp;quot;, &amp;quot;90&amp;quot;, &amp;quot;1~## $ speed &amp;lt;chr&amp;gt; &amp;quot;60&amp;quot;, &amp;quot;30&amp;quot;, &amp;quot;80&amp;quot;, &amp;quot;55&amp;quot;, &amp;quot;25&amp;quot;, &amp;quot;45&amp;quot;, &amp;quot;35&amp;quot;, &amp;quot;55&amp;quot;, &amp;quot;80~## $ durability &amp;lt;chr&amp;gt; &amp;quot;60&amp;quot;, &amp;quot;50&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;45&amp;quot;, &amp;quot;40&amp;quot;, &amp;quot;55&amp;quot;, &amp;quot;65&amp;quot;, &amp;quot;65&amp;quot;, &amp;quot;9~## $ power &amp;lt;chr&amp;gt; &amp;quot;40&amp;quot;, &amp;quot;35&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;30&amp;quot;, &amp;quot;55&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;100&amp;quot;,~## $ combat &amp;lt;chr&amp;gt; &amp;quot;70&amp;quot;, &amp;quot;100&amp;quot;, &amp;quot;80&amp;quot;, &amp;quot;55&amp;quot;, &amp;quot;50&amp;quot;, &amp;quot;85&amp;quot;, &amp;quot;85&amp;quot;, &amp;quot;65&amp;quot;, &amp;quot;9~## $ mindcontrol &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~## $ mattermanipulation &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;~## $ telepathy &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~## $ telekinesis &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~## $ shapeshifting &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~## $ timetravel &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;~## $ elementcontrol &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~## $ sizechanging &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;~The above graph is a point graph, it specifies height and weight of the heroes according to their hair colour.</description>
+    </item>
+    
+    <item>
+      <title>Khyati Patel</title>
+      <link>https://example.org/portfolio/janavi-moncourt/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/janavi-moncourt/</guid>
+      <description>IntroductionHi, I am Khyati and this is my journey exploring graphs, maps and networks!
+Graph 1Name GraphsFor one of the assignments we had to plot out names on graphs using the baby names data set.This Data is about Different Baby Names with their Gender, Name, Count and Overall Rank in proportion to the overall data.
+glimpse(babynames) # dplyr## Rows: 1,924,665## Columns: 5## $ year &amp;lt;dbl&amp;gt; 1880, 1880, 1880, 1880, 1880, 1880, 1880, 1880, 1880, 1880, 1880,…## $ sex &amp;lt;chr&amp;gt; &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;F&amp;quot;, …## $ name &amp;lt;chr&amp;gt; &amp;quot;Mary&amp;quot;, &amp;quot;Anna&amp;quot;, &amp;quot;Emma&amp;quot;, &amp;quot;Elizabeth&amp;quot;, &amp;quot;Minnie&amp;quot;, &amp;quot;Margaret&amp;quot;, &amp;quot;Ida&amp;quot;,…## $ n &amp;lt;int&amp;gt; 7065, 2604, 2003, 1939, 1746, 1578, 1472, 1414, 1320, 1288, 1258,…## $ prop &amp;lt;dbl&amp;gt; 0.</description>
+    </item>
+    
+    <item>
+      <title>Lakshya Pratap</title>
+      <link>https://example.org/portfolio/alamelu-karthikeyan/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/alamelu-karthikeyan/</guid>
+      <description>Graph 1: Bar Graph from Lab 03, Midwest DatabaseThis graph shows that which state in the Midwest consists of what kind of categories.Graph 2: Map Of My City Jodhpur &amp;amp; Its famous Places/ RestaurantsMap from Lab 06## min max## x 73.02 73.15## y 26.25 26.35Graph 3: The Graph from my favourite TV Show: NarcosGraph from the learnings of Lab 07## # A tibble: 20 x 6## name sex nationality race birthyear season## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 Pablo Escobar M Colombian White 1949 2## 2 Javier Pena M American White 1948 3## 3 Steve Murphy M American White 1957 2## 4 Gustavo Gaveria M Colombian White 1946 1## 5 La Quica M Colombian Black 1965 2## 6 Tata Escobar F Colombian White 1961 2## 7 Valeria Velez F Colombian White 1949 2## 8 Luis Fernando Duque M Colombian White 1952 2## 9 Gilberto Rodriguez M Colombian White 1939 3## 10 Miguel Rodriguez M Colombian White 1943 3## 11 Hermilda Gaveria F Colombian White 1917 1## 12 Fabio Ochoa M Colombian White 1957 1## 13 Jorge Luis Ochoa M Colombian White 1950 1## 14 Carlos Lehder M German White 1949 1## 15 El Navegante M Colombian White 1946 3## 16 Cesar Gaveria M Colombian White 1947 3## 17 José Gonzalo Rodríguez Gacha M Puerto Rican Black 1947 1## 18 Hugo Martinez M Colombian White 1941 2## 19 El Lion M American White 1969 1## 20 Diana Turbay F Colombian White 1950 2## # A tibble: 20 x 3## from to type ## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 Pablo Escobar Tata Escobar Family ## 2 Javier Pena Steve Murphy Partners ## 3 Steve Murphy Pablo Escobar Enemies ## 4 Gustavo Gaveria El Lion Partners ## 5 La Quica El Lion Partners ## 6 Tata Escobar Pablo Escobar Family ## 7 Valeria Velez Luis Fernando Duque Associates ## 8 Luis Fernando Duque Pablo Escobar Associates ## 9 Gilberto Rodriguez Miguel Rodriguez Partners ## 10 Miguel Rodriguez Gilberto Rodriguez Partners ## 11 Hermilda Gaveria Gustavo Gaveria Family ## 12 Fabio Ochoa Jorge Luis Ochoa Partners ## 13 Jorge Luis Ochoa Fabio Ochoa Partners ## 14 Carlos Lehder Pablo Escobar Partners ## 15 El Navegante Fabio Ochoa Partners ## 16 Cesar Gaveria Hugo Martinez Service ## 17 José Gonzalo Rodríguez Gacha Pablo Escobar Assiociates## 18 Hugo Martinez Cesar Gaveria Service ## 19 El Lion Gustavo Gaveria Partners ## 20 Diana Turbay Cesar Gaveria Friends## # A tbl_graph: 20 nodes and 20 edges## ### # An undirected multigraph with 5 components## ### # Node Data: 20 x 6 (active)## name sex nationality race birthyear season## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 Pablo Escobar M Colombian White 1949 2## 2 Javier Pena M American White 1948 3## 3 Steve Murphy M American White 1957 2## 4 Gustavo Gaveria M Colombian White 1946 1## 5 La Quica M Colombian Black 1965 2## 6 Tata Escobar F Colombian White 1961 2## # .</description>
+    </item>
+    
+    <item>
+      <title>Mark Tharakan</title>
+      <link>https://example.org/portfolio/mahir-malde/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/mahir-malde/</guid>
+      <description>Graph 1.## # A tibble: 53,940 x 10## carat cut color clarity depth table price x y z## &amp;lt;dbl&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 0.23 Ideal E SI2 61.5 55 326 3.95 3.98 2.43## 2 0.21 Premium E SI1 59.8 61 326 3.89 3.84 2.31## 3 0.23 Good E VS1 56.9 65 327 4.05 4.07 2.31## 4 0.</description>
+    </item>
+    
+    <item>
+      <title>Misha Sachdeva</title>
+      <link>https://example.org/portfolio/mariya-vahanvaty/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/mariya-vahanvaty/</guid>
+      <description>IntroductionHi! My name is Misha Sachdeva and I am a student at SMI. I have worked on the following the graphs using a common dataset of the “diamonds” since the data really surprised me and I wanted to explore more works on this.
+Graph 1I have chosen the dataset of diamonds. The columns of carat and clarity seemed really interesting to me.
+glimpse(diamonds)## Rows: 53,940## Columns: 10## $ carat &amp;lt;dbl&amp;gt; 0.</description>
+    </item>
+    
+    <item>
+      <title>Prisha Jhaveri</title>
+      <link>https://example.org/portfolio/nehal-sarin/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/nehal-sarin/</guid>
+      <description>IntroductionHi! I’m Prisha, and today I’ll be showing you a glimpse into what I’ve learnt in this workshop as we fell down the rabbit hole of R-studio.
+Graph 1This is a dataset talking about the different features of a group of diamonds.
+glimpse(diamonds)## Rows: 53,940## Columns: 10## $ carat &amp;lt;dbl&amp;gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.</description>
+    </item>
+    
+    <item>
+      <title>Rachel Thomas</title>
+      <link>https://example.org/portfolio/nithin-suresh/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/nithin-suresh/</guid>
+      <description>Graphs explored during the course of this worshopGRAPH- 1Using the diamonds data set to analyse data and create graphs showing the colour and depth of the diamonds. I used a colour palette for this graph as well using ggplot and geom_bar
+GRAPH- 2Using the penguins data set to analyse data and create graphs showing the island, species and sex of the penguins.I have made a code for these graphs- geom_bar with fill</description>
+    </item>
+    
+    <item>
+      <title>Ruhi Raisoni</title>
+      <link>https://example.org/portfolio/rosanne-maria/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/rosanne-maria/</guid>
+      <description>IntroductionHi, I’m Ruhi Raisoni. Below are some graphs whose code I learnt in R studio with the help and guidance of our facilitator Mr. Arvind Venkatadri.
+ Graph 1- Plotting a line graph to show the amount of time spent awake by animals of different diets:ggplot(msleep) + geom_density(aes(x = awake, color = vore, fill = vore), alpha = 0.3) +labs(title = &amp;quot;Points plotted with Alpha&amp;quot;)I have used an updated and expanded version of the mammals sleep dataset.</description>
+    </item>
+    
+    <item>
+      <title>Sanjana Gupta</title>
+      <link>https://example.org/portfolio/sakshi-sawarkar/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/sakshi-sawarkar/</guid>
+      <description>body{font-size:20px;font-family:Comic Sans MS;color:rgb(100, 96, 147);text-align:justify}IntroductionHi this is Sanjana Gupta. Here are some graphs and maps that show my progress in these two weeks of the workshop. I have had a great character development throughout this tenure. This is the evidence of how I went from a person completely unaware of any coding language, to actually creating stuff through codes.
+Graph 1The msleep dataset## [1] &amp;quot;name&amp;quot; &amp;quot;genus&amp;quot; &amp;quot;vore&amp;quot; &amp;quot;order&amp;quot; &amp;quot;conservation&amp;quot;## [6] &amp;quot;sleep_total&amp;quot; &amp;quot;sleep_rem&amp;quot; &amp;quot;sleep_cycle&amp;quot; &amp;quot;awake&amp;quot; &amp;quot;brainwt&amp;quot; ## [11] &amp;quot;bodywt&amp;quot;## # A tibble: 6 x 11## name genus vore order conservation sleep_total sleep_rem sleep_cycle awake## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 Cheetah Acin~ carni Carn~ lc 12.</description>
+    </item>
+    
+    <item>
+      <title>Sarahfin Richard</title>
+      <link>https://example.org/portfolio/shreya-kolalapudi/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/shreya-kolalapudi/</guid>
+      <description>This workshop involved all of us learning to code using R. We made different kinds of graphs for different things. Here are some of the graphs we made:
+Looking at baby names in the United States:Here, we looked at different baby names and tried to see how many times they occured in a year. This graph analyses the names, Leslie, Lesley and Leslee:
+Looking at the sleep patterns of animals:In this graph, we looked at the sleep patterns of animals depending on their feeding type.</description>
+    </item>
+    
+    <item>
+      <title>Swagat Paul</title>
+      <link>https://example.org/portfolio/stuti-kumar/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/stuti-kumar/</guid>
+      <description>IntroductionSwagat Paul
+Following are some of the graphs I created and explored different qualities of during a coding workshop.
+The GraphsMy first two graphs are from T5 and were based on the msleep dataset which contained information on various animals## [1] &amp;quot;name&amp;quot; &amp;quot;genus&amp;quot; &amp;quot;vore&amp;quot; &amp;quot;order&amp;quot; &amp;quot;conservation&amp;quot;## [6] &amp;quot;sleep_total&amp;quot; &amp;quot;sleep_rem&amp;quot; &amp;quot;sleep_cycle&amp;quot; &amp;quot;awake&amp;quot; &amp;quot;brainwt&amp;quot; ## [11] &amp;quot;bodywt&amp;quot;## # A tibble: 6 x 11## name genus vore order conservation sleep_total sleep_rem sleep_cycle awake## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 Cheetah Acin~ carni Carn~ lc 12.</description>
+    </item>
+    
+    <item>
+      <title>Tanvi Patravali</title>
+      <link>https://example.org/portfolio/swapnali-patil/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/swapnali-patil/</guid>
+      <description>h3{color:rgb(80, 7, 163);font-size:50px;font-family:Montserrat Light;}h5{color:rgb(50, 141, 168);font-size:30px;font-family:Montserrat Light;}h6{color:rgb(0, 0, 0);font-size:15px;font-family:Montserrat Light;}h2{color:rgb(122, 34, 119);font-size:70px;font-family:Montserrat Light;}PORTFOLIOTanvi Patravali
+body{color:rgb(0, 0, 0);font-size:17px;font-family:Poppins;}ANALYSING MSLEEP DATAA bar graph showing the awake time of species, classified by order and eating habits
+A density chart showing the total sleep time of different species, classifies by conservation status and thier eating habitsA NETWORK ANALYSIS FROM THE SERIES THE GOOD DOCTORA network analysis between different characters from episode 3 and 4 of season 1REFLECTIONDuring this course, I learnt the importance of analysis of data.</description>
+    </item>
+    
+    <item>
+      <title>Tara Sperber</title>
+      <link>https://example.org/portfolio/ramesh-kalkur/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/portfolio/ramesh-kalkur/</guid>
+      <description>3 of my favourite graphsGraph 1
+A graph of the American Indian population in the midwest USA.
+ggplot(midwest, aes(x = poptotal, y = popamerindian)) + geom_point(colour = &amp;quot;red&amp;quot;) + geom_smooth(colour = &amp;quot;yellow&amp;quot;) ## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;Graph 2bbox_l &amp;lt;- bbox &amp;lt;- osmplotr::get_bbox(c(77.56,12.93,77.63,12.96))bbox_l## min max## x 77.56 77.63## y 12.93 12.96dat_B &amp;lt;- extract_osm_objects(key = &amp;quot;building&amp;quot;, bbox = bbox_l) ## Issuing query to Overpass API .</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>https://example.org/post/2020-12-01-r-rmarkdown/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://example.org/post/2020-12-01-r-rmarkdown/</guid>
+      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+  </channel>
+</rss>

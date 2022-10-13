@@ -1,0 +1,31 @@
+from,to,weight,type
+Joey Tribbiani ,Chandler Bing,10,friends
+Ross Geller ,Joey Tribbiani,13,friends
+Ross Geller ,Chandler Bing,11,friends
+Rachel Green ,Ross Geller ,10,benefits
+Ross Geller ,Phoebe Buffay ,8,friends
+Chandler Bing,Phoebe Buffay,7,friends
+Monica Geller ,Phoebe Buffay,8,friends
+Monica Geller ,Ross Geller,7,siblings
+Phoebe Buffay ,Rachel Green,9,friends
+Monica Geller ,Rachel Green,5,friends
+Richard ,Monica Geller,2,ex
+Chandler Bing,Monica Geller,9,benefits
+Joey Tribbiani ,Monica Geller,5,friends
+Monica Geller,Michelle,1,acquaintance
+Rachel Green,Joey Tribbiani,8,friends
+Rachel Green,Professor,1,professional
+Phoebe Buffay,Professor,1,professional
+Joey Tribbiani,Girl,1,benefits
+Ross Geller ,Donald,1,professional
+Monica Geller ,Professor,2,professional
+Phoebe Buffay,Joey Tribbiani,1,friends
+Phoebe Buffay ,Classmate,1,acquaintance
+Chandler Bing ,Rachel Green,1,friends
+Joey Tribbiani ,Duck,1,friends
+Ross Geller ,Client1,1,professional
+Chandler Bing ,Judy Geller,1,acquaintance
+Chandler Bing,Jack Geller,1,acquaintance
+Judy Geller ,Jack Geller,2,married
+Monica Geller ,Jack Geller,2,family
+Monica Geller ,Judy Geller,1,family

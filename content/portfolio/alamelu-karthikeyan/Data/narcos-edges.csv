@@ -1,0 +1,21 @@
+from,to,type
+Pablo Escobar,Tata Escobar,Family
+Javier Pena,Steve Murphy,Partners
+Steve Murphy,Pablo Escobar,Enemies
+Gustavo Gaveria,El Lion,Partners
+La Quica,El Lion,Partners
+Tata Escobar,Pablo Escobar,Family
+Valeria Velez,Luis Fernando Duque,Associates
+Luis Fernando Duque,Pablo Escobar,Associates
+Gilberto Rodriguez,Miguel Rodriguez,Partners
+Miguel Rodriguez,Gilberto Rodriguez,Partners
+Hermilda Gaveria,Gustavo Gaveria,Family
+Fabio Ochoa,Jorge Luis Ochoa,Partners
+Jorge Luis Ochoa,Fabio Ochoa,Partners
+Carlos Lehder,Pablo Escobar,Partners
+El Navegante,Fabio Ochoa,Partners
+Cesar Gaveria,Hugo Martinez,Service
+José Gonzalo Rodríguez Gacha,Pablo Escobar,Assiociates
+Hugo Martinez,Cesar Gaveria,Service
+El Lion,Gustavo Gaveria,Partners
+Diana Turbay,Cesar Gaveria,Friends

@@ -1,0 +1,11 @@
+from,to,weight,friendship_status
+Monica,Rachel,15,best friends
+Phoebe,Monica,11,good friends
+Phoebe,Rachel,9,friends
+Monica,Ross,20,best friends
+Ross,Chandler,8,friends
+Ross,Joey,10,friends
+Joey,Monica,12,good friends
+Monica,Chandler,22,more than friends
+Chandler,Joey,19,best friends
+Rachel,Ross,21,more than friends

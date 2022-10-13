@@ -1,0 +1,21 @@
+from,to,weight,Type
+Dick Cavett,Secretariat,1,Professional
+Mr. Peanutbutter,Bojack Horseman,3,Friends
+Bojack Horseman,Todd Chavez,3,Friends
+Princess Carolyn,Bojack Horseman,3,Friends
+Vincent Adultman,Bojack Horseman,1,Friends
+Vincent Adultman,Princess Carolyn,4,Partners
+Mr. Peanutbutter,Vincent Adultman,1,Friends
+Princess Carolyn,Mr. Peanutbutter,1,Friends
+Bojack Horseman,Random character,1,Acquaintance
+Bojack Horseman,Random character #2,1,Acquaintance
+Bojack Horseman,Random character #3,1,Acquaintance
+Diane Nguyen,Photographers,1,Professional
+Diane Nguyen,Sebastian St. Clair,2,Professional
+Mr. Peanutbutter,Todd Chavez,4,Friends
+Diane Nguyen,Mr. Peanutbutter,1,Partners
+Bojack Horseman,Lenny Turtletaub,2,Professional
+Bojack Horseman,Kelsey Jannings,2,Professional
+Kelsey Jannings ,Lenny Turtletaub,1,Professional
+Princess Carolyn,Diane Nguyen,1,Friends
+Bojack Horseman,Diane Nguyen,1,Friends

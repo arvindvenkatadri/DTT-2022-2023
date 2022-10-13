@@ -1,0 +1,74 @@
+from,to,weight,type
+Homelander,Starlight,3,Professional
+Homelander,Billy Butcher,1,Enemy
+Homelander,The Deep,4,Competition
+Homelander,Madelyn Stillwell,5,Benefits
+Homelander,Queen Maeve,2,Friends
+Homelander,A-Train,3,Competition
+Homelander,Ashley Barrett,3,Professional
+Homelander,Black Noir,2,Professional
+Starlight,Billy Butcher,1,Friends
+Starlight,Hughie Campbell,6,Benefits
+Starlight,The Deep,6,Enemy
+Starlight,Madelyn Stillwell,2,Professional
+Starlight,Ashley Barrett,8,Professional
+Starlight,Black Noir,2,Professional
+Starlight,Donna January,10,Family
+Starlight,Queen Maeve,2,Competition
+Starlight,A-Train,2,Professional
+Starlight,Translucent,3,Professional
+Billy Butcher,Hughie Campbell,13,Friends
+Billy Butcher,Madelyn Stillwell,1,Enemy
+Billy Butcher,Frenchie,11,Friends
+Billy Butcher,Translucent,5,Enemy
+Billy Butcher,Susan Raynor,3,Friends
+Hughie Campbell,Madelyn Stillwell,1,Competition
+Hughie Campbell,Frenchie,10,Friends
+Hughie Campbell,Translucent,8,Enemy
+Hughie Campbell,A-Train,3,Enemy
+Hughie Campbell,Robin Ward,4,Family
+Hughie Campbell,Hugh Campbell,12,Family
+Madelyn Stillwell,Translucent,2,Benefits
+Madelyn Stillwell,Queen Maeve,1,Benefits
+Madelyn Stillwell,Ashley Barrett,11,Benefits
+Madelyn Stillwell,The Deep,2,Benefits
+Madelyn Stillwell,A-Train,3,Benefits
+Madelyn Stillwell,Doppelganger,5,Professional
+Madelyn Stillwell,Ezekiel,1,Friends
+Madelyn Stillwell,senator Calhoun,3,Competition
+Madelyn Stillwell,Black Noir,1,Benefits
+Frenchie,Translucent,7,Enemy
+Translucent,The Deep,1,Competition
+Translucent,Queen Maeve,2,Professional
+Translucent,A-Train,1,Competition
+Translucent,Ashley Barrett,3,Professional
+A-Train,Robin Ward,1,Enemy
+A-Train,The Deep,3,Competition
+A-Train,Queen Maeve,1,Competition
+A-Train,Ashley Barrett,5,Professional
+The Deep,Queen Maeve,3,Professional
+The Deep,Ashley Barrett,4,Professional
+The Deep,Hughie Campbell,,Benefits
+senator Calhoun,Doppelganger,3,Benefits
+Queen Maeve,Ashley Barrett,1,Professional
+Mother's Milk,Billy Butcher,2,Friends
+Mother's Milk,Hughie Campbell,4,Friends
+Mother's Milk,The Female,1,Friends
+Mother's Milk,Starlight,1,Friends
+Mother's Milk,Frenchie,1,Competition
+The Female,Billy Butcher,1,Friends
+The Female,Hughie Campbell,2,Friends
+Ryan Butcher,Billy Butcher,5,Family
+Ryan Butcher,Hughie Campbell,2,Friends
+Ryan Butcher,Becca Butcher,1,Family
+Lamplighter,Homelander,1,Competition
+Lamplighter,The Deep,1,Benefits
+Lamplighter,Madelyn Stillwell,1,Competition
+Lamplighter,Queen Maeve,1,Competition
+Lamplighter,A-Train,1,Competition
+Becca Butcher,Frenchie,2,Friends
+Becca Butcher,Billy Butcher,7,Family
+Becca Butcher,Madelyn Stillwell,1,Friends
+Popclaw,Mesmer,4,Friends
+Soldier Boy,The Deep,3,Benefits
+Soldier Boy,Homelander,1,Enemy

@@ -1,0 +1,31 @@
+name,id,realname,sex,race,birthyear,sign,playedby,height,Citizenship,status,Species,Affiliation
+Homelander,1,John,Male,White,1975,Scorpio,Antony Starr,180 cm,American,Alive,Supe,The Seven
+Starlight,2,Annie January,Female,White,1994,Cancer,Erin Moriarty,168 cm,American,Alive,Supe,The Seven
+Billy Butcher,3,William Butcher,Male,White,1972,Gemini,Karl Urban,185 cm,British,Alive,Human,The Boys
+Hughie Campbell,4,Hugh Campbell Jr.,Male,White,1992,Taurus,Jack Quaid,185 cm,American,Alive,Human,The Boys
+Black Noir,5,NA,Male,Black,1988,Sagittarius,Nathan Mitchell,188 cm,American,Alive,Supe,The Seven
+Translucent,6,NA,Male,White,1980,Libra,Alex Hassell,176 cm,American,Dead,Supe,The Seven
+Frenchie,7,Serge,Male,White,1985,Cancer,Tomer Kapon,179 cm,French Algerian,Alive,Human,The Boys
+Stormfront,8,Klara Risinger,Female,White,1982,Cancer,Aya Cash,154 cm,Nazi German ,Alive,Supe,The Seven
+The Deep,9,Kevin Moskowitz,Male,White,1985,Cancer,Chace Crawford,178 cm,American,Alive,Supe,The Seven
+Mother's Milk,10,Marvin T. Milk,Male,Black,1974,Aries,Laz Alonso,182 cm,American,Alive,Human,The Boys
+The Female,11,Kimiko Miyashiro,Female,Brown,1992,Aquarius,Karen Fukuhara,157 cm,Japanese,Alive,Supe,The Boys
+Madelyn Stillwell,12,Madelyn Stillwell,Female,White,1963,Libra,Elisabeth Shue,157 cm,American,Dead,Human,Vought International
+Doppelganger,13,Rhonda˜,Non-binary,White,1978,Gemini,Patton Oswalt,161 cm,American,Dead,Supe,Vought International
+Queen Maeve,14,Margaret Shaw,Female,White,1986,Pisces,Dominique McElligott,173 cm,American,Alive,Supe,The Seven
+A-Train,15,Reggie Franklin,Male,Black,1992,Pisces,Jessie Usher,184 cm,American,Alive,Supe,The Seven
+Susan Raynor,16,Susan Raynor,Female,Brown,1973,Taurus,Jennifer Esposito,168 cm,American,Dead,Human,CIA
+Robin Ward,17,Robin Ward,Female,Black,1986,Capricorn,Jess Salgueiro,170 cm ,American,Dead,Human,NA
+Ashley Barrett,18,Ashley Barrett,Female,White,1992,Capricorn,Colby Minifie,160 cm,American,Alive,Human,Vought International
+Hugh Campbell,19,Hugh Campbell Sr.,Male,White,1970,Aquarius,Simon Pegg,178 cm,American,Alive,Human,NA
+Donna January,20,Donna January,Female,White,1961,Aries,Ann Cusack,174 cm,American,Alive,Human,NA
+Ezekiel,21,Ezekiel,Non-binary,White,1976,Capricorn,Shaun Benson,181 cm,American,Alive,Supe,Vought International
+senator Calhoun,22,David Andrews,Male,White,1952,Scorpio,David Andrews,173 cm,American,Alive,Human,Congress
+Ryan Butcher,23,Ryan Butcher,Male,White,2012,Aquarius,Cameron Crovetti,139 cm,British,Alive,Supe,The Boys
+Lamplighter,24,NA,Male,White,1979,Libra,Shawn Ashmore,180 cm,American,Dead,Supe,The Seven
+Stan Edgar,25,Stan Edgar,Male,Black,1958,Taurus,Giancarlo Esposito,171 cm,American,Alive,Human,Vought International
+Becca Butcher,26,Rebecca Saunders ButcheR,Female,White,1985,Leo,Shantel VanSanten,173 cm,American,Dead,Human,The Boys
+Popclaw,27,Charlotte,Female,White,1986,Aquarius,Brittany Allen,174 cm,American,Dead,Supe,Teenage Kix
+Soldier Boy,28,NA,Male,White,1978,Pisces,Jensen Ackles,185 cm,American,Alive,Supe,Vought International
+Victoria Neuman,29,Victoria Neuman,Female,Brown,1987,Aries,Claudia Doumit,166 cm,American,Alive,Supe,Vought International
+Mesmer,30,Charles,Male,White,1988,Aries,Haley Joel Osment,168 cm,American,Dead,Supe,Teenage Kix

@@ -1,0 +1,157 @@
+---
+title: Ishita Sabharwal
+author: Ishita Sabharwal
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/101.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is my journey exploring maps, graphs and networks!
+---
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(igraph)
+library(tidygraph)
+library(ggraph)
+library(osmplotr)
+library(tmap)
+library(RColorBrewer)
+
+```
+
+
+## Graph No 1.
+
+In this graph, we've explored a total of three variables, i.e., clarity, cut and the price of the diamonds dataset.  Using the RColorBrewer package, colours have also been added.  _Via LAB04_  
+
+
+```{r }
+
+ggplot(diamonds) + geom_point(aes(x = clarity, y = price, color = cut), size = 3) + scale_colour_viridis_d(option = "inferno") + labs(title = "Viridis Palette", subtitle = "Option Inferno") + facet_wrap(~cut)
+
+```
+
+
+## Graph No 2.
+
+Adding the longitude and latitude of Delhi to create maps of my surrounding areas
+
+```{r Another Setup}
+
+bbox <- osmplotr::get_bbox(c(77.10,28.66,77.17,28.70))
+
+bbox_l <- osmdata::getbb("Delhi, India") 
+#bbox_p <- prettymapr::searchbbox("Delhi, India") 
+
+```
+
+```{r}
+
+dat_B <- extract_osm_objects (key = 'building', bbox = bbox) 
+dat_H <- extract_osm_objects (key = 'highway', bbox = bbox)
+dat_P <- extract_osm_objects (key = 'park', bbox = bbox)
+dat_G <- extract_osm_objects (key = 'landuse', value = 'grass', bbox = bbox)
+dat_T <- extract_osm_objects (key = 'natural', value = 'tree', bbox = bbox,return_type = "point")
+dat_R <- extract_osm_objects(bbox = bbox, key = "amenity", value = "restaurant", return_type = "point") 
+
+```
+
+```{r}
+
+tmap_mode("plot")
+
+```
+
+
+
+**Graph No2.**  
+Using the data from around my lacation, plotting graphs of various features.  _Via LAB06_  
+
+```{r}
+
+#1
+tm_shape(dat_B) + tm_bubbles(col = "red") +
+  
+#2
+  tm_shape(dat_H) + tm_lines(col = "black", lwd = 1) +
+
+#3
+  tm_shape(dat_R) + tm_dots(size = 3, col = "yellow", shape = 21) + tm_text("name", auto.placement = TRUE) + 
+  tm_compass(type = "rose", position = c("right", "top")) + tm_scale_bar(width = 1, position = c("right", "bottom")) + 
+   labs(title = "It's a bloody red city")
+  
+```
+
+
+## Graph No 3.
+
+#### *SETUP-Reading data
+
+```{r 1.Read-greys-anatomy-data}
+
+hillhouse_nodes <- read_csv("data/hillhouse-nodes.csv")
+hillhouse_nodes
+
+hillhouse_edges <- read_csv("data/hillhouse-edges.csv")
+hillhouse_edges
+
+```
+```{r}
+ga <- tbl_graph(nodes = hillhouse_nodes, 
+                edges = hillhouse_edges, 
+                directed = FALSE)
+ga
+
+```
+
+
+**Graph No3.**  
+A different graph style - set graph _Via LAB07_  
+
+
+```{r}
+
+set_graph_style()
+
+ga %>% 
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>% 
+  activate(edges) %>% 
+  mutate(betweenness = centrality_edge_betweenness()) %>%
+  ggraph(layout = "nicely") +
+  geom_edge_link(aes(alpha = betweenness)) +
+  geom_node_point(aes(size = degree, colour = degree)) + 
+  #facet_graph(type ~ race) +
+  scale_color_gradient(guide = "legend") +
+  labs(title = "Haunting of the hill house", subtitle = "Third graph", caption = "Ngl, I'm tired now..")
+
+```
+
+
+
+
+#### _During this workshop, it was a heck load of digital work but I'm not complaining though. This might have been the first time I've stared at my screen for so long but I did get to learn something. I wouldn't persoanlly want to take anything forward from this class in my future because I don't have any personal interests in coding or using a digital platform in general. But, I sure was intrigued by the level of learning and the amount of enthusiasm some of my classmates showed._
+
+
+## FIN.
+###### (_Thanks for watching me struggle_)
+
+
+
+
+
+
+
+

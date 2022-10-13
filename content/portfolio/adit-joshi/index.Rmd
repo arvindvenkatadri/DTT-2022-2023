@@ -1,0 +1,189 @@
+---
+title: Aditi Garg
+author: Aditi Garg
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/201.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: Aditi Garg's website.
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(palmerpenguins)
+library(osmplotr)
+library(prettymapr)
+library(sf)
+library(tmap)
+```
+
+## Introduction
+
+> HI!! I'm Aditi and you're going to see a few of my favorite graphs and maps that I made using R Studio.
+
+## Graph 1
+
+How are characters related to each other?
+
+```{r}
+B99_nodes <- read.csv("./data/B99 nodes.csv" )
+B99_edges <- read.csv("./data/B99 edges.csv" )
+B99_edges
+B99_nodes
+``` 
+
+```{r}
+library(visNetwork)
+
+
+B99_edges
+B99_nodes
+
+B99_nodes_vis <- B99_nodes %>% 
+  rowid_to_column(var = "id") %>% 
+  rename("label" = name) %>% 
+  mutate(sex = case_when(sex == "F" ~ "Female",
+                         sex == "M" ~ "Male")) %>% 
+  rename("group" = sex)
+B99_nodes_vis
+B99_edges_vis <- B99_edges %>% 
+  select(from, to) %>% 
+  left_join(., B99_nodes_vis, by = c("from" = "label")) %>% 
+  left_join(., B99_nodes_vis, by = c("to" = "label")) %>%
+  select("from"= id.x, "to" = id.y)
+B99_edges_vis
+
+
+
+
+
+#seperation
+B99_nodes_vis %>%
+
+  visNetwork(nodes = ., edges = B99_edges_vis) %>% 
+  visNodes(font = list(size = 20)) %>% 
+  
+  # Colour and icons for each of the gender-groups
+  visGroups(groupname = "Female", shape = "circle", 
+            icon = list(code = "f182", size = 20, color = "violet"),
+            shadow = list(enabled = TRUE)) %>% 
+  
+  visGroups(groupname = "Male", shape = "circle", 
+            icon = list(code = "f183", size = 20, color = "skyblue"), 
+            shadow = list(enabled = TRUE)) %>% 
+  
+
+  
+  #visLegend() %>%
+  #Add the fontawesome icons!!
+  addFontAwesome() %>% 
+  
+  # Add Interaction Controls
+  visInteraction(selectConnectedEdges = TRUE,
+                 zoomView = TRUE)
+```
+It shows how each character is connected to the other,i.e shows the relationships between them.
+
+I used circle as an icon for each character and the females are represented by voilet and males are represented by sky blue color.
+
+## Graph 2
+How many diamonds are very good?
+I chose the DIAMONDS dataset for this graph.
+
+```{r}
+ggplot(data = diamonds, mapping = aes(x = cut, fill = color, color = color, alpha = 0.3))+
+geom_bar()
+```
+
+I plotted a graph of the count vs the cut to find how many diamonds are of very good cut.
+
+## MAP 3
+
+I used the dataset of prettymapr to plot a few specific data on the city of Mysore.
+```{r}
+
+
+
+bbox_p <- prettymapr::searchbbox("Mysore")
+
+bbox_p
+
+```
+
+```{r}
+#DOWNLOADING DATA FROM OPEN STREET MAP AND ASSIGNING TO VARIABLES
+
+dat_H <- extract_osm_objects (key = 'highway', bbox = bbox_p)
+dat_P <- extract_osm_objects (key = 'park', bbox = bbox_p)
+dat_G <- extract_osm_objects (key = 'landuse', value = 'grass', bbox = bbox_p)
+dat_T <- extract_osm_objects (key = 'natural', value = 'tree', bbox = bbox_p)
+
+glimpse(dat_H)
+glimpse(dat_P)
+glimpse(dat_G)
+glimpse(dat_T)
+
+```
+
+```{r}
+#DOWNLOADING RESTAURANT POINTS
+
+dat_R <- extract_osm_objects(bbox = bbox_p, 
+                             key = "amenity", 
+                             value = "restaurant", 
+                             return_type = "point") #<<
+
+dat_R %>%  nrow()
+
+#DOWNLOADING HEALTHCARE POINTS
+
+dat_Healthcare <- extract_osm_objects(bbox = bbox_p, 
+                             key = "healthcare", 
+                              
+                             return_type = "point") #<<
+
+dat_Healthcare %>%  nrow()
+```
+
+```{r}
+# USING GGPLOT TO MAP DATA
+
+mysore_map <- ggplot() +
+  geom_sf(data = dat_H, col = "blue") +     # LINES
+  geom_sf(data = dat_G, col = "darkseagreen1") + 
+  geom_sf(data = dat_P, col = "darkseagreen") +
+  geom_sf(data = dat_T, col = "green")  +      # POINTS
+  geom_sf(data = dat_R, colour = "red", size = 3, alpha = 0.5) +
+  geom_sf(data = dat_Healthcare, colour = "violet", size = 7, alpha = 0.3) +
+  labs(title = "MYSORE")
+  mysore_map
+   
+```
+
+
+I've plotted the highways, parks, landuse and natural spots on the map of mysore.
+
+## My Course Reflection
+
+This course was about learning to use R programing as a design tool.
+I learnt a way too many things and it was overwhelming at first until i realised its still beginner level information. I learnt to use R markdown to create a html document, learnt to make and plot graphs and maps of cities to show data, i learnt to make presentation using R.
+I think all this will help my practice as an aspiring artist and designer for making presentations, for making visuals to represent data, it will help for organising research data. 
+Arvind is genuinely the best teacher i've ever had and if i had to learn R in my school in the 10th or 12th grade i would've simply been overwhelmed and avoided the topic but Arvind managed to build interest and enthusiasm in me to learn and troubleshoot the errors as well. Also I want to add that Arvind has great taste in music and i'd love to have access to his playlists.
+Arvind is a Boomer from Srishti who knows to use "Bruh" now.
+I wish to have on campus classes with Arvind sometime:)
+
+

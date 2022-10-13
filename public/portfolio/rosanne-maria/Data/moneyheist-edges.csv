@@ -1,0 +1,49 @@
+﻿From,To,Weight,Type
+Professor,Tokyo,13,Guardian Angel
+Professor,Berlin,21,Right Hand
+Professor,Denver,10,Acquaintances
+Professor,Moscow,8,Acquaintances
+Denver,Moscow,5,Son
+Helsinki,Oslo,4,Twins
+Oslo,Professor,1,Soldier
+Nairobi,Professor,4,Quality Control  Manager
+Rio,Professor,5,Coding
+Helsinki,Professor,3,Soldier
+Berlin,Professor,14,In Charge
+Moscow,Professor,2,Digs Mine
+Denver,Professor,8,Time Bomb
+Tokyo,Professor,9,Rescue
+Denver,Rio,4,Acquaintances
+Denver,Berlin,4,Acquaintances
+Rio,Tokyo,14,Benefits
+Denver,Nairobi,3,Acquaintances
+Denver,Helsinki,2,Acquaintances
+Artorito,Monica,4,Benefits
+Berlin,Ariadna,2,Benefits
+Moscow,Denver,5,Father
+Tokyo,Rio,9,Benefits
+Berlin,Rio,4,Acquaintances
+Berlin,Denver,8,Acquaintances
+Berlin,Tokyo,7,Acquaintances
+Professor,Helsinki,8,N/A
+Professor,Oslo,9,N/A
+Professor,Rio,12,N/A
+Professor,Nairobi,15,N/A
+Monica,Artorito,5,Benefits
+Berlin,Artorito,5,Acquaintances
+Berlin,Monica,3,Acquaintances
+Berlin,Moscow,2,Acquaintances
+Berlin,Helsinki,1,Acquaintances
+Denver,Nairobi,2,Acquaintances
+Moscow,Tokyo,5,Acquaintances
+Tokyo,Moscow,6,Acquaintances
+Ariadna,Berlin,1,Benefits
+Oslo,Moscow,3,Acquaintances
+Rio,Berlin,2,Acquaintances
+Rio,Nairobi,4,Acquaintances
+Rio,Moscow,2,Acquaintances
+Oslo,Helsinki,3,Twins
+Moscow,Helsinki,4,Acquaintances
+Artorito,Denver,4,Acquaintances
+Nairobi,Oslo,8,Acquaintances
+Nairobi,Helsinki,4,Acquaintances

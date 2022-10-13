@@ -1,0 +1,163 @@
+---
+title: Tara Sperber
+author: Tara Sperber
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/2book17.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is Tara"s R portfolio.
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="of-my-favourite-graphs" class="section level2">
+<h2>3 of my favourite graphs</h2>
+<ol style="list-style-type: decimal">
+<li><p>Graph 1</p>
+<p>A graph of the American Indian population in the midwest USA.</p></li>
+</ol>
+<pre class="r"><code>ggplot(midwest, aes(x = poptotal, y = popamerindian)) + geom_point(colour = &quot;red&quot;) + geom_smooth(colour = &quot;yellow&quot;) </code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="480" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Graph 2</li>
+</ol>
+<pre class="r"><code>bbox_l &lt;- bbox &lt;- osmplotr::get_bbox(c(77.56,12.93,77.63,12.96))
+bbox_l</code></pre>
+<pre><code>##     min   max
+## x 77.56 77.63
+## y 12.93 12.96</code></pre>
+<pre class="r"><code>dat_B &lt;- extract_osm_objects(key = &quot;building&quot;, bbox = bbox_l) </code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_H &lt;- extract_osm_objects(key = &#39;highway&#39;, bbox = bbox_l)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_P &lt;- extract_osm_objects(key = &#39;park&#39;, bbox = bbox_l)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_G &lt;- extract_osm_objects(key = &#39;landuse&#39;, value = &#39;grass&#39;, bbox = bbox_l)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Request failed [429]. Retrying in 1.5 seconds...</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<pre class="r"><code>dat_T &lt;- extract_osm_objects(key = &#39;natural&#39;, value = &#39;tree&#39;, bbox = bbox_l)</code></pre>
+<pre><code>## Issuing query to Overpass API ...</code></pre>
+<pre><code>## Rate limit: 2</code></pre>
+<pre><code>## Query complete!</code></pre>
+<pre><code>## converting OSM data to sf format</code></pre>
+<div id="bangalore-map" class="section level4">
+<h4>Bangalore map</h4>
+<p>This map visualises the highways, parks and trees around Bangalore, my hometown. The gray are the highways, orange the parks and purple are the trees.</p>
+<pre class="r"><code>tm_shape(dat_B) + tm_polygons(col = &quot;gray40&quot;) +
+tm_shape(dat_G) + tm_fill(size = 4, col = &quot;orange&quot;) +
+tm_shape(dat_H) + tm_dots(col = &quot;purple&quot;) +
+tm_shape(dat_T) + tm_dots(col = &quot;green&quot;) +
+
+tm_layout(title = &quot;Bangalore&quot;, title.size = 6, frame = TRUE, frame.lwd = 5, bg.color = &quot;lightyellow&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-1.png" width="480" /></p>
+</div>
+<div id="network-graph" class="section level3">
+<h3>Network Graph</h3>
+<pre class="r"><code>bojack_nodes &lt;- read_csv(&quot;./Data/bojack-nodes.csv&quot;,trim_ws = TRUE) %&gt;% 
+  select(1:4) %&gt;% 
+  drop_na()</code></pre>
+<pre><code>## Rows: 15 Columns: 4</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (3): Name, Sex, Animal
+## dbl (1): Season</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>bojack_edges &lt;- read_csv(&quot;./Data/bojack-edges.csv&quot;,trim_ws = TRUE)%&gt;% 
+  select(1:4) %&gt;% 
+  drop_na()</code></pre>
+<pre><code>## Rows: 20 Columns: 4</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (3): from, to, Type
+## dbl (1): weight</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>bojack_nodes</code></pre>
+<pre><code>## # A tibble: 15 x 4
+##    Name                Sex    Animal       Season
+##    &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;
+##  1 Bojack Horseman     male   Horse             1
+##  2 Princess Carolyn    female Cat               1
+##  3 Diane Nguyen        female Human             1
+##  4 Todd Chavez         male   Human             1
+##  5 Mr. Peanutbutter    male   Dog               1
+##  6 Vincent Adultman    male   Human             1
+##  7 Secretariat         male   Horse             1
+##  8 Dick Cavett         male   Human             1
+##  9 Random character    female Human             1
+## 10 Random character #2 female Human             1
+## 11 Sebastian St. Clair male   Snow Leopard      1
+## 12 Random character #3 male   Horse             1
+## 13 Lenny Turtletaub    male   Turtle            1
+## 14 Kelsey Jannings     female Human             1
+## 15 Photographers       male   Human             1</code></pre>
+<pre class="r"><code>bojack_edges</code></pre>
+<pre><code>## # A tibble: 20 x 4
+##    from             to                  weight Type        
+##    &lt;chr&gt;            &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;       
+##  1 Dick Cavett      Secretariat              1 Professional
+##  2 Mr. Peanutbutter Bojack Horseman          3 Friends     
+##  3 Bojack Horseman  Todd Chavez              3 Friends     
+##  4 Princess Carolyn Bojack Horseman          3 Friends     
+##  5 Vincent Adultman Bojack Horseman          1 Friends     
+##  6 Vincent Adultman Princess Carolyn         4 Partners    
+##  7 Mr. Peanutbutter Vincent Adultman         1 Friends     
+##  8 Princess Carolyn Mr. Peanutbutter         1 Friends     
+##  9 Bojack Horseman  Random character         1 Acquaintance
+## 10 Bojack Horseman  Random character #2      1 Acquaintance
+## 11 Bojack Horseman  Random character #3      1 Acquaintance
+## 12 Diane Nguyen     Photographers            1 Professional
+## 13 Diane Nguyen     Sebastian St. Clair      2 Professional
+## 14 Mr. Peanutbutter Todd Chavez              4 Friends     
+## 15 Diane Nguyen     Mr. Peanutbutter         1 Partners    
+## 16 Bojack Horseman  Lenny Turtletaub         2 Professional
+## 17 Bojack Horseman  Kelsey Jannings          2 Professional
+## 18 Kelsey Jannings  Lenny Turtletaub         1 Professional
+## 19 Princess Carolyn Diane Nguyen             1 Friends     
+## 20 Bojack Horseman  Diane Nguyen             1 Friends</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Graph 3</p>
+<p>This graph shows the connections/interactions between characters appearing in Season 1, Episode 12 of Bojack Horseman.</p></li>
+</ol>
+<pre class="r"><code>bojack &lt;- tbl_graph(nodes = bojack_nodes, 
+                    edges = bojack_edges,
+                    directed = FALSE)
+
+ggraph(graph = bojack,  layout = &quot;kk&quot;) +
+geom_edge_link(width = 2, color = &quot;black&quot;) +
+geom_node_point(shape = 21, size = 8, fill = &quot;pink&quot;, color = &quot;red&quot;, stroke = 2) </code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
+</div>
+</div>
+<div id="reflection" class="section level2">
+<h2>Reflection</h2>
+<p>Learning this particular language of code was a different experience for me. I’ve had several encounters with code and they were always very stressful. This course was also stressful but one thing different is that I enjoyed learning and working with it.</p>
+</div>

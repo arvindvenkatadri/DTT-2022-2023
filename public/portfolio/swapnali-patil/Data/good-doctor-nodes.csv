@@ -1,0 +1,25 @@
+ID;name;sex;race;role
+1;Shawn Murphy;M;White;Attending Resident
+2;Claire Brown;F;Black;Attending Resident
+3;Jared Kalu;M;Other;Attending Resident
+4;Neil Melendez;M;Other;Attending Surgeon
+5;Lea;F;White;Shawn's Neighbor
+6;Markus Andrews;M;Black;Chief of Surgery
+7;Allegra Aoki;F;Other;External Relations
+8;Aaron Glassman;M;White;President
+9;Jessica Preston;F;White;Lawyer
+10;Chuck;M;Black;Patient
+11;Chuck Daughter;F;Black;Patient's Daughter
+12;Nurse 1;F;White;Nurse
+13;Nurse 2;F;White;Nurse
+14;Nurse 3;F;Other;Nurse
+15;Carly;F;Other;Pathologist
+16;Helicopter driver ;M;Black;Driver
+17;Liason Doctor;M;Other;Doctor
+18;Liason Receptionist;F;White;Receptionist
+19;Barbara Allen;F;Black;Patient
+20;Mark Allen;M;White;Patient's Husband
+21;Olivia Hartman;F;White;Patient
+22;Police Escort;M;White;Police escort
+23;John Wannamaker;M;White;Patient
+24;Shopkeeper;M;White;Shopkeeper

@@ -1,0 +1,259 @@
+---
+title: Sanjana Gupta
+author: Sanjana Gupta
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/1book11.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This post is the evidence of a new version of me that has developed over these past two weeks.
+---
+
+```{css, echo=FALSE}
+body{font-size:20px;font-family:Comic Sans MS;color:rgb(100, 96, 147);text-align:justify}
+```
+
+# <span style="color:rgb(71, 71, 71);text-decoration:underline">Introduction</span>
+Hi this is Sanjana Gupta. Here are some graphs and maps that show my progress in these two weeks of the workshop. I have had a great character development throughout this tenure. This is the evidence of how I went from a person completely unaware of any coding language, to actually creating stuff through codes. 
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(RColorBrewer)
+library(prettymapr)
+library(osmplotr)
+library(tmap)
+library(tidygraph)
+library(graphlayouts)
+```
+
+# <span style="color:rgb(71, 71, 71);text-decoration:underline">Graph 1</span>
+
+
+## The `msleep` dataset
+
+```{r Look at msleep, warning=FALSE}
+names(msleep) # Column, i.e. Variable names
+head(msleep) # first six rows
+tail(msleep) # Last six rows
+dim(msleep) # Size of dataset
+
+any(is.na(msleep) == TRUE)
+```
+
+
+### <span style="color:rgb(71, 71, 71)">Explaination</span>
+
+In the graph below, I am showing the sleeping patterns of mammals. It is a density graph with ‘density’ on the y-axis and the number of hours a mammal is ‘awake’ on the x-axis. The graph lines are filled with different colors as well. These colors depict four types of diets in mammals ranging between herbivore, carnivore, insectivore, and omnivore. Reading the graph can give us information on how much mammals stay awake for how long, and what is their type of diet.  
+
+To carry out this graph, I have created a table for the mammals and their different attributes. From those attributes, I have picked up 'awake' and 'vore' as two attributes to plot my graph.
+
+
+```{r, warning=FALSE}
+ggplot(msleep) + 
+    geom_density(aes(x = awake, 
+                 color = vore, 
+                 fill = vore), 
+                 alpha = 0.4)
+
+```
+
+</br></br>
+
+# <span style="color:rgb(71, 71, 71);text-decoration:underline">Map</span>
+
+
+```{r warning=FALSE}
+
+#bbox <- prettymapr::searchbbox(querystring = "Dehradun, Uttarakhand, India") 
+bbox <- osmdata::getbb("Dehradun, Uttarakhand, India")
+bbox
+
+```
+
+
+```{r get_osm_map_data, cache = TRUE, message=FALSE, warning=FALSE}
+
+dat_B <- extract_osm_objects (key = "building", bbox = bbox) 
+dat_T <- extract_osm_objects (key = 'natural', value = 'tree', return_type = "point", bbox = bbox)
+dat_R <- extract_osm_objects (key = 'amenity', value = 'restaurant', return_type = "point", bbox = bbox)
+dat_H <- extract_osm_objects (key = 'highway', bbox = bbox)
+dat_P <- extract_osm_objects (key = 'park', bbox = bbox)
+
+```
+
+### <span style="color:rgb(71, 71, 71)">Explaination</span>
+
+The map below shows all the restaurants marked in the city of Dehradun. I have marked other features as well (highways, buildings, trees, parks).  
+Significance of different colors:  
+_* Purple color symbolizes buildings._  
+_* Dark Green color symbolizes highways._  
+_* Orange color symbolizes parks._  
+_* Brown color symbolizes trees._  
+_* The red diamonds symbolize the restaurants along with their names._
+
+```{r, warning = FALSE}
+
+#1
+tm_shape(dat_B) + 
+tm_fill(col = "purple") + 
+
+#2
+tm_shape(dat_H) + 
+tm_lines(col = "darkgreen", lwd = 1.5) + 
+
+#3
+tm_shape(dat_P) + 
+tm_fill(col = "orange") + 
+
+#4
+tm_shape(dat_T) + 
+tm_dots(col = "dodgerblue", size = 0.01) + 
+
+#5
+tm_shape(dat_R) + 
+tm_dots(size = 0.4, col = "red", shape = 23) + 
+tm_text(text = "name", fontface = "bold", size = 0.6, auto.placement = TRUE, case = "lower") + 
+
+tm_compass(type = "8star", position = c("left", "top"), size = 2, bg.color = "dodgerblue", bg.alpha = 0.3) +   
+tm_scale_bar(width = 2, position = c("left", "bottom"),text.size = 0.4, bg.color = "dodgerblue", bg.alpha = 0.3, size = 0.3) + 
+tm_layout(title = "Where to eat in Dehradun?",title.fontfamily ="Comic Sans Ms", title.size = 1.2, title.position = c("left", "bottom"), title.bg.color = "dodgerblue", title.bg.alpha = 0.8, frame.double.line = TRUE, frame.lwd = 1, inner.margins = c(.01,.01, .01, .01), bg.color = "gray"
+          )
+  
+```
+
+
+# <span style="color:rgb(71, 71, 71);text-decoration:underline">Graph 2</span>
+
+## <span style="color:rgb(71, 71, 71)">Reading the data set</span>
+
+```{r 1.Read-psych-data, warning=FALSE}
+psych_nodes <- read_csv("./Data_Sanjana/psych-nodes.csv")
+psych_edges <- read_csv("./Data_Sanjana/psych-edges.csv")
+psych_nodes
+psych_edges
+```
+
+```{r 2.Create-psych-graph-object, warning=FALSE}
+ps <- tbl_graph(nodes = psych_nodes, 
+                edges = psych_edges, 
+                directed = FALSE)
+ps
+```
+
+```{r psych-data-for-visnetwork, warning=FALSE}
+library(visNetwork)
+
+# Prepare the data for plotting by visNetwork
+psych_nodes
+psych_edges
+
+# Relabel psych nodes and edges for VisNetwork
+psych_nodes_vis <- psych_nodes %>% 
+  # rowid_to_column(var = "id") %>% 
+  rename("label" = name) %>% 
+  mutate(sex = case_when(sex == "F" ~ "Female",
+                         sex == "M" ~ "Male")) %>% 
+dplyr::rename("group" = sex)
+psych_nodes_vis
+# psych_edges_vis <- psych_edges %>% 
+#   select(from, to) %>% 
+#   left_join(., psych_nodes_vis, by = c("from" = "label")) %>% 
+#   left_join(., psych_nodes_vis, by = c("to" = "label")) %>%
+#   select("from"= id.x, "to" = id.y)
+psych_edges
+```
+
+
+### <span style="color:rgb(71, 71, 71)">Explaination</span>
+
+This was by far my best graph. I really enjoyed doing it. This was supposed to be based on my favorite TV show. I watched a one hour long episode of 'Psych'. Watching this show again and again is literally my favorite thing to do. On top of that, I was able to created graphs based on the characters from the show. I recorded data at each moment in the episode and created graphs from that compiled data. This job that was completely mind boggling. I never thought I would be able to analyse data on Psych! It was a lot of fun.  
+In this graph, I have shown the network and connections between various characters of the show. Shawn being the main character, is the epitome of this network. Other characters connect to him and then there are others who connect to those characters. There are also two characters not involved in this network since they did not play a part in the episode I watched. Nevertheless, they are mentioned because they become major players in the latter episodes.  
+The graph is colored according to the characters' genders. 
+
+
+```{r using-ionicons, warning=FALSE}
+psych_nodes_vis %>%
+
+  visNetwork(nodes = ., edges = psych_edges, background = "rgb(145, 224, 255)", main = "Gender of all the Characters and their connections", submain = "You can zoom in and play around!") %>%
+  visLayout(randomSeed = 12345) %>%
+  visNodes(font = list(size = 20)) %>%
+  visEdges(color = "green") %>%
+  visGroups(
+    groupname = "Female",
+    shape = "icon",
+    icon = list(
+      face = 'Ionicons',
+      code = "f25d",
+      color = "tomato",
+      size = 125
+    )
+  ) %>%
+  
+  visGroups(
+    groupname = "Male",
+    shape = "icon",
+    icon = list(
+      face = 'Ionicons',
+      code = "f202",
+      color = "stateblue",
+      size = 125
+    )
+  ) %>%
+  
+  # # visGroups(
+  # #   groupname = "Transgender?",
+  # #   shape = "icon",
+  # #   icon = list(
+  # #     face = 'Ionicons',
+  # #     code = "f233",
+  # #     color = "dodgerblue",
+  # #     size = 125
+  #   )
+  # ) %>%
+  visLegend() %>%
+  addIonicons() %>%
+  visInteraction(
+    navigationButtons = TRUE,
+    hover = TRUE,
+    selectConnectedEdges = TRUE,
+    hoverConnectedEdges = TRUE,
+    zoomView = TRUE
+  )
+```
+
+
+# <span style="color:rgb(71, 71, 71);text-decoration:underline">Reflection:</span>
+
+> These past two weeks were pretty fun! In the start, I wondered why we were studying this. I asked what advantage it has over other things like Word or PowerPoint? I think I finally have the answer to the question after these two strenuous weeks. It just kept becoming better and better with each passing day. I am surprised to say this but, I might actually use this in the future sometime. This workshop helped me develop a new version of myself who is getting interested in coding. I think there can be nothing better than to discover a new parts of myself through time. 
+
+
+</br></br>
+<div class="panel panel-success">
+  <div class="panel-heading">References:</div>
+  <div class="panel-body">
+[https://en.wikipedia.org/wiki/Psych](https://en.wikipedia.org/wiki/Psych)  
+[https://psychusa.fandom.com/wiki/Psych_Wiki](https://psychusa.fandom.com/wiki/Psych_Wiki)  
+[https://www.datadreaming.org/post/r-markdown-theme-gallery/](https://www.datadreaming.org/post/r-markdown-theme-gallery/)  
+[https://r-for-artists.netlify.app/labs/02-pronouns-and-data](https://r-for-artists.netlify.app/labs/02-pronouns-and-data)
+  </div>
+</div>
+
+
+
+
+
+
+
+

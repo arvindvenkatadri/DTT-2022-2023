@@ -1,0 +1,95 @@
+---
+title: Swagat Paul
+author: Swagat Paul
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/2book9.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is Swagat's work in R and RStudio.
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(palmerpenguins)
+library(osmplotr)
+library(prettymapr)
+library(sf)
+```
+
+## Introduction
+
+> Swagat Paul  
+Following are some of the graphs I created and explored different qualities of during a coding workshop.
+
+## The Graphs
+#### My first two graphs are from T5 and were based on the msleep dataset which contained information on various animals
+
+```{r Look at msleep}
+names(msleep) # Column, i.e. Variable names
+head(msleep) # first six rows
+tail(msleep) # Last six rows
+dim(msleep) # Size of dataset
+```
+## Graph 1
+```{r graph 1}
+msleep %>% 
+  slice_sample(prop = 0.5) %>% 
+  ggplot(.) +
+  geom_boxplot(aes(x = sleep_total, y = awake,
+                   fill = vore)) +
+  labs(title = "1. Box Plot")
+```
+
+## Graph 2
+
+```{r graph 2}
+ggplot(msleep,
+           aes(x = vore,
+               fill = order)) + 
+  geom_bar(position ="dodge") +
+  ggtitle(label =
+            "2. A dodged bar chart")
+
+```
+
+## Graph 3
+
+```{r graph 5}
+ggplot(msleep) +
+  aes(x = awake,
+      y = sleep_total, color = vore) +  
+  geom_point(size = 2) +
+  facet_wrap(~vore) +
+  ggtitle("5. A point geom graph with facets")
+
+```
+
+
+These graphs reflected on the sleeping and waking patterns of different kinds of animals. I found this dataset interesting as a whole and it was fun to play around with the different attributes.  
+
+## My Course Reflection
+
+This course was about exploring and visualing data and it's different forms, using code.
+
+What I learnt - I learnt how to be patient and not get frustated every 30 seconds when a chunk of code didn't work. I can't say I was very successful but there were several attempts made. I also learnt that coding and myself might not be a good fit, but much like a dysfunctional relationship, I scraped by and held on till the end.
+
+How it will help my practice as an aspiring artist and designer - I do think it helped me see data analysis in a new light and how it could be used to form interesting visuals.
+
+Arvind is a wonderful teacher and person, possibly one of the coolest teachers I've met. And he likes cats! His personality and humour were the reason I could bear the fearful being that is coding. I would love to know him in real life and attend more of his classes, provided they aren't remotely related to code. Perhaps order and chaos would be a better fit for me.
+
+
+thank you.

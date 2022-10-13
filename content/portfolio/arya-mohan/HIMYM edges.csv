@@ -1,0 +1,18 @@
+from,to,weight,type
+Barney,Ranjit,2,friends
+Barney,Ted Mosby,3,friends
+Barney,Lily Aldrin,3,friends
+Barney,Marshall,3,friends
+Barney,Robin,3,friends
+Ted Mosby,Barney,3,friends
+Ted Mosby,Lily Aldrin,3,friends
+Ted Mosby,Marshall,3,friends
+Ted Mosby,Robin,3,romantic
+Ted Mosby,Yasmin,3,romantic
+Ted Mosby,Ranjit,3,friends
+Ted Mosby,Son,2,family
+Ted Mosby,Daughter,2,family
+Marshall,Lily Aldrin,3,romantic
+Ted Mosby,Mother,1,family
+Mother,Son,2,family
+Mother,Daughter,2,family

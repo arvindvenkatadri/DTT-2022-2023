@@ -1,0 +1,26 @@
+from,to,weight,type
+Beatrice,Bojack,8,Parent/Child
+Henrietta,Beatrice,5,Maid-Master
+Camilia,Beatrice,2,Acquaintances
+Sugarman,Beatrice,6,Parent/Child
+Mrs Sugarman,Sugarman,8,Spouse
+Beatrice,Corban,3,Fiance
+Beatrice,Butterscotch,9,Spouse
+Butterscotch,Bojack,1,Parent/Child
+Henrietta,Butterscotch,1,Maid-Master
+Mrs Sugarman,Beatrice,9,Parent/Child
+Sugarman,Crackerjack,2,Parent/Child
+Mrs Sugarman,Crackerjack,2,Parent/Child
+Crackerjack,Beatrice,1,Siblings
+Andy,Bojack,8,Friends
+Crackerjack,Sally,1,Friends
+Mrs Sugarman,Sally ,2,Acquaintances
+Diane,Bojack,9,Friends
+Diane ,Mr Peanutbutter,7,Spouse
+Bojack ,Mr Peanutbutter,6,Friends
+Diane,Todd,5,Friends
+Princess Carolyn,Todd,5,Friends
+Bojack ,Todd,7,Friends
+Todd,Mr Peanutbutter,8,Friends
+Hollyhock,Bojack,7,Siblings
+Hollyhock,Beatrice,5,Parent/Child

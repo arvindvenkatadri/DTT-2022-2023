@@ -1,0 +1,20 @@
+﻿node id,name,sex,race,cast(season 1),birthyear,occupation
+1,Jack Pearson,M,white,main,1944,construction worker
+2,Rebecca Pearson,F,white,main,1950,housewife/singer
+3,Randall Pearson,M,black,main,1980,businessman
+4, Kate Pearson,F,white,main,1980,personal assistant
+5, Kevin Pearson,M,white,main,1980,actor
+6,Beth Pearson,F,black,main,NA,lawyer
+7,Toby Damon,M,white,main,NA,IT employee
+8,William  Hill,M,black,main,NA,musician
+9,Miguel Rivas,M,other,recurring,NA,construction worker
+10,Sophie,F,white,recurring,NA,nurse
+11,Tess Pearson,F,black,recurring,2008,student
+12, Annie Pearson,F,black,recurring,NA,student
+13,Dr. Nathan Katowski,M,white,guest,NA,doctor
+14,Madison Simons,F,white,recurring,NA,NA
+15,Random Party Girls,F,other,guest,NA,NA
+16,Director manny,M,white,guest,NA,director
+17,Attendee fat group,F,white,guest,NA,NA
+18,Alan thicke,M,white,guest,NA,actor
+19,Firestation worker,M,white,guest,NA,firestation worker
