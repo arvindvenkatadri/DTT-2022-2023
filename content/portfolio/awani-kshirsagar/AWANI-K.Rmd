@@ -1,0 +1,188 @@
+---
+title: "Awani Kshirsagar"
+author: "Awani Kshirsagar"
+date: 21/October/2022
+output:
+  html_document:
+    theme: flatly
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 2
+    number_sections: TRUE
+    df_print: paged
+    code_folding: show
+    code_download: TRUE
+image: https://www.alice-in-wonderland.net/wp-content/uploads/5.jpg
+caption: ''
+preview: yes
+
+---
+I am Awani Kshirsagar and these are my three best graphs from the R Workshop!!
+<!--more-->
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+# Getting Map Data into R
+# library(osmdata) # Import Open Street Data
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(visNetwork)
+library(tidygraph)
+library(ggraph)
+library(graphlayouts)
+
+# For "Network" Datasets
+library(igraphdata)
+
+# Plotting Maps
+library(tidyverse) 
+library(tmap) 
+library(osmplotr) 
+#library(leaflet) 
+#library(threejs) 
+library(sf)
+
+```
+
+## **Graph 1**
+
+```{r read csv}
+pura <- read_csv("pura.csv")
+
+pura
+```
+
+
+```{r}
+data("World")
+World
+india <- World %>% filter(iso_a3 == "IND")
+crs_india <- st_crs(india)
+
+
+pura <- # Create 5 random points
+  
+#str(points) 
+# Convert to spatial data frame
+pura_sf <- st_as_sf(pura,
+         coords = c("LNG.", "LAT."),
+           crs = crs_india)
+#str(points_sf)
+ggplot() +
+    geom_sf(data = india) +
+    geom_sf(data = pura_sf, colour = "purple", size = 3) +
+ggtitle("Purs and Puras in India")
+
+
+
+#Plotting with tmap
+tm_shape(india) +
+  tm_borders(col = "black", lwd = 1) +
+  
+  tm_shape(pura_sf) +
+  tm_dots(col = "STATE",size= 0.5, legend.show = FALSE)+
+  tm_graticules()+
+  tm_add_legend(type="symbol", col = "purple",title = "Color wise seperation of pur/pura")+
+  tm_scale_bar(position=c("left","bottom"), text.size = 1.5)+
+  tm_compass(position = c("right","top"),type="rose",size=1.5)+
+  tm_credits(text= "Awani",
+             position = c("left","bottom"))+
+  tm_layout(main.title = "Pur, Puras by color",
+            bg.color = "yellow")
+
+
+
+```
+
+
+
+Understanding how to plot this graph was a bit tough for me, but when I figured it out, it was smooth sailing. The graph shows that towns ending with 'pur' or 'pura' are **pretty uniform** all across India, with the exception of the north- eastern parts.
+
+
+
+## **Graph 2**
+
+
+```{r}
+data("karate",package= "igraphdata")
+karate
+```
+
+```{r}
+karate_tbl <- as_tbl_graph(karate)
+karate_tbl
+```
+
+
+```{r}
+karate %>% as_tbl_graph() %>% activate(edges) %>% as_tibble
+
+```
+
+```{r}
+karate %>% as_tbl_graph() %>% activate(nodes) %>% as_tibble
+```
+
+```{r}
+ggraph(karate_tbl)+ geom_edge_link0() + geom_node_point()+ geom_edge_link(width = 1, 
+                 color = "blue") +geom_node_point(
+    shape = 21,
+    size = 4,
+    fill = "pink",
+    color = "yellow",
+    stroke = 1.5
+  ) + ggtitle("Zachary Karate Club Networks")
+
+
+```
+
+From this somewhat **messy graph**, we can see that many actors had close relations with many others, leading to the messy situation that followed.
+
+## **Graph 3**
+
+
+```{r}
+diamonds %>% head()
+diamonds %>% tail()
+diamonds %>% dim()
+
+```
+
+
+
+
+
+
+
+
+```{r Single_Cat_Var_Calculations}
+diamonds %>% count(carat)
+diamonds %>% count(cut)
+diamonds %>% count(color)
+diamonds %>% count(clarity)
+diamonds %>% count(depth)
+diamonds %>% count(table)
+diamonds %>% count(price)
+
+
+```
+
+```{r}
+ggplot(diamonds) + geom_bar(aes(y = carat,
+                                fill = price,
+                                color = cut), 
+                            position = "stack") + scale_color_viridis_d(option = "inferno")
+```
+
+This **Bar graph** compares the diamonds in terms of their carat and price with respect to cut.
+
+This graph was insightful and beautiful.
+
+
+## Conclusion
+This class was my best class in Srishti so far. Every day was fun, learning more about the fascinating world of RStudio. Having an amazing facilitator certainly played a big part in my increasing enthusiasm for coding in RStudio. **Although workshop is over, my journey with R has just begun :)**
+
+
+Image I want:
+
+![]()
