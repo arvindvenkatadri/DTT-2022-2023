@@ -1,236 +1,120 @@
 ---
-title: Aryan Joshua
-author: Aryan Joshua
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
-image: https://www.alice-in-wonderland.net/wp-content/uploads/151.jpg
+title: "ARYA KUMAR"
+author: "ARYA KUMA"
+date: "30/07/2021"
+output: html_document
+image: https://www.alice-in-wonderland.net/wp-content/uploads/8.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Aryan's attempt at figuring out R and data visualization.
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Invoke all your packages here()
+# library(blah blah)
 
-```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
-## Load frequently used packages for blog posts
-library(tidyverse)
-library(palmerpenguins)
-library(osmplotr)
-library(prettymapr)
-library(sf)
-library(tmap)
-library(tidygraph)
-library(ggraph)
-library(graphlayouts)
-library(igraphdata)
 ```
 
 ## Introduction
-Hi, I'm Aryan and here I have a few graphs on different topics that show my progress in being able to visualize data through various methods that I've learnt in this workshop.  
+
+Hiiiiiiiii!!!! I am Arya Kumar Chandrasekaran and I live in Yelahanka. My major is DMA!!! 
+
+<!--more-->
+
+During the course of this workshop I learnt how to code in *R* - we mostly worked on analysation and representation of different types of data and the creative coding that goes behind that. We made graphs, networks and maps, we also *CRIED* a lot(I know I did) :)  
+
 
 
 ## Graph 1
 
-I have chosen the diamond data set which contains the prices and other attributes of almost 54000 diamonds. The variety of attributes are the price of the diamond in US dollars, the carat of the diamond, the quality of the diamond (cut of the diamond), the colour and clarity and various dimensions of the diamonds.
+This is an interactive map I have made. It shows the restaurants by Cuisine in Whitefield, Bangalore. The different types of cuisines available in the area are listed and colored and accordingly the map has the points of the location of the restaurants and the points are in the color of the cuisine it offers or is famous for.
 
-```{r read-1}
-glimpse(diamonds)
-summary(diamonds)
-diamonds <- diamonds %>% drop_na()
-```
-Here I am trying to find a correlation between the depth and the x dimensions of a diamond. The depth of the diamond is total depth percentage = z / mean(x, y) = 2 * z / (x + y) (43–79)
-
-```{r plot-1}
-diamonds %>% 
-  slice_sample(prop = 0.1) %>% 
-  ggplot(., aes(x = depth, y = x, color = color)) +
-  geom_point(size = 1) + ggtitle("A Point Geom with Colour and Position Aesthetics") 
+```{r read-1, eval=FALSE}
+my_data_1 <- read_csv(".data/restaurants.csv")
+glimpse(my_data_1)
 
 ```
+To make this map we downloaded the data for the buildings, roads, parks and greenery(very less) in Whitfield to get a better and more detailed map. 
+
+```{r plot-1, eval=FALSE}
+tm_shape(dat_buildings) +
+  tm_fill(col = "pink") +
 
 
-In this graph you can see that a lot of the diamonds are the same size even though they're different colours and have different depths. I have used a slice command to make the data set smaller as with the large amount of data, the graph would look very cluttered. I have plotted the depth on the x axis and the x dimensions of the diamond on the y axis with the color aesthetic being used to show the different colours of diamonds that exist.
+tm_shape(dat_roads) +
+  tm_lines(col = "red",labels = "destination") +
+
+  
+tm_shape(dat_greenery) +
+  tm_polygons(col = "limegreen") +
+  
+  
+tm_shape(restaurants) +
+  tm_dots(col = "cuisine") + tm_legend(outside = TRUE)
+
+
+```  
+
+![graph](IMAGES/map image 1 .png)
+
+We used the function - tm_shape() to plot this. Overall I really liked this project, it was the perfect way to learn how to make maps - the project gave us the liberty to explore different functions and aesthetics, **AND HONESTLY WHATS BETTER THAN PLOTTING THE RESTAURANTS IN YOUR HOMETOWN WHILIST YOU ARE HUNGRY**
 
 ## Graph 2
 
-For this graph I have chosen to map out the cinemas located around Mysore. I have used data from OSM to locate the cinemas in Mysore. 
+**WHO DO WE LIKE THE MOST?**
+This graph shows the rating given to the characters from the show. According to this data we can say that Jackie Burkhart, Micheal Kelso and Steven Hyde. Well I am not at all surprised since the majority of the story focuses on the Love Triangle between these three. I do strongly believe that Hyde and Jackie should have ended up together and In my eyes the final season of the show(s8) does not exist. These three characters had some of the best lines in the entire show and were all a comedic masterpiece on their own. 
 
-```{r prettymap, include=FALSE}
-bbox_mysore <- prettymapr::searchbbox("Mysore, India") #For finding the spacial data on Mysore
+```{r read-2, eval=FALSE}
+my_data_2 <- read_csv(".Data/personalities.csv")
+glimpse(my_data_2)
+
 ```
 
-```{r glimpse}
-str(bbox_mysore)
-glimpse(bbox_mysore)
-```
-After running the glimpse and str command, we can note the longitude and latitude of Mysore. It shows us the minimum and maximum longitude and latitude for the city. The minimum longitude is 76.49536 and maximum longitude is 76.81536 while the minimum latitude is 12.14518 and maximum latitude is 12.46518.
+
+For this graph I have filtered out the data I want from an existing data set containing various TV Show Characters and the personality types. I have made mine on *THAT 70S SHOW* and here I have plotted in the form of a bar graph who the favorite/most liked characters are.
+
+```{r plot-2, eval=FALSE}
+personalities %>% filter(fictional_work %in% c("That 70's Show")) %>%  ggplot(.) + geom_col(aes(x = character_name , y = ratings, fill = ratings)) + ggtitle(label = "WHO DO WE LIKE THE MOST?")
+```  
 
 
-### Extracting data from OSM
-
-Using Open Street Maps, I have extracted data regarding the buildings, highways and cinemas located in Mysore.
-```{r bbox mysore}
-bbox_mysore # to show min and max long lat.
-
-# The extract osm objects is used to retrieve spacial data on various keys that are taken from Open Street Maps in the city that we specified. They can further be narrowed down to values which come under the keys are are more specific parts of the keys.
-
-dat_mysore_B <- extract_osm_objects(bbox_mysore, key = "building")
-dat_mysore_H <- extract_osm_objects(bbox_mysore, key = "highway")
-dat_mysore_C <- extract_osm_objects(bbox_mysore, key = "amenity", value = "cinema", return_type = "point")
-
-nrow(dat_mysore_H) #Shows us all the rows that data contains
-nrow(dat_mysore_C)
-```
-
-### Map of Mysore Using ggplot
-
-Using ggplot, I have created a map that includes the buildings, roads and mainly the cinemas that are located all around Mysore indicated by the yellow dots.
-
-
-```{r tmap}
-# Group 01 
-tm_shape(dat_mysore_B) +
-  tm_fill(col = "red") + 
-
-# Group 02 
-  tm_shape(dat_mysore_H) +
-  tm_lines(col = "dodgerblue", lwd = 0.8) +
-  
-# Group 03
-  tm_shape(dat_mysore_C) +
-  tm_dots(size = 0.5, col = "orange", shape = 21) +
-  tm_text("name", auto.placement = TRUE, size = 0.6) + 
-  # for adding text tm_text("name", auto.placement = TRUE,)
-
-# Group 04
-   tm_compass(position = c("left", "top"),
-             type = "rose",
-             size = 2) + 
-   tm_scale_bar(width = 5, position=c("left", "bottom"),
-               text.size = 1) + 
-# Group 05
-    tm_layout(title = "Cinemas in Mysore", title.size = 1,  
-              bg.color = "lightyellow", frame.lwd = 5) + 
-    tm_credits(text = "Aryan Joshua, 2021",
-             position = c("left", "bottom"))
- 
-```
+![show](IMAGES/graph image 1 .png)
 
 ## Graph 3
 
-### The Simpsons Dataset
+This is from the Airlines data set. We learnt about nodes and edges and this was the first project where we used two data sets- edges and nodes and learnt how to merge them and to make networks and graphs.
 
-I have decided to use The Simpsons as the show I will be using for the networks created below. I have taken a list of characters and their connections with each other from Season 03 Episode 05. In the data set, the nodes contain the columns of their name, sex, occupation and hair colour. In the edges dataset, it contains the to and from, the weight and the amount of dialogues exchanged between the two characters in that particular episode.
-
-```{r read-3}
-#reading the data first
-simpsons_nodes <- read_csv("./Data_Aryan/simpsons_database - nodes.csv")
-simpsons_edges <- read_csv("./Data_Aryan/simpsons_database - edges.csv")
-simpsons_nodes
-simpsons_edges
+```{r read-3, eval =FALSE}
+my_data_3 <- read_csv(".Data/airlines.csv")
+glimpse(my_data_3)
 ```
 
+In this network I have plotted To Fly, Visits and Weight. 
 
-###  Creating a Graph Object
+```{r plot-3, eval=FALSE}
+ggraph(graph = air, layout = "fr") +
+  geom_edge_link0(aes(width = Weight), size = 3) +
+  geom_node_point(aes( size = Visits, color = ToFly )) + 
+  labs(title = "THIS BETTER BE A COLOURFUL GRAPH",
+       subtitle = "OKAY YAYAYYY IT IS COLOURFUL...SOMEHWHAT",
+       caption = "HMMMMMMMM ")
 
-```{r 2.Create-simpsons-graph-object}
-ss <- tbl_graph(nodes = simpsons_nodes, 
-                edges = simpsons_edges, 
-                directed = FALSE)
-ss
-```
+```  
 
-### VisNetwork Data
-```{r simpsons-data-for-visnetwork}
-library(visNetwork)
-
-# Prepare the data for plotting by visNetwork
-simpsons_nodes
-simpsons_edges
-
-simpsons_nodes_vis <- simpsons_nodes %>% 
-  rename("label" = names) %>% 
-  dplyr::rename("group" = `hair color`) 
-simpsons_nodes_vis
-
-simpsons_edges_vis <- simpsons_edges 
-
-simpsons_edges_vis
-```
-
-### Interactive Network Based on Hair Colour of the Characters
-
-I have plotted an interactive map that shows all the characters and how they're connected to each other in the particular Simpsons episode that I've chosen and also shows us the colour of their hair.
-
-```{r simpsons-visNetwork}
-simpsons_nodes_vis %>%
-
-  visNetwork(nodes = ., edges = simpsons_edges_vis, background = "lightblue", main = "Hair Colour of all the Characters", submain = "The Simpsons") %>% 
-  visNodes(font = list(size = 30)) %>% 
-  
-  # Colour and icons for each of the gender-groups
-  visGroups(groupname = "None", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "grey"),
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "Blue", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "blue"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "Blonde", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "yellow"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "Purple", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "purple"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "Black", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "black"),
-            shadow = list(enabled = TRUE)) %>%
-            
-  visGroups(groupname = "Brown", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "brown"), 
-            shadow = list(enabled = TRUE)) %>%         
-  
-  visGroups(groupname = "Grey", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "dark grey"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "White", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "white"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-
-  #Add the fontawesome icons!!
-  addFontAwesome() %>% 
-  
-  visLegend() %>%
-  
-  # Add Interaction Controls
-  visInteraction(navigationButtons = TRUE,
-                 hover = TRUE,
-                 selectConnectedEdges = TRUE,
-                 hoverConnectedEdges = TRUE,
-                 zoomView = TRUE)
-```
-
+![network](IMAGES/network image 1 .png)
 
 ## My Course Reflection
 
-This workshop was quite a different experience for me. I haven't done a lot of coding before this and trying to learn the syntax and various methods through which we could create these graphs was a bit taxing but with help from Arvind I was able to understand quite a bit of the information. The course was mainly about us being able to visualize data using R Studio. I found the theory of visualizing data intriguing and didn't know that there was a lot of thought also going into how and what data can be visualized. The pronouns opened an entirely new world for me in the way that I look at data now. I learnt the back-end process of making graphs through R Studio and also to think about what goes on the graphs and the design of the tables and graphs. I also learnt how to create my own data set which I am super proud of. This workshop also taught me how to analyse data and critique a graph to get the most information out of a graph. I was also really happy with the way Arvind taught us and was also super patient with us and didn't mind us asking him to explain the same code over and over again. I enjoyed this workshop quite a lot and I might go onto explore generative art through R Studio.
-
-Thank You.
+This course was about coding in *R*. R is a programming language for statistical computing and graphics. We learnt how to visualize and represent data in the form of graphs and networks. We understood the difference between good and accurate data and inaccurate data - which by the way make a a lot of difference in the output. We understood the working behind the making of maps and we also made a few - tedious but seriously interesting and maybe even **fun**.  
 
 
+What I personally really understood which will always stay with me is that - aesthetics and quality of information are both very important aspects to keep in mind. If you quality of data is good but your way of presentation is bad then you may not be able to convey the information you wish to, similarly, a pretty graph may not necessarily be informative or useful. This is something that I kept having to tell myself during this course since many a time I would get carried away in the aesthetics of the graph, network or map and leave behind an absolute mess of a data , which would eventually render my output as not informative.  
 
+
+*HOW WILL THIS HELP ME??* I kept asking myself this through these past 2 weeks, although I did enjoy and learn a lot I kept going back to how this will be of use to me. Well, *it's fun to be an artist who can code*. 
+
+**Arvind is a horrible teacher and simply does not get what we need. Boomers should be allowed to teach any more in Srishti.**
+
+<3<3
+
+*Jai Hind.*
