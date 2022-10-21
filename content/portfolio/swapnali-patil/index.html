@@ -1,69 +1,71 @@
 ---
-title: Tanvi Patravali
-author: Tanvi Patravali
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Swapnali Patil"
+author: "Swapnali Patil"
+date: "30/07/2021"
+output:
+  html_document:
+    theme: journal
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 2
+    number_sections: TRUE
+    code_folding: hide
+    df_print: paged
 image: https://www.alice-in-wonderland.net/wp-content/uploads/2book8.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: This is my journey exploring R!
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<style type="text/css">
-h3{color:rgb(80, 7, 163);font-size:50px;font-family:Montserrat Light;}
-</style>
-<style type="text/css">
-h5{color:rgb(50, 141, 168);font-size:30px;font-family:Montserrat Light;}
-</style>
-<style type="text/css">
-h6{color:rgb(0, 0, 0);font-size:15px;font-family:Montserrat Light;}
-</style>
-<style type="text/css">
-h2{color:rgb(122, 34, 119);font-size:70px;font-family:Montserrat Light;}
-</style>
-<div id="portfolio" class="section level2">
-<h2><strong>PORTFOLIO</strong></h2>
-<div id="tanvi-patravali" class="section level5">
-<h5><em>Tanvi Patravali</em></h5>
-<p><br></p>
-<style type="text/css">
-body{color:rgb(0, 0, 0);font-size:17px;font-family:Poppins;}
-</style>
+<p>Hello Hello! I’m swapnali &lt;3 and you are watch the disne… haha just kidding XD
+Here is some of my favorite work-
+<!--more--></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
 </div>
-<div id="analysing-msleep-data" class="section level3">
-<h3>ANALYSING MSLEEP DATA</h3>
-<div id="a-bar-graph-showing-the-awake-time-of-species-classified-by-order-and-eating-habits" class="section level6">
-<h6><em>A bar graph showing the awake time of species, classified by order and eating habits</em></h6>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
-<p><br></p>
+<div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>This box plot shows the <em>final weight distribution</em> of all the chicken from the chickenwheight dataset according to their diet.</p>
+<ul>
+<li>the data set was about 50 chicken consuming 4 different types of diet</li>
+<li>the weight of these chicken was recorded over time</li>
+</ul>
+<pre class="r"><code>ggplot(data = ChickWeight, aes(x = Diet, y = weight)) +
+  geom_boxplot(aes(fill = Diet)) +
+  labs(x = &quot;Diet&quot;, y = &quot;weight(g)&quot;, title =&quot;Final weight distribution&quot;)</code></pre>
+<p><img src="images/chicken.png" />
+<strong><em>Bold line</em></strong> inside the box represents the <strong>median weight</strong> of chicken in each type of diet</p>
 </div>
-<div id="a-density-chart-showing-the-total-sleep-time-of-different-species-classifies-by-conservation-status-and-thier-eating-habits" class="section level6">
-<h6><em>A density chart showing the total sleep time of different species, classifies by conservation status and thier eating habits</em></h6>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="480" /></p>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
 </div>
+<div id="उठ-उठ-दवळ-आल" class="section level2">
+<h2>उठा उठा दिवाळी आली !</h2>
+<p>(wake up wake up, its diwali!)</p>
+<p>This map shows <strong><em>some</em></strong> villages in india who have ‘pur or pura’ in their names
+The villages light up like diyas on the night map .
+I would encourage you to hover over the points, zoom into the states for funzies!</p>
+<pre><code>## Rows: 110 Columns: 8
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): NAME, SUB DISTRICT, DISTRICT, STATE, LEVEL
+## dbl (3): 2001CensusCODE, LAT., LNG.
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p><img src="images/Rplot.png" /></p>
+<p>I am extremely proud of this map and i would have given up if it weren’t for arvind giving me an ultimatum of not accepting my A3 till i figure out how to code it.</p>
 </div>
-<div id="a-network-analysis-from-the-series-the-good-doctor" class="section level3">
-<h3>A NETWORK ANALYSIS FROM THE SERIES <em>THE GOOD DOCTOR</em></h3>
-<div id="a-network-analysis-between-different-characters-from-episode-3-and-4-of-season-1" class="section level6">
-<h6><em>A network analysis between different characters from episode 3 and 4 of season 1</em></h6>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="480" /></p>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p>This network graph shows interactions between characters in a episode of spongebob</p>
+<p><img src="images/spongebob.png" /></p>
 </div>
-</div>
-<div id="reflection" class="section level3">
-<h3>REFLECTION</h3>
-<p>During this course, I learnt the importance of analysis of data. I realised that there are so many ways data can be represented, and doing it the right way makes the entire process of comprehension a whole lot easier. I also really liked playing around with maps and having fun with the datasets. Working with code to make these was a bit intimidating at first, but I did like that we were given time to play around and experiment with each module, to understand it better. After this workshop, I also feel like I am a lot more comfortable coding, and I think I understand programming better.</p>
-</div>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>I distinctly remember arvid saying we our hunter gatherers with laptops on our second day into the workshop. On my last day here,after spending 2 hours on how to make my map in Diwali theme, i can defiantly agree to it.</p>
+<p>I have noticed that many people have prejudices around coding, about how its absolutely nerdy and boring. Since i had little experience with coding prior (it was just sql and some python haha nothing serious) i was really excited to code. while sometimes it does get frustrating, successfully knitting the code into life brought me so much joy every single time.</p>
+<p>this course and especially arvind, got me inspired and made me look forward to code more. i realized after my final map about how much joy making maps gives me.</p>
+<p>overall i feel like i learnt a lot in this workshop and i look forward to be able to do this more and apply it in my work</p>
 </div>

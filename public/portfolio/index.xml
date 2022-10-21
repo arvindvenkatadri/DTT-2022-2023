@@ -6,7 +6,20 @@
     <description>Recent content in Portfolios on We R the World!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://we-r-the-world.netlify.app/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://we-r-the-world.netlify.app/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aakarsh Shetty</title>
+      <link>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/portfolio/</link>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/portfolio/</guid>
+      <description>
+
+
+&lt;p&gt;I am Aakarsh Shetty !! These are my favourite graphs in R!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Nidhee Deshak</title>
       <link>https://we-r-the-world.netlify.app/portfolio/nalini-rajeev/</link>
@@ -29,28 +42,6 @@ Im Aarushi and I’ve opted for IADP. I’m pretty new to coding in general. The
 1.It inclused the price of diamonds(in USD)
 2.carat
 weight of the diamond)</description>
-    </item>
-    
-    <item>
-      <title>Abhiram Jois</title>
-      <link>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/</guid>
-      <description>Aren’t we all just rows in a larger dataset?
-Graph 1:Concised FIFA datasetThe following is a datset of all the players in the game FIFA-19 and their player attributes. The initial dataset was very large, this is a concised version of the same.
-## # A tibble: 18,207 x 17## Name Age Nationality Overall Potential Club Value Wage Position## &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 L.</description>
-    </item>
-    
-    <item>
-      <title>Aditi Garg</title>
-      <link>https://we-r-the-world.netlify.app/portfolio/adit-joshi/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://we-r-the-world.netlify.app/portfolio/adit-joshi/</guid>
-      <description>IntroductionHI!! I’m Aditi and you’re going to see a few of my favorite graphs and maps that I made using R Studio.
-Graph 1How are characters related to each other?
-## from to weight type## 1 Jake Amy 3 romantic## 2 Jake Charles 3 friends## 3 Jake Raymond 3 friends## 4 Jake Rosa 2 friends## 5 Jake Terry 2 friends## 6 Jake Gina 2 friends## 7 Jake Hitchcock 1 friends## 8 Jake Scully 1 friends## 9 Amy Charles 2 friends## 10 Amy Raymond 3 friends## 11 Amy Rosa 2 friends## 12 Amy Terry 1 friends## 13 Amy Gina 1 friends## 14 Amy Hitchcock 1 friends## 15 Amy Scully 1 friends## 16 Rosa Raymond 2 friends## 17 Rosa Terry 1 friends## 18 Rosa Charles 2 friends## 19 Rosa Gina 2 friends## 20 Rosa Hitchcock 1 friends## 21 Rosa Scully 1 friends## 22 Terry Charles 3 friends## 23 Terry Gina 2 friends## 24 Terry Raymond 3 friends## 25 Terry Hitchcock 1 friends## 26 Terry Scully 1 friends## 27 Charles Gina 3 romantic## 28 Charles Raymond 2 friends## 29 Charles Hitchcock 1 friends## 30 Charles Scully 1 friends## 31 Gina Raymond 3 friends## 32 Gina Hitchcock 1 friends## 33 Gina Scully 1 friends## 34 Raymond Hitchcock 1 friends## 35 Raymond Scully 1 friends## 36 Hitchcock Scully 3 friends## X name sex occupation## 1 1 Jake M Detective## 2 2 Amy F Sergeant## 3 3 Rosa F Detective## 4 4 Terry M Lieutenant## 5 5 Charles M Detective## 6 6 Gina F Civilian Administrator## 7 7 Raymond M Captain## 8 8 Hitchcock M Detective## 9 9 Scully M Detective## from to weight type## 1 Jake Amy 3 romantic## 2 Jake Charles 3 friends## 3 Jake Raymond 3 friends## 4 Jake Rosa 2 friends## 5 Jake Terry 2 friends## 6 Jake Gina 2 friends## 7 Jake Hitchcock 1 friends## 8 Jake Scully 1 friends## 9 Amy Charles 2 friends## 10 Amy Raymond 3 friends## 11 Amy Rosa 2 friends## 12 Amy Terry 1 friends## 13 Amy Gina 1 friends## 14 Amy Hitchcock 1 friends## 15 Amy Scully 1 friends## 16 Rosa Raymond 2 friends## 17 Rosa Terry 1 friends## 18 Rosa Charles 2 friends## 19 Rosa Gina 2 friends## 20 Rosa Hitchcock 1 friends## 21 Rosa Scully 1 friends## 22 Terry Charles 3 friends## 23 Terry Gina 2 friends## 24 Terry Raymond 3 friends## 25 Terry Hitchcock 1 friends## 26 Terry Scully 1 friends## 27 Charles Gina 3 romantic## 28 Charles Raymond 2 friends## 29 Charles Hitchcock 1 friends## 30 Charles Scully 1 friends## 31 Gina Raymond 3 friends## 32 Gina Hitchcock 1 friends## 33 Gina Scully 1 friends## 34 Raymond Hitchcock 1 friends## 35 Raymond Scully 1 friends## 36 Hitchcock Scully 3 friends## X name sex occupation## 1 1 Jake M Detective## 2 2 Amy F Sergeant## 3 3 Rosa F Detective## 4 4 Terry M Lieutenant## 5 5 Charles M Detective## 6 6 Gina F Civilian Administrator## 7 7 Raymond M Captain## 8 8 Hitchcock M Detective## 9 9 Scully M Detective## id X label group occupation## 1 1 1 Jake Male Detective## 2 2 2 Amy Female Sergeant## 3 3 3 Rosa Female Detective## 4 4 4 Terry Male Lieutenant## 5 5 5 Charles Male Detective## 6 6 6 Gina Female Civilian Administrator## 7 7 7 Raymond Male Captain## 8 8 8 Hitchcock Male Detective## 9 9 9 Scully Male Detective## from to## 1 1 2## 2 1 5## 3 1 7## 4 1 3## 5 1 4## 6 1 6## 7 1 8## 8 1 9## 9 2 5## 10 2 7## 11 2 3## 12 2 4## 13 2 6## 14 2 8## 15 2 9## 16 3 7## 17 3 4## 18 3 5## 19 3 6## 20 3 8## 21 3 9## 22 4 5## 23 4 6## 24 4 7## 25 4 8## 26 4 9## 27 5 6## 28 5 7## 29 5 8## 30 5 9## 31 6 7## 32 6 8## 33 6 9## 34 7 8## 35 7 9## 36 8 9{&#34;</description>
     </item>
     
     <item>
@@ -85,16 +76,6 @@ My intent in this graph was to find out which all species have lived on the plan
     </item>
     
     <item>
-      <title>Aryan Joshua</title>
-      <link>https://we-r-the-world.netlify.app/portfolio/arya-chandrasekaran/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://we-r-the-world.netlify.app/portfolio/arya-chandrasekaran/</guid>
-      <description>IntroductionHi, I’m Aryan and here I have a few graphs on different topics that show my progress in being able to visualize data through various methods that I’ve learnt in this workshop.
-Graph 1I have chosen the diamond data set which contains the prices and other attributes of almost 54000 diamonds. The variety of attributes are the price of the diamond in US dollars, the carat of the diamond, the quality of the diamond (cut of the diamond), the colour and clarity and various dimensions of the diamonds.</description>
-    </item>
-    
-    <item>
       <title>Avi Parmar</title>
       <link>https://we-r-the-world.netlify.app/portfolio/arya-mohan/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
@@ -103,16 +84,6 @@ My intent in this graph was to find out which all species have lived on the plan
       <description>GRAPH 1“No matter what the statistics say, there is always a way.”
 ~Bernie Siegel
 #GRAPH FUNCTIONggplot(data = cancer, mapping = aes(x = Age, y = Alcoholuse))+geom_point(size = 5)+geom_smooth(colour = &amp;quot;red&amp;quot;)## `geom_smooth()` using method = &amp;#39;gam&amp;#39; and formula &amp;#39;y ~ s(x, bs = &amp;quot;cs&amp;quot;)&amp;#39;I figured that writing about cancer might make me come off as important, and plus it was pretty easy for me to get my hands on this data set.</description>
-    </item>
-    
-    <item>
-      <title>Deepti Kapadia</title>
-      <link>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/</guid>
-      <description>Set up chunkGraph 1Graph using geometric objects. I used the diamonds dataset for this graph. In the graph, I plotted the carat of the diamond on the x axis and the price on the y axis. The cut is depicted in different colours and the color of each diamond is depicted in different shapes.
-## # A tibble: 53,940 x 10## carat cut color clarity depth table price x y z## &amp;lt;dbl&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;## 1 0.</description>
     </item>
     
     <item>
@@ -263,17 +234,6 @@ Following are some of the graphs I created and explored different qualities of d
     </item>
     
     <item>
-      <title>Tanvi Patravali</title>
-      <link>https://we-r-the-world.netlify.app/portfolio/swapnali-patil/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://we-r-the-world.netlify.app/portfolio/swapnali-patil/</guid>
-      <description>h3{color:rgb(80, 7, 163);font-size:50px;font-family:Montserrat Light;}h5{color:rgb(50, 141, 168);font-size:30px;font-family:Montserrat Light;}h6{color:rgb(0, 0, 0);font-size:15px;font-family:Montserrat Light;}h2{color:rgb(122, 34, 119);font-size:70px;font-family:Montserrat Light;}PORTFOLIOTanvi Patravali
-body{color:rgb(0, 0, 0);font-size:17px;font-family:Poppins;}ANALYSING MSLEEP DATAA bar graph showing the awake time of species, classified by order and eating habits
-A density chart showing the total sleep time of different species, classifies by conservation status and thier eating habitsA NETWORK ANALYSIS FROM THE SERIES THE GOOD DOCTORA network analysis between different characters from episode 3 and 4 of season 1REFLECTIONDuring this course, I learnt the importance of analysis of data.</description>
-    </item>
-    
-    <item>
       <title>Tara Sperber</title>
       <link>https://we-r-the-world.netlify.app/portfolio/ramesh-kalkur/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
@@ -282,6 +242,59 @@ body{color:rgb(0, 0, 0);font-size:17px;font-family:Poppins;}ANALYSING MSLEEP 
       <description>3 of my favourite graphsGraph 1
 A graph of the American Indian population in the midwest USA.
 ggplot(midwest, aes(x = poptotal, y = popamerindian)) + geom_point(colour = &amp;quot;red&amp;quot;) + geom_smooth(colour = &amp;quot;yellow&amp;quot;) ## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;Graph 2bbox_l &amp;lt;- bbox &amp;lt;- osmplotr::get_bbox(c(77.56,12.93,77.63,12.96))bbox_l## min max## x 77.56 77.63## y 12.93 12.96dat_B &amp;lt;- extract_osm_objects(key = &amp;quot;building&amp;quot;, bbox = bbox_l) ## Issuing query to Overpass API .</description>
+    </item>
+    
+    <item>
+      <title>ADIT JOSHI</title>
+      <link>https://we-r-the-world.netlify.app/portfolio/adit-joshi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://we-r-the-world.netlify.app/portfolio/adit-joshi/</guid>
+      <description>
+
+
+&lt;p&gt;Hi! I am Adit Joshi from Pune. I am going to show the different “visualizations” that I made throughout this course&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ARYA KUMAR</title>
+      <link>https://we-r-the-world.netlify.app/portfolio/arya-chandrasekaran/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://we-r-the-world.netlify.app/portfolio/arya-chandrasekaran/</guid>
+      <description>
+
+
+&lt;p&gt;Hiiiiiiiii!!!! I am Arya Kumar Chandrasekaran and I live in Yelahanka. My major is DMA!!!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Awani Kshirsagar</title>
+      <link>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/awani-k/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/awani-k/</guid>
+      <description>
+
+
+&lt;p&gt;I am Awani Kshirsagar and these are my three best graphs from the R Workshop!!
+</description>
+    </item>
+    
+    <item>
+      <title>Swapnali Patil</title>
+      <link>https://we-r-the-world.netlify.app/portfolio/swapnali-patil/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://we-r-the-world.netlify.app/portfolio/swapnali-patil/</guid>
+      <description>
+
+
+&lt;p&gt;Hello Hello! I’m swapnali &amp;lt;3 and you are watch the disne… haha just kidding XD
+Here is some of my favorite work-
+</description>
     </item>
     
   </channel>

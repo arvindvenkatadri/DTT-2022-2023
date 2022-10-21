@@ -1,189 +1,142 @@
 ---
-title: Aditi Garg
-author: Aditi Garg
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
-image: https://www.alice-in-wonderland.net/wp-content/uploads/201.jpg
+title: "ADIT JOSHI"
+author: "Adit Joshi"
+date: "21/10/2022"
+output: html_document
+image: https://www.alice-in-wonderland.net/wp-content/uploads/9.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Aditi Garg's website.
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Invoke all your packages here()
+# library(blah blah)
 
-```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
-## Load frequently used packages for blog posts
+library(ggplot2)
+library(dplyr)
 library(tidyverse)
-library(palmerpenguins)
-library(osmplotr)
-library(prettymapr)
-library(sf)
-library(tmap)
+library(knitr)
+
 ```
 
-## Introduction
 
-> HI!! I'm Aditi and you're going to see a few of my favorite graphs and maps that I made using R Studio.
+
+Hi! I am Adit Joshi from Pune. I am going to show the different "visualizations" that I made throughout this course
+
+<!--more-->
+
+## Introduction
+I was in this class for **2 weeks**, 2 weeks of coding in R and visualizing data.  
+I am going to show the different "visualizations" that I made throughout this course, analyzing data and making inferences from the same.
 
 ## Graph 1
 
-How are characters related to each other?
+```{r read-1}
+my_data_1 <- diamonds
+glimpse(my_data_1)
+head(my_data_1) %>% kable()
+tail(my_data_1) %>% kable()
 
-```{r}
-B99_nodes <- read.csv("./data/B99 nodes.csv" )
-B99_edges <- read.csv("./data/B99 edges.csv" )
-B99_edges
-B99_nodes
-``` 
-
-```{r}
-library(visNetwork)
-
-
-B99_edges
-B99_nodes
-
-B99_nodes_vis <- B99_nodes %>% 
-  rowid_to_column(var = "id") %>% 
-  rename("label" = name) %>% 
-  mutate(sex = case_when(sex == "F" ~ "Female",
-                         sex == "M" ~ "Male")) %>% 
-  rename("group" = sex)
-B99_nodes_vis
-B99_edges_vis <- B99_edges %>% 
-  select(from, to) %>% 
-  left_join(., B99_nodes_vis, by = c("from" = "label")) %>% 
-  left_join(., B99_nodes_vis, by = c("to" = "label")) %>%
-  select("from"= id.x, "to" = id.y)
-B99_edges_vis
-
-
-
-
-
-#seperation
-B99_nodes_vis %>%
-
-  visNetwork(nodes = ., edges = B99_edges_vis) %>% 
-  visNodes(font = list(size = 20)) %>% 
-  
-  # Colour and icons for each of the gender-groups
-  visGroups(groupname = "Female", shape = "circle", 
-            icon = list(code = "f182", size = 20, color = "violet"),
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "Male", shape = "circle", 
-            icon = list(code = "f183", size = 20, color = "skyblue"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-
-  
-  #visLegend() %>%
-  #Add the fontawesome icons!!
-  addFontAwesome() %>% 
-  
-  # Add Interaction Controls
-  visInteraction(selectConnectedEdges = TRUE,
-                 zoomView = TRUE)
 ```
-It shows how each character is connected to the other,i.e shows the relationships between them.
+  * **Price:** price in US dollars ($326–$18,823)
+  * **Carat:** weight of the diamond (0.2–5.01)
+  * **Cut:** quality of the cut (Fair, Good, Very Good, Premium, Ideal)
+  * **Colour:** diamond colour, from D (best) to J (worst)
+  * **Clarity:** a measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))
+  * **x:** length in mm (0–10.74)
+  * **y:** width in mm (0–58.9)
+  * **z:** depth in mm (0–31.8)
+  * **Depth:** total depth percentage = z / mean(x, y) = 2 * z / (x + y) (43–79)
+  * **Table:** width of top of diamond relative to widest point (43–95)
 
-I used circle as an icon for each character and the females are represented by voilet and males are represented by sky blue color.
+There are 10 variables that talk about the properties of diamonds. There are 53940 observations or entries. We used the help function to see the description of each of the different variables. We also transferred the data set into a set of our own so that we could see the entire data in tabular form for reference.
+
+### Price vs Carat
+
+In this graph, we plotted the price up against carat of the diamonds to compare and determine the price of the diamonds.
+
+```{r plot-1, eval=FALSE}
+my_data_1 %>% 
+  ggplot() + 
+  
+  geom_point(aes(x=carat, y=price, colour=cut),alpha = 0.2, size=0.1) + 
+  geom_smooth(aes(x=carat, y=price),alpha = 5, size = 0.5) + 
+  facet_grid(~cut) + 
+  theme_minimal() + 
+  labs(title = "Price vs Carat")
+
+```
+
+![*Graph 1*](images/Graph1.png)
+
+Up until 2-2.5 range carat the prices of all the cuts increases quite steeply and at almost the same rate. After this there is a change in the individual trends of each of the cuts of the diamonds. The lower cut diamonds suffer a lesser drop (in fact the fair still goes up but with a smaller angle) while the higher cut diamonds suffer a steep decline. Another observation is that at higher carats there is no higher cut diamonds, just fair cut diamonds at a very high price. So the most expensive diamonds are of higher carat but a fair cut.
+An interpretation is that it is probably difficult to produce higher carat diamonds with higher or ideal cut.  
+These interpretations are based off of approximations of a lot of observations so they may or may not apply for a lot of cases.
 
 ## Graph 2
-How many diamonds are very good?
-I chose the DIAMONDS dataset for this graph.
 
-```{r}
-ggplot(data = diamonds, mapping = aes(x = cut, fill = color, color = color, alpha = 0.3))+
-geom_bar()
-```
-
-I plotted a graph of the count vs the cut to find how many diamonds are of very good cut.
-
-## MAP 3
-
-I used the dataset of prettymapr to plot a few specific data on the city of Mysore.
-```{r}
-
-
-
-bbox_p <- prettymapr::searchbbox("Mysore")
-
-bbox_p
+```{r read-2}
+my_data_2 <- read_delim(file = "data/AIRLINES-NODES.csv", delim = ";")
+glimpse(my_data_2)
+head(my_data_2) %>% kable()
+tail(my_data_2) %>% kable()
 
 ```
 
-```{r}
-#DOWNLOADING DATA FROM OPEN STREET MAP AND ASSIGNING TO VARIABLES
+This data set is a record of all the airports in USA along with their respective locations. It also contains a column recording the number of visits at that airport.
 
-dat_H <- extract_osm_objects (key = 'highway', bbox = bbox_p)
-dat_P <- extract_osm_objects (key = 'park', bbox = bbox_p)
-dat_G <- extract_osm_objects (key = 'landuse', value = 'grass', bbox = bbox_p)
-dat_T <- extract_osm_objects (key = 'natural', value = 'tree', bbox = bbox_p)
+### Network of USA Airlines
 
-glimpse(dat_H)
-glimpse(dat_P)
-glimpse(dat_G)
-glimpse(dat_T)
+```{r plot-2, eval=FALSE}
+air_centrality %>% 
+  ggraph(layout = mylayout) +
+  geom_edge_link0(aes(alpha = betweenness)) + 
+  geom_node_point(aes(size = degree, color = degree)) +
+  scale_edge_alpha(range = c(0.06, 0.8)) + 
+  scale_color_gradient(guide = "legend",
+                       low = "blue",
+                       high = "red") +
+  geom_node_text(aes(label = Code, size = degree, color = degree), nudge_x = 2, nudge_y = 2) +
+  labs(title = "Airlines Network of USA with Hotspots")
 
 ```
 
-```{r}
-#DOWNLOADING RESTAURANT POINTS
+![*Graph 2*](images/Graph2.png)
 
-dat_R <- extract_osm_objects(bbox = bbox_p, 
-                             key = "amenity", 
-                             value = "restaurant", 
-                             return_type = "point") #<<
+This network shows the **major connected airports** in the United States of America. It shows the airports with the most connections. The big and red dots represent the airports with the most amount of connections. The opacity of the lines represent the betweenness of the connections.  
+From this we can infer that the major airports are **Atlanta, Minneapolis, Detroit, Houston and Memphis**. While the least connected with least traffic is **Mc Allen, Miami and Albuquerque**.
 
-dat_R %>%  nrow()
+## Graph 3
 
-#DOWNLOADING HEALTHCARE POINTS
+The following map represents the migration pattern of "Arctic Terns" across the globe. This data was gathered from "movebank.org" which contains a lot of data on the migration patterns of a lot of different birds and animals.
 
-dat_Healthcare <- extract_osm_objects(bbox = bbox_p, 
-                             key = "healthcare", 
-                              
-                             return_type = "point") #<<
+This map shows the western hemisphere of the world since that is where these birds migrate. The pattern of migration is clearly visible represented by purple dots and red lines.
 
-dat_Healthcare %>%  nrow()
+```{r plot-3, eval=FALSE}
+ggplot() +
+  geom_sf(data = west_terns, aes(fill = pop_est_dens, color = pop_est_dens)) +
+  geom_sf(data = terns_lines, color = "red", size = 0.2) +
+  geom_sf(data = terns_points, color = "purple", size = 0.2) +
+ 
+  theme_minimal()
+
 ```
 
-```{r}
-# USING GGPLOT TO MAP DATA
+![*Graph 3*](images/Graph3.png)
 
-mysore_map <- ggplot() +
-  geom_sf(data = dat_H, col = "blue") +     # LINES
-  geom_sf(data = dat_G, col = "darkseagreen1") + 
-  geom_sf(data = dat_P, col = "darkseagreen") +
-  geom_sf(data = dat_T, col = "green")  +      # POINTS
-  geom_sf(data = dat_R, colour = "red", size = 3, alpha = 0.5) +
-  geom_sf(data = dat_Healthcare, colour = "violet", size = 7, alpha = 0.3) +
-  labs(title = "MYSORE")
-  mysore_map
-   
-```
-
-
-I've plotted the highways, parks, landuse and natural spots on the map of mysore.
+The Arctic Terns migrate **along the entire globe.** They travel over the oceans and **migrate seasonally**. The reasons for migration could be weather, food or to find nesting areas.This cannot be determined from the above map as there is no such data represented in the map above. The blue colour gradients show the population density in each country.
 
 ## My Course Reflection
 
-This course was about learning to use R programing as a design tool.
-I learnt a way too many things and it was overwhelming at first until i realised its still beginner level information. I learnt to use R markdown to create a html document, learnt to make and plot graphs and maps of cities to show data, i learnt to make presentation using R.
-I think all this will help my practice as an aspiring artist and designer for making presentations, for making visuals to represent data, it will help for organising research data. 
-Arvind is genuinely the best teacher i've ever had and if i had to learn R in my school in the 10th or 12th grade i would've simply been overwhelmed and avoided the topic but Arvind managed to build interest and enthusiasm in me to learn and troubleshoot the errors as well. Also I want to add that Arvind has great taste in music and i'd love to have access to his playlists.
-Arvind is a Boomer from Srishti who knows to use "Bruh" now.
-I wish to have on campus classes with Arvind sometime:)
+I was a little skeptical about coding at first since I am not very fond of it. But as I progressed through the course I learnt that it is hardly about the code or about the medium. The fact of the matter was that we were representing data, the tool you use is irrelevant. In fact I also realized that maybe R coding was one of the best and most efficient ways of representing said data. I am still glad that I was introduced to this multipurpose tool.  
+This course revealed to me the importance of data and the gathering of it. It reveals patterns, gives information and understanding on various "variables" that we may not have been aware of. I started noticing different ways in which recorded data could have helped in different situations outside of college as well. I could see myself looking for patterns, ways in which I could visualize data that was around me.  
+I also learnt about the dark side of data visualization, cleaning up data. This is one of the most important parts of the process. It is a painstaking process to tidy up the data. But it is even more difficult and frustrating to visualize untidy data, which is why cleaning up the data is so important.  
+I believe that even in data visualization, design thinking principles are important and must be applied to efficiently visualize the data. The visualizations must be easy to read and understand without looking at the actual data itself. The colours and the general layout must be thought through thoroughly. These aesthetic decisions can completely change the look of the graph and give or take away its purpose.  
 
-
+I throughly enjoyed this class through its ups and downs. Even when it seemed like "other classes are doing cool stuff bro". a(R)vind will be missed in Srishti.
+  
+  
+  
+  
+less than 3.

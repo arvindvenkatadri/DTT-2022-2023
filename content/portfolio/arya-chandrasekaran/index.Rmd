@@ -15,12 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-## Introduction
+
 
 Hiiiiiiiii!!!! I am Arya Kumar Chandrasekaran and I live in Yelahanka. My major is DMA!!! 
 
 <!--more-->
 
+## Introduction
 During the course of this workshop I learnt how to code in *R* - we mostly worked on analysation and representation of different types of data and the creative coding that goes behind that. We made graphs, networks and maps, we also *CRIED* a lot(I know I did) :)  
 
 
