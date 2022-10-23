@@ -1,48 +1,82 @@
 ---
-title: Mark Tharakan
-author: Mark Tharakan
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "MAHIR MALDE"
+author: "Mahir Malde"
+date: "2022-10-21"
+output: html_document
 image: https://www.alice-in-wonderland.net/wp-content/uploads/4.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: This is Mark Tharakan's R language portfolio
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<div id="graph-1." class="section level2">
-<h2>Graph 1.</h2>
-<pre><code>## # A tibble: 53,940 x 10
-##    carat cut       color clarity depth table price     x     y     z
-##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-##  2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-##  3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-##  4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-##  5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-##  6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-##  7  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
-##  8  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
-##  9  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
-## 10  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-## # ... with 53,930 more rows</code></pre>
-<p><img src="unnamed-chunk-2-1.png" width="480" /></p>
-<pre><code>## $title
-## [1] &quot;Depth&quot;
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;labels&quot;</code></pre>
-<p><img src="unnamed-chunk-3-1.png" width="480" /></p>
+<p>Hi! I am Mahir Malde from Jamnagar. I am going to show the different “visualizations” that I made throughout this course.</p>
+<!--more-->
+<div id="portfolio" class="section level2">
+<h2><strong>Portfolio:</strong></h2>
+<div id="a1-monopoly-graph" class="section level3">
+<h3><strong>A1:</strong> Monopoly Graph</h3>
+<div class="figure">
+<img src="images/Graph%201%20Monopoly.png" alt="" />
+<p class="caption"><em>Monopoly Graph</em></p>
+</div>
+<p>This is a density graph which shows the number of properties sorted by their color and house cost. Here I made my own color data and manually filled the colors for each property. I did this to make the visualization more comprehensive as for a game like monopoly, you can get the gist of the property information just by glancing at the graph’s colors.</p>
+<pre class="r"><code>my_colors &lt;- c(&quot;blue&quot;, &quot;green&quot;, &quot;lightblue&quot;, &quot;orange&quot;, &quot;pink&quot;, &quot;purple&quot;, &quot;red&quot;, &quot;yellow&quot;)
+
+ggplot(data = monopoly) +  
+       aes(x = house_4, fill = color, color = color, alpha = 0.7) +
+  geom_density() +
+    scale_fill_manual(values = my_colors) + scale_color_manual(values = my_colors) </code></pre>
+</div>
+<div id="a2-airline-network" class="section level3">
+<h3><strong>A2:</strong> Airline Network</h3>
+<div class="figure">
+<img src="images/Graph%202%20Airline.png" alt="" />
+<p class="caption"><em>Airline Network</em></p>
+</div>
+<p>Here, instead of plotting a normal graph with attributes of nodes and edges, I tried to lay out all the nodes with their corresponding latitude and longitude, which gave out an interesting result. (also the data for edge variables like latitude and longitude, being quantitative, were quite difficult or almost impossible to plot without the geometry of position). The outcome looks like a map of the US as all the airports are scattered across a specific boundary and there is dense air traffic around geographically important locations in the US. For the nodes, I have assigned the ‘ToFly’ variable to the color and the ‘Visits’ to the dot size.</p>
+<pre class="r"><code>airline_nodes &lt;- read_delim(&quot;Data/AIRLINES-NODES.csv&quot;,delim = &quot;;&quot;)
+airline_edges &lt;- read_delim(&quot;Data/AIRLINES-EDGES.csv&quot;,delim = &quot;;&quot;)
+
+airline &lt;- tbl_graph(nodes = airline_nodes, 
+                edges = airline_edges, 
+                directed = FALSE)
+airline
+
+airline2 &lt;- airline_nodes %&gt;% select(latitude, longitude) %&gt;% transmute(Latitude = latitude / 1000000, Longitude = longitude / 1000000)
+           
+airline2
+
+my_layout &lt;- cbind(x = airline2$Longitude, y = airline2$Latitude) %&gt;% as.matrix()
+g &lt;- tbl_graph(nodes = airline_nodes, edges = airline_edges)
+ggraph(g, layout = my_layout) + geom_edge_link0(alpha = 0.4) + geom_node_point(aes(color = ToFly, size = Visits)) + theme(legend.position = &quot;right&quot;)</code></pre>
+</div>
+<div id="a3-indian-map-with-pur-villages" class="section level3">
+<h3><strong>A3:</strong> Indian Map with ‘pur’ villages</h3>
+<div class="figure">
+<img src="images/Graph%203%20Map.png" alt="" />
+<p class="caption"><em>Indian Map with ‘pur’ villages</em></p>
+</div>
+<p>This is a map of India containing all the villages, towns and cities ending with ‘pur’, ‘pura’, ‘puri’, etc. Here I tried to show the night view of the map and all the villages with yellow colors referring to the dias burnt in these places during diwali and emitting the light.</p>
+<pre class="r"><code>data(&quot;World&quot;)
+india &lt;- World %&gt;% filter(iso_a3 == &quot;IND&quot;)
+
+crs_india &lt;- st_crs(india)
+
+pur_sf &lt;- st_as_sf(pur, 
+         coords = c(&quot;LNG.&quot;, &quot;LAT.&quot;),
+           crs = crs_india) 
+
+tm_basemap(leaflet::providers$CartoDB.DarkMatter)+ tm_shape(india) + tm_polygons( alpha= 0.5) + 
+  tm_shape(pur_sf) + tm_symbols(size = 0.2, col = &quot;goldenrod1&quot;)
+
+tmap_mode(&quot;view&quot;)</code></pre>
+</div>
+</div>
+<div id="reflection" class="section level2">
+<h2><strong>Reflection:</strong></h2>
+<p>This week was the most Information packed course here at Srishti since I’ve been here. The course was very structured right from the start of the week and we had our end goals in mind but at the same time, we made some decisions Which modified the course a little according to the short amount of time we had. We were a diverse group of individuals, with the majority of us knowing nothing about coding or related topics. As a result, we began by using some simple games and experiments to help us visualize the data/information we would later create. I believe it would have been difficult to learn and comprehend a coding language without first envisioning it in a human-centered manner.</p>
+<p>We then started with basic about formatting and slowly started to code by running already written code to get the logic behind it and not scratch our heads getting strangled into the errors of syntax. Then as we got a hang of it, some interesting assignments were thrown towards us, which were quite interesting as they contained information about the topics we liked which made us dig deep into it.</p>
+<p>If the topics for our assignment weren’t as interesting as they were, many of us wouldn’t have put such efforts for it. We did multiple things like graphs, networks, maps etc. Though, learning R was not easy, the connections with grammar and the metaphors made it quite layman easy for anyone to pick it up. No doubt we faced so many errors, but the feeling of solving them made us proud.</p>
+<p>Overall the course was very interesting to me and I would love to explore more about R and dig deep.</p>
 </div>

@@ -133,35 +133,136 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Rachel Thomas</h1>
-         
-<script src="https://we-r-the-world.netlify.app/portfolio/nithin-suresh/index_files/header-attrs/header-attrs.js"></script>
+         <h1>Nithin Suresh</h1>
+         <div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Hello, I’m Nithin Suresh and I’m from Chennai. My major is IADP. I took a break year to figure out what I wanted to do and here I am. I’ve had a very brief attempt at coding before but I never worked on it as I found the task pretty daunting. This was my first proper go at it and it has gone pretty well so far. In this page, I’ll be presenting one graph from each of my assignments and I’ll be explaining/decoding them along the way.</p>
+</div>
+<div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>For the first graph, I’ll be presenting a graph I made for A1 using a dataset of Pokémons. For this graph, I’ll be finding out which type of Pokémon is the strongest.</p>
+<pre class="r"><code>pokemon &lt;- read_csv(file = &quot;data/pokemon.csv&quot;)
 
+pokemon %&gt;% kable()
 
-<div id="graphs-explored-during-the-course-of-this-worshop" class="section level3">
-<h3><strong>Graphs explored during the course of this worshop</strong></h3>
-<div id="graph--1" class="section level4">
-<h4><strong>GRAPH- 1</strong></h4>
-<p>Using the diamonds data set to analyse data and create graphs showing the colour and depth of the diamonds. I used a colour palette for this graph as well using ggplot and geom_bar</p>
-<p><img src="unnamed-chunk-1-1.png" width="480" /></p>
+glimpse(pokemon)</code></pre>
+<p>I’ll be using a <strong>boxplot</strong> to find out the answer.</p>
+<p><img src="images/Pokemon.png" /></p>
+<pre class="r"><code>ggplot(pokemon) +
+  aes(x = `type/0`, y = total, color=`type/0`) +
+  geom_boxplot() +
+  scale_fill_viridis_d (option = &quot;magma&quot;) +
+  theme(axis.text = element_text(angle = 45, size = 7))</code></pre>
+<p>Looking at the boxplots, we can say <strong>Dragon</strong> is the strongest type of Pokémon. Even though it might not have the strongest Pokémon (which is Mewtwo), the average <strong>total</strong> of all the Pokémons which come under that type is higher. For differentiating each type, I’ve used the ‘aes’ to fill the color according to the number of types and applied the ‘magma’ color palette.</p>
 </div>
-<div id="graph--2" class="section level4">
-<h4><strong>GRAPH- 2</strong></h4>
-<p>Using the penguins data set to analyse data and create graphs showing the island, species and sex of the penguins.
-I have made a code for these graphs- geom_bar with fill</p>
-<p><img src="unnamed-chunk-2-1.png" width="480" /><img src="unnamed-chunk-2-2.png" width="480" /></p>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
+<p>For the second graph, I’ve used the dataset of airports in the US just like many others. This dataset contains a list of all the airports in the United States along with their code, city and co-ordinates. As the previous graphs I made using this data looked messy and did not really convey anything to the viewer, I decided to plot all the airports in the dataset according to their co-ordinates. This made the whole data to be more presentable. First, I had to combine the nodes and edges csv files into one file to be able to use it in graphs.</p>
+<pre class="r"><code>planes_nodes &lt;- read_delim(&quot;data/AIRLINES-NODES.csv&quot;,delim = &quot;;&quot;)
+planes_edges &lt;- read_delim(&quot;data/AIRLINES-EDGES.csv&quot;, delim = &quot;;&quot;)
+
+planes_graph &lt;- tbl_graph (nodes = planes_nodes, edges = planes_edges, directed = FALSE)
+planes_graph
+
+glimpse(planes_nodes)
+glimpse(planes_edges)</code></pre>
+<p>Before I plotted the points, I first had to select the longitude and latitude columns from the nodes file, then had to transmute the data by <strong>1000000</strong> to get the values to the right decimal point. After that was done, I could plot the points and the result was in the shape of the US.</p>
+<p><img src="images/Airports.png" /></p>
+<pre class="r"><code>planes_nodes %&gt;% select(latitude, longitude)
+
+airline2 &lt;- planes_nodes %&gt;% select(latitude, longitude) %&gt;% transmute(Latitude = latitude / 1000000, Longitude = longitude / 1000000)
+           
+airline2
+
+my_layout &lt;- cbind(x = airline2$Longitude, y = airline2$Latitude) %&gt;% as.matrix()
+g &lt;- tbl_graph(nodes = planes_nodes, edges = planes_edges)
+ggraph(g, layout = my_layout) + geom_edge_link0(alpha = 0.3) + geom_node_point(shape = 21, size = 1, fill = &quot;red&quot;, color = &quot;red&quot;, stroke = 2) + theme(legend.position = &quot;none&quot;)</code></pre>
 </div>
-<div id="graph--3" class="section level4">
-<h4><strong>GRAPH- 3</strong></h4>
-<p>Using the diamonds data set to analyse data and create graphs showing the depth, colour and carat of the diamonds. I used a colour palette for this graph using ggplot and geom_point.</p>
-<p><img src="unnamed-chunk-3-1.png" width="480" /></p>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p>For the final graph, I’m presenting a map of an area from my hometown, Chennai, with restaurants plotted across it.</p>
+<pre class="r"><code>bbox_1 &lt;- osmdata::getbb(&quot;Thousand Lights, Chennai, India&quot;)
+bbox_1</code></pre>
+<p>I had to extract the data of multiple objects such as buildings, roads, parks, water bodies amongst using OSM (Open street Map). The next step was to make the data readable. To make the map more captivating and vibrant, I decided to show the different types of cuisines which are available. This is plotted with each of the cuisine type having its own colour. Finally, I used <strong>geom_sf</strong> to execute and create the final map.</p>
+<p><img src="images/NithinSuresh_Chennai.png" /></p>
+<pre class="r"><code>dat_buildings &lt;-extract_osm_objects (key = &quot;building&quot;, 
+                                     bbox = bbox_1)
+
+dat_roads &lt;- extract_osm_objects (key = &#39;highway&#39;, 
+                                  bbox = bbox_1)
+
+dat_parks &lt;- extract_osm_objects (key = &#39;park&#39;, 
+                                  bbox = bbox_1)
+
+dat_greenery &lt;- extract_osm_objects (key = &#39;landuse&#39;, 
+                                  value = &#39;grass&#39;, 
+                                  bbox = bbox_1)
+
+dat_amenities &lt;- extract_osm_objects (key = &#39;amenity&#39;, 
+                                  value =&quot;restaurant&quot;, 
+                                  return_type = &quot;point&quot;,
+                                  bbox = bbox_1)
+
+dat_water &lt;- extract_osm_objects (key = &#39;water&#39;, 
+                                  value =&quot;waterway&quot;,
+                                  return_type = &quot;polygon&quot;,
+                                  bbox = bbox_1)
+
+dat_river &lt;- extract_osm_objects (key = &#39;water&#39;, 
+                                  value =&quot;river&quot;,
+                                  return_type = &quot;polygon&quot;,
+                                  bbox = bbox_1)
+
+st_write(dat_buildings, dsn = &quot;buildings.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_parks, dsn = &quot;parks.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_greenery, dsn = &quot;greenery.gpkg&quot;, append = FALSE,quiet = FALSE)
+st_write(dat_roads, dsn = &quot;roads.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_amenities, dsn = &quot;amenities.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_water, dsn = &quot;water.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_river, dsn = &quot;river.gpkg&quot;, append = FALSE, quiet = FALSE)
+
+buildings &lt;- st_read(&quot;./buildings.gpkg&quot;)
+parks &lt;- st_read(&quot;./parks.gpkg&quot;)
+greenery &lt;- st_read(&quot;./greenery.gpkg&quot;)
+roads &lt;- st_read(&quot;./roads.gpkg&quot;)
+amenities &lt;- st_read(&quot;./amenities.gpkg&quot;)
+water &lt;- st_read(&quot;./water.gpkg&quot;)
+river &lt;- st_read(&quot;./river.gpkg&quot;)
+
+restaurants &lt;- amenities %&gt;% drop_na(cuisine) %&gt;% 
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;,&quot;) %&gt;% 
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;;&quot;)
+restaurants$cuisine
+
+nrow(buildings)
+buildings$geom
+class(buildings$geom)
+
+roads &lt;- roads %&gt;% filter(!osm_id == 69610248)
+
+ggplot() +
+  geom_sf(data = buildings, colour = &quot;grey60&quot;) +    
+  geom_sf(data = roads, col = &quot;black&quot;) +           
+  geom_sf(data = parks, col = &quot;darkseagreen1&quot;) +    
+  geom_sf(data = greenery, col = &quot;darkseagreen&quot;) +
+  geom_sf(data = amenities, col = &quot;red&quot;) +
+  geom_sf(data = water, 
+          aes(fill = water),
+    colour = &quot;lightblue&quot;) +
+  geom_sf(data = restaurants %&gt;% drop_na(cuisine),
+    aes(fill = cuisine),
+    shape = 21,
+    size = 3) +
+  theme(legend.position = &quot;right&quot;) +
+  labs(title = &quot;Restaurants in Thousand Lights, Chennai&quot;) +
+  coord_sf(xlim = c(80.23571, 80.27571), ylim = c(13.03878, 13.07878), expand = FALSE)</code></pre>
 </div>
-</div>
-<div id="reflection" class="section level3">
-<h3><strong>REFLECTION</strong></h3>
-<p>This workshop has been a very new and enriching experience for me. Learning a new language and seeing the various outputs using different data sets was interesting. I did find some parts of the workshop a bit challenging but figuring out a way to come around those problems to get to the end result was satisfying.</p>
-<p>Personally, my favourite part of the studio was having to hear Arvind’s music playing in the background which definitely made for a good kick start in the morning. The studio was very well curated for one’s understanding. Realizing the various possibilities and outcomes by using just code was fascinating.</p>
-<p>Despite the challenges I came across in this studio, I did find this experience new and interesting so I would love to explore creative coding in the future and this workshop was a great way of instilling that curiosity in me.</p>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>This being my first genuine attempt at coding, it had went better than I expected it to. I still find it pretty overwhelming but learning it manually and in person definitely helped as it grasped my interest. The satisfaction of the code ending up working and getting to see the final product was worthy.</p>
+<p>I have learnt a handful of things during the workshop. I learnt how much work goes into just creating one simple graph that we would see on a newspaper or even creating a simple webpage. I also learnt the sheer amount of possible things you could make with code. Having one of the seniors who Arvind had taught talk about how coding had helped him was really insightful. Aman talked us through his internship at Reuters explaining the work he had done and how he done it. He also gave us some great tools which would help us with in the future. This talk opened my mind about how I would implement coding into my work in the future.</p>
+<p>The 2 weeks of workshop had many ups and downs as there were surely moments where I was completely exhausted from coding and I just wanted to do some artwork. As much as I am excited to be hopefully doing art again, I will surely miss the small coding environment we had. I will miss working with my fellow “coders”, overcoming obstacles together and helping each other out.</p>
+<p>Going in, I was excited to be in Arvind’s class as I used to talk to him about the music he plays in class almost every morning. My college-mates and seniors also mentioned how much of a great teacher/mentor he is. My experience with him was as fun and insightful as I thought it would be and I would not change a thing. I would say I am privileged to be part of the last batch of students Arvind would teach in Srishti.</p>
 </div>
 
          

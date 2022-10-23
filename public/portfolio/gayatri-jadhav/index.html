@@ -133,218 +133,44 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Devanshi Makhija</h1>
-         
-<script src="https://we-r-the-world.netlify.app/portfolio/gayatri-jadhav/index_files/header-attrs/header-attrs.js"></script>
-
-
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>Hello, I am Devanshi, below are some graphs I did using Rstudio.<br />
-</p>
+         <h1>GAYATRI JADHAV</h1>
+         <div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>Brief introduction of your chosen data set Describe the interesting columns and what they mean</p>
+<pre class="r"><code>my_data_1 &lt;- read_csv(&quot;.data/clothes.csv&quot;)
+glimpse(my_data_1)</code></pre>
+<p>This file contains manually-entered details about the most commonly prohibited clothing items and styles.”Manually entered” being one of the reasons why I chose this data, because Data is expensive😉.</p>
+<pre class="r"><code>ggplot(clothes_filtered) + geom_bar(aes(x = reveal_body, fill = market), position = &quot;stack&quot;) + ggtitle(&quot;Banned Items w.r.t Gender&quot;)</code></pre>
+<p><img src="Images/A1final!.png" alt="Banned Clothes Replicated Graph" />
+The reason I went with a stacked bar chart is because there are two categorical variables that I wanted to highlight. The first variable, ‘reveal body’ is shown along the entire length of the bar, and the second variable, ‘market’ is represented as stacks within each categorical bar.This graph states a very interesting analysis. When I observe the graph, most banned clothing items are typically the ones that are made for or marketed to the female audience, and ofcourse most dress codes are only made for females. These dress code rules must be changed and females need to be given an adequate amount of freedom to present themselves in the society.</p>
 </div>
-<div id="tmaps" class="section level2">
-<h2>tMAPS</h2>
-<p>We learnt how to create a map with code using ‘tmaps’.I created an interactive map of Khar, Mumbai and plotted buildings,roads, fast-food places, cafes and cemeteries.<br />
-</p>
-<div id="getting-the-coordinates" class="section level3">
-<h3>Getting the coordinates</h3>
-<pre class="r"><code>bbox_khar &lt;- getbb(&quot;Khar, Mumbai, India&quot;)
-
-bbox_khar</code></pre>
-<pre><code>##        min      max
-## x 72.81371 72.85371
-## y 19.05246 19.09246</code></pre>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
+<p>This is the Doraemon Dataset. It is a manually entered Dataset.We watched the first episode of Doreamon Season1. We noted the number of interactions between each character to find out an interesting observation.</p>
+<pre class="r"><code>my_data_2 &lt;- read_csv(&quot;.Data/doraemon.csv&quot;)
+glimpse(my_data_2)</code></pre>
+<p><img src="Images/A2Final.png" alt="Doraemon-Manually Entered Dataset" />
+This graph shows the interactions of the different characters. Nobita has interacted with the most number of people(6 interactions) whereas Suneo has interacted with the least number of people(1 interaction).Everytime I run this chunk, the form keeps changing due to the ‘fr’ layout.</p>
+<pre class="r"><code>ggraph(graph = doraemon, layout = &quot;fr&quot;) + geom_edge_link0(width = 1, color = &quot;red&quot;) + geom_node_point(shape = 19, size = 7, color = &quot;green3&quot;) + geom_node_label(aes(label = `character name`))</code></pre>
 </div>
-<div id="extracting-the-data" class="section level3">
-<h3>Extracting the Data</h3>
-<pre class="r"><code>dat_khar_B &lt;- extract_osm_objects(bbox_khar, &quot;building&quot;)
-
-dat_khar_H &lt;- extract_osm_objects(bbox_khar, &quot;highway&quot;)
-
-
-dat_khar_R &lt;- extract_osm_objects(bbox_khar, key = &quot;amenity&quot;, value =  &quot;fast_food&quot;, return_type = &quot;points&quot;)
-
-
-dat_khar_E &lt;- extract_osm_objects(bbox_khar, key = &quot;amenity&quot;, value = &quot;cafe&quot;, return_type = &quot;points&quot;)
-
-
-dat_khar_G &lt;- extract_osm_objects (bbox = bbox_khar, key = &quot;landuse&quot;, value = &quot;cemetery&quot;)</code></pre>
-<pre class="r"><code>  tmap_mode(&quot;plot&quot;)
-
-  tm_shape(dat_khar_B)+
-  tm_bubbles(col = &quot;lightsteelblue&quot;)+
-
-  tm_shape(dat_khar_H) +
-  tm_lines(col = &quot;darkblue&quot;, lwd = 1.5) + #roads
-  
-  tm_shape(dat_khar_R) +
-  tm_symbols(col = &quot;red3&quot;) + 
-  tm_text(&quot;name&quot;, auto.placement = TRUE, size = 1) +  #fast food
-  
-  tm_shape(dat_khar_E)+
-  tm_symbols(col = &quot;seagreen&quot;)+
-  tm_text(&quot;name&quot;, auto.placement = TRUE, size = 1)+ #cafe
-  
-  tm_shape(dat_khar_G)+
-  tm_markers( col = &quot;blue&quot;)+  #cemetery
-  tm_text(&quot;name&quot;, auto.placement = TRUE, size = 1)+ #cemetery
-  
-  # tm_compass(type = &quot;rose&quot;, position = c(&quot;right&quot;, &quot;top&quot;)) +
-  
-  tm_scale_bar(width = 4, position = c(&quot;left&quot;, &quot;bottom&quot;), text.size = 1) +
-  
-  tm_layout(title = &quot;Questionably Compelling Spots in Khar&quot;, title.size = 4, fontfamily = &quot;Century Gothic&quot;, bg.color = &quot;ivory3&quot;)</code></pre>
-<p><img src="plot-1-1.png" width="480" /></p>
-<pre class="r"><code>  tmap_style(&quot;watercolor&quot;)</code></pre>
-<ul>
-<li>light blue : buildings</li>
-<li>dark blue : roads</li>
-<li>red : fast-food places</li>
-<li>sea green : cafes</li>
-<li>markers : cemeteries</li>
-</ul>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p>Mapping Restaurants- This Dataset has all the restaurants in Pune and what they offer, I have filtered out the restaurants that offer the various cuisines in Kasba Peth, Pune.</p>
+<pre class="r"><code>my_data_3 &lt;- read_csv(.Data/maps.csv)
+glimpse(my_data_3)</code></pre>
+<p><img src="Images/A3Final.png" alt="Restaurants in Kasba Peth,Pune" />
+This graph is based ob OSM data. It shows the various Restaurants that have various cuisines. Each cuisine type has a different colour shown in the legend on the right. So next time you’re in Pune, you know where to go to eat based on your cravings!! I also made this graph interactive by using tmap_mode(“view”) command.</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = buildings, colour = &quot;orange&quot;) +  
+  geom_sf(data = roads, col = &quot;gray20&quot;) + 
+  geom_sf(data = restaurants %&gt;% drop_na(cuisine), aes(fill = cuisine), colour = &quot;black&quot;, shape = 21, size = 4) + theme(legend.position = &quot;right&quot;) + labs(title = &quot;Restaurants in Kasba Peth&quot;, caption = &quot;Based on osmdata&quot;)</code></pre>
+<p>### <strong>THANKYOU</strong> 🙏</p>
 </div>
-</div>
-<div id="the-one-with-plotting-friends-in-r" class="section level2">
-<h2>The One With Plotting ‘Friends’ In <strong>R</strong></h2>
-<p>I constructed my dataset based on the iconic TV show ‘Friends’.<br />
-I chose 3 random episodes across the seasons to map the number of interactions among the characters.<br />
-</p>
-<pre class="r"><code>friends_nodes &lt;-  read_csv(&quot;Friends-Nodesdatasettwo.csv&quot; )
-friends_edges &lt;-  read_csv( &quot;Friends-Edgesdatasettwo.csv&quot;)
-friends_nodes</code></pre>
-<pre><code>## # A tibble: 20 x 5
-##    names                  sex   condition     sign           id
-##    &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
-##  1 Rachel Green           F     employed      Libra           1
-##  2 Monica Geller          F     employed      Virgo           2
-##  3 Phoebe Buffay          F     self-emplyed  Aquarius        3
-##  4 Joey Tribbiani         M     self-employed Leo             4
-##  5 Chandler Bing          M     employed      Gemini          5
-##  6 Ross Geller            M     employed      Taurus          6
-##  7 Gunther                M     self-employed Scorpio         7
-##  8 Jack Geller            M     unemployed    Virgo           8
-##  9 Judy Geller            F     unemployed    Aquarius        9
-## 10 Janice Litman Goralnik F     unemployed    Sagittarius    10
-## 11 Carol                  F     unemployed    Cancer         11
-## 12 Susan                  F     employed      Virgo          12
-## 13 Professor              M     self-employed &lt;NA&gt;           13
-## 14 Client1                M     &lt;NA&gt;          &lt;NA&gt;           14
-## 15 Richard                M     self-employed Capricorn      15
-## 16 Girl                   F     &lt;NA&gt;          &lt;NA&gt;           16
-## 17 Donald                 M     &lt;NA&gt;          &lt;NA&gt;           17
-## 18 Michelle               F     &lt;NA&gt;          &lt;NA&gt;           18
-## 19 Classmate              F     &lt;NA&gt;          &lt;NA&gt;           19
-## 20 Duck                   M     &lt;NA&gt;          &lt;NA&gt;           20</code></pre>
-<pre class="r"><code>friends_edges</code></pre>
-<pre><code>## # A tibble: 30 x 4
-##    from           to             weight type    
-##    &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;   
-##  1 Joey Tribbiani Chandler Bing      10 friends 
-##  2 Ross Geller    Joey Tribbiani     13 friends 
-##  3 Ross Geller    Chandler Bing      11 friends 
-##  4 Rachel Green   Ross Geller        10 benefits
-##  5 Ross Geller    Phoebe Buffay       8 friends 
-##  6 Chandler Bing  Phoebe Buffay       7 friends 
-##  7 Monica Geller  Phoebe Buffay       8 friends 
-##  8 Monica Geller  Ross Geller         7 siblings
-##  9 Phoebe Buffay  Rachel Green        9 friends 
-## 10 Monica Geller  Rachel Green        5 friends 
-## # ... with 20 more rows</code></pre>
-<div id="creating-a-tbl_graph" class="section level3">
-<h3>Creating a ‘tbl_graph’</h3>
-<p>A ‘tbl_graph’ is needed to provide the attributes and brief description of the dataset./</p>
-<pre class="r"><code>friends &lt;- tbl_graph(nodes = friends_nodes, 
-                edges = friends_edges, 
-                directed = FALSE)
-friends</code></pre>
-<pre><code>## # A tbl_graph: 20 nodes and 30 edges
-## #
-## # An undirected simple graph with 5 components
-## #
-## # Node Data: 20 x 5 (active)
-##   names          sex   condition     sign        id
-##   &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;    &lt;dbl&gt;
-## 1 Rachel Green   F     employed      Libra        1
-## 2 Monica Geller  F     employed      Virgo        2
-## 3 Phoebe Buffay  F     self-emplyed  Aquarius     3
-## 4 Joey Tribbiani M     self-employed Leo          4
-## 5 Chandler Bing  M     employed      Gemini       5
-## 6 Ross Geller    M     employed      Taurus       6
-## # ... with 14 more rows
-## #
-## # Edge Data: 30 x 4
-##    from    to weight type   
-##   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;  
-## 1     4     5     10 friends
-## 2     4     6     13 friends
-## 3     5     6     11 friends
-## # ... with 27 more rows</code></pre>
-</div>
-</div>
-<div id="centrality-graph" class="section level2">
-<h2>Centrality Graph</h2>
-<pre class="r"><code>set_graph_style( family = &quot;Calibri&quot;, face = &quot;plain&quot;, size = 12, text_size = 13, text_colour = &quot;darkblue&quot;)
-
-friends %&gt;% 
-  activate(nodes) %&gt;% 
-  
-  # Who has the most connections?
-  mutate(degree = centrality_degree()) %&gt;% 
-  
-  activate(edges) %&gt;% 
-  # Who is the go-through person?
-  mutate(betweenness = centrality_edge_betweenness()) %&gt;%
-  
-  
-  # discrete colour legend
-  scale_color_gradient(guide = &quot;legend&quot;)</code></pre>
-<pre><code>## &lt;ScaleContinuous&gt;
-##  Range:  
-##  Limits:    0 --    1</code></pre>
-<pre class="r"><code># or even less typing
-  ggraph(friends,layout = &quot;nicely&quot;) +
-  geom_edge_link(aes(alpha = centrality_edge_betweenness())) +
-  geom_node_point(aes(colour = centrality_degree(), 
-                      size = centrality_degree())) + 
-  scale_color_gradient(guide = &quot;legend&quot;,
-                       low = &quot;orange&quot;,
-                       high = &quot;darkblue&quot;)+
-  geom_node_label(aes(label = names),repel = TRUE, max.overlaps = 30, size = 3)+
-  labs(title = &quot;The One With Comparing Everyone &quot;)</code></pre>
-<p><img src="unnamed-chunk-4-1.png" width="480" /></p>
-<p>The graph filters the interaction between the characters. The character having the highest ‘centrality degree’ and ‘centrality edge’ is responsible for being the one that links many characters together.</p>
-</div>
-<div id="diamonds-graph" class="section level2">
-<h2><em>Diamonds</em> Graph</h2>
-<p>I chose the ‘diamonds’, dataset to analyze the relationships among its various features.</p>
-<pre class="r"><code>glimpse(diamonds)</code></pre>
-<pre><code>## Rows: 53,940
-## Columns: 10
-## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.~
-## $ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver~
-## $ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,~
-## $ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, ~
-## $ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64~
-## $ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58~
-## $ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34~
-## $ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.~
-## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.~
-## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.~</code></pre>
-<pre class="r"><code>diamonds &lt;- diamonds %&gt;% drop_na()</code></pre>
-<pre class="r"><code>diamonds %&gt;% 
-  slice_sample(prop = 0.7) %&gt;% 
-  ggplot(.) +
-  geom_point(aes(x = x, y = price, color = color), alpha = 0.4) + scale_color_brewer(palette = &quot;RdYlBu&quot;) +
-ggtitle(&quot;A point geom with alpha, color aesthetics&quot;)</code></pre>
-<p><img src="unnamed-chunk-7-1.png" width="480" /></p>
-<pre class="r"><code>#alpha + color</code></pre>
-<p>We can see the co-relation between ‘x’, the length in mm and ‘price’. When the length is increased, the price too rises, the readings are filtered by another qualitative feature, ‘color’ which ranks the diamond color from D(best) to J(Worst).</p>
-</div>
-<div id="reflection" class="section level2">
-<h2>Reflection</h2>
-<p>This course reformed my outlook on coding, Arvind’s belief that intuition is more important than just memorizing the code, not only made coding less stressful but also fun to play around with. We were introduced to the idea that geometrical shapes can hold complex metaphors. I learnt some methods of unfolding all the components of a dataset and to try and observe the layers closely to know its significance. I learnt a lot about paying attention to the minutest detail, to explore freely and to learn by trial-and-error method. I feel that I can take foreword these concepts to further explore networks and numbers.</p>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>R is an open-source programming language that is widely used as a statistical software and data analysis tool, basically, it’s a <strong>sus</strong> language for <strong>sus</strong> people. Throughout this workshop, I got to analyse different kinds of datasets and make interesting discoveries and observations in a matter of just two hectic but fun weeks. I learnt that data is expensive, complicated and quite often biased. The most fun part was collecting data manually for a network graph, to survey people the traditional way is a fascinating experience.</p>
+<p>I remember panicking on the 3rd day as I wasn’t getting anything right, Arvind taught me that the only way to get better at this is through trial and error and to stick to it and continue to code. This was a nerve-wracking experience and loved and hated every bit of it! I feel extremely lucky to be a part of Arvind’s final Workshop. This was an adventure, no kidding!</p>
+<p>Jai Hind.</p>
 </div>
 
          

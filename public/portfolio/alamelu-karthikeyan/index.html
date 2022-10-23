@@ -133,105 +133,253 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Lakshya Pratap</h1>
-         
-<script src="https://we-r-the-world.netlify.app/portfolio/alamelu-karthikeyan/index_files/header-attrs/header-attrs.js"></script>
+         <h1>AL KARTHIKEYAN</h1>
+         <div id="graph-1-the-queens-favourite" class="section level2">
+<h2>GRAPH 1: THE QUEEN’S FAVOURITE</h2>
+<p>This graph is on the monopoly dataset, which, as the name suggests, has data on the popular board game Monopoly. The data here is for the American version of the game. The dataset has 11 columns, out of which six are varying versions of the kinds of rent paid in the game. The name, colour and tile of the property are qualitative elements while the rest are quantitative.</p>
+<pre class="r"><code>monopoly &lt;- read.csv(file = &quot;monopoly.csv&quot;)
+monopoly</code></pre>
+<pre><code>##                     name rent house_1 house_2 house_3 house_4 hotel deed_cost house_cost      color tile
+## 1   Mediterranean Avenue    2      10      30      90     160   250        60         50     purple    1
+## 2          Baltic Avenue    4      20      60     180     320   450        60         50     purple    3
+## 3        Oriental Avenue    6      30      90     270     400   550       100         50 light_blue    6
+## 4         Vermont Avenue    6      30      90     270     400   550       100         50 light_blue    8
+## 5     Connecticut Avenue    8      40     100     300     450   600       120         50 light_blue    9
+## 6      St. Charles Place   10      50     150     450     625   750       140        100       pink   11
+## 7          States Avenue   10      50     150     450     625   750       140        100       pink   13
+## 8        Virginia Avenue   12      60     180     500     700   900       160        100       pink   14
+## 9       Tennessee Avenue   14      70     200     550     750   950       180        100     orange   16
+## 10       St. James Place   14      70     200     550     750   950       180        100     orange   18
+## 11       New York Avenue   16      80     220     600     800  1000       200        100     orange   19
+## 12       Kentucky Avenue   18      90     250     700     875  1050       220        150        red   21
+## 13        Indiana Avenue   18      90     250     700     875  1050       220        150        red   23
+## 14       Illinois Avenue   20     100     300     750     925  1100       240        150        red   24
+## 15       Atlantic Avenue   22     110     330     800     975  1150       260        150     yellow   26
+## 16        Ventnor Avenue   22     110     330     800     975  1150       260        150     yellow   27
+## 17        Marvin Gardens   24     120     360     850    1025  1200       280        150     yellow   29
+## 18        Pacific Avenue   26     130     390     900    1100  1275       300        200      green   31
+## 19 North Carolina Avenue   26     130     390     900    1100  1275       300        200      green   32
+## 20   Pennsylvania Avenue   28     150     450    1000    1200  1400       320        200      green   34
+## 21            Park Place   35     175     500    1100    1300  1500       350        200       blue   37
+## 22             Boardwalk   50     200     600    1400    1700  2000       400        200       blue   39</code></pre>
+<p>This is a qualitative vs quantitative bar graph and shows the relationship between the colour of the property with the deed cost, aka the cost of the property. The property colour is plotted on the X axis while the deed cost is on the Y axis. The bars are coloured by the name of the property.</p>
+<pre class="r"><code>ggplot(monopoly, aes(x = color, y = deed_cost)) + geom_col(aes(fill=name)) + ggtitle(label = &quot;Color Vs Deed Cost&quot;, subtitle = &quot;Plotted as a Bar Graph&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-1-1.png" width="672" /></p>
+<p>I picked this graph as it struck the right balance between presenting information clearly while also being aesthetically pleasing. Plus, the sheer number of individual properties gives the graph a colourful look, which is always a good thing.</p>
+</div>
+<div id="graph-2-alices-favourite" class="section level2">
+<h2>GRAPH 2: ALICE’S FAVOURITE</h2>
+<p>For this group project, me and my teammates watched Season 1, Episode 6 of the show <a href="https://www.imdb.com/title/tt4955642/mediaindex">The Good Place</a>, called “What We Owe To Each Other”, and noted down each interaction. Within the interactions, we marked how many times person A spoke, then person B. It got much harder [and more interesting!] when more than two characters were involved in the scene [like any scenes where the Jason/Tahani/Chidi/Janet spa interactions were happening]. It was also interesting to note the frequency of the interactions of the main six characters not only within themselves, but with other characters, recurring or not.</p>
+<pre class="r"><code>tgp_nodes &lt;- read.csv(&quot;tgp_nodes.csv&quot;)
+tgp_edges &lt;- read.csv(&quot;tgp_edges.csv&quot;)
+tgp_nodes</code></pre>
+<pre><code>##   id     name gender hair_color
+## 1  1  eleanor female     blonde
+## 2  2    chidi   male      black
+## 3  3    jason   male      black
+## 4  4   tahani female      black
+## 5  5  michael   male      white
+## 6  6    janet     na      brown
+## 7  7  friend1 female      brown
+## 8  8  friend2 female      brown
+## 9  9 waitress female      black</code></pre>
+<pre class="r"><code>tgp_edges</code></pre>
+<pre><code>##        from       to interactions
+## 1   eleanor  michael           30
+## 2   eleanor    chidi           11
+## 3   eleanor  friend1            7
+## 4   eleanor  friend2            3
+## 5     chidi   tahani            7
+## 6     chidi    jason            8
+## 7     chidi    janet            3
+## 8     chidi  eleanor           11
+## 9     chidi waitress            1
+## 10  michael  eleanor           30
+## 11  michael    janet            5
+## 12   tahani    jason            4
+## 13   tahani    chidi            7
+## 14   tahani    janet            3
+## 15    jason   tahani            4
+## 16    jason    chidi            8
+## 17    janet    chidi            3
+## 18    janet   tahani            3
+## 19  friend1  eleanor            7
+## 20  friend2  eleanor            3
+## 21 waitress    chidi            1</code></pre>
+<pre class="r"><code>tgp &lt;- tbl_graph(nodes = tgp_nodes, 
+                 edges = tgp_edges,
+                 directed = FALSE)
+tgp</code></pre>
+<pre><code>## # A tbl_graph: 9 nodes and 21 edges
+## #
+## # An undirected multigraph with 1 component
+## #
+## # Node Data: 9 × 4 (active)
+##      id name    gender hair_color
+##   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     
+## 1     1 eleanor female blonde    
+## 2     2 chidi   male   black     
+## 3     3 jason   male   black     
+## 4     4 tahani  female black     
+## 5     5 michael male   white     
+## 6     6 janet   na     brown     
+## # … with 3 more rows
+## #
+## # Edge Data: 21 × 3
+##    from    to interactions
+##   &lt;int&gt; &lt;int&gt;        &lt;int&gt;
+## 1     1     5           30
+## 2     1     2           11
+## 3     1     7            7
+## # … with 18 more rows</code></pre>
+<p>This network graph is a linear graph where the nodes are arranged in a circular manner. The edges are plotted as straight lines. The data is plotted so that it represents the interactions [aka the edges] between the characters [aka the nodes], and the width of the edges shows the frequency of the interactions.</p>
+<pre class="r"><code>ggraph(tgp, layout = &quot;linear&quot;, circular = TRUE) + 
+  geom_edge_link(aes(width = interactions, color = &quot;coral&quot;), alpha = 0.5) + 
+  scale_edge_width(range = c(1, 3)) +
+  geom_node_point(size = 3,colour = &quot;deeppink4&quot;) + 
+  geom_node_text(aes(label = name), repel = TRUE, size = 3.5, max.overlaps = 20) +
+  labs(edge_width = &quot;line weight&quot;, edge_color = &quot;line colour&quot;) +
+  theme_graph() +
+  theme(legend.position = &quot;right&quot;, aspect.ratio = 0.75) +
+  labs(title = &quot;Circular Graph Plotted Using Straight Lines&quot;,
+       subtitle = &quot;Using Character Names for Nodes&quot;)</code></pre>
+<pre><code>## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database
 
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database</code></pre>
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
 
-<div id="graph-1-bar-graph-from-lab-03-midwest-database" class="section level2">
-<h2>Graph 1: Bar Graph from Lab 03, Midwest Database</h2>
-<p>This graph shows that which state in the Midwest consists of what kind of categories.
-<img src="unnamed-chunk-1-1.png" width="480" /></p>
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database</code></pre>
+<pre><code>## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database
+
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database</code></pre>
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-2-1.png" width="672" /></p>
+<p>This graph looks very organised, and also makes it very clear that Eleanor and Michael have the most one-on-one interactions in this episode.</p>
 </div>
-<div id="graph-2-map-of-my-city-jodhpur-its-famous-places-restaurants" class="section level2">
-<h2>Graph 2: Map Of My City Jodhpur &amp; Its famous Places/ Restaurants</h2>
-<div id="map-from-lab-06" class="section level4">
-<h4>Map from Lab 06</h4>
-<pre><code>##     min   max
-## x 73.02 73.15
-## y 26.25 26.35</code></pre>
-<p><img src="unnamed-chunk-5-1.png" width="480" /></p>
+<div id="graph-3-the-hatters-favourite" class="section level2">
+<h2>GRAPH 3: THE HATTER’S FAVOURITE</h2>
+<p>The data being plotted here is the list of restaurants in Adyar, Chennai, which is the city I grew up in. The dataset is quite lengthy and has many subsections that were of interest, but we worked on plotting the map based on the cuisine offered by each restaurant.</p>
+<pre class="r"><code>bbox &lt;- osmdata::getbb(&quot;Adyar, Chennai, India&quot;)
+bbox</code></pre>
+<pre><code>##        min      max
+## x 80.23778 80.27778
+## y 12.98645 13.02645</code></pre>
+<pre class="r"><code>buildings &lt;- st_read(&quot;./buildings.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `buildings&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\buildings.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 8735 features and 80 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 80.237 ymin: 12.98617 xmax: 80.27802 ymax: 13.02679
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>parks &lt;- st_read(&quot;./parks.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `parks&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\parks.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 36 features and 15 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 80.23649 ymin: 12.98878 xmax: 80.2735 ymax: 13.02736
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>greenery &lt;- st_read(&quot;./greenery.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `greenery&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\greenery.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 6 features and 2 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 80.23714 ymin: 13.00533 xmax: 80.26304 ymax: 13.02118
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>trees &lt;- st_read(&quot;./trees.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `trees&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\trees.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 10 features and 2 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 80.2457 ymin: 13.00832 xmax: 80.24876 ymax: 13.01969
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>roads &lt;- st_read(&quot;./roads.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `roads&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\roads.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 663 features and 23 fields
+## Geometry type: LINESTRING
+## Dimension:     XY
+## Bounding box:  xmin: 80.23345 ymin: 12.98573 xmax: 80.27808 ymax: 13.02868
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>restaurants &lt;- st_read(&quot;./restaurants.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `restaurants&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\restaurants.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 84 features and 32 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 80.23862 ymin: 12.98703 xmax: 80.2741 ymax: 13.02588
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>osmplotr::osm_structures()</code></pre>
+<pre><code>##     structure      key value suffix      cols
+## 1    building building           BU #646464FF
+## 2     amenity  amenity            A #787878FF
+## 3    waterway waterway            W #646478FF
+## 4       grass  landuse grass      G #64A064FF
+## 5     natural  natural            N #647864FF
+## 6        park  leisure  park      P #647864FF
+## 7     highway  highway            H #000000FF
+## 8    boundary boundary           BO #C8C8C8FF
+## 9        tree  natural  tree      T #64A064FF
+## 10 background                          gray20</code></pre>
+<pre class="r"><code>restaurants$cuisine %&gt;% unique()</code></pre>
+<pre><code>##  [1] &quot;pizza&quot;           &quot;regional&quot;        &quot;japanese&quot;        NA                &quot;indian&quot;          &quot;chinese&quot;         &quot;ice_cream&quot;      
+##  [8] &quot;regional;indian&quot; &quot;hungarian&quot;       &quot;italian&quot;</code></pre>
+<pre class="r"><code>restaurants &lt;- restaurants %&gt;% 
+  drop_na(cuisine) %&gt;%
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;;&quot;) %&gt;% 
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;,&quot;)</code></pre>
+<pre><code>## Warning: Expected 3 pieces. Missing pieces filled with `NA` in 13 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].
+## Expected 3 pieces. Missing pieces filled with `NA` in 13 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].</code></pre>
+<pre class="r"><code>restaurants$cuisine</code></pre>
+<pre><code>##  [1] &quot;pizza&quot;     &quot;regional&quot;  &quot;japanese&quot;  &quot;indian&quot;    &quot;indian&quot;    &quot;chinese&quot;   &quot;regional&quot;  &quot;ice_cream&quot; &quot;regional&quot;  &quot;indian&quot;   
+## [11] &quot;hungarian&quot; &quot;italian&quot;   &quot;italian&quot;</code></pre>
+<p>The map here shows the buildings, roads, trees and greenery present in Adyar, on top of which you can see coloured points that represent the cuisines of the restaurants present there. There are eight types of cuisines available in this area, and you can see these scattered across the map.</p>
+<p>I quite like this graph, but mostly because it invokes a vague sense of nostalgia [even if I’m terrible at geography and wouldn’t be able to guess which place is which on the map].</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = buildings, colour = &quot;gray15&quot;) +
+  geom_sf(data = roads, colour = &quot;gray50&quot;) +
+  geom_sf(data = parks, fill = &quot;darkolivegreen&quot;) +
+  geom_sf(data = trees, fill = &quot;darkolivegreen&quot;) +
+  geom_sf(data = restaurants %&gt;% drop_na(cuisine), aes(fill = cuisine), colour = &quot;black&quot;, shape = 21, size = 3) +
+  theme(legend.position = &quot;right&quot;) +
+  labs(title = &quot;Culinary Bounty Aplenty in Adyar!&quot;,
+       caption = &quot;miss the times when ice cream used to be\nmy cuisine of choice for breakfast,\n lunch and dinner&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-3-1.png" width="672" /></p>
 </div>
-</div>
-<div id="graph-3-the-graph-from-my-favourite-tv-show-narcos" class="section level2">
-<h2>Graph 3: The Graph from my favourite TV Show: Narcos</h2>
-<div id="graph-from-the-learnings-of-lab-07" class="section level3">
-<h3>Graph from the learnings of Lab 07</h3>
-<pre><code>## # A tibble: 20 x 6
-##    name                         sex   nationality  race  birthyear season
-##    &lt;chr&gt;                        &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Pablo Escobar                M     Colombian    White      1949      2
-##  2 Javier Pena                  M     American     White      1948      3
-##  3 Steve Murphy                 M     American     White      1957      2
-##  4 Gustavo Gaveria              M     Colombian    White      1946      1
-##  5 La Quica                     M     Colombian    Black      1965      2
-##  6 Tata Escobar                 F     Colombian    White      1961      2
-##  7 Valeria Velez                F     Colombian    White      1949      2
-##  8 Luis Fernando Duque          M     Colombian    White      1952      2
-##  9 Gilberto Rodriguez           M     Colombian    White      1939      3
-## 10 Miguel Rodriguez             M     Colombian    White      1943      3
-## 11 Hermilda Gaveria             F     Colombian    White      1917      1
-## 12 Fabio Ochoa                  M     Colombian    White      1957      1
-## 13 Jorge Luis Ochoa             M     Colombian    White      1950      1
-## 14 Carlos Lehder                M     German       White      1949      1
-## 15 El Navegante                 M     Colombian    White      1946      3
-## 16 Cesar Gaveria                M     Colombian    White      1947      3
-## 17 José Gonzalo Rodríguez Gacha M     Puerto Rican Black      1947      1
-## 18 Hugo Martinez                M     Colombian    White      1941      2
-## 19 El Lion                      M     American     White      1969      1
-## 20 Diana Turbay                 F     Colombian    White      1950      2</code></pre>
-<pre><code>## # A tibble: 20 x 3
-##    from                         to                  type       
-##    &lt;chr&gt;                        &lt;chr&gt;               &lt;chr&gt;      
-##  1 Pablo Escobar                Tata Escobar        Family     
-##  2 Javier Pena                  Steve Murphy        Partners   
-##  3 Steve Murphy                 Pablo Escobar       Enemies    
-##  4 Gustavo Gaveria              El Lion             Partners   
-##  5 La Quica                     El Lion             Partners   
-##  6 Tata Escobar                 Pablo Escobar       Family     
-##  7 Valeria Velez                Luis Fernando Duque Associates 
-##  8 Luis Fernando Duque          Pablo Escobar       Associates 
-##  9 Gilberto Rodriguez           Miguel Rodriguez    Partners   
-## 10 Miguel Rodriguez             Gilberto Rodriguez  Partners   
-## 11 Hermilda Gaveria             Gustavo Gaveria     Family     
-## 12 Fabio Ochoa                  Jorge Luis Ochoa    Partners   
-## 13 Jorge Luis Ochoa             Fabio Ochoa         Partners   
-## 14 Carlos Lehder                Pablo Escobar       Partners   
-## 15 El Navegante                 Fabio Ochoa         Partners   
-## 16 Cesar Gaveria                Hugo Martinez       Service    
-## 17 José Gonzalo Rodríguez Gacha Pablo Escobar       Assiociates
-## 18 Hugo Martinez                Cesar Gaveria       Service    
-## 19 El Lion                      Gustavo Gaveria     Partners   
-## 20 Diana Turbay                 Cesar Gaveria       Friends</code></pre>
-<pre><code>## # A tbl_graph: 20 nodes and 20 edges
-## #
-## # An undirected multigraph with 5 components
-## #
-## # Node Data: 20 x 6 (active)
-##   name            sex   nationality race  birthyear season
-##   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Pablo Escobar   M     Colombian   White      1949      2
-## 2 Javier Pena     M     American    White      1948      3
-## 3 Steve Murphy    M     American    White      1957      2
-## 4 Gustavo Gaveria M     Colombian   White      1946      1
-## 5 La Quica        M     Colombian   Black      1965      2
-## 6 Tata Escobar    F     Colombian   White      1961      2
-## # ... with 14 more rows
-## #
-## # Edge Data: 20 x 3
-##    from    to type    
-##   &lt;int&gt; &lt;int&gt; &lt;chr&gt;   
-## 1     1     6 Family  
-## 2     2     3 Partners
-## 3     1     3 Enemies 
-## # ... with 17 more rows</code></pre>
-<p><img src="unnamed-chunk-8-1.png" width="480" /></p>
-</div>
-<div id="graph-2-from-the-same-tv-show." class="section level3">
-<h3>Graph 2 from the same TV show.</h3>
-<p>Showing the relationship between the characters</p>
-<p><img src="unnamed-chunk-9-1.png" width="480" /></p>
-</div>
+<div id="through-the-looking-glass" class="section level2">
+<h2>THROUGH THE LOOKING GLASS</h2>
+<p>When I first entered the classroom and was immediately told that this course revolved more around engineering rather than design, I knew instantly that I was going to have to buckle in for an insane ride. Some interesting skills I picked up in these two weeks are:</p>
+<ul>
+<li>coding in R! That much should be a given.</li>
+<li>being on time! I found myself getting ready earlier and earlier as the days progressed, and quite enjoyed being some vague imitation of a “morning person”.</li>
+<li>bleeding for data! Who would have thought that collecting and recording information would drain your life out?</li>
+<li>lugging my incredibly heavy laptop back and forth daily! I never bought my laptop to college unless specified beforehand, so this workshop was a nice little workout for my back.</li>
+<li>drinking an absurd amount of energy drinks! In Arvind’s words, I truly have become fond of that red liquid.</li>
+<li>losing whatever semblance of a sleep schedule I was maintaining until now! I am typing this at 12:48 AM. Enough said.</li>
+</ul>
+<p>While the class was honestly one massive crunch of work [spruced up with my 2010s Kollywood songs playlist], I’m also incredibly proud of the things I’ve made. Coding is something that’s deeply out of my comfort zone, but learning to do it regardless was a super cool feeling. Plus, the euphoria you get when the code finally gives in and <strong><em>works</em></strong> after 37 edits is truly unmatched [by all but a good night’s rest, but I’m a college student stereotype and therefore don’t know what that means].</p>
+<p>I feel grateful to have been a part of Arvind’s class for my workshop, for I got to listen to his Dad Jokes that are of varying degrees of quality + stare at my screen all day and not get told off about screentime by the supervising adult. I’m excited to find new ways to flex my shiny new R skills in future work!!!</p>
 </div>
 
          

@@ -1,97 +1,250 @@
 ---
-title: Misha Sachdeva
-author: Misha Sachdeva
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Mariya Vahanvaty"
+author: "By Mariya Vahanvaty"
+date: "30/07/2021"
+output: html_document
 image: https://www.alice-in-wonderland.net/wp-content/uploads/7.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Misha's Journey using graphs, Mapping and Networks.
 ---
+
+Hi! I am Mariya Vahanvaty. I am going to show the different "visualizations" that I made throughout this course
+
+<!--more-->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(rnaturalearth)
+library(rnaturalearthdata)
 library(tidyverse)
-library(palmerpenguins)
+library(tmap)
 library(osmplotr)
-library(prettymapr)
+library(leaflet)
+library(threejs)
 library(sf)
+library(knitr)
+
 ```
 
 ## Introduction
 
-Hi! My name is Misha Sachdeva and I am a student at SMI. I have worked on the following the graphs using a common dataset of the "diamonds" since the data really surprised me and I wanted to explore more works on this.
+Hello, my name is Mariya Vahanvaty. I'm a first year and my major is digital media arts. I've never been exposed to coding until this workshop and I think it's an understatement to say it was challenging for me. Although, due to it being an unexplored area, it was very interesting and I learnt something new everyday during this workshop. 
+
+The main aim of this workshop was to learn about data, how to read it, how to organize it, how to visualize it and all using code. The program we used to code is called R studio. Using R studio, we explored various data sets and learnt how to manipulate them in order to end up with graphical representations of the same.
 
 ## Graph 1
 
-I have chosen the dataset of diamonds. The columns of carat and clarity seemed really interesting to me.
+In this task, I explored the use of soya beans in countries around the world. This data set allowed me to explore the quantity of soybeans and the usage over the years. The three main usages highlighted were Food (human consumption), feed (animal consumption) and Processings (fuel, etc). This data set was derived from an olnine website which displayed the data sets for soya bean consumption all over the world.This data was then altered and filtered to cover only France and its soya bean consumption.
 
-```{r read-1}
-glimpse(diamonds)
-```
 
-The following graph represents the ratio of density and clarity of the diamonds in relation to the color of those diamonds.
 
-```{r plot-1}
+```{r read-1_, echo=TRUE, eval=FALSE}
 
-ggplot(diamonds) + 
-    geom_density(aes(x = clarity,
-                 color = color, 
-                 fill = color), 
-                 alpha = 0.2)
+soyabean <- read.csv(file = "data/soybeandata.csv", col.names = c("Country", "Code", "Year", "Food", "Feed", "Processings"), skip = 1)
+
 ```
 
 
 
-I especially really liked the alpha feature in the graph.
+In this graph, I will be plotting three different lines. Line 1 shows the human consumption of soya beans, line 2 shows the consumption of soya beans by animals and line 3 display soya beans sued for fuel and processing. In this graph, the x-axis displays the years which show us the change in consumption over time and the y-axis displays the quantity of soya beans in tonnes.  
+
+![](images/soyabean_graph.png)
+
+
+
+```{r plot-1, echo=TRUE, eval=FALSE}
+names(soyabean) # Step 1
+head(soyabean) # Step 2
+tail(soyabean) # Step 3
+dim(soyabean) # Step 4
+
+soyabean %>% pivot_longer(cols = c(Food, Feed, Processings), names_to = "soya_type", values_to = "Quantity") # Step 5
+
+soyabean %>% pivot_longer(cols = c(Food, Feed, Processings), names_to = "soya_type", values_to = "Quantity") %>% filter(Country == "France") # Step 6
+
+soyabean %>% pivot_longer(cols = c(Food, Feed, Processings), names_to = "soya_type", values_to = "Quantity") %>% filter(Country == "France") %>% ggplot(data = ., aes(x = Year, y = Quantity, colour = soya_type)) + geom_line() + geom_point() # Step 7
+
+```
+
 
 ## Graph 2
 
-The data set chosen is diamonds.
 
-```{r read-2}
+In this task, we were told to watch a tv show of our choice and record the interactions between different characters during this episode. The tv show we chose was the american sitcom, 'The Office'. During this episode, we recorded nodes and edges data where we collected information about the character such as name, occupation, etc. And in the edges, we collected data about the interaction that took place, such as to and from, etc. 
 
-glimpse(diamonds)
+
+
+```{r read-2, echo=TRUE, eval=FALSE}
+
+office_nodes <- read_delim("data/Office Nodes.csv",delim = ",")
+office_edges <- read_delim("data/Office Edges.csv", delim = ",")
+
+office_edges
+office_nodes 
+
+glimpse(office_edges)
+glimpse(office_nodes)
+
 ```
 
-The graph below represents teh ratio of the price and the carat of the diamonds in relation to the color.
 
-```{r plot-2}
 
-ggplot(diamonds) + geom_point(aes(x = price , y = carat , color = color))  # It can be observed that the higher the carat value if of the diamond, the higher is its price.This response was expected. The specific colors of the diamonds also affect the price and the carat value of the diamonds.This was new information for me and i did not know how important color was with diamonds.
+The graph we plotted displayed the nodes and edges of this data set. This graph is also known as a network graph as it displays the networks created amongst things/people or this case, the characters in the office. As it can be seen, characters are labelled with their names and edges link them together to represent their interactions that took place in that episode. These nodes have been further categorised by departments of the office. This is evident because of the colouring of the nodes as characters from different departments are seen interacting with each other. 
+
+
+
+![](images/theoffice.png)
+
+
+
+```{r plot-2, echo=TRUE, eval=FALSE}
+
+office_graph <- tbl_graph (nodes = office_nodes, edges = office_edges, directed = FALSE)
+office_graph #1
+
+of_occupation %>% 
+  ggraph(layout = "graphopt") + 
+  geom_edge_link() + 
+  geom_node_point(aes(color = occupation), 
+                  size = 4) +
+    geom_node_text(aes(label = name),
+                   repel = TRUE, 
+                   size = 4 
+                   nudge_x = 3, nudge_y = 3) +
+  scale_colour_brewer(palette = "Accent") #2
 
 ```
+
 
 ## Graph 3
 
-The data set chosen is diamonds.
 
-```{r read-3}
+During our A3, we learnt about mapping. We learnt how to create maps to represent our data. In this task, the data set we used was coordinates of our hometowns. We researched the coordinates using google maps and then read it into R which we then used to create our maps.
 
-glimpse(diamonds)
+
+
+```{r read-3, echo=TRUE, eval=FALSE}
+bbox_1 <- osmplotr::get_bbox(latlon = c(72.811431, 18.991465, 72.841547, 18.947786))
+bbox_1
+
+glimpse(bbox_1)
 ```
 
-The below graph represents the length and the width of the diamonds in relation of the clarity and color of the diamonds.
 
-```{r plot-3}
-ggplot(diamonds) + geom_point(aes(x = x,
-                                  y = y,
-                                  ))+ facet_grid(clarity~color)
 
+In this graph, we used to coordinates of our hometowns to recreate a map of the city. We then used this map to highlight restaurants, buildings, roads, trees, water bodies and other such features of a city on the map. After this step, we categorised the restaurants by assigning colours to multiple cuisines. This can be seen as the different coloured points showcase restaurants of different cuisines. The various cusines are shown in the key below. 
+
+
+
+![](images/Mariya_map.png)
+
+
+
+```{r plot-3, echo=TRUE, eval=FALSE}
+
+bbox_1 #1
+
+dat_buildings <-extract_osm_objects (key = "building", 
+                                     bbox = bbox_1) #1
+
+dat_roads <- extract_osm_objects (key = 'highway',
+                                     bbox = bbox_1) #2
+
+dat_parks <- extract_osm_objects (key = 'park', 
+                                  bbox = bbox_1) #3
+
+dat_greenery <- extract_osm_objects (key = 'landuse', 
+                                  value = 'grass', 
+                                  bbox = bbox_1) #4
+
+dat_trees <- extract_osm_objects (key = 'natural', 
+                                  value = 'tree', 
+                                  bbox = bbox_1) #5
+
+dat_amenity <- extract_osm_objects (key = 'amenity', 
+                                  value = "restaurant",
+                                  return_type = "point",
+                                  bbox = bbox_1) #6
+                                  
+                                  st_write(dat_buildings, 
+         dsn = "buildings.gpkg", 
+         append = FALSE, 
+         quiet = FALSE)
+
+st_write(dat_parks, dsn = "parks.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_greenery, dsn = "greenery.gpkg", append = FALSE,quiet = FALSE)
+st_write(dat_trees, dsn = "trees.gpkg", append = FALSE,quiet = FALSE)
+st_write(dat_roads, dsn = "roads.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_amenity, dsn = "amenity.gpkg", append = FALSE, quiet = FALSE) #7
+
+buildings <- st_read("./buildings.gpkg")
+parks <- st_read("./parks.gpkg")
+greenery <- st_read("./greenery.gpkg")
+trees <- st_read("./trees.gpkg")
+roads <- st_read("./roads.gpkg")
+amenity <- st_read("./amenity.gpkg") #8
+
+ggplot() +
+  geom_sf(data = buildings, colour = "grey") +    
+  geom_sf(data = roads, col = "gray20") +           
+  geom_sf(data = parks, col = "darkseagreen1") +  
+  geom_sf(data = greenery, col = "darkseagreen") +
+  geom_sf(data = trees, col = "green") +
+  geom_sf(data = amenity, col = "pink") #9
+  
+  tm_shape(buildings) +
+  tm_fill(col = "mediumblue") +
+  tm_shape(roads) +
+  tm_lines(col = "gold") +
+  tm_shape(greenery) +
+  tm_polygons(col = "limegreen") +
+  tm_shape(parks) +
+  tm_polygons(col = "limegreen") +
+  tm_shape(trees) +
+  tm_dots(col = "green") +
+  tm_shape(amenity) +
+  tm_dots(col = "red") #10
+  
+restaurants <- st_read("./amenity.gpkg") #11
+
+amenity %>% nrow() #12
+
+names(amenity) #13
+
+amenity$cuisine %>% unique() #14
+
+amenity <- amenity %>% 
+  drop_na(cuisine) %>%
+
+  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ";") %>% 
+  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ",")
+
+amenity$cuisine #15
+
+ggplot() +
+  geom_sf(data = buildings, colour = "burlywood1") +
+  geom_sf(data = roads, colour = "gray20") +
+  geom_sf(
+    data = amenity %>% drop_na(cuisine),
+    aes(fill = cuisine),
+    colour = "black",
+    shape = 21,
+    size = 3
+  ) +
+  theme(legend.position = "right") +
+  labs(title = "Restaurants in Mumbai") #16
+  
 ```
+
+
 
 ## My Course Reflection
 
-> This course in the r language really allowed me to explore a new medium which I did not experiment with before. The whole workshop was a little hard for me to understand and it took me time to grasp around the concept of this language. Most of my doubts were always cleared by Arvind and he made it smoother for me to understand with his support and non judgemental attitute towards even the silliest of the questions. 
 
-> In all, even though the syllabus was a little hard for me, I really enjoyed coding with this language and I will probably continue to work slowly with this language and take it forward with me.
+This course was definitely a challenging one for as I've never been exposed to coding before. Learning and understanding how to write code from scratch seemed very daunting at the start, although as the course progressed, it seemed more logical than deemed. It was easier to understand how language and code collide to create your final outcome. This course also taught me about being patient as getting your code right could take up to a few hours but if you pay attention to it, it is definitely fixable.
+
+I think this course allowed me to understand how vast coding is and the many possible things that could be simply done using code. Along with learning code, this course introduced me to R studio and the world of data and graphs. 
+
+My main challenge faced during this course was not being able to comprehend new "code" very quickly. It definitely took me longer in comparison to the rest of my class. Although, this was mainly a set back on my time and not necessarily on my learning as I was able to understand the code after sometime of breaking my head over it. 
+
+I think this course taught me many things and although I was not the most optimistic at the start, I've grown to appreciate everything I've learnt about code. It is still a daunting subject for me but it will not limit me from attempting to learn more. 

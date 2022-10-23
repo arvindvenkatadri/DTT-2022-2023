@@ -1,219 +1,201 @@
 ---
-title: Ruhi Raisoni
-author: Ruhi Raisoni
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Rosanne Maria"
+author: "Rosanne Maria"
+date: "30/07/2021"
+output: html_document
 image: https://www.alice-in-wonderland.net/wp-content/uploads/2book41.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: This is my struggled attempt at R.
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
 library(tidyverse)
-library(palmerpenguins)
-library(osmplotr)
-library(prettymapr)
-library(sf)
-library(osmdata)
-library(extrafont)
-# Run this one time
-#extrafont::font_import()
-loadfonts()
-# For General Data Manipulation
-# Network Analysis Library (Handle data and Viz)
-library(igraph)
-library(netrankr)
-
-# For Network "Manipulation"
 library(tidygraph)
-
-# For Network Visualization
 library(ggraph)
-library(graphlayouts)
-
-# For "Network" Datasets
+library(igraph)
 library(igraphdata)
+library(graphlayouts)
+library(osmplotr)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(leaflet)
+library(threejs)
+library(sf)
 
-library(downloadthis)
-library(visNetwork)
 ```
+
+
+
+Hello!! My name is Rosanne Maria. A 1st year student of Srishti Manipal Institute of Art, Design and Technology. 
+<!--more-->
+
 
 ## Introduction
+Hello!! My name is Rosanne Maria. A 1st year student of Srishti Manipal Institute of Art, Design and Technology.
+I've always loved to draw, paint and create, but coding is not something i've taken time and learnt, Because of which the last two weeks have been an intersesting learning journey.
+In this portfolio I have displayed few of my best works from my A1, A2 and A3 projects. 
 
-> Hi, I'm Ruhi Raisoni. Below are some graphs whose code I learnt in R studio with the help and guidance of our facilitator Mr. Arvind Venkatadri.
+## **Graph 1 - MONOPOLY**
 
-&nbsp;
+![](Images/SearchThumbnail-750x422.jpg)
 
+>For this graph I worked with a Monopoly dataset. The dataset displayed the places, their tile color, cost and revenue. In this graph I compared each places's revenue that has to be paid by the players when there is a single house and when there is two.    
 
-## Graph 1- Plotting a line graph to show the amount of time spent awake by animals of different diets:  
-```{r G3}
-ggplot(msleep) + 
-    geom_density(aes(x = awake, 
-                 color = vore, 
-                 fill = vore), 
-                 alpha = 0.3) +
-  labs(title = "Points plotted with Alpha")
-```
- 
-I have used an updated and expanded version of the mammals sleep dataset. Updated sleep times and weights were taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.
-About the dataset:
-```{r mscol}
-head(msleep)
-```
-
-**The above graph shows the amount of hours spent awake by animals of different diets like carnivore, herbivore and omnivore.The geometric aesthetic used in the graph is alpha. This aesthetic makes the graph translucent showing the plotted lines hidden as well.**
-&nbsp;
-
-
-## Graph 2- To find longitude and latitude for Pune:  
-``` {r}
-getbb("Pune Maharashtra")
-```
-A positive latitude i.e. a positive y value indicates that Pune is above the equator.
-
-### Exporting roads from the coordinate system:  
-```{r 1.PNQ}
-streets <- getbb("Pune Maharashtra")%>%
-  opq()%>%
-  add_osm_feature(key = "highway", 
-                  value = c("motorway", "primary", 
-                            "secondary", "tertiary")) %>%
-  osmdata_sf()
-streets
-```
-
-### Now we get the streets and waterways from the database:  
-```{r map-for-Pune}
-small_streets <- getbb("Pune Maharashtra")%>%
-  opq()%>%
-  add_osm_feature(key = "highway", value = c("residential", "living_street",
-                            "unclassified",
-                            "service", "footway")) %>%
-  osmdata_sf()
-
-river <- getbb("Pune Maharashtra")%>%
-  opq()%>%
-  add_osm_feature(key = "waterway", value = "river") %>%
-  osmdata_sf()
-```
-
-### Let's create our first streetmap:  
-```{r strtmap}
-#group1
-ggplot() +
-  geom_sf(data = small_streets$osm_lines,
-          inherit.aes = FALSE,
-          color = "#7fc0ff",
-          size = .4,
-          alpha = .8) +
-
-#group2
- geom_sf(data = small_streets$osm_lines,
-          inherit.aes = FALSE,
-         color = "#ffbe7f",
-          size = .4,
-          alpha = .6) +
-  geom_sf(data = river$osm_lines,
-          inherit.aes = FALSE,
-          color = "#ffbe7f",
-          size = .2,
-          alpha = .5) +
- coord_sf(xlim = c(73.85, 74.00), #Didn't used original values to get a more spaced out map. This is a slightly zoomed in map of Pune.
-           ylim = c(18.50, 18.62), #Use getbb("Pune Maharashtra") to find original values.
-           expand = FALSE) + 
-  labs(title= "My first Street Map", subtitle = "Highways and waterways") +
-   theme_void() + #to hide the x and y axis
-theme(plot.background = element_rect(fill = "#282828"))
+```{r eval=FALSE}
+monopoly<- read_csv("Data/monopoly (Part A).csv")
+glimpse(monopoly)
 
 ```
 
-I have used Imports OpenStreetMap (OSM) data into R as either 'sf' or 'sp' objects. OSM data are extracted from the overpass API and processed with very fast C++ routines for return to R. The package enables simple overpass queries to be constructed without the user necessarily understanding the syntax of the overpass query language, while retaining the ability to handle arbitrarily complex queries. Functions are also provided to enable recursive searching between different kinds of OSM data (for example, to find all lines which intersect a given point).
+>For this graph I decided to show it on a point graph, as it would be easy to understand and compare. As there are multiple places, they have been divided and compared based on their tile color.
 
-**The above map shows  highways and waterways in the city of Pune, Maharashtra.**
-&nbsp;
-
-
-## Graph 3- Reading the data:  
-```{r 1.Read-Money-Heist-data}
-mh_nodes <-read_csv("./Data/moneyheist-nodes.csv")
-mh_edges <- read_csv("./Data/moneyheist-edges.csv")
-mh_nodes
-mh_edges
+```{r eval=FALSE}
+my_colors <- c("blue", "green", "lightblue"," orange",  "pink", "purple", "red", "yellow")
+ggplot(monopoly, aes(x = house_1, y = house_2, color = color)) + geom_point() + geom_point(aes( x = house_1, y = house_1)) + scale_color_manual(values = my_colors)
 ```
 
-### About the dataset:  
-```{r about}
-head(mh_nodes)#The first six rows of the nodes dataset
-head(mh_edges)#The first six rows of the edges dataset
-dim(mh_nodes)#Dimensions of the nodes dataset
-dim(mh_edges)#Dimensions of the edges dataset
+>In the graph, the bottom line represents the revenue for one house on a plot of land. The top line represents the increase in the revenue when there are 2 houses. It can be observed that the revenue has incresed drastically. The highest increase in revenue is of the places with blue tile.
+
+>![](Images/Monopoly House rent.png)
+
+
+
+## **Graph 2 - Fleabag (Group activity)**
+
+![](Images/p13139614_b_h8_ac.jpg)
+
+>Fleabag is a popular comedy-drama series known for its emotional performances and dry humor. We specifically focused on the first episode of the show's second season - where there is a family dinner and the characters' interactions are at its highest.
+
+```{r eval=FALSE}
+fleabag_edges <- read_csv("Data/fleabag_edge - Sheet1.....csv")
+fleabag_nodes <- read_csv("Data/fleabag_nodes - Sheet1.csv")
+glimpse(fleabag_edges)
+glimpse(fleabag_nodes)
+
 ```
 
-### Creating a network object using tidygraph:  
-```{r, echo=FALSE}
-mh <- tbl_graph(nodes = mh_nodes, 
-                edges = mh_edges, 
+>This graph depicts the relationship between the characters and how close they were. We chose to represent this by using the color of the nodes and width of the edge links. Larger width corresponds to more intense interactions during the span of the episode - in either a good way or bad.
+For representing the data I used a circular network graph.
+
+```{r eval=FALSE}
+
+fb <- tbl_graph(edges = fleabag_edges,
+                nodes = fleabag_nodes,
                 directed = FALSE)
-mh
-```
-```{r Using-Centrality}
-# setting theme_graph 
-set_graph_style()
 
-mh %>% 
-  activate(nodes) %>% 
+ggraph(graph = fb, layout = "circle") +
   
-  # Who has the most connections?
-  mutate(degree = centrality_degree()) %>% 
+  geom_edge_link(aes(width = Intensity), colour= "antiquewhite3")  + scale_edge_width(range = c(0, 3)) +
   
-  activate(edges) %>% 
-  # Who is the go-through person?
-  mutate(betweenness = centrality_edge_betweenness()) %>%
+  geom_node_point(aes(fill = Relationship), shape = 23,
+                      size = 5.5,
+                      stroke = 2 ) +
+  geom_node_text(aes(label = Name), repel = TRUE, color = "black")+
   
-  # Now to continue with plotting
-  ggraph(layout = "nicely") +
-  geom_edge_link(aes(alpha = betweenness)) +
-  geom_node_point(aes(size = degree, colour = degree)) + 
-  
-  # discrete colour legend
-  scale_color_gradient(guide = "legend")
+  labs(title = "Relationship and Intensity",
+       caption = "The Priest was hot")
 
-# or even less typing
-  ggraph(mh,layout = "nicely") +
-  geom_edge_link(aes(alpha = centrality_edge_betweenness())) +
-  geom_node_point(aes(colour = centrality_degree(), 
-                      size = centrality_degree())) + 
-  scale_color_gradient(guide = "legend",
-                       low = "lightskyblue",
-                       high = "magenta")
 ```
 
-About the datasets:
-```{r mhhead1}
-head(mh_nodes)
-head(mh_edges)
+>From the graph we can understand how each characters are related to each other and how intense their interaction was. Audience had a really good intractions with the protagonist- Fleabag, because in the show there were a lot of scenes where Fleabag would share her thoughts to the camera. The waitress had the least intense interactions with the other characters. Jake did not have any interactions, he was only mentioned by the godmother during their conversations at the dinner table.
+
+![](Images/Fleabag Intensity and relations.png)
+
+
+
+## **Graph 3 - Restaurants in Palarivattom, Kochi, Kerala**
+
+>This is a map graph displaying the various restaurants in my native place, Palarivattom. The restaurants are differenciated by the cuisines they serve. The graph also shows various buildings, roads, trees, greenary and parks.
+
+```{r eval=FALSE}
+bbox_1 <- osmplotr::get_bbox(latlon = c(76.294141, 9.980891, 76.314824, 10.012709))
 ```
 
-We draw a conclusion that the biggest circle-light blue is of Professor who forms a bond with the core members of the heist. The second biggest circle is of Berlin who has connections with three hostages.   
-&nbsp;
 
-## My Course Reflection
+```{r eval=FALSE}
+dat_buildings <- extract_osm_objects (key = 'building', 
+                                     bbox = bbox_1)
 
-This course was about R, a language and environment for statistical computing and graphics. I learnt how to code graphs and maps in R Markdown. It's always difficult to find your own mistakes and that made me impatient several times through this course. Having learnt how to make my own datasets, I am confident that in future as a designer I can use my own data for reasoning and evaluating to attain a conclusion. 
- &nbsp;
+dat_roads <- extract_osm_objects (key = 'highway', 
+                                     value = c("residential"),
+                                     bbox = bbox_1)
+
+dat_parks <- extract_osm_objects (key = 'park', 
+                                  bbox = bbox_1)
+
+dat_restaurants <- extract_osm_objects (key = "amenity",
+                                        value = "restaurant",
+                                        return_type = "point",
+                                        bbox = bbox_1)
+
+dat_greenery <- extract_osm_objects (key = 'landuse', 
+                                  value = 'grass', 
+                                  bbox = bbox_1)
+
+dat_trees <- extract_osm_objects (key = 'natural', 
+                                  value = 'tree', 
+                                  bbox = bbox_1)
+
+```
+
+```{r eval=FALSE}
+st_write(dat_buildings, 
+         dsn = "buildings.gpkg", 
+         append = FALSE, 
+         quiet = FALSE)
+st_write(dat_restaurants, dsn = "restaurants.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_parks, dsn = "parks.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_roads, dsn = "roads.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_greenery, dsn = "greenery.gpkg", append = FALSE,quiet = FALSE)
+st_write(dat_trees, dsn = "trees.gpkg", append = FALSE,quiet = FALSE)
+
+buildings <- st_read("./buildings.gpkg")
+parks <- st_read("./parks.gpkg")
+roads <- st_read("./roads.gpkg")
+restaurants <- st_read("./restaurants.gpkg")
+greenery <- st_read("./greenery.gpkg")
+trees <- st_read("./trees.gpkg")
+
+restaurants <- restaurants %>% 
+  drop_na(cuisine) %>% 
+  
+  separate(col = cuisine, into = c("cuisine", NA,NA), sep = ";") %>% 
+  separate(col = cuisine, into = c("cuisine", NA,NA), sep = ";")
+
+osmplotr::osm_structures()
+
+ggplot() +
+  geom_sf(data = buildings, fill = "brown1") +
+  geom_sf(data = roads, col = "lightblue") +
+  geom_sf(data = restaurants %>% drop_na(cuisine),
+          aes(fill = cuisine), shape = 21, size = 3)+
+  geom_sf(data = greenery, fill = "darkgreen") +
+  geom_sf(data = trees, col = "green")
+```
+
+>As my area mostly has individual houses, the map is only showing a handfull of them. The huge red circular building int the left centre is the Jewaharlal Nehru Stadium of Ernakulam. 
+Each cuisine is represented by different colours on the map.
+
+![](Images/Rosanne Maria_Palarivattom,Kochi,Kerala.png)
 
 
-### Thank you!
+
+## **My Course Reflection**
+
+>This course was about learning the language R and using it to analyse and build graphs and maps from data sets. 
+
+>What I learnt a new programing language - R. I also learnt to work in groups and conduct primary surveys, analyse them and represent them on a graph to study them well.
+
+>As a foundation student I would like to be open to any type of new learnings, as I know these learning, maybe not everything but most might serve as the basis for my future studies and works. Its uncertain to know what tools we will use in the future and what types of skills one will need. Therefore i consider being open to new skills and learning will be effective.
+
+>There were instances when I felt coding and what i did in the workshop was hard and not fun. As a person who really loves hands on works, it was difficult to adapt, but even after the difficulties the output of each day or project was really facinating and interesting.
+
+>Arvind was a great teacher, guide and friend. He encouraged me multiple times even after making the silliest of the mistakes. His whole teaching system was really well conducted, he also gave us coffee breaks that helped us relax and concentrate.
+
+>I'll conclude by saying these two weeks was an amazing, emotional and a productive learning rollercoaster. Enjoyed everyday of it and I will try my best to keep learning and practicing the R language.
+
+><3 <3
+
+

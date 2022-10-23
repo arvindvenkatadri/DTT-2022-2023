@@ -1,0 +1,166 @@
+---
+title: "Diamonds"
+author: "Janavi Moncourt"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+# Check for missing data
+any(is.na(diamonds) == TRUE)
+```
+
+# Understanding Diamonds 
+
+In this study, we will be exploring different types of diamonds and how their elements are co-related. The Diamonds dataset contains the prices and other attributes of almost 54,000 diamonds. 
+
+The data frame contains 53940 rows and 10 variables:
+
+1. **Price** - price in US dollars (\$326–\$18,823)
+
+2. **Carat** - weight of the diamond (0.2–5.01)
+
+3. **Cut** - quality of the cut (Fair, Good, Very Good, Premium, Ideal)
+
+4. **Color** - diamond colour, from D (best) to J (worst)
+
+5. **Clarity** - a measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))
+
+6. **X** - length in mm (0–10.74)
+
+7. **Y** - width in mm (0–58.9)
+
+8. **Z**- depth in mm (0–31.8)
+
+9. **Depth** - total depth percentage = z / mean(x, y) = 2 * z / (x + y) (43–79)
+
+## **The following is a table containing the first six rows of diamond data** 
+
+```{r Look_at_diamonds}
+head(diamonds) # first six rows
+```
+## **The following is a table containing the last six rows of diamond data** 
+```{r}
+tail(diamonds) # first six rows
+```
+## **Single Variable Numerical Graph** 
+From the following graph, the aim is to interpret the correlation between the carat of a diamond and its subsequent value/price. 
+
+```{r}
+diamonds %>% count(carat)
+ggplot(diamonds) + geom_bar(aes(x = carat))
+```
+
+### **Analysis**
+From this graph, we understand that majority of the diamonds that are being produced weigh around 0.2dbl - 2.7dbl. The value of a diamond increases with carat weight because the supply of larger diamonds is far less than the supply of smaller diamonds. 
+
+## **Single Variable Categorical Graph - a**
+From the following graph, the aim is to interpret the correlation between the cut of a diamond, and the supply based on these different types of cuts. The higher the cut, the better the quality, the higher will be the supply and demand. 
+```{r}
+diamonds %>% count(cut)
+ggplot(diamonds) + geom_bar(aes(x = cut, fill = cut))
+```
+
+### **Analysis** 
+From this graph, we can interpret that a large percentage of the diamonds being produced, are of ideal quality. The value of a diamond, in itself is infinity and to have diamonds being produced at 'fair' or 'good' cuts would not be ideal for it's consumers. 
+
+## **Single Variable Categorical Graph - b**
+From the following graph, the aim is to interpret the correlation between the cut of a diamond, and the supply based on these different types of cuts. The higher the cut, the better the quality, the higher will be the supply and demand. 
+```{r}
+diamonds %>% count(clarity)
+ggplot(diamonds) + geom_bar(aes(x = clarity, fill = clarity))
+```
+
+### **Analysis** 
+From this graph, we can interpret that a larger percentage of the diamonds being produced, are not of ideal quality, as they are not of ideal clarity. This subsequently brings down their value. 
+
+## **Double Variable Numerical Graphs** 
+From this graph, we aim to interpret the correlation between two variables of a diamond, the price and the depth. The aim is to observe patterns within the subsequent increase and decrease in the price and depth of a diamond. 
+```{r}
+cor(diamonds$price, diamonds$depth)
+ggplot(diamonds) + geom_point(aes(x = price, y = depth))
+```
+
+### **Analysis** 
+From this graph, we understand that the average depth of the diamonds ranges between 50 % - 80 % and the price subsequently increases with an increase in the depth, as bigger the diamond, higher the value. This scatter graph is quite cluttered, making it difficult to interpret closely. 
+
+
+## **Double Variable Qualitative Graph**
+From the following graph, the aim is to interpret the correlation between two categorical variables of a diamond, clarity and color. The aim is to observe patterns within the subsequent increase and decrease in the color and clarity of a diamond. 
+```{r}
+ggplot(diamonds) + geom_bar(aes(x = clarity ,fill = color),position = "stack")
+```
+
+### **Analysis** 
+From this graph we understand, that as the clarity of the diamond increases, the color subsequently increases from best to worst. The color yellow, labelled 'J' is said to be the worst. If we look at the series of bars in the graph, we notice that the color yellow decreases with an increase in the clarity. 
+
+## **Quantitative vs Qualitative Graph - a**
+
+From the following graph, the aim is to interpret the correlation between two variables of a diamond, cut and price. The aim is to observe patterns within the subsequent increase and decrease in the cut and price of a diamond. 
+
+```{r}
+ggplot(diamonds) + geom_density(aes(x = price,color = cut, fill = cut), 
+alpha = 0.3)
+```
+
+### **Analysis** 
+
+I'm honestly unable to decipher this graph and this is the description of my interpretation. 
+
+## **Quantitative vs Qualitative Graph - b**
+
+From the following graph, the aim is to interpret the correlation between two variables of a diamond, carat and clarity. The aim is to observe patterns within the subsequent increase and decrease in the carat and clarity of a diamond. 
+
+```{r}
+ggplot(diamonds) + geom_histogram(aes(x = carat, fill = clarity))
+```
+
+### **Analysis** 
+
+From this graph we understand, that as the carat of the diamond increases in weight, the clarity decreases. The ideal carat weight lies between 0.3 - 1.0, beyond which, there is a tremendous decrease in the clarity of a diamond. 
+
+## **Quantitative vs Qualitative Graph - c**
+
+From the following graph, the aim is to interpret the correlation between two variables of a diamond, clarity and length(x). The aim is to observe patterns within the subsequent increase and decrease in the clarity and length(x) of a diamond.
+
+```{r}
+ggplot(diamonds) + geom_density(aes(x = x ,color = clarity, fill = clarity), 
+alpha = 0.3)
+```
+
+### **Analysis** 
+
+From this graph we understand that the clarity of a diamond is best within the length range of 3mm - 8mm. As the length of the diamond keeps increasing, there is a subsequent decrease in the clarity of the diamond. Hence, the ideal length of a clear diamond lies between 3mm-8mm with ideal clarity. 
+
+## **Quantitative vs Qualitative Graph - d**
+From the following graph, the aim is to interpret the correlation between two variables of a diamond, cut and depth(z). The aim is to observe patterns within the subsequent increase and decrease in the cut and depth(z) of a diamond.
+
+```{r}
+ggplot(diamonds) + geom_histogram(aes(x = z, fill = cut))
+```
+
+### **Analysis** 
+From this graph we understand that for an ideal cut, the depth must range between
+0 mm - 58.9 mm, and that a large percentage of the diamonds being produced fall under this range.
+
+### **Reflection**
+
+Although strenuous and mind-wracking, this assignment helped me develop a clear intuition within basic programming through working with multiple data tools and invoking my ability to form patterns between differing variables. It was fascinating to see the outputs produced through correlated variables we unconsciously tend to use daily, whether pronouns or numbers. Studying this language somehow felt like studying real life.
+
+Through the course of the past three days studying Rstudio, I have developed the ability to view the world, the way a simple code does, although not as fast or accurate. I've found myself observing my environment in much more depth, and picking up on packages of information around me.
+
+This language has taught me to pick up and store pieces of information that could hold some value in the future, reserve them, and run the program in the future.
+Some of these chunks of data are encrypted with happy and enlightening memories, and others, the knowledge and statistics I have gained through everyday experiences. Not for the world to see, but for myself. Studying this language has taught me to look at the world through a larger lens and accumulate information.
+
+
+
+
+
+
+
+
+
+

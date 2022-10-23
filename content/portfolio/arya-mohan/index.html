@@ -1,130 +1,357 @@
 ---
-title: Avi Parmar
-author: Avi Parmar
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
-image: https://www.alice-in-wonderland.net/wp-content/uploads/8.jpg
+title: "ARYA MOHAN"
+author: "ARYA MOHAN"
+date: "30/07/2021"
+output: html_document
+image: https://www.alice-in-wonderland.net/wp-content/uploads/13.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Here's my three graphs, I have a line plot, a map and a interactive network!
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
-<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
-<link href="{{< blogdown/postref >}}index_files/vis/vis.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index_files/vis/vis.min.js"></script>
-<script src="{{< blogdown/postref >}}index_files/visNetwork-binding/visNetwork.js"></script>
-<link href="{{< blogdown/postref >}}index_files/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
 
-<div id="graph-1" class="section level1">
-<h1>GRAPH 1</h1>
-<blockquote>
-<p>“No matter what the statistics say, there is always a way.”</p>
-<p>~Bernie Siegel</p>
-</blockquote>
-<pre class="r"><code>#GRAPH FUNCTION
-
-ggplot(data = cancer, mapping = aes(x = Age, y = Alcoholuse))+
-geom_point(size = 5)+
-  geom_smooth(colour = &quot;red&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
-<p>I figured that writing about cancer might make me come off as <em>important</em>, and plus it was pretty easy for me to <em>get my hands on this data set</em>.<br />
-Boy, am i tempted to put something political here, but really here’s what a cancer looks like:<br />
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.yEYZECr7X42bjEdABrlWGQHaDL%26pid%3DApi&amp;f=1" alt="Cancer Picture" /></p>
+<p>I am Arya Mohan, a HCD student who loves to code and think quantitatively.<br />
+<!--more--></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This is a small collection of my best works from this course.<br />
+I am a cleanliness freak, so one thing you might notice about this page and its graphs is that it is ordered neatly. (is that something to flex though? XD)</p>
 </div>
-<div id="graph-2" class="section level1">
-<h1>GRAPH 2</h1>
-<blockquote>
-<p>સુરતનો નકશો</p>
-</blockquote>
-<pre class="r"><code>SURAT_TMAP &lt;- tm_shape (dat_B) +
-  tm_fill(col = &quot;red&quot;) +
-tm_shape (dat_H) +
-  tm_lines(col=&quot;blue&quot;, lwd = 1)+
-tm_shape (dat_R) +
-  tm_dots (size = 3, col = &quot;green&quot;, shape = 21, alpha = 0.3) +
-  tm_text(&quot;name&quot;, auto.placement = TRUE, size = 0.5, col = &quot;white&quot;) + 
+<div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>The <code>dog_data</code> was a csv data set that I downloaded from a research website online called <strong>‘Our World in Data’.</strong> The data set had so many columns but I filtered out only the ones that were relevant to the graph that I wanted to plot.<br />
+Some attributes that I found interesting were the <code>env_cats</code>, <code>env_children</code> and <code>env_dogs</code> columns, which was a <em>Boolean</em> type attribute which tell us whether a dog was <strong>friendly</strong> with cats, children or dogs. Unfortunately I had to discard them as they were irrelevant in my graph. XD</p>
+<pre class="r"><code># Reading the csv file and selecting only the attributes that were relevant to my graph
+dog_data &lt;- read.csv(file = &quot;data/allDogDescriptions.csv&quot;)
 
-tm_compass (type = &quot;rose&quot;, position = c(&quot;right&quot;, &quot;top&quot;)) +
-tm_scale_bar (width = 4, text.size = 1) +
-  
-    tm_layout(main.title = &quot;SURAT RESTAURANTS&quot;,
-            bg.color = &quot;black&quot;,
-            inner.margins = c(0, 0, 0, 0))
+# The below was a more case specific filtration which I did based on the top most frequently occurring breeds in the data set, and only filtered out the house trained dogs.
+new_dog_data &lt;- dog_data %&gt;% select(breed_primary, age, sex, house_trained) %&gt;% 
+  filter(breed_primary %in% 
+           c(&quot;Pit Bull Terrier&quot;, &quot;Labrador Retriever&quot;, &quot;Chihuahua&quot;, 
+             &quot;Terrier&quot;, &quot;Hound&quot;, &quot;German Shepherd Dog&quot;, &quot;Boxer&quot;, 
+             &quot;Shepherd&quot;, &quot;American Staffordshire Terrier&quot;, &quot;Beagle&quot;), 
+         house_trained == TRUE) %&gt;% 
+  arrange(breed_primary, age, sex) %&gt;% 
+  group_by(breed_primary, age, sex) %&gt;% 
+  summarise(count = n()) 
+new_dog_data %&gt;% head() %&gt;% kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">breed_primary</th>
+<th align="left">age</th>
+<th align="left">sex</th>
+<th align="right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Adult</td>
+<td align="left">Female</td>
+<td align="right">288</td>
+</tr>
+<tr class="even">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Adult</td>
+<td align="left">Male</td>
+<td align="right">263</td>
+</tr>
+<tr class="odd">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Baby</td>
+<td align="left">Female</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Baby</td>
+<td align="left">Male</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Senior</td>
+<td align="left">Female</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="left">American Staffordshire Terrier</td>
+<td align="left">Senior</td>
+<td align="left">Male</td>
+<td align="right">28</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important attributes within the data set :-</strong></p>
+<ul>
+<li><strong>breed_primary:</strong> The primary (assumed) breed assigned by the shelter or rescue.</li>
+<li><strong>age:</strong> The assumed age class of an animal (Baby, Young, Adult, or Senior).</li>
+<li><strong>sex:</strong> The sex of an animal (Female, Male, or Unknown).</li>
+<li><strong>house_trained:</strong> Whether or not an animal is trained to not go to the bathroom in the house.</li>
+<li><strong>name:</strong> The animal’s name (as given by the shelter/rescue).</li>
+<li><strong>count:</strong> Count of certain unique groups of breed, age and sex.</li>
+</ul>
+<p>Here with the given data, I wanted to <em>graphically</em> find out the <strong>ratio of house trained adoptable dogs</strong> between male and female dogs.<br />
+The chart I could think of using for this was a <strong>grouped bar graph</strong>, where I would display the ratio for the top 10 most recurring breeds within the given data set.<br />
+Also, to be able to make this chart, the given data set must be manipulated to make the relevant rows and columns.</p>
+<pre class="r"><code>ggplot(new_dog_data, aes(x = count,y = breed_primary, fill = sex)) +
+  geom_col(position = &#39;dodge&#39;) +
+  facet_wrap(~age) +
+  theme_minimal() +
+  scale_fill_brewer(palette = &quot;Paired&quot;)</code></pre>
+<p><img src="images/unknown_dataset_plot.png" /></p>
+<p>This was the final plot that I could make from the data given to me.<br />
+It was quite interesting to see the variations in the number of trained dogs for different breeds across different age groups.</p>
+<ol style="list-style-type: decimal">
+<li>It seems like the <strong>‘Young’ and ‘Adult’ dogs have been trained the most,</strong> which makes sense because ‘Baby’ and ‘Senior’ dogs are either too young or too old to train.<br />
+</li>
+<li>Another interesting observation is that across all age groups, <strong>the Pit Bull Terrier or the Labrador Retriever</strong> seem to be the two breeds that are the most <em>well trained house dogs.</em><br />
+</li>
+<li>Across the plots, <strong>males</strong> have the same if not <strong>more</strong> number of <strong>trained dogs</strong> except in a few cases such as, the <strong>‘Female Adult Pit Bull Terrier’</strong> has a <em>clear majority</em> as compared to its counterpart male dogs.</li>
+</ol>
+</div>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
+<p>The below data sets are csv files that contains a <strong>node table</strong> for the various <strong>airports</strong> all across <em>America</em>, and also an <strong>edge table</strong> that shows the <strong>routes</strong> taken by the various flights.</p>
+<pre class="r"><code># Reading the airline nodes csv but using a different delimiter
+air_nodes &lt;- read_delim(&quot;data/AIRLINES-NODES.csv&quot;,delim = &quot;;&quot;)
+air_nodes %&gt;% head() %&gt;% kable()</code></pre>
+<table>
+<colgroup>
+<col width="3%" />
+<col width="30%" />
+<col width="5%" />
+<col width="20%" />
+<col width="10%" />
+<col width="13%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Id</th>
+<th align="left">Label</th>
+<th align="left">Code</th>
+<th align="left">City</th>
+<th align="right">latitude</th>
+<th align="right">longitude</th>
+<th align="right">ToFly</th>
+<th align="right">Visits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Adams Field Airport</td>
+<td align="left">LIT</td>
+<td align="left">Little Rock, AR</td>
+<td align="right">34729444</td>
+<td align="right">-92224444</td>
+<td align="right">0</td>
+<td align="right">105</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Akron/canton Regional</td>
+<td align="left">CAK</td>
+<td align="left">Akron/Canton, OH</td>
+<td align="right">40916111</td>
+<td align="right">-81442222</td>
+<td align="right">0</td>
+<td align="right">123</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">Albany International</td>
+<td align="left">ALB</td>
+<td align="left">Albany</td>
+<td align="right">42733333</td>
+<td align="right">-73800000</td>
+<td align="right">0</td>
+<td align="right">129</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">Albemarle</td>
+<td align="left">CHO</td>
+<td align="left">Charlottesville</td>
+<td align="right">38133333</td>
+<td align="right">-78450000</td>
+<td align="right">1</td>
+<td align="right">114</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">Albuquerque International</td>
+<td align="left">ABQ</td>
+<td align="left">Albuquerque</td>
+<td align="right">35040278</td>
+<td align="right">-106609167</td>
+<td align="right">0</td>
+<td align="right">105</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">Alexandria International</td>
+<td align="left">AEX</td>
+<td align="left">Alexandria, LA</td>
+<td align="right">31327500</td>
+<td align="right">-92548611</td>
+<td align="right">0</td>
+<td align="right">93</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Table Headers:-</strong></p>
+<ul>
+<li><strong>Id :</strong> Serial Number associated with the given airport.</li>
+<li><strong>Label :</strong> Name of the airport.</li>
+<li><strong>Code :</strong> Code for the city in which the airport lies.</li>
+<li><strong>City :</strong> The city in which the airport lies.</li>
+<li><strong>Latitude :</strong> Latitudinal degree of the airport.</li>
+<li><strong>Longitude :</strong> Longitudinal degree of the airport.</li>
+<li><strong>ToFly :</strong> Binary column.</li>
+<li><strong>Visits :</strong> Number of plane visits.</li>
+</ul>
+<pre class="r"><code># Reading the airline edges csv but using a different delimiter
+air_edges &lt;- read_delim(&quot;data/AIRLINES-EDGES.csv&quot;,delim = &quot;;&quot;)
+air_edges %&gt;% head() %&gt;% kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Source</th>
+<th align="right">Target</th>
+<th align="left">Type</th>
+<th align="right">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">110</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">37</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">62</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">153</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">105</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">133</td>
+<td align="left">Undirected</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Edge Table Headers:-</strong></p>
+<ul>
+<li><strong>Source :</strong> Name of the departure airport.</li>
+<li><strong>Target :</strong> Name of the arrival airport.</li>
+<li><strong>Type :</strong> The nature of the airlines direction.</li>
+<li><strong>Weight :</strong> The intensity of trips.</li>
+</ul>
+<pre class="r"><code># Using the &#39;tidygraph&#39; package, we can merge the given node and edge data sets and create a new single object called a &#39;network graph object&#39;.  
+air_graph_obj &lt;- tbl_graph(nodes = air_nodes, 
+                edges = air_edges, 
+                directed = FALSE)
 
-SURAT_TMAP</code></pre>
-<pre><code>## Scale bar width set to 0.25 of the map width</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="480" /></p>
-<p>In this graph, I made a map of Surat using data from Open Source Map and plotted all the restaurants on the map. all the green dots indicate the presence of a restaurant in that area, along with the name of the restaurant.<br />
-Now, i case you’re in surat, and you’re searching for one of the 53 recorded restaurants, you can just use m map to find out the approximate location :D</p>
-</div>
-<div id="graph-3" class="section level1">
-<h1>GRAPH 3</h1>
-<blockquote>
-<p>I don’t spend alot of time thinking ‘what if’, and I guess that’s happiness
--Ted Mosby</p>
-</blockquote>
-<div class="figure">
-<img src="https://m.media-amazon.com/images/M/MV5BNjg1MDQ5MjQ2N15BMl5BanBnXkFtZTYwNjI5NjA3._V1_.jpg" alt="" />
-<p class="caption">HIMYM</p>
-</div>
-<pre class="r"><code>#seperation
-HIMYM_nodes_vis %&gt;%
+# Using the graph object I add the same &#39;centrality_degree&#39; function to control the degree and filter the number of airports in the graph object.
+air_centrality &lt;- air_graph_obj %&gt;% 
+  activate(nodes) %&gt;% 
 
-  visNetwork(nodes = ., edges = HIMYM_edges_vis) %&gt;% 
-  visNodes(font = list(size = 40)) %&gt;% 
+  mutate(degree = centrality_degree(mode = c(&quot;in&quot;))) %&gt;% 
   
-  # Colour and icons for each of the gender-groups
-  visGroups(groupname = &quot;Female&quot;, shape = &quot;icon&quot;, 
-            icon = list(code = &quot;f182&quot;, size = 75, color = &quot;tomato&quot;),
-            shadow = list(enabled = TRUE)) %&gt;% 
-  
-  visGroups(groupname = &quot;Male&quot;, shape = &quot;icon&quot;, 
-            icon = list(code = &quot;f183&quot;, size = 75, color = &quot;slateblue&quot;), 
-            shadow = list(enabled = TRUE)) %&gt;% 
-  
-  visGroups(groupname = &quot;Transgender?&quot;, shape = &quot;icon&quot;, 
-            icon = list(code = &quot;f22c&quot;, size = 75, color = &quot;fuchsia&quot;), 
-            shadow = list(enabled = TRUE)) %&gt;% 
-  
-  #visLegend() %&gt;%
-  #Add the fontawesome icons!!
-  addFontAwesome() %&gt;% 
-  
-  # Add Interaction Controls
-  visInteraction(navigationButtons = TRUE,
-                 hover = TRUE,
-                 selectConnectedEdges = TRUE,
-                 hoverConnectedEdges = TRUE,
-                 zoomView = TRUE)</code></pre>
-<div id="htmlwidget-1" style="width:480px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"X":[1,2,3,4,5,6,7,8,9,10],"label":["Barney","Ted Mosby","Lily Aldrin","Marshall","Robin","Yasmin","Ranjit","Son","Daughter","Mother"],"group":["Male","Male","Female","Male","Female","Female","Male","Male","Female","Female"],"occupation":["Bank","Architect","Teacher","Lawyer","Reporter","","Cab driver","","","Bass player"]},"edges":{"from":[1,1,1,1,1,2,2,2,2,2,2,2,2,4,2,10,10],"to":[7,2,3,4,5,1,3,4,5,6,7,8,9,3,10,8,9]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","font":{"size":40}},"manipulation":{"enabled":false},"groups":{"Female":{"shape":"icon","icon":{"code":"f182","size":75,"color":"tomato"},"shadow":{"enabled":true}},"Male":{"shape":"icon","icon":{"code":"f183","size":75,"color":"slateblue"},"shadow":{"enabled":true}},"useDefaultGroups":true,"Transgender?":{"shape":"icon","icon":{"code":"f22c","size":75,"color":"fuchsia"},"shadow":{"enabled":true}}},"interaction":{"hover":true,"hoverConnectedEdges":true,"navigationButtons":true,"selectConnectedEdges":true,"zoomView":true}},"groups":["Male","Female"],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","iconsRedraw":true,"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
-<p>How I Met Your Mother is one of my favorite shows, so using a couple libraries from R, I made an interactive map of the relationships between the different characters from the show…
-I love the spring mechanics of this graph and playing with it is pretty fun XD</p>
+# According to my understanding of this function, only the nodes with a higher relative degree than given are passed through the function and saved into the network graph object
+  filter(degree &gt; 25) %&gt;% 
+
+  activate(edges) %&gt;% 
+  mutate(betweenness = centrality_edge_betweenness())
+
+air_centrality %&gt;% activate(nodes) %&gt;% as_tibble() %&gt;% kable()</code></pre>
+<p><strong>The network I wanted to plot aimed for the following:-</strong></p>
+<ul>
+<li>To map the various airports and link the trips that take place between them.<br />
+</li>
+<li>To analyse the trends of airlines and identifying the topmost popular airports.</li>
+</ul>
+<pre class="r"><code>ggraph(air_centrality, layout = &quot;linear&quot;, circular = TRUE) +
+  geom_edge_link(alpha = 0.2) +
+  geom_node_point(size = 2, colour = &quot;purple&quot;) +
+  geom_node_text(aes(label = Label),repel = TRUE, 
+                 size = 3,
+                 max.overlaps = 20) +
+  theme_graph()</code></pre>
+<p><img src="images/american_airlines.png" /></p>
+<p>This graph represents the interconnections between the 14 <strong>most frequently</strong> visited airports in America.<br />
+We can see how <strong>almost all</strong> the airports have some flight traveling between them.</p>
+<ol style="list-style-type: decimal">
+<li>This implies that all the airports <strong>do not necessarily</strong> have to be interconnected to every other airport in order to be one of the most visited airports.</li>
+<li>We can see how the <strong>density of lines</strong> around the various airports are almost comparable, which implies that they have a <strong>very similar</strong> amount of visits.</li>
+</ol>
 </div>
-<div id="final-thoughts" class="section level1">
-<h1>Final Thoughts</h1>
-<blockquote>
-<p>“I like living at the intersection of the humanities and technology”<br />
--Steve Jobs</p>
-</blockquote>
-<div class="figure">
-<img src="http://1.bp.blogspot.com/-_k3KG83k-1s/TwUFcflXS5I/AAAAAAAAARE/NlGpnJE0zoA/s1600/images.jpeg" alt="" />
-<p class="caption">steve jobs</p>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p><strong>The data I extracted below are of 3 levels and serve different purposes :-</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>vulture_points :</strong> An shp data file that contains a <strong>POINT</strong> type data set of all the points that the <strong>Himalayan Vultures visited</strong> while migrating.</li>
+<li><strong>vulture_lines :</strong> Another shp data file that contains a <strong>LINE</strong> type data set of the <strong>route taken by the Himalayan Vultures</strong> in their migration.</li>
+<li><strong>migration_countries :</strong> A filtered version of the ‘WORLD’ data set in which there is <strong>GEOMETRIC values</strong> for the <strong>countries over which</strong> the Himalayan Vultures migrated.</li>
+</ol>
+<pre class="r"><code>data(&quot;World&quot;)
+migration_countries &lt;- World %&gt;% filter(iso_a3 %in% c(&quot;IND&quot;, &quot;CHN&quot;, &quot;MNG&quot;, &quot;NPL&quot;, &quot;BTN&quot;))
+
+vulture_points &lt;- st_read(&quot;data/Himalayan_Vultures/points.shp&quot;)
+vulture_lines &lt;- st_read(&quot;data/Himalayan_Vultures/lines.shp&quot;)</code></pre>
+<p>The graph I am going to plot involves a <strong>visual representation of the migration path</strong> taken by the Himalayan Vultures.<br />
+The graph is supposed to show the different routes taken by the various identities of the <strong>Himalayan Vulture.</strong></p>
+<pre class="r"><code>vulture_migration &lt;- 
+  tm_shape(migration_countries) +
+    tm_graticules() +
+    tm_polygons(alpha = 0.8, col = &quot;name&quot;, lwd = 2, legend.show = FALSE) +
+    tm_text(&quot;name&quot;, size = 3/4) +
+    tm_compass(type = &quot;arrow&quot;, position = c(&quot;left&quot;, &quot;top&quot;)) +
+  tm_shape(vulture_lines) +
+    tm_lines() +
+  tm_shape(vulture_points) +
+    tm_dots(col = &quot;ind_ident&quot;, palette = &quot;Accent&quot;) +
+  tm_layout(legend.outside = TRUE, 
+            legend.outside.position = &quot;right&quot;,
+            title= &#39;Migration of Himalayan Vultures&#39;)
+vulture_migration</code></pre>
+<p><img src="images/Vulture_Migration.png" /></p>
 </div>
-<p>After a really long time, it felt like the good old days when I was the best in my class at computers, I found it really easy to understand the concepts and everything, but I don’t think I would have ever noticed R as a language if it weren’t for Arvind. I don’t think I will ever code in HTML again unless it’s to learn with some software like DreamWeaver, I feel like R markdown is a really powerful tool to write reports and submit graphs. I also don’t know if my work will ever demand me to use any of this, but I feel like it’s really great to have a skill like this in my portfolio. Another great thing about R is that it has such a huge community so even if I forget what I’ve learned 2-3 years down the line, I can always Google, and chances are I will get an answer.<br />
-One thing I want to learn in the future is how I can turn some of the graphs I’ve made into animations, maybe for a PowerPoint presentation or a video.<br />
-I also just quickly want to say that Arvind was such an angel. I find it quite common that a lot of the class lags behind in computer class, but in Arvind’s class, it never felt like everyone was clueless, it really felt like everyone was working, and understanding all the concepts, and more importantly, no matter how many times we asked the same questions Arvind patiently answered, and that is really hard to find. It’s a shame we couldn’t work in person, I have a feeling that if that were the case we would’ve been able to learn a lot more.</p>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p><code>Digital Making</code> was an unexpectedly fun workshop. I absolutely loved learning how to code in R. I took away a lot from this journey and the learning <strong>did not come easy</strong>. A few lessons I can recollect ‘R’ :-</p>
+<ul>
+<li>Coding <strong>isn’t</strong> a skill that is language specific. I realized that the <strong>workflow and ideas</strong> are more important, and learning the language is secondary but still something that I must learn to do faster as it is <strong>rapidly evolving and progressing.</strong></li>
+<li>Finding my state of flow while coding was something that I personally found tough, but once I was in it, it felt like there was <strong>no limit</strong> to achieving whatever I wished to, purely through code.</li>
+<li>There is a <strong>lot of research</strong> one must do to surely know how to code. This seemed like a pretty obvious lesson to learn but I could not comprehend <em>the gravity of it</em> until I experienced this workshop.</li>
+<li>The amount of work that goes into <strong>polishing data</strong> before plotting it is <strong>majority</strong> of the work when it comes to data visualization. Data is beautiful and fascinating to the human eye but this is <strong>not</strong> the same for a dumb machine like the computer. Although it can process stuff easily, it is not as intelligent as a human, so data <strong>must be formatted</strong> into forms that only the computer can interpret, which proves to be quite a monumental task.</li>
+<li>I was absolutely fascinated by the result of all the grunt work behind each and every plot. It was a very satisfactory experience and made me fall in love with coding even more and even with the language itself.</li>
+</ul>
+<p>To come to the end of this workshop is a bittersweet feeling. Classes were <del>tiring</del> fun and interactive and perfectly paced to suit the majority’s standards. I learnt a certain <strong>work ethic</strong> which was the most valuable lesson of them all, and something that I will consciously make an effort to maintain through my journey at Srishti.<br />
+Bravo six, ’R’ya going dark &lt;3</p>
 </div>

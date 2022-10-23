@@ -90,7 +90,7 @@ points_sf <- st_as_sf(village,
 ```
 
 
-```{r 3, echo=FALSE}
+```{r 3, echo=FALSE, eval=FALSE}
 #night mode
 tmap_mode("plot")
   #tm_basemap(leaflet::providers$CartoDB.DarkMatter)+
@@ -106,6 +106,9 @@ tm_shape(points_sf) +
 tm_shape(points_sf) +
   tm_symbols(size = 0.1, col = "goldenrod1")
 ```
+
+![](images/Rplot.png)
+
 I am extremely proud of this map and i would have given up if it weren't for arvind giving me an ultimatum of not accepting my A3 till i figure out how to code it. 
 
 ## Graph 3

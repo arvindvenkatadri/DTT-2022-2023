@@ -133,90 +133,163 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Misha Sachdeva</h1>
-         
-<script src="https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/index_files/header-attrs/header-attrs.js"></script>
-
-
-<div id="introduction" class="section level2">
+         <h1>Mariya Vahanvaty</h1>
+         <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Hi! My name is Misha Sachdeva and I am a student at SMI. I have worked on the following the graphs using a common dataset of the “diamonds” since the data really surprised me and I wanted to explore more works on this.</p>
+<p>Hello, my name is Mariya Vahanvaty. I’m a first year and my major is digital media arts. I’ve never been exposed to coding until this workshop and I think it’s an understatement to say it was challenging for me. Although, due to it being an unexplored area, it was very interesting and I learnt something new everyday during this workshop.</p>
+<p>The main aim of this workshop was to learn about data, how to read it, how to organize it, how to visualize it and all using code. The program we used to code is called R studio. Using R studio, we explored various data sets and learnt how to manipulate them in order to end up with graphical representations of the same.</p>
 </div>
 <div id="graph-1" class="section level2">
 <h2>Graph 1</h2>
-<p>I have chosen the dataset of diamonds. The columns of carat and clarity seemed really interesting to me.</p>
-<pre class="r"><code>glimpse(diamonds)</code></pre>
-<pre><code>## Rows: 53,940
-## Columns: 10
-## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.~
-## $ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver~
-## $ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,~
-## $ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, ~
-## $ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64~
-## $ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58~
-## $ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34~
-## $ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.~
-## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.~
-## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.~</code></pre>
-<p>The following graph represents the ratio of density and clarity of the diamonds in relation to the color of those diamonds.</p>
-<pre class="r"><code>ggplot(diamonds) + 
-    geom_density(aes(x = clarity,
-                 color = color, 
-                 fill = color), 
-                 alpha = 0.2)</code></pre>
-<p><img src="https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/index_files/figure-html/plot-1-1.png" width="480" /></p>
-<p>I especially really liked the alpha feature in the graph.</p>
+<p>In this task, I explored the use of soya beans in countries around the world. This data set allowed me to explore the quantity of soybeans and the usage over the years. The three main usages highlighted were Food (human consumption), feed (animal consumption) and Processings (fuel, etc). This data set was derived from an olnine website which displayed the data sets for soya bean consumption all over the world.This data was then altered and filtered to cover only France and its soya bean consumption.</p>
+<pre class="r"><code>soyabean &lt;- read.csv(file = &quot;data/soybeandata.csv&quot;, col.names = c(&quot;Country&quot;, &quot;Code&quot;, &quot;Year&quot;, &quot;Food&quot;, &quot;Feed&quot;, &quot;Processings&quot;), skip = 1)</code></pre>
+<p>In this graph, I will be plotting three different lines. Line 1 shows the human consumption of soya beans, line 2 shows the consumption of soya beans by animals and line 3 display soya beans sued for fuel and processing. In this graph, the x-axis displays the years which show us the change in consumption over time and the y-axis displays the quantity of soya beans in tonnes.</p>
+<p><img src="images/soyabean_graph.png" /></p>
+<pre class="r"><code>names(soyabean) # Step 1
+head(soyabean) # Step 2
+tail(soyabean) # Step 3
+dim(soyabean) # Step 4
+
+soyabean %&gt;% pivot_longer(cols = c(Food, Feed, Processings), names_to = &quot;soya_type&quot;, values_to = &quot;Quantity&quot;) # Step 5
+
+soyabean %&gt;% pivot_longer(cols = c(Food, Feed, Processings), names_to = &quot;soya_type&quot;, values_to = &quot;Quantity&quot;) %&gt;% filter(Country == &quot;France&quot;) # Step 6
+
+soyabean %&gt;% pivot_longer(cols = c(Food, Feed, Processings), names_to = &quot;soya_type&quot;, values_to = &quot;Quantity&quot;) %&gt;% filter(Country == &quot;France&quot;) %&gt;% ggplot(data = ., aes(x = Year, y = Quantity, colour = soya_type)) + geom_line() + geom_point() # Step 7</code></pre>
 </div>
 <div id="graph-2" class="section level2">
 <h2>Graph 2</h2>
-<p>The data set chosen is diamonds.</p>
-<pre class="r"><code>glimpse(diamonds)</code></pre>
-<pre><code>## Rows: 53,940
-## Columns: 10
-## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.~
-## $ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver~
-## $ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,~
-## $ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, ~
-## $ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64~
-## $ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58~
-## $ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34~
-## $ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.~
-## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.~
-## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.~</code></pre>
-<p>The graph below represents teh ratio of the price and the carat of the diamonds in relation to the color.</p>
-<pre class="r"><code>ggplot(diamonds) + geom_point(aes(x = price , y = carat , color = color))  # It can be observed that the higher the carat value if of the diamond, the higher is its price.This response was expected. The specific colors of the diamonds also affect the price and the carat value of the diamonds.This was new information for me and i did not know how important color was with diamonds.</code></pre>
-<p><img src="https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/index_files/figure-html/plot-2-1.png" width="480" /></p>
+<p>In this task, we were told to watch a tv show of our choice and record the interactions between different characters during this episode. The tv show we chose was the american sitcom, ‘The Office’. During this episode, we recorded nodes and edges data where we collected information about the character such as name, occupation, etc. And in the edges, we collected data about the interaction that took place, such as to and from, etc.</p>
+<pre class="r"><code>office_nodes &lt;- read_delim(&quot;data/Office Nodes.csv&quot;,delim = &quot;,&quot;)
+office_edges &lt;- read_delim(&quot;data/Office Edges.csv&quot;, delim = &quot;,&quot;)
+
+office_edges
+office_nodes 
+
+glimpse(office_edges)
+glimpse(office_nodes)</code></pre>
+<p>The graph we plotted displayed the nodes and edges of this data set. This graph is also known as a network graph as it displays the networks created amongst things/people or this case, the characters in the office. As it can be seen, characters are labelled with their names and edges link them together to represent their interactions that took place in that episode. These nodes have been further categorised by departments of the office. This is evident because of the colouring of the nodes as characters from different departments are seen interacting with each other.</p>
+<p><img src="images/theoffice.png" /></p>
+<pre class="r"><code>office_graph &lt;- tbl_graph (nodes = office_nodes, edges = office_edges, directed = FALSE)
+office_graph #1
+
+of_occupation %&gt;% 
+  ggraph(layout = &quot;graphopt&quot;) + 
+  geom_edge_link() + 
+  geom_node_point(aes(color = occupation), 
+                  size = 4) +
+    geom_node_text(aes(label = name),
+                   repel = TRUE, 
+                   size = 4 
+                   nudge_x = 3, nudge_y = 3) +
+  scale_colour_brewer(palette = &quot;Accent&quot;) #2</code></pre>
 </div>
 <div id="graph-3" class="section level2">
 <h2>Graph 3</h2>
-<p>The data set chosen is diamonds.</p>
-<pre class="r"><code>glimpse(diamonds)</code></pre>
-<pre><code>## Rows: 53,940
-## Columns: 10
-## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.~
-## $ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver~
-## $ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,~
-## $ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, ~
-## $ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64~
-## $ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58~
-## $ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34~
-## $ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.~
-## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.~
-## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.~</code></pre>
-<p>The below graph represents the length and the width of the diamonds in relation of the clarity and color of the diamonds.</p>
-<pre class="r"><code>ggplot(diamonds) + geom_point(aes(x = x,
-                                  y = y,
-                                  ))+ facet_grid(clarity~color)</code></pre>
-<p><img src="https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/index_files/figure-html/plot-3-1.png" width="480" /></p>
+<p>During our A3, we learnt about mapping. We learnt how to create maps to represent our data. In this task, the data set we used was coordinates of our hometowns. We researched the coordinates using google maps and then read it into R which we then used to create our maps.</p>
+<pre class="r"><code>bbox_1 &lt;- osmplotr::get_bbox(latlon = c(72.811431, 18.991465, 72.841547, 18.947786))
+bbox_1
+
+glimpse(bbox_1)</code></pre>
+<p>In this graph, we used to coordinates of our hometowns to recreate a map of the city. We then used this map to highlight restaurants, buildings, roads, trees, water bodies and other such features of a city on the map. After this step, we categorised the restaurants by assigning colours to multiple cuisines. This can be seen as the different coloured points showcase restaurants of different cuisines. The various cusines are shown in the key below.</p>
+<p><img src="images/Mariya_map.png" /></p>
+<pre class="r"><code>bbox_1 #1
+
+dat_buildings &lt;-extract_osm_objects (key = &quot;building&quot;, 
+                                     bbox = bbox_1) #1
+
+dat_roads &lt;- extract_osm_objects (key = &#39;highway&#39;,
+                                     bbox = bbox_1) #2
+
+dat_parks &lt;- extract_osm_objects (key = &#39;park&#39;, 
+                                  bbox = bbox_1) #3
+
+dat_greenery &lt;- extract_osm_objects (key = &#39;landuse&#39;, 
+                                  value = &#39;grass&#39;, 
+                                  bbox = bbox_1) #4
+
+dat_trees &lt;- extract_osm_objects (key = &#39;natural&#39;, 
+                                  value = &#39;tree&#39;, 
+                                  bbox = bbox_1) #5
+
+dat_amenity &lt;- extract_osm_objects (key = &#39;amenity&#39;, 
+                                  value = &quot;restaurant&quot;,
+                                  return_type = &quot;point&quot;,
+                                  bbox = bbox_1) #6
+                                  
+                                  st_write(dat_buildings, 
+         dsn = &quot;buildings.gpkg&quot;, 
+         append = FALSE, 
+         quiet = FALSE)
+
+st_write(dat_parks, dsn = &quot;parks.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_greenery, dsn = &quot;greenery.gpkg&quot;, append = FALSE,quiet = FALSE)
+st_write(dat_trees, dsn = &quot;trees.gpkg&quot;, append = FALSE,quiet = FALSE)
+st_write(dat_roads, dsn = &quot;roads.gpkg&quot;, append = FALSE, quiet = FALSE)
+st_write(dat_amenity, dsn = &quot;amenity.gpkg&quot;, append = FALSE, quiet = FALSE) #7
+
+buildings &lt;- st_read(&quot;./buildings.gpkg&quot;)
+parks &lt;- st_read(&quot;./parks.gpkg&quot;)
+greenery &lt;- st_read(&quot;./greenery.gpkg&quot;)
+trees &lt;- st_read(&quot;./trees.gpkg&quot;)
+roads &lt;- st_read(&quot;./roads.gpkg&quot;)
+amenity &lt;- st_read(&quot;./amenity.gpkg&quot;) #8
+
+ggplot() +
+  geom_sf(data = buildings, colour = &quot;grey&quot;) +    
+  geom_sf(data = roads, col = &quot;gray20&quot;) +           
+  geom_sf(data = parks, col = &quot;darkseagreen1&quot;) +  
+  geom_sf(data = greenery, col = &quot;darkseagreen&quot;) +
+  geom_sf(data = trees, col = &quot;green&quot;) +
+  geom_sf(data = amenity, col = &quot;pink&quot;) #9
+  
+  tm_shape(buildings) +
+  tm_fill(col = &quot;mediumblue&quot;) +
+  tm_shape(roads) +
+  tm_lines(col = &quot;gold&quot;) +
+  tm_shape(greenery) +
+  tm_polygons(col = &quot;limegreen&quot;) +
+  tm_shape(parks) +
+  tm_polygons(col = &quot;limegreen&quot;) +
+  tm_shape(trees) +
+  tm_dots(col = &quot;green&quot;) +
+  tm_shape(amenity) +
+  tm_dots(col = &quot;red&quot;) #10
+  
+restaurants &lt;- st_read(&quot;./amenity.gpkg&quot;) #11
+
+amenity %&gt;% nrow() #12
+
+names(amenity) #13
+
+amenity$cuisine %&gt;% unique() #14
+
+amenity &lt;- amenity %&gt;% 
+  drop_na(cuisine) %&gt;%
+
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;;&quot;) %&gt;% 
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;,&quot;)
+
+amenity$cuisine #15
+
+ggplot() +
+  geom_sf(data = buildings, colour = &quot;burlywood1&quot;) +
+  geom_sf(data = roads, colour = &quot;gray20&quot;) +
+  geom_sf(
+    data = amenity %&gt;% drop_na(cuisine),
+    aes(fill = cuisine),
+    colour = &quot;black&quot;,
+    shape = 21,
+    size = 3
+  ) +
+  theme(legend.position = &quot;right&quot;) +
+  labs(title = &quot;Restaurants in Mumbai&quot;) #16</code></pre>
 </div>
 <div id="my-course-reflection" class="section level2">
 <h2>My Course Reflection</h2>
-<blockquote>
-<p>This course in the r language really allowed me to explore a new medium which I did not experiment with before. The whole workshop was a little hard for me to understand and it took me time to grasp around the concept of this language. Most of my doubts were always cleared by Arvind and he made it smoother for me to understand with his support and non judgemental attitute towards even the silliest of the questions.</p>
-</blockquote>
-<blockquote>
-<p>In all, even though the syllabus was a little hard for me, I really enjoyed coding with this language and I will probably continue to work slowly with this language and take it forward with me.</p>
-</blockquote>
+<p>This course was definitely a challenging one for as I’ve never been exposed to coding before. Learning and understanding how to write code from scratch seemed very daunting at the start, although as the course progressed, it seemed more logical than deemed. It was easier to understand how language and code collide to create your final outcome. This course also taught me about being patient as getting your code right could take up to a few hours but if you pay attention to it, it is definitely fixable.</p>
+<p>I think this course allowed me to understand how vast coding is and the many possible things that could be simply done using code. Along with learning code, this course introduced me to R studio and the world of data and graphs.</p>
+<p>My main challenge faced during this course was not being able to comprehend new “code” very quickly. It definitely took me longer in comparison to the rest of my class. Although, this was mainly a set back on my time and not necessarily on my learning as I was able to understand the code after sometime of breaking my head over it.</p>
+<p>I think this course taught me many things and although I was not the most optimistic at the start, I’ve grown to appreciate everything I’ve learnt about code. It is still a daunting subject for me but it will not limit me from attempting to learn more.</p>
 </div>
 
          

@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/portfolio/</loc>
+    <loc>https://we-r-the-world.netlify.app/portfolio/aakarsh-shetty/</loc>
+    <lastmod>2022-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/adit-maheshwari/</loc>
+    <lastmod>2022-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/harsh-sinha/</loc>
+    <lastmod>2022-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/ishita-devulapalli/</loc>
+    <lastmod>2022-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/mahir-malde/</loc>
     <lastmod>2022-10-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://we-r-the-world.netlify.app/portfolio/</loc>
@@ -12,79 +24,7 @@
     <lastmod>2022-10-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://we-r-the-world.netlify.app/categories/</loc>
-    <lastmod>2021-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/nalini-rajeev/</loc>
-    <lastmod>2021-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/categories/r/</loc>
-    <lastmod>2021-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/tags/r-markdown/</loc>
-    <lastmod>2021-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/tags/</loc>
-    <lastmod>2021-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/aabha-deshmukh/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/adit-maheshwari/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/ananya-salian/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/arunima-sajith/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/arya-mohan/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/gayatri-jadhav/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/harsh-sinha/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/ishani-nandagopal/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/ishita-devulapalli/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/janavi-moncourt/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/alamelu-karthikeyan/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/mahir-malde/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/nehal-sarin/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/nithin-suresh/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/rosanne-maria/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/sakshi-sawarkar/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/shreya-kolalapudi/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/stuti-kumar/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/ramesh-kalkur/</loc>
-    <lastmod>2021-07-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>https://we-r-the-world.netlify.app/post/2020-12-01-r-rmarkdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
@@ -95,7 +35,16 @@
     <loc>https://we-r-the-world.netlify.app/post/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
+    <loc>https://we-r-the-world.netlify.app/categories/r/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/tags/r-markdown/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
     <loc>https://we-r-the-world.netlify.app/tags/regression/</loc>
+    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/tags/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>https://we-r-the-world.netlify.app/contact/</loc>
@@ -106,9 +55,27 @@
   </url><url>
     <loc>https://we-r-the-world.netlify.app/portfolio/adit-joshi/</loc>
   </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/alamelu-karthikeyan/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/arunima-sajith/</loc>
+  </url><url>
     <loc>https://we-r-the-world.netlify.app/portfolio/arya-chandrasekaran/</loc>
   </url><url>
-    <loc>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/awani-k/</loc>
+    <loc>https://we-r-the-world.netlify.app/portfolio/arya-mohan/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/awani-kshirsagar/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/gayatri-jadhav/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/janavi-moncourt/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/mariya-vahanvaty/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/nithin-suresh/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/rosanne-maria/</loc>
+  </url><url>
+    <loc>https://we-r-the-world.netlify.app/portfolio/shreya-kolalapudi/</loc>
   </url><url>
     <loc>https://we-r-the-world.netlify.app/portfolio/swapnali-patil/</loc>
   </url>

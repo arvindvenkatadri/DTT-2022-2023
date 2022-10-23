@@ -1,62 +1,124 @@
 ---
-title: Disha Ramesh
-author: Disha Ramesh
-date: '2021-07-25'
-slug: []
-categories: []
-tags: []
+title: "Harsh Sinha"
+author: "Harsh Aryan Sinha"
+date: "2022-10-21"
+output: html_document
 image: https://www.alice-in-wonderland.net/wp-content/uploads/1book5.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: This is an analysis of the family relationships in Game of Thrones, using R. **EDIT THIS**.
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo =FALSE)
 
-```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
-## Load frequently used packages for blog posts
+options(warn = -1)
 library(tidyverse)
+library(visNetwork)
+library(igraph)
+library(tidygraph)
+library(ggraph)
+library(graphlayouts)
+library(igraphdata)
+library(knitr)
 ```
 
-## Instructions
+Oh my what a rollercoaster were these 2 weeks were, lots of suffering and internal pain, the course made me actually realise what silent tears were. But the funny part is that i think these 2 weeks were the best weeks i have had at srishti. 
+<!--more-->
 
-Delete all of this and paste in your own content right here!!
+## Introduction
 
-### Portfolio File Format
-
-To create a new Portfolio entry, make sure that you selected `R Markdown (.Rmd)` as the _format_ option of the post when using the `New Post` `blogdown` addin.
-
-### Setup chunk
-
-Make sure you edit the setup chunk above and bring in **all** packages you need using *r library(package_name)*. 
+Oh my what a rollercoaster were these 2 weeks were, lots of suffering and internal pain, the course made me actually realise what silent tears were. But the funny part is that i think these 2 weeks were the best weeks i have had at srishti. Yes there were times that i wanted to smash my head into the computer just because of a wrong capital letter and yes i wanted to go home and sleep and not do the mountain of assignments Arvind assigned us to do but even after all this i feel like i have learnt a core skill which i enjoy and which i would pusue and develop over the years. Just the process of finding the perfect graph after failing at it for a thousand times and the satisfaction of seeing that little red line turn green over a piece of code when i figured out an error is uncomparable. I might be terrible at it right now but i am certain that i will keep practicing and sharpening my skill of this disastrous yet wonderful language of R._
 
 
-### Inserting a Custom image in your Post
+**Well anyways here are some graphs that i consider to be my best works:**
 
-The easiest option is to use the `blogdown` _Insert Image_ RStudio addin to add an external image.
 
-Another way: use a code chunk, if you already have the image downloaded and ready. Place the image in the **same folder** as this Post, and link to it with the chunk below:
+## Graph 1
 
-```{r echo=FALSE, out.width='100%', fig.align = "centre"}
-knitr::include_graphics('./default.jpg')
+This Graph is representing data from the diamonds dataset. It shows us the relantionship between price and carat through a line graph and also shows us the quality of the cut of the diamond with respect to the price and cut.
+```{r, echo=FALSE}
+ggplot(diamonds, aes(x=carat, y=price, color=cut)) + geom_point() + geom_smooth() +theme_bw() + labs(title="Scatterplot line graph")
 ```
 
-### Narrative Text and Futher Code chunks
+```{r, include=FALSE}
 
-Start typing/pasting text here.
+banned_items <- read.csv(file = "banned_items.csv")
 
-Diamonds are forever. We can see that from this graph below:
+```
 
-```{r}
-diamonds %>% 
-   ggplot(aes(x = carat, y = price, color = cut)) + 
-   geom_point(alpha = 0.1)
+```{r echo=FALSE}
+b99_edges <- read_delim("b99_edges.csv", delim = ",")
+b99_nodes <- read_delim("b99_nodes.csv", delim = ",")
+```
+
+
+```{r, include=FALSE}
+drop_na(b99_nodes)
+drop_na(b99_edges) %>% 
+  kable()
+
+```
+
+```{r, include=FALSE}
+b99 <- tbl_graph(nodes = b99_nodes, 
+                edges = b99_edges, 
+                directed = FALSE)
+```
+
+
+### Graph 2
+
+This graph was done on the show brooklyn "NINETY NINE" and it shows the duration of time characters interacted with each other, what they talked about and their proffession. 
+
+```{r, echo=FALSE}
+ggraph(b99, layout = "linear", circular = TRUE) + 
+  geom_edge_arc(aes(width = duration, color =topic), alpha = 0.8) + 
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(aes(color =profession, size = 2)) + 
+  geom_node_text(aes(label = Names),repel = TRUE, 
+                 size = 3,
+                 max.overlaps = 20) +
+  labs(edge_width = "duration") +
+  
+  theme_graph()+
+  theme(legend.position = "right", 
+        aspect.ratio = 1)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r, include=FALSE}
+airlines_nodes <- read_delim("data/AIRLINES-NODES (1).csv",delim = ';')
+airlines_edges <- read_delim("data/AIRLINES-EDGES (1).csv",delim = ';')
+
+```
+
+```{r, include=FALSE}
+airline2 <- airlines_nodes %>% select(latitude, longitude) %>% transmute(Latitude = latitude / 1000000, Longitude = longitude / 1000000)
+           
+airline2
+
+
+```
+
+
+## Graph 3
+
+This graph shows the frequency of arrivals and departures of flights in the USA.
+
+```{r, echo=FALSE}
+my_layout <- cbind(x = airline2$Longitude, y = airline2$Latitude) %>% as.matrix()
+g <- tbl_graph(nodes = airlines_nodes, edges = airlines_edges)
+ggraph(g, layout = my_layout) + geom_edge_link0(alpha = 0.3) + geom_node_point(aes(color = Code), shape = 21, size = 1, stroke = 2) + theme(legend.position = "none")
+
 ```
 
 

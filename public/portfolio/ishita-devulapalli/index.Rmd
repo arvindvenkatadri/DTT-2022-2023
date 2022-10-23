@@ -1,265 +1,92 @@
 ---
-title: Jayaditya Thotli
-author: Jayaditya Thotli
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Ishita D"
+author: "Ishita D"
+date: "2022-10-21"
+output: 
+       html_document:
+         theme: yeti
+         toc: TRUE
+         toc_float: TRUE
+         toc_depth: 2
+         number_sections: FALSE
+         code_folding: hide
+         df_print: paged
 image: https://www.alice-in-wonderland.net/wp-content/uploads/121.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: My journey filled with hardships to achieve a knitted file.
 ---
 
-
-```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
-## Load frequently used packages for blog posts
-library(tidyverse)
-library(osmdata)
-
-library(prettymapr)
-library(osmplotr)
-library(tmap)
-library(sf)
-
-library(igraph)
-library(tidygraph)
-library(ggraph)
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Hi! I am Ishita Devulapalli. I am going to show the different "visualizations" that I made throughout this course
 
+<!--more-->
 
-```{=html} 
-<style type="text/css">
-h1.title {
-  font-size: 48px;
-  font-family: "Arial"
-  color: Black;
-  text-align: center;
-}
-h4.author { 
-    font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
-  color: gray;
-  text-align: right;
-}
-h4.date { 
-  font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
-  color: grey;
-  text-align: right;
-}
-</style>
-```
-<br>
+## Introduction
 
-------------------------------------------------------------------------
-
-<br>
-
-## Height and Weight of the Heroes along with their Hair colour
-
-
-```{r echo=FALSE}
-
-heroes <- read_csv("./Data_Jayaditya/heroes.csv") 
-
-```
-
-```{r}
-
-#heroes
-glimpse(heroes)
-```
-
-```{r}
-heroes %>% 
-  #slice_sample(prop = 0.2) %>% 
-  ggplot(.) +
-  geom_point(aes(x = Height, y = Weight, colour = Haircolor), size = 3, alpha = 0.2) +
-               scale_colour_viridis_d(option = "inferno") +
-  labs(title = "Heights and Weights of the Heroes")
-```
-
-<font size="3"> The above graph is a point graph, it specifies height and weight of the heroes according to their hair colour. I added the function alpha, as the points are too cluttered. </font>
-
-<br>
-
-------------------------------------------------------------------------
-
-<br>
-
-## Restaurants in Madhapur, Hyderabad
-
-***My Heart is in Hyd, Hyd is for Food***
-
-```{r}
-
-bbox_hyd <- getbb("Madhapur, Hyderabad, India")
-bbox_hyd
-```
-
-```{r}
-dat_hyd_B <- extract_osm_objects(bbox_hyd, key = "building")
-dat_hyd_H <- extract_osm_objects(bbox_hyd, key = "highway")
-dat_hyd_p <- extract_osm_objects(bbox_hyd, key = "park")
-dat_hyd_G <- extract_osm_objects(bbox_hyd, key = 'landuse')
-dat_hyd_T <- extract_osm_objects(bbox_hyd, key = 'natural', value = 'tree')
-dat_hyd_R <- extract_osm_objects(bbox_hyd, key = "amenity", value = "restaurant", return_type = "point")
-dat_hyd_w <- extract_osm_objects(bbox_hyd, key ="natural", value = "water")
-dat_hyd_L <- extract_osm_objects(bbox_hyd, key ="surface")
-dat_hyd_t <- extract_osm_objects(bbox_hyd, key = "power")
-```
-
-```{r}
-dat_hyd_R$cuisine
-```
-
-```{r}
-dat_hyd_R <- dat_hyd_R %>% 
-  drop_na(cuisine) %>% 
-  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ";") %>% 
-  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ",")
-```
-
-```{r}
-glimpse(dat_hyd_R)
-```
-
-```{r}
-## Using tmap
-
-#Group 1
-tm_shape(dat_hyd_B) + 
-  tm_fill(col = "skyblue2") + 
+The last few months at Srishti have really widen by horizon of dealing with new ways to express myself.To me one such experience is "R". Something that was very unexpected and surprisingly was fun. To me the fact that computer applications can be used to really express ourselves been very interesting. Something that stuck to me with this workshop was how Arvind went about to help us to come to conclusions about data visualization,
   
-#Group 2  
-tm_shape(dat_hyd_H) + 
-  tm_lines(col = "gray1", lwd = 1) + 
+  Until last week, data visualization to me has always been about using convention step deviation methods etc,but now my perception has changes for the better.The idea of these 2 weeks was to visually represent data by using R as means of commutation. Each assignment had an agenda of dissecting and understanding R. We saw data present in R , unknown data sets, networking and maps.
+
+  Now i can sort of say that R is something i see  myself working on. It has been a very surprising journey for me, i had dropped learning computers in grade 6 now now picking up such an application has been quite a challenge for me.I have come to stage where i might be even interested in picking coding as a means of designing. The live example of a current Srishti student who tapped into the side of data analysis through design was very fascinating to me.
+
+   Though the projects i created were no where close but end of 2 weeks i am proud of what i have created, below are some projects:
+   
+   
+
+### __World Map of all the Migrating Bald Eagles__
+![](images/pic 2.png)
+   
+```{r map of bald eagles,eval= FALSE}
+tmap_mode ("plot")
+tm_tiles ("Stamen.Watercolor")+
+ tm_shape(World) +
+   tm_polygons("HPI")+
   
-#Group 3
-tm_shape(dat_hyd_p) +
-  tm_polygons(col = "lightgreen") +
+  tm_shape(eagles_lines)+
+   tm_lines(size = 1,
+               col = "black") +
   
-#Group 4
-tm_shape(dat_hyd_w) +
-  tm_polygons(col = "aquamarine") +
-  
-#Group 5
-tm_shape(dat_hyd_G) +
-  tm_polygons(col = "palegreen") + 
+  tm_shape(eagles_points)+
+    tm_dots(size = 0.1,
+              col = "red")
+
+
+```
+
+
+
+### __Scatter Plot representing carat and clarity of diamonds__
+![](images/Pic 1.png)
+```{r double_variable_graph_1.,eval=FALSE}
+ggplot(diamonds) + geom_point(aes(x = carat, y = price, colour = clarity))
+
+```
+   
+### __Mapping restaurants in Jubliee Hills, Hyderabad__
+
+![](images/pic 3.png)
+```{r,eval=FALSE}
+
+ggplot() +
+  geom_sf(data = buildings, colour = "burlywood1") +
+  geom_sf(data = roads, colour = "gray80") +
+  geom_sf(
+    data = restaurants %>% drop_na(cuisine),
+    aes(fill = cuisine),
+    colour = "black",
+    shape = 21,
+    size = 3
+  ) +
+  theme(legend.position = "right") +
+  labs(title = "Restaurants in Jubille Hills",
+       caption = "Based on osmdata")
+```
+```
+
 
   
-#Group 6
-tm_shape(dat_hyd_L) +
-  tm_lines(col = "chocolate1") +
-  
-#Group 7
-tm_shape(dat_hyd_t) +
-  tm_lines(col = "gray20") +
-
-#Group 8
-tm_shape(dat_hyd_T) +
-  tm_dots(size = 0.1, col = "forestgreen", shape = 7) +
-
-#Group 9
-tm_shape(dat_hyd_R) + 
-  tm_dots(size = 0.8, col = "red", shape = 25) + 
-  tm_text("name",auto.placement = TRUE, fontfamily = "Fira Code", size = 0.6, col = "black", clustering = "supprate", remove.overlap = TRUE, legend.size.show = FALSE) +
-   tm_layout( legend.title.size = 3, frame = FALSE, inner.margins = c(0,.0,.05,.0), asp = 1.5, legend.text.size = 1, legend.outside = TRUE, legend.outside.position = 'bottom', legend.frame = TRUE, legend.outside.size = .3, legend.position = c(-0.1, 0.3)) +
-
-#Group 10
-tm_tiles("My Heart is in Hyd, Hyd is food") +  
-  tm_compass(type = "8star", position = c("right", "top")) +
-  tm_scale_bar(width = 4, position = c("left", "bottom"), text.size = 1) +
-  tm_layout(title = "I <3 Hyd ", fontface = "bold", title.size = 3, frame = TRUE, frame.lwd = 3, bg.color = "oldlace", frame.double.line = TRUE) 
-  
-
-```
-
-<font size="3"> I wanted to show restaurants in Madhapur, which is a part of Hyderabad. As for the overall map, I waned to show buildings, parks, highways, trees, water bodes... I also represented them with suppurate colors which symbolizes them. The red triangular bullets are the named restraints in Madhapur along with their name.I also included a 8 star compass and a scale bar. </font>
-
-<br>
-
-------------------------------------------------------------------------
-
-<br>
-
-## Connections between the characters
-
-### ![***The Boys***](https://www.militarypress.com/wp-content/uploads/2020/07/the-boys.jpg)
-
-
-```{r}
-theboys_nodes <- read_csv("./Data_Jayaditya/theboys-nodes.csv")
-theboys_edges <- read_csv("./Data_Jayaditya/theboys-edges.csv")
-theboys_nodes
-theboys_edges
-```
-
-```{r}
-tb <- tbl_graph(nodes = theboys_nodes,
-                edges = theboys_edges,
-                directed = FALSE)
-tb
-```
-
-```{r}
-set_graph_style()
-
-tb %>% 
-  activate(nodes) %>% 
-  mutate(degree = centrality_degree()) %>% 
-  activate(edges) %>% 
-  mutate(betweenness = centrality_edge_betweenness()) %>%
-  ggraph(layout = "nicely") +
-  geom_edge_link(aes(alpha = centrality_edge_betweenness())) +
-  geom_node_point(aes(fill = centrality_degree(), 
-                      size = centrality_degree()), shape = 21) + 
-  scale_color_gradient(guide = "legend",
-                       low = "seagreen",
-                       high = "aquamarine") +
-  theme_graph() + theme(legend.position = "right") +
-  labs(title = "The Boy's graph",
-       subtitle = "Whoo Hoo!!!")
-```
-
-<font size="3"> The graph above shows which of the characters in the shows, "The Boy's" has the most connections with others, the bigger the circles in the graph, the more intense the relation between characters. Also, the thickness of the lines specifies the weight of the dialog in the particular episodes (S1 E1,2,3,4). </font>
-
-<br>
-
-------------------------------------------------------------------------
-
-<br>
-
-### ***Reflection***
-
-<font size="3"> This course has been a great starter pack on data visualization using R. The viewpoint of of this course is of using R to create geometric metaphors. Diverse domains have their own uniquely structured data.
-
-We understood the idea of data and types of variables in data. These lead us to creating different kinds of graphs based on variable type, using R. We looked at diverse domains, such as Geography, Networks and Education and plot geometric visuals based on the data we find in these domains. This helped us not only appreciate the data but give us a view of the underlying realities and ideas in each of these domains.
-
-We started off by learning about code chunks and how to run them, with this we plotted our first graph on baby names. Then we went through R markdown and created a short articales using all the features we learnt. We also learnt a great deal about graphs and maps in R markdown, and how to change their colour, size, shape... We also created our own datasets in Excel and then imported them into R and plotted grapes using the data we created. We also created maps on our hometown using tmaps and ggplot, and marked buildings, roads, parks... We mainly plotted a lot of grapes and maps in this course.
-
-I started off the course thinking that coding would be boring, but after the course I found myself being interested and curious about coding even thought some times it could be frustrating, if we get a lot of errors.
-
-Our facilitator Arvind has been a great help, he replies intently whenever we have any doubt related to coding.
-
-Overall this course has been a great starter kit for R. </font>
-
-<br>
-
-------------------------------------------------------------------------
-
-<br>
-
-
+   
+   

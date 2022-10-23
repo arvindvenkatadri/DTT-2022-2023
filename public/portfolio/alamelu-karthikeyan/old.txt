@@ -1,0 +1,137 @@
+---
+title: Lakshya Pratap
+author: Lakshya Pratap
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/161.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: This is the portfolio of Lakshya Pratap.
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(extrafont)
+loadfonts()
+library(tidyverse)
+library(igraph)
+
+library(tidygraph)
+library(ggraph)
+library(graphlayouts)
+library(igraphdata)
+
+library(RColorBrewer)
+library(osmplotr)
+library(tmap)
+```
+
+## Graph 1: Bar Graph from Lab 03, Midwest Database
+
+This graph shows that which state in the Midwest consists of what kind of categories.
+```{r}
+ggplot(midwest) + geom_bar(aes(x= state, fill= category), position = "stack")
+```
+
+
+
+## Graph 2: Map Of My City Jodhpur & Its famous Places/ Restaurants
+#### Map from Lab 06
+
+```{r}
+bbox <- osmplotr::get_bbox(c(73.02,26.25,73.15,26.35))
+bbox
+
+```
+
+
+```{r}
+dat_B <- extract_osm_objects (key = "building", bbox = bbox) 
+dat_H <- extract_osm_objects (key = 'highway', bbox = bbox)
+dat_P <- extract_osm_objects (key = 'park', bbox = bbox)
+dat_G <- extract_osm_objects (key = 'landuse', value = 'grass', bbox = bbox)
+dat_T <- extract_osm_objects (key = 'natural', value = 'tree', bbox = bbox)
+```
+
+
+```{r}
+dat_R <- extract_osm_objects(bbox = bbox, 
+                             key = "amenity", 
+                             value = "restaurant", 
+                             return_type = "point")
+```
+
+
+```{r}
+#01
+tm_shape(dat_B) + tm_fill(col = "blue") +
+  
+#02
+  tm_shape(dat_H) + tm_lines(col = "green", lwd = 1) +
+
+#03
+  tm_shape(dat_R) + 
+    tm_dots(size = 1, col = "pink", shape = 21) + 
+    tm_text("name", auto.placement = TRUE) + 
+    tm_compass(type = "rose", position = c("right", "top"))
+ 
+```
+
+## Graph 3: The Graph from my favourite TV Show: Narcos
+### Graph from the learnings of Lab 07
+
+```{r}
+narcos_nodes <- read_csv("./Data/narcos-nodes.csv")
+narcos_edges <- read_csv("./Data/narcos-edges.csv")
+narcos_nodes
+narcos_edges
+```
+
+```{r}
+ga <- tbl_graph(nodes = narcos_nodes, 
+                edges = narcos_edges, 
+                directed = FALSE)
+ga
+```
+
+
+```{r}
+ggraph(ga, layout = "linear", circular = TRUE) + 
+  geom_edge_arc(aes(), alpha = 0.8) + 
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(size = 4,colour = "red") + 
+  geom_node_text(aes(label = name),repel = TRUE, size = 3,
+                 max.overlaps = 20) +
+  labs(edge_width = "Weight") +
+  theme_graph()+
+  theme(legend.position = "right", 
+        aspect.ratio = 1)
+```
+
+### Graph 2 from the same TV show. 
+
+Showing the relationship between the characters
+
+```{r}
+set_graph_style()
+
+ggraph(ga,layout = "linear", circular = TRUE) + 
+  geom_edge_link(aes(color = type)) + 
+  geom_node_point() +
+  facet_edges(~ type)
+```
+
+

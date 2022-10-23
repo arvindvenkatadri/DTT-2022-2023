@@ -1,0 +1,228 @@
+---
+title: "AIRLINES & MODERNFAMILY"
+author: "Janavi Moncourt, Ishita Devulapalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+library(tidyverse)
+library(visNetwork)
+library(igraph)
+library(tidygraph)
+library(ggraph)
+library(graphlayouts)
+library(igraphdata)
+```
+
+## **Reading the data** 
+
+**The following graphs depict the connections and networks built between various airports around the world.**
+
+![](https://media.istockphoto.com/photos/airport-picture-id1149089169?k=20&m=1149089169&s=612x612&w=0&h=UImeWukqporGjecuqlsNNKSMALNeuG2Az-nmWIMMojc=)
+
+
+```{r 1.Read-Airlines-data, message=FALSE, include=FALSE}
+airlines_nodes <- read_csv("Data/AIRLINES-NODES.csv")
+airlines_edges <- read_csv("Data/AIRLINES-EDGES.csv")
+
+airlines_nodes
+airlines_edges
+```
+
+```{r read-data, eval=TRUE}
+airlines_nodes <- read_delim (file = "Data/AIRLINES-NODES.csv", delim = ";")
+airlines_edges <- read_delim (file = "Data/AIRLINES-EDGES.csv", delim = ";")
+```
+
+```{r}
+airlines_edges
+airlines_nodes
+```
+
+```{r 2.Create-Airlines-graph-object}
+airlines <- tbl_graph(nodes = airlines_nodes, 
+                edges = airlines_edges, 
+                directed = FALSE)
+airlines
+```
+
+## **Plotting Ggraph**
+
+## **Graph 1(a) - Autograph** 
+
+```{r Auto-graph-airlines}
+autograph(airlines)
+```
+
+## **Analysis** 
+This autograph gives us a brief idea of the networking within the data set and the connections that can be drawn. There is not much to infer as the dataset is quite messy. 
+
+## **Graph 1(a)** 
+
+```{r Ggraph-Airlines_A}
+
+ggraph(graph = airlines,  layout = "kk") +
+#
+  geom_edge_link(width = 2, 
+                 color = "blue") +
+  geom_node_point (shape = 21,
+    size = 6,
+    fill = "yellow",
+    color = "orange",
+    stroke = 2 ) 
+```
+
+## **Analysis** 
+This graph is extremely dense and clustered due to the input of a very heavy dataset. Not much can be inferred from this graph other than the network and connections built between the airports.
+
+## **Graph 1(b)**
+
+```{r Ggraph-Airlines_B}
+
+ggraph(graph = airlines,  layout = "kk") + 
+  geom_edge_link(width = 1,
+                 color = "pink") + 
+  geom_node_point(shape = 25, 
+                  size = 4, 
+                  fill = "yellow", 
+                  color = "firebrick", 
+                  stroke = 1) 
+```
+
+## **Analysis**
+This graph, similar to the previous one, is extremely dense and clustered due to the input of a very heavy dataset. Not much can be inferred from this graph other than the network and connections built between the airports.
+
+## **Graph 1(c)**
+
+```{r}
+names(airlines_edges)
+names(airlines_nodes)
+
+ggraph(graph = airlines, layout = "fr") +
+  geom_edge_link(aes(width = Weight)) + 
+  geom_node_point(aes(color = latitude), size = 6) 
+
+```
+
+## **Graph 1(d)**
+
+```{r arc-diagram}
+ggraph(airlines, layout = "linear") +
+  geom_edge_arc(aes(width = Weight), alpha = 0.8) +
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(size = 2, colour = "red") +
+  labs(edge_width = "Weight") +
+  theme_graph()+
+  theme(legend.position = "top")
+```
+
+
+## **Analysis** 
+Majority of the graphs depicted above, are dense and clustered due to a very heavy dataset. The form of representations that was given to us is "networking and mapping". We believe "networking and mapping" is not the right form of representation, but instead, previous forms such as bar graphs, pie charts,etc, would enable more accurate and precise representation while working with such heavy datasets. 
+
+## **A2 - PART B**
+
+## **Modern Family Data Analysis** 
+![](https://www.peacocktv.com/dam/growth/assets/Library/ModernFamily/modern-family-og-min.png)
+**The following graphs depict the connections and networks built between various characters in the show "Modern Family".**
+
+```{r 1.Read-ModernFamily-data, message=FALSE, include=FALSE}
+modernfamily_nodes <- read_csv("Data/ModernFamily-NODES.csv",trim_ws = TRUE)
+modernfamily_edges <- read_csv("Data/ModernFamily-EDGES.csv", trim_ws = TRUE)
+
+```
+
+```{r}
+modernfamily_nodes
+modernfamily_edges
+```
+
+```{r 2.Create-modernfamily-graph-object}
+
+Modernfamily <- tbl_graph(nodes = modernfamily_nodes, edges = modernfamily_edges, directed = FALSE)
+Modernfamily
+
+```
+
+```{r Auto-graph-modernfamily}
+autograph(Modernfamily)
+```
+
+## **Analysis**
+This autograph gives us a brief idea of the networking and connections between characters within the data set and the connections that can be drawn between them. 
+
+## **Graph 2(a)** 
+
+```{r Ggraph-ModernFamily2A}
+
+ggraph(graph = Modernfamily,  layout = "kk") +
+#
+  geom_edge_link(width = 2, 
+                 color = "purple") +
+  geom_node_point (shape = 21,
+    size = 6,
+    fill = "pink",
+    color = "blue",
+    stroke = 2 ) 
+  
+```
+
+## **Analysis**
+This graph shows us the interactions between all the characters on the show
+
+## **Graph 2(b)**
+
+```{r Ggraph-ModernFamily2B}
+
+ggraph(graph = Modernfamily,  layout = "kk") + 
+  geom_edge_link(width = 1,
+                 color = "pink") + 
+  geom_node_point(shape = 25, 
+                  size = 4, 
+                  fill = "orange", 
+                  color = "green", 
+                  stroke = 1) 
+ 
+```
+
+## **Graph 2(c)**
+
+```{r}
+names(modernfamily_edges)
+names(modernfamily_nodes)
+
+ggraph(graph = Modernfamily, layout = "fr") +
+  geom_edge_link(aes(width = interactions)) + 
+  geom_node_point(aes(color = `Skin_color`), size = 6) 
+```
+
+## **Analysis** 
+This graph represents two aspects: the skin color of the characters and the weightage of their interactions that connect them to one another. 
+
+## **Graph 2(d)**
+
+```{r arc-diagram2D}
+ggraph(Modernfamily, layout = "linear", circular = TRUE) +
+  geom_edge_arc(aes(width = interactions), alpha = 0.8) + 
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(size = 4,colour = "red") + 
+  geom_node_text(aes(label = Names),repel = TRUE, 
+                 size = 3,
+                 max.overlaps = 20) +
+  labs(edge_width = "interactions") +
+  
+  theme_graph()+
+  theme(legend.position = "right", 
+        aspect.ratio = 1)
+
+```
+
+
+
+
+
+
+
+

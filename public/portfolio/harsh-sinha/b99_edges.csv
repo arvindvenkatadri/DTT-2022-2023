@@ -1,0 +1,67 @@
+names_from,names_to,duration,relation,topic
+Jake Peralta,Jake Peralta,16,N.A,Introduction
+Amy Santiago,Jake Peralta,13,Friends,Bantering
+Amy Santiago,Stranger 1,16,Strangers,Interogation
+Jake Peralta,Amy Santiago,48,Friends,Insulting
+Jake Peralta,Amy Santiago,22,Friends,Insulting
+Terry Jeffords,Jake Peralta,20,Friends,Work
+Rosa Diaz,Jake Peralta,2,Friends,Work
+Charles Boyle,Jake Peralta,3,Friends,Work
+Terry Jeffords,Jake Peralta,5,Friends,Work
+Charles Boyle,Gina Linetti,44,Friends,Insulting
+Amy Santiago,Jake Peralta,45,Friends,Flashback
+Captain Holt,Jake Peralta,61,Co-workers,Insulting
+Captain Holt,Amy Santiago,4,Co-workers,Bantering
+Captain Holt,Terry Jeffords,2,Co-workers,Work
+Amy Santiago,Jake Peralta,2,Friends,Work
+Gina Linetti,Jake Peralta,5,Friends,Work
+Gina Linetti,Amy Santiago,5,Friends,Work
+Captain Holt,Terry Jeffords,37,Co-workers,Introduction
+Terry Jeffords,Captain Holt,11,Co-workers,Flashback
+Captain Holt,Terry Jeffords,112,Co-workers,Introduction
+Jake Peralta,Amy Santiago,12,Friends,Work
+Charles Boyle,Jake Peralta,4,Friends,Insulting
+Jake Peralta,Amy Santiago,5,Friends,Work
+Jake Peralta,Rosa Diaz,5,Friends,Work
+Jake Peralta,Charles Boyle,5,Friends,Work
+Amy Santiago,Jake Peralta,6,Friends,Insulting
+Charles Boyle,Rosa Diaz,4,Friends,Question
+Rosa Diaz,Jake Peralta,9,Friends,Work
+Jake Peralta,Rosa Diaz,1,Friends,Question
+Charles Boyle,Jake Peralta,12,Friends,Work
+Jake Peralta,Charles Boyle,2,Friends,Insulting
+Captain Holt,Jake Peralta,22,Co-workers,Work
+Charles Boyle,Rosa Diaz,31,Friends,Flirting
+Captain Holt,Gina Linetti,48,Co-workers,Work
+Jake Peralta,Amy Santiago,4,Friends,Work
+Amy Santiago,Stranger 2,21,Strangers,Interogation
+Amy Santiago,Stranger 3,30,Strangers,Interogation
+Amy Santiago,Jake Peralta,8,Friends,Work
+Jake Peralta,Stranger 4,8,Strangers,Interogation
+Jake Peralta,Amy Santiago,11,Friends,Insulting
+Jake Peralta,Captain Holt,33,Co-workers,Bantering
+Jake Peralta,Charles Boyle,16,Friends,Work
+Jake Peralta,Ratko,28,Foe,Interogation
+Jake Peralta,Charles Boyle,18,Friends,Insulting
+Jake Peralta,Stranger,3,Foe,Bantering
+Jake Peralta,Stranger,2,Foe,Bantering
+Jake Peralta,Captain Holt,15,Co-workers,Work
+Jake Peralta,Amy Santiago,5,Friends,Bantering
+Terry Jeffords,Jake Peralta,14,Friends,Bantering
+Amy Santiago,Jake Peralta,2,Friends,Bantering
+Terry Jeffords,Jake Peralta,22,Friends,Flashback
+Amy Santiago,Jake Peralta,22,Friends,Insulting
+Rosa Diaz,Charles Boyle,30,Friends,Bantering
+Captain Holt,Jake Peralta,50,Co-workers,Work
+Captain Holt,Amy Santiago,17,Co-workers,Bantering
+Captain Holt,Rosa Diaz,17,Co-workers,Bantering
+Captain Holt,Charles Boyle,17,Co-workers,Bantering
+Amy Santiago,Captain Holt,40,Co-workers,Work
+Amy Santiago,Jake Peralta,40,Friends,Work
+Jake Peralta,Captain Holt,34,Co-workers,Question
+Rosa Diaz,Charles Boyle,21,Friends,Bantering
+Amy Santiago,Captain Holt,38,Co-workers,Question
+Jake Peralta,Captain Holt,11,Co-workers,Bantering
+Jake Peralta,Ratko,25,Foe,Interogation
+Jake Peralta,Captain Holt,15,Co-workers,Bantering
+Jake Peralta,Captain Holt,25,Co-workers,Insulting

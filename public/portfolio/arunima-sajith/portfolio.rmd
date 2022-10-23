@@ -1,0 +1,88 @@
+---
+title: "PORTFOLIO"
+author: "Arunima Sajith"
+output: 
+ html_document:
+     toc: TRUE
+     toc_float: TRUE
+     toc_depth: 3
+     code_folding: hide
+     code_download: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(tidyverse)
+library(knitr)
+library(sf)
+```
+
+
+#### **INTRO**
+
+##### I'm someone who had never even thought to learn coding before this class. And within two weeks of this workshop I think I've grown significantly. These are some of my favorite pieces of work I've made during this time period.
+
+
+![A1! Plotting the price of diamonds against density. I love the colors in this one (it took me hours to get.)](C:\Users\aruni\OneDrive\Desktop\srishti\R stuff\portfolio\Screenshot (22).png)
+
+```{r eval=FALSE}
+ggplot(diamonds) + geom_density(aes(x = price, fill = cut)) + labs(title = "Price vs Density") + scale_fill_viridis_d(option = "magma")
+
+```
+
+
+![A2 - Relationship analysis of characters in the TV show Fleabag. (Note: the dataset was made based only on S2E1)](C:\Users\aruni\OneDrive\Desktop\srishti\R stuff\portfolio\Screenshot (28).png)
+
+```{r eval=FALSE}
+
+ggraph(graph = fb, layout = "circle") +
+  
+  
+  geom_edge_link(aes(width = Intensity), colour= "antiquewhite3")  + scale_edge_width(range = c(0, 3)) +
+  
+  
+  geom_node_point(aes(fill = Relationship), shape = 23,
+                      size = 5.5,
+                      stroke = 2 ) +
+  geom_node_text(aes(label = Name), repel = TRUE, color = "black")+
+  
+  
+  labs(title = "Intensity")
+```
+
+![A3 - Restaurants in my hometown mapped according to cuisine and location.](C:\Users\aruni\OneDrive\Desktop\srishti\R stuff\portfolio\ArunimaSajith_Kerala.png)
+
+```{r eval=FALSE}
+buildings <- st_read("data/buildings.gpkg")
+parks <- st_read("data/parks.gpkg")
+greenery <- st_read("data/greenery.gpkg")
+trees <- st_read("data/trees.gpkg")
+roads <- st_read("data/roads.gpkg")
+```
+
+
+```{r eval=FALSE}
+ggplot() +
+  geom_sf(data = buildings, colour = "burlywood1") +
+  geom_sf(data = roads, colour = "darkred") +
+  geom_sf(data = trees, colour = "darkgreen") +
+  geom_sf(
+    data = dat_R %>% drop_na(cuisine),
+    aes(fill = cuisine),
+    colour = "brown",
+    shape = 21,
+    size = 4) +
+  theme(legend.position = "right") +
+  labs(title = "Restaurants in North Central Kerala",
+       caption = "i recommend paragon biriyani")
+```
+
+
+
+
+#### **CONCLUSION & THANKS**
+
+##### RStudio is not easy to work with when you're a beginner. But I think the environment we were in and the facilitator we had made it a lot easier for us to get a grip on things. Most of my days were filled with cries for help from around the class but it didn't match the satisfaction I felt when a code I typed gave me a result in the end. I'm very grateful to this class for broadening my horizons on what I consider art and helping me grow as a student. 
+
+

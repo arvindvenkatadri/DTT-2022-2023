@@ -1,195 +1,86 @@
 ---
-title: Prisha Jhaveri
-author: Prisha Jhaveri
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
-image: https://www.alice-in-wonderland.net/wp-content/uploads/111.jpg
-caption: ''
-preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Prisha's Journey using graphs, Mapping and Networks.
+title: "YOUR NAME"
+author: "YOUR NAME"
+date: "30/07/2021"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(palmerpenguins)
-library(osmplotr)
-library(prettymapr)
-library(sf)
-library(tmap)
-library(igraph)
-library(netrankr)
-library(tidygraph)
-library(ggraph)
-library(graphlayouts)
-library(igraphdata)
+# Invoke all your packages here()
+# library(blah blah)
 
 ```
 
 ## Introduction
 
-Hi! I'm Prisha, and today I'll be showing you a glimpse into what I've learnt in this workshop as we fell down the rabbit hole of RStudio.
+> Introduce yourself briefly. Describe briefly what you are going to
+> show here.
 
 ## Graph 1
 
-This is a dataset talking about the different features of a group of diamonds.
+Brief introduction of your chosen data set Describe the interesting columns and what they mean
 
 ```{r read-1}
-glimpse(diamonds)
+my_data_1 <- read_csv(".data/something.csv")
+glimpse(my_data_1)
+
 ```
 
-I randomly selected a group of point from the aforementioned dataset, and used it to plot a graph to understand the trends in the cut, carat and prices of diamonds:
+Describe briefly what graph you are going to plot
 
-```{r}
-diamonds %>% 
-  slice_sample(prop = 0.2) %>% 
-  ggplot(., aes(x = carat, y = price, colour = cut)) +
-  geom_point(size = 1) +
-               scale_colour_viridis_d(option = "magma") +
-  geom_smooth(method = "lm") +
-  labs(title = "How does the carat and cut affect the price?",
-       subtitle = "corelation graph")
+```{r plot-1}
+my_data_1 %>% ggplot....
+
 ```
-The price was higher with larger carats. There is an uoward trend with the cuts too.
+
+Brief concluding remarks. What does the graph show? What geometric aesthetics did you use, for example?
 
 ## Graph 2
 
-In this section, we learnt how to fetch coordinates and data about specific places, and use it to create a map. I created the map of New Delhi, and marked where the roads, buildings, schools and restaurants were. 
+Brief introduction of your chosen data set Describe the interesting
+columns and what they mean
 
-```{r}
-bbox_delhi <- prettymapr::searchbbox("New Delhi, Delhi, India")
-bbox_delhi
-```
-
-```{r}
-
-dat_delhi_B <- extract_osm_objects (bbox_delhi, key = "building") 
-dat_delhi_H <- extract_osm_objects (bbox_delhi, key = "highway")
-dat_delhi_R <- extract_osm_objects(bbox_delhi, 
-                             key = "amenity", 
-                             value = "restaurant", 
-                             return_type = "point") #<<
-dat_delhi_S <- extract_osm_objects(bbox_delhi, 
-                             key = "amenity", 
-                             value = "school",
-                             return_type = "point") #<<
+```{r read-2}
+my_data_2 <- read_csv(".Data/something.csv")
+glimpse(my_data_2)
 
 ```
 
-```{r}
-tm_shape(dat_delhi_B) +
-  tm_fill(col = "darkgreen") +
-  
-  tm_shape(dat_delhi_H) +
-  tm_lines(col = "blueviolet") +
-  
-  tm_shape(dat_delhi_R) +
-  tm_dots(size = 1, col = "seagreen2", shape=  10) +
-  
-  tm_shape(dat_delhi_S) +
-  tm_dots(size = 1, col = "pink", shape=  10) +
-  
-  tm_compass(type = "rose", position= c("right", "top")) +
-  tm_scale_bar(width = 4, position = c("left", "bottom"), text.size = 1) +
-  tm_layout(title = "New Delhi", title.size = 3, frame = TRUE, frame.lwd = 5, bg.color = "lightyellow") +
-  tm_add_legend(type = "symbol", col = "pink",
-                title="Schools")+
-  tmap_style("watercolor")
-```
-guide:
-Pink- school
-Green- restaurants
-Dark Green- buildings
-Purple- roads
+Describe briefly what graph you are going to plot
 
+```{r plot-2}
+my_data_2 %>% ggplot....
+
+```
 
 ## Graph 3
-For my last graph I wanted to show you an interactive network I made using the characters and their relationship with each other in the show Family Guy.
 
-```{r}
-familyguy_nodes <- read_delim(delim = ",", "./Data/familyguy-nodes.csv" )
-familyguy_edges <- read_delim(delim = ",", "./Data/familyguy-edges.csv")
-familyguy_nodes
-familyguy_edges
+Brief introduction of your chosen data set Describe the interesting
+columns and what they mean
+
+```{r read-3}
+my_data_3 <- .....
+glimpse(my_data_3)
 ```
 
-```{r}
-fg <- tbl_graph(nodes = familyguy_nodes, 
-                edges = familyguy_edges, 
-                directed = FALSE)
-fg
-```
+Describe briefly what graph you are going to plot
 
-```{r}
-library(visNetwork)
-familyguy_nodes
-familyguy_edges
+```{r plot-3}
 
-familyguy_nodes_vis <- familyguy_nodes %>% 
-  rowid_to_column(var = "id") %>% 
-  rename("label" = Names) %>% 
-  mutate(sex = case_when(Sex == "F" ~ "Female",
-                         Sex == "M" ~ "Male",
-                         Sex == "N/A" ~ "Not Applicable")) %>% 
-  replace_na(., list(Sex = "Transgender?")) %>% 
-  dplyr::rename("group" = Sex)
-familyguy_nodes_vis
-familyguy_edges_vis <- familyguy_edges %>% 
-  select(From, To) %>% 
-  left_join(., familyguy_nodes_vis, by = c("From" = "label")) %>% 
-  left_join(., familyguy_nodes_vis, by = c("To" = "label")) %>%
-  select("From"= id.x, "To" = id.y) %>% 
-  rename("to" = To, "from"= From)
-
-familyguy_edges_vis
-```
-
-
-```{r}
-familyguy_nodes_vis %>%
-
-  visNetwork(nodes = ., edges = familyguy_edges_vis) %>% 
-  visNodes(font = list(size = 40)) %>% 
-  
-  
-  visGroups(groupname = "F", shape = "icon", 
-            icon = list(code = "f182", size = 75, color = "tomato"),
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "M", shape = "icon", 
-            icon = list(code = "f183", size = 75, color = "slateblue"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-  visGroups(groupname = "N/A", shape = "icon", 
-            icon = list(code = "f22c", size = 75, color = "fuchsia"), 
-            shadow = list(enabled = TRUE)) %>% 
-  
-
-  addFontAwesome() %>% 
-  
- 
-  visInteraction(navigationButtons = TRUE,
-                 hover = TRUE,
-                 selectConnectedEdges = TRUE,
-                 hoverConnectedEdges = TRUE,
-                 zoomView = TRUE) 
 
 ```
 
 ## My Course Reflection
-This workshop was something completely new for me. Coding isn't my forte, but this class was really enjoyable for me- especially with the patience with which Arvind would teach us a code over and over again.
-I learnt how numbers and graphs can be translated to patterns and trends that can tell us so much more about it, and it also taught me the importance of design in tables and graphs.
-This is going to make me look at how I can include analysis, patterns and data into my work from an all new, digital perspective. It can also help me present my work, and include interactive code in it in a new way!
 
-I really enjoyed this class, and I hope I can explore this further. 
+This course was about.....
 
+What I learnt....
+
+How it will help my practice as an aspiring artist and designer....
+
+Arvind is a horrible teacher and simply does not get what we need. Boomers should be allowed to teach any more in Srishti.
+
+Etc.
+
+Jai Hind.

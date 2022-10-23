@@ -1,0 +1,124 @@
+---
+title: Sarahfin Richard
+author: Sarahfin Richard
+date: '2021-07-25'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+image: https://www.alice-in-wonderland.net/wp-content/uploads/2book4.jpg
+caption: ''
+preview: yes
+output:
+  blogdown::html_page:
+    toc: no
+    fig_width: 5
+    fig_height: 5
+    keep_md: yes
+description: Alice in Wonde-R-land, An insight into a two week long journey with coding in R and making graphs.
+---
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(fig.path = "", echo = FALSE, message = FALSE, warning = FALSE)
+## Load frequently used packages for blog posts
+library(tidyverse)
+library(igraph)
+library(tidygraph)
+library(ggraph)
+library(ggplot2)
+library(babynames)
+```
+
+<font size="3">
+
+This workshop involved all of us learning to code using R. We made different kinds of graphs for different things. Here are some of the graphs we made:
+
+### **Looking at baby names in the United States:**
+
+Here, we looked at different baby names and tried to see how many times they occured in a year. This graph analyses the names, Leslie, Lesley and Leslee:
+
+```{r manipulate_name_data}
+Sarah <- babynames %>%
+  filter(name == "Lesley" | name == "Leslie" | name == "Leslee" ) %>% 
+  filter(sex == "F") 
+plot <- ggplot(Sarah, aes(x = year, 
+                           y = prop,  
+                           group = name, 
+                           color = name)) + 
+  geom_line() + theme_grey()
+  plot 
+```
+
+
+### **Looking at the sleep patterns of animals:**
+
+In this graph, we looked at the sleep patterns of animals depending on their feeding type.
+
+```{r}
+ggplot(msleep) + 
+    geom_density(aes(x = sleep_total, 
+                 color = vore, 
+                 fill = vore), 
+                 alpha = 0.3)+theme_grey()
+```
+
+
+
+### **Looking at connections between characters of your favorite show:**
+
+The graph below shows the different human relationships in the show, Rick & Morty. 
+
+
+```{r,include = FALSE}
+rick_nodes <- read_delim(delim = ";", "rick_nodes.csv" )
+rick_edges <- read_delim(delim = ";", "rick_edges.csv")
+rick_nodes
+rick_edges
+```
+
+```{r,include = FALSE}
+rm <- tbl_graph(nodes = rick_nodes, 
+                edges = rick_edges, 
+                directed = FALSE)
+rm
+
+```
+
+```{r 3d.aesthetics-using-ggraph-Modify}
+
+ggraph(graph = rm, layout = "fr") +
+  geom_edge_link0() + 
+  
+  geom_node_point() + 
+
+  geom_node_label(aes(label = name),
+                  repel = TRUE, max.overlaps = 20,
+                  alpha = 0.6,
+                  size = 3) +
+  
+  labs(title = "Human Rick and Morty Characters")
+```
+
+```{r faceting, warning = FALSE}
+
+set_graph_style()
+
+ggraph(rm,layout = "linear", circular = TRUE) + 
+  geom_edge_link(aes(color = type)) + 
+  geom_node_point() +
+  facet_edges(~ type) + labs(title = "Human Rick & Morty Characters' Relationships")
+
+```
+
+### **Reflections:**
+
+At first, coding may seem rather complex and blood-curdling. However, it isn't really the case. I do admit, it's got a small learning curve but it isn't rocket science. The things achieved from a single line of code is quite mind-boggling! The fact that one can tell stories, identify data, plot maps and find relationships and networks using simple codes, makes the whole learning process worth it.
+
+The graphs above are only a small fragment of what can be achieved. In two weeks, we've been able to learn a lot about coding, plotting graphs and even making maps! 
+
+
+
+</font size="3">
+

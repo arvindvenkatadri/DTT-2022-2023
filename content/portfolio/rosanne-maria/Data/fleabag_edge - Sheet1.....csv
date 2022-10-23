@@ -1,0 +1,23 @@
+From,To,Intensity
+Fleabag,Claire,8
+Fleabag,Dad,5
+Fleabag,Godmother,3
+Fleabag,Martin,9
+Fleabag,Priest,6
+Fleabag,Waitress,2
+Fleabag,Audience,10
+Claire ,Martin,7
+Claire ,Dad,4
+Claire ,Godmother,3
+Claire ,Priest,3
+Claire ,Waitress,0
+Dad,Godmother,8
+Dad,Priest,4
+Dad,Waitress,1
+Godmother,Priest,7
+Godmother ,Waitress,1
+Priest,Waitress,2
+Martin,Waitress,5
+Martin ,Priest,2
+Martin ,Dad,2
+Martin,Godmother,2

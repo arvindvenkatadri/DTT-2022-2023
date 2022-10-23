@@ -1,48 +1,74 @@
 ---
-title: Sarahfin Richard
-author: Sarahfin Richard
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Shreya Kolalapudi"
+author: "Shreya Kolalapudi"
+date: "30/07/2021"
+output: html_document
 image: https://www.alice-in-wonderland.net/wp-content/uploads/2book4.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Alice in Wonde-R-land, An insight into a two week long journey with coding in R and making graphs.
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<p><font size="3"></p>
-<p>This workshop involved all of us learning to code using R. We made different kinds of graphs for different things. Here are some of the graphs we made:</p>
-<div id="looking-at-baby-names-in-the-united-states" class="section level3">
-<h3><strong>Looking at baby names in the United States:</strong></h3>
-<p>Here, we looked at different baby names and tried to see how many times they occured in a year. This graph analyses the names, Leslie, Lesley and Leslee:</p>
-<p><img src="manipulate_name_data-1.png" width="480" /></p>
+<p>Greetings, this is Shreya Kolalapudi from Bangalore majoring in Human Centered Design. This was the first time I was introduced to R media.</p>
+<!--more-->
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<blockquote>
+<p>Greetings, this is Shreya Kolalapudi from Bangalore majoring in Human Centered Design. This was the first time I was introduced to R media. It is a fantastic platform to start with and was very fun to explore different sets of graph layouts to repreent data in an intresting way so that it is easier for people to understand the data by a quick glimpse. In the following graphs, I have messed around with a lot of layouts and aesthetics and learned many elements step by step.</p>
+</blockquote>
 </div>
-<div id="looking-at-the-sleep-patterns-of-animals" class="section level3">
-<h3><strong>Looking at the sleep patterns of animals:</strong></h3>
-<p>In this graph, we looked at the sleep patterns of animals depending on their feeding type.</p>
-<p><img src="unnamed-chunk-1-1.png" width="480" /></p>
+<div id="graph-1" class="section level2">
+<h2>Graph 1</h2>
+<p>We had to recrete the graph from the website, so I extracted the data and then analizied and understood the data so that I could represent it in the graph format.</p>
+<pre class="r"><code>terrorist_incidents &lt;- (read_csv(&quot;terrorist-incidents.csv&quot;))</code></pre>
+<p>Siingle Quantitiy graph using ggplot</p>
+<pre class="r"><code># here, x= x and y = carat.
+
+ggplot(terrorist_incidents, aes(x =Year, color=Entity, y=terrorist_incidents))+
+  geom_line() + geom_point() + theme(legend.position = &quot;none&quot;) </code></pre>
+<p>Used the color aesthetic and gave values to x and y using ggplot,geom_line and geom_point. Also used a theme to understand the data better.</p>
+<p><img src="images/terrrorist%20image.png" /></p>
 </div>
-<div id="looking-at-connections-between-characters-of-your-favorite-show" class="section level3">
-<h3><strong>Looking at connections between characters of your favorite show:</strong></h3>
-<p>The graph below shows the different human relationships in the show, Rick &amp; Morty.</p>
-<p><img src="3d.aesthetics-using-ggraph-Modify-1.png" width="480" /></p>
-<p><img src="faceting-1.png" width="480" /></p>
+<div id="graph-2" class="section level2">
+<h2>Graph 2</h2>
+<p>The graph shows us the connections between the different characters based on their conversations in the pilot episode of Brooklyn nine-nine. We took the variables like their relationships, topics of the conversation,durations,and assigned them to different geometric properties to make the information comprehensive. We also noticed how Terry Jeffords and Captain Holt had the longest conversation about Introduction as their link’s width was thicker than the other connecting lines.</p>
+<pre class="r"><code>b99_edges &lt;- read_delim(&quot;b99_edges.csv&quot;, delim = &quot;,&quot;)
+b99_nodes &lt;- read_delim(&quot;b99_nodes.csv&quot;, delim = &quot;,&quot;)</code></pre>
+<p>We used ggraph and a geom_arc to connect the characters.</p>
+<pre class="r"><code>ggraph(b99, layout = &quot;linear&quot;, circular = TRUE) + 
+  geom_edge_arc(aes(width = duration, color =topic), alpha = 0.8) + 
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(aes(color =profession, size = 2)) + 
+  geom_node_text(aes(label = Names),repel = TRUE, 
+                 size = 3,
+                 max.overlaps = 20) +
+  labs(edge_width = &quot;duration&quot;) +
+  
+  theme_graph()+
+  theme(legend.position = &quot;right&quot;, 
+        aspect.ratio = 1)</code></pre>
+<p><img src="images/b99%20image.png" /></p>
 </div>
-<div id="reflections" class="section level3">
-<h3><strong>Reflections:</strong></h3>
-<p>At first, coding may seem rather complex and blood-curdling. However, it isn’t really the case. I do admit, it’s got a small learning curve but it isn’t rocket science. The things achieved from a single line of code is quite mind-boggling! The fact that one can tell stories, identify data, plot maps and find relationships and networks using simple codes, makes the whole learning process worth it.</p>
-<p>The graphs above are only a small fragment of what can be achieved. In two weeks, we’ve been able to learn a lot about coding, plotting graphs and even making maps!</p>
-<p></font size="3"></p>
+<div id="graph-3" class="section level2">
+<h2>Graph 3</h2>
+<p>This is a night vision of the Indian map and all the places in India which ends with “pur” or “pura” are pointed in the map with the yellow color which represents the light in the dark map layout.</p>
+<pre class="r"><code>pur &lt;- read.csv(&quot;data2/pur.csv&quot;)</code></pre>
+<p>I used basemap and plotted the states with a yellow point whose places ends with “pur” or “pura”</p>
+<pre class="r"><code>#night mode
+  tm_basemap(leaflet::providers$CartoDB.DarkMatter)+
+  tm_shape(india) +
+  tm_polygons( alpha= 0.5)+
+
+#points
+tm_shape(pur_sf) +
+  tm_symbols(size = 0.2, col = &quot;goldenrod1&quot;)</code></pre>
+<p><img src="images/maps_image.png" /></p>
+</div>
+<div id="my-course-reflection" class="section level2">
+<h2>My Course Reflection</h2>
+<p>The workshop was pretty intense with new elements adding to our knowledge every day, and I saw this as an opportunity to learn something as exciting as this. It was fun to grasp the concepts step by step but we had to be very patient with it or else the whole code chunk will have an error.</p>
+<p>I was pleased to be in Arvind’s last class because I did not want to have the fear of missing out. We explored with graphs, networks and maps in R studio and realized how informative and interesting the new platform was. We messed around with a lot of data and realized how a small mistake can ruin the whole code, so we were very delicate with the data and worked gently by learning the codes step by step. Our patience was dwindling time to time but it was a challenge to keep it together and deal with the trial and error method, it also taught us the value and importance of team work by coordinating with our fellow mates and how to control smashing our heads into our computers because of how hectic the work was.</p>
+<p>This workshop introduced me to a whole new platform where I could be creative with representing the data and learn how codes work, R is a fantastic platform for starters like me and I would love to explore more and mess around with more data in future.</p>
+<p>Jai Hind.</p>
 </div>

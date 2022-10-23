@@ -1,101 +1,90 @@
 ---
-title: Anika Jain
-author: Anika Jain
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Arunima Sajith"
+author: "Arunima Sajith"
+output: 
+ html_document:
+     toc: TRUE
+     toc_float: TRUE
+     toc_depth: 3
+     code_folding: hide
 image: https://www.alice-in-wonderland.net/wp-content/uploads/141.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: Anika's Journey using graphs, Mapping and Networks.
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<blockquote>
-<p>I’m going to show few graphs and plots. It was fun exausting myself and work whole night. I get it that i still suck at it. Duh I think i’ll try to get better at this and keep practicing as the outcome of the chunks are pretty cool.</p>
-</blockquote>
+<p>Hi! I am Arunima Sajith. I’m someone who had never even thought to learn coding before this class. And within two weeks of this workshop I think I’ve grown significantly. These are some of my favorite pieces of work I’ve made during this time period.</p>
+<!--more-->
+<p>Plotting the price of diamonds against density. I love the colors in this one (it took me hours to get.</p>
+<pre class="r"><code>ggplot(diamonds) + geom_density(aes(x = price, fill = cut)) + labs(title = &quot;Price vs Density&quot;) + scale_fill_viridis_d(option = &quot;magma&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Restaurants in my hometown mapped according to cuisine and location.</p>
+<pre class="r"><code>buildings &lt;- st_read(&quot;data/buildings.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `buildings&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\buildings.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 20916 features and 175 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 75.7086 ymin: 11.08489 xmax: 75.9363 ymax: 11.40523
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>parks &lt;- st_read(&quot;data/parks.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `parks&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\parks.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 32 features and 12 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 75.71902 ymin: 11.12213 xmax: 75.93479 ymax: 11.38537
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>greenery &lt;- st_read(&quot;data/greenery.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `greenery&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\greenery.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 35 features and 3 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 75.76366 ymin: 11.08904 xmax: 75.93426 ymax: 11.31107
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>trees &lt;- st_read(&quot;data/trees.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `trees&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\trees.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 39 features and 4 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 75.76654 ymin: 11.21588 xmax: 75.90273 ymax: 11.38763
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>roads &lt;- st_read(&quot;data/roads.gpkg&quot;)</code></pre>
+<pre><code>## Reading layer `roads&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\roads.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 5049 features and 30 fields
+## Geometry type: LINESTRING
+## Dimension:     XY
+## Bounding box:  xmin: 75.70855 ymin: 11.08201 xmax: 75.94973 ymax: 11.40959
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>restaurants &lt;- st_read(&quot;data/restaurants.gpkg&quot;) # Added by Arvind</code></pre>
+<pre><code>## Reading layer `restaurants&#39; from data source 
+##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\arunima-sajith\data\restaurants.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 581 features and 32 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 75.74745 ymin: 11.08839 xmax: 75.91931 ymax: 11.39355
+## Geodetic CRS:  WGS 84</code></pre>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = buildings, colour = &quot;burlywood1&quot;) +
+  geom_sf(data = roads, colour = &quot;darkred&quot;) +
+  geom_sf(data = trees, colour = &quot;darkgreen&quot;) +
+  geom_sf(
+    data = restaurants %&gt;% drop_na(cuisine), # dat_R removed by Arvind
+    aes(fill = cuisine),
+    colour = &quot;brown&quot;,
+    shape = 21,
+    size = 4) +
+  theme(legend.position = &quot;right&quot;) +
+  labs(title = &quot;Restaurants in North Central Kerala&quot;,
+       caption = &quot;i recommend paragon biriyani&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="conclusion-thanks" class="section level4">
+<h4><strong>CONCLUSION &amp; THANKS</strong></h4>
+<div id="rstudio-is-not-easy-to-work-with-when-youre-a-beginner.-but-i-think-the-environment-we-were-in-and-the-facilitator-we-had-made-it-a-lot-easier-for-us-to-get-a-grip-on-things.-most-of-my-days-were-filled-with-cries-for-help-from-around-the-class-but-it-didnt-match-the-satisfaction-i-felt-when-a-code-i-typed-gave-me-a-result-in-the-end.-im-very-grateful-to-this-class-for-broadening-my-horizons-on-what-i-consider-art-and-helping-me-grow-as-a-student." class="section level5">
+<h5>RStudio is not easy to work with when you’re a beginner. But I think the environment we were in and the facilitator we had made it a lot easier for us to get a grip on things. Most of my days were filled with cries for help from around the class but it didn’t match the satisfaction I felt when a code I typed gave me a result in the end. I’m very grateful to this class for broadening my horizons on what I consider art and helping me grow as a student.</h5>
 </div>
-<div id="graph-1" class="section level2">
-<h2>Graph 1</h2>
-<p>I used <code>geom_sf</code> to make the graph of Jaipur City, it was more fun than i expected. The way graph came up looked satisfying.</p>
-<pre class="r"><code>bbox_jaipur &lt;- getbb(&quot;Jaipur, India&quot;)
-dat_jaipur_H &lt;- extract_osm_objects(bbox_jaipur, &quot;highway&quot;)</code></pre>
-<pre><code>## Issuing query to Overpass API ...</code></pre>
-<pre><code>## Rate limit: 2</code></pre>
-<pre><code>## Query complete!</code></pre>
-<pre><code>## converting OSM data to sf format</code></pre>
-<pre class="r"><code>dat_jaipur_B &lt;- extract_osm_objects(bbox_jaipur, &quot;building&quot;)</code></pre>
-<pre><code>## Issuing query to Overpass API ...</code></pre>
-<pre><code>## Rate limit: 2</code></pre>
-<pre><code>## Query complete!</code></pre>
-<pre><code>## converting OSM data to sf format</code></pre>
-<pre class="r"><code>dat_jaipur_R &lt;- extract_osm_objects(bbox = bbox_jaipur, key = &quot;amenity&quot;, value = &quot;restaurant&quot;, return_type = &quot;point&quot;)</code></pre>
-<pre><code>## Issuing query to Overpass API ...</code></pre>
-<pre><code>## Rate limit: 2</code></pre>
-<pre><code>## Query complete!</code></pre>
-<pre><code>## converting OSM data to sf format</code></pre>
-<pre class="r"><code>## Using geom_sf()
-ggplot() + 
-  geom_sf(data = dat_jaipur_H, colour = &quot;dodger blue&quot;) + 
-  geom_sf(data = dat_jaipur_B, fill = &quot;orange&quot;) + 
-  geom_sf(data = dat_jaipur_R, colour = &quot;Yellow&quot;, fill = &quot;red&quot;) + 
-  theme(panel.background = element_rect(fill = &quot;palegreen&quot;)) + 
-  labs(title = &quot;Pink City is not so pink anymore&quot;, subtitle = &quot;food is everywhere&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
-</div>
-<div id="graph-2" class="section level2">
-<h2>Graph 2</h2>
-<p>This graph is about the sleeping patterns of mammals. I used ggplot to make the graph.
-The fun part about the graph is, it’s also sleeping the way I want to.</p>
-<pre class="r"><code>ggplot(msleep) + 
-    geom_density(aes(y = sleep_total, 
-                 color = vore, 
-                 fill = vore), 
-                 alpha = 0.5)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="480" /></p>
-<p>The graph shows the the different sleep patterns.</p>
-<p>This graph is about the the number of hours animals sleep in a day.
-FUN FACT: I don’t get to sleep for 4 hours straight.
-p.s.: These mammals are lucky I must say. huh.</p>
-<pre class="r"><code>ggplot(msleep) + geom_line(aes(sleep_cycle, sleep_total, group= vore, color= vore))</code></pre>
-<pre><code>## Warning: Removed 51 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="480" /></p>
-</div>
-<div id="graph-3" class="section level2">
-<h2>Graph 3</h2>
-<p>This dataset is about the diamonds. Related to color and carat.</p>
-<pre class="r"><code>ggplot(diamonds, 
-       mapping = aes(x = color, 
-           y = x)) +
-  geom_point() +
-  geom_smooth(method = &quot;lm&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="480" /></p>
-<pre class="r"><code>ggplot(diamonds, 
-       mapping = aes(x = carat, 
-           y = z)) +
-  geom_point() +
-  geom_smooth(method = &quot;lm&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-2.png" width="480" /></p>
-</div>
-<div id="my-course-reflection" class="section level2">
-<h2>My Course Reflection</h2>
-<p>This course was all about patience and sitting still on your chair and work with keen eyes cause one single comma will ruin your whole work.
-It was a fun workshop. Arvind made it much easy than i thought.
-Definitely helped me with the patience thing.</p>
-<p>Thank you.</p>
 </div>

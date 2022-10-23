@@ -1,361 +1,68 @@
 ---
-title: Jayaditya Thotli
-author: Jayaditya Thotli
-date: '2021-07-25'
-slug: []
-categories:
-  - R
-tags:
-  - R Markdown
+title: "Ishita D"
+author: "Ishita D"
+date: "2022-10-21"
+output: 
+       html_document:
+         theme: yeti
+         toc: TRUE
+         toc_float: TRUE
+         toc_depth: 2
+         number_sections: FALSE
+         code_folding: hide
+         df_print: paged
 image: https://www.alice-in-wonderland.net/wp-content/uploads/121.jpg
 caption: ''
 preview: yes
-output:
-  blogdown::html_page:
-    toc: no
-    fig_width: 5
-    fig_height: 5
-    keep_md: yes
-description: My journey filled with hardships to achieve a knitted file.
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<style type="text/css">
-h1.title {
-  font-size: 48px;
-  font-family: "Arial"
-  color: Black;
-  text-align: center;
-}
-h4.author { 
-    font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
-  color: gray;
-  text-align: right;
-}
-h4.date { 
-  font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
-  color: grey;
-  text-align: right;
-}
-</style>
-<p><br></p>
-<hr />
-<p><br></p>
-<div id="height-and-weight-of-the-heroes-along-with-their-hair-colour" class="section level2">
-<h2>Height and Weight of the Heroes along with their Hair colour</h2>
-<pre><code>## Rows: 817
-## Columns: 25
-## $ X1                 &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1~
-## $ name               &lt;chr&gt; &quot;A-Bomb&quot;, &quot;Abe Sapien&quot;, &quot;Abin Sur&quot;, &quot;Abomination&quot;, ~
-## $ Gender             &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Ma~
-## $ Eyecolor           &lt;chr&gt; &quot;yellow&quot;, &quot;blue&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;blue&quot;, ~
-## $ Race               &lt;chr&gt; &quot;Human&quot;, &quot;Icthyo Sapien&quot;, &quot;Ungaran&quot;, &quot;Human / Radia~
-## $ Haircolor          &lt;chr&gt; &quot;No Hair&quot;, &quot;No Hair&quot;, &quot;No Hair&quot;, &quot;No Hair&quot;, &quot;Black&quot;~
-## $ Height             &lt;dbl&gt; 203, 191, 185, 203, -99, 193, -99, 185, 173, 178, 1~
-## $ Publisher          &lt;chr&gt; &quot;Marvel Comics&quot;, &quot;Dark Horse Comics&quot;, &quot;DC Comics&quot;, ~
-## $ Skincolor          &lt;chr&gt; &quot;-&quot;, &quot;blue&quot;, &quot;red&quot;, &quot;-&quot;, &quot;-&quot;, &quot;-&quot;, &quot;-&quot;, &quot;-&quot;, &quot;-&quot;, &quot;~
-## $ Alignment          &lt;chr&gt; &quot;good&quot;, &quot;good&quot;, &quot;good&quot;, &quot;bad&quot;, &quot;bad&quot;, &quot;bad&quot;, &quot;good&quot;~
-## $ Weight             &lt;dbl&gt; 441, 65, 90, 441, -99, 122, -99, 88, 61, 81, 104, 1~
-## $ intelligence       &lt;chr&gt; &quot;85&quot;, &quot;100&quot;, &quot;80&quot;, &quot;80&quot;, &quot;80&quot;, &quot;90&quot;, &quot;95&quot;, &quot;75&quot;, &quot;8~
-## $ strength           &lt;chr&gt; &quot;30&quot;, &quot;20&quot;, &quot;100&quot;, &quot;50&quot;, &quot;10&quot;, &quot;40&quot;, &quot;30&quot;, &quot;90&quot;, &quot;1~
-## $ speed              &lt;chr&gt; &quot;60&quot;, &quot;30&quot;, &quot;80&quot;, &quot;55&quot;, &quot;25&quot;, &quot;45&quot;, &quot;35&quot;, &quot;55&quot;, &quot;80~
-## $ durability         &lt;chr&gt; &quot;60&quot;, &quot;50&quot;, &quot;100&quot;, &quot;45&quot;, &quot;40&quot;, &quot;55&quot;, &quot;65&quot;, &quot;65&quot;, &quot;9~
-## $ power              &lt;chr&gt; &quot;40&quot;, &quot;35&quot;, &quot;100&quot;, &quot;100&quot;, &quot;30&quot;, &quot;55&quot;, &quot;100&quot;, &quot;100&quot;,~
-## $ combat             &lt;chr&gt; &quot;70&quot;, &quot;100&quot;, &quot;80&quot;, &quot;55&quot;, &quot;50&quot;, &quot;85&quot;, &quot;85&quot;, &quot;65&quot;, &quot;9~
-## $ mindcontrol        &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;0&quot;, &quot;~
-## $ mattermanipulation &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;~
-## $ telepathy          &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;~
-## $ telekinesis        &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;~
-## $ shapeshifting      &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;~
-## $ timetravel         &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;~
-## $ elementcontrol     &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;~
-## $ sizechanging       &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;~</code></pre>
-<p><img src="unnamed-chunk-3-1.png" width="480" /></p>
-<p><font size="3"> The above graph is a point graph, it specifies height and weight of the heroes according to their hair colour. I added the function alpha, as the points are too cluttered. </font></p>
-<p><br></p>
-<hr />
-<p><br></p>
+<p>Hi! I am Ishita Devulapalli. I am going to show the different “visualizations” that I made throughout this course</p>
+<!--more-->
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The last few months at Srishti have really widen by horizon of dealing with new ways to express myself.To me one such experience is “R”. Something that was very unexpected and surprisingly was fun. To me the fact that computer applications can be used to really express ourselves been very interesting. Something that stuck to me with this workshop was how Arvind went about to help us to come to conclusions about data visualization,</p>
+<p>Until last week, data visualization to me has always been about using convention step deviation methods etc,but now my perception has changes for the better.The idea of these 2 weeks was to visually represent data by using R as means of commutation. Each assignment had an agenda of dissecting and understanding R. We saw data present in R , unknown data sets, networking and maps.</p>
+<p>Now i can sort of say that R is something i see myself working on. It has been a very surprising journey for me, i had dropped learning computers in grade 6 now now picking up such an application has been quite a challenge for me.I have come to stage where i might be even interested in picking coding as a means of designing. The live example of a current Srishti student who tapped into the side of data analysis through design was very fascinating to me.</p>
+<p>Though the projects i created were no where close but end of 2 weeks i am proud of what i have created, below are some projects:</p>
+<div id="world-map-of-all-the-migrating-bald-eagles" class="section level3">
+<h3><strong>World Map of all the Migrating Bald Eagles</strong></h3>
+<p><img src="images/pic%202.png" /></p>
+<pre class="r"><code>tmap_mode (&quot;plot&quot;)
+tm_tiles (&quot;Stamen.Watercolor&quot;)+
+ tm_shape(World) +
+   tm_polygons(&quot;HPI&quot;)+
+  
+  tm_shape(eagles_lines)+
+   tm_lines(size = 1,
+               col = &quot;black&quot;) +
+  
+  tm_shape(eagles_points)+
+    tm_dots(size = 0.1,
+              col = &quot;red&quot;)</code></pre>
 </div>
-<div id="restaurants-in-madhapur-hyderabad" class="section level2">
-<h2>Restaurants in Madhapur, Hyderabad</h2>
-<p><strong><em>My Heart is in Hyd, Hyd is for Food</em></strong></p>
-<pre><code>##        min      max
-## x 78.37163 78.41163
-## y 17.42086 17.46086</code></pre>
-<pre><code>##   [1] NA                                          
-##   [2] &quot;italian&quot;                                   
-##   [3] NA                                          
-##   [4] NA                                          
-##   [5] NA                                          
-##   [6] &quot;indian&quot;                                    
-##   [7] &quot;pizza&quot;                                     
-##   [8] &quot;international&quot;                             
-##   [9] NA                                          
-##  [10] NA                                          
-##  [11] NA                                          
-##  [12] NA                                          
-##  [13] &quot;coffee_shop&quot;                               
-##  [14] &quot;sushi&quot;                                     
-##  [15] NA                                          
-##  [16] &quot;regional&quot;                                  
-##  [17] NA                                          
-##  [18] &quot;indian&quot;                                    
-##  [19] &quot;chinese&quot;                                   
-##  [20] NA                                          
-##  [21] NA                                          
-##  [22] NA                                          
-##  [23] NA                                          
-##  [24] NA                                          
-##  [25] NA                                          
-##  [26] NA                                          
-##  [27] NA                                          
-##  [28] NA                                          
-##  [29] NA                                          
-##  [30] NA                                          
-##  [31] &quot;mexican&quot;                                   
-##  [32] NA                                          
-##  [33] NA                                          
-##  [34] NA                                          
-##  [35] &quot;indian;regional;chinese&quot;                   
-##  [36] NA                                          
-##  [37] NA                                          
-##  [38] NA                                          
-##  [39] NA                                          
-##  [40] NA                                          
-##  [41] NA                                          
-##  [42] NA                                          
-##  [43] NA                                          
-##  [44] &quot;indian&quot;                                    
-##  [45] NA                                          
-##  [46] &quot;indian;asian&quot;                              
-##  [47] NA                                          
-##  [48] NA                                          
-##  [49] &quot;chicken;chinese;fish;indian;regional&quot;      
-##  [50] NA                                          
-##  [51] &quot;indian&quot;                                    
-##  [52] &quot;chinese;indian&quot;                            
-##  [53] NA                                          
-##  [54] &quot;asian;chicken;indian&quot;                      
-##  [55] NA                                          
-##  [56] NA                                          
-##  [57] NA                                          
-##  [58] NA                                          
-##  [59] &quot;Biryanis;chinese;South_Indian;North_Indian&quot;
-##  [60] NA                                          
-##  [61] NA                                          
-##  [62] NA                                          
-##  [63] NA                                          
-##  [64] NA                                          
-##  [65] NA                                          
-##  [66] NA                                          
-##  [67] NA                                          
-##  [68] NA                                          
-##  [69] NA                                          
-##  [70] NA                                          
-##  [71] &quot;indian&quot;                                    
-##  [72] NA                                          
-##  [73] NA                                          
-##  [74] NA                                          
-##  [75] NA                                          
-##  [76] NA                                          
-##  [77] NA                                          
-##  [78] NA                                          
-##  [79] &quot;regional&quot;                                  
-##  [80] NA                                          
-##  [81] NA                                          
-##  [82] NA                                          
-##  [83] &quot;vietnamese&quot;                                
-##  [84] NA                                          
-##  [85] NA                                          
-##  [86] NA                                          
-##  [87] NA                                          
-##  [88] NA                                          
-##  [89] NA                                          
-##  [90] NA                                          
-##  [91] NA                                          
-##  [92] &quot;indonesian&quot;                                
-##  [93] NA                                          
-##  [94] NA                                          
-##  [95] NA                                          
-##  [96] NA                                          
-##  [97] NA                                          
-##  [98] NA                                          
-##  [99] NA                                          
-## [100] NA                                          
-## [101] NA                                          
-## [102] NA                                          
-## [103] NA                                          
-## [104] NA                                          
-## [105] NA                                          
-## [106] NA                                          
-## [107] NA                                          
-## [108] NA                                          
-## [109] NA                                          
-## [110] NA                                          
-## [111] NA                                          
-## [112] NA                                          
-## [113] NA                                          
-## [114] NA                                          
-## [115] NA                                          
-## [116] NA                                          
-## [117] NA                                          
-## [118] NA                                          
-## [119] NA                                          
-## [120] NA                                          
-## [121] NA                                          
-## [122] NA                                          
-## [123] NA                                          
-## [124] NA                                          
-## [125] NA                                          
-## [126] NA                                          
-## [127] NA                                          
-## [128] NA                                          
-## [129] NA                                          
-## [130] NA                                          
-## [131] NA                                          
-## [132] NA                                          
-## [133] NA                                          
-## [134] NA                                          
-## [135] NA                                          
-## [136] NA                                          
-## [137] NA                                          
-## [138] &quot;indian&quot;                                    
-## [139] NA                                          
-## [140] NA                                          
-## [141] &quot;regional;kebab;indian;chicken&quot;             
-## [142] NA                                          
-## [143] NA                                          
-## [144] NA                                          
-## [145] NA                                          
-## [146] NA                                          
-## [147] NA                                          
-## [148] NA                                          
-## [149] NA                                          
-## [150] NA                                          
-## [151] NA                                          
-## [152] NA</code></pre>
-<pre><code>## Rows: 24
-## Columns: 38
-## $ osm_id             &lt;chr&gt; &quot;349270034&quot;, &quot;1275490936&quot;, &quot;1275490943&quot;, &quot;136511600~
-## $ name               &lt;chr&gt; &quot;Olive Garden&quot;, &quot;Gingercourt&quot;, &quot;Pizza Hut&quot;, &quot;Sweet ~
-## $ addr.city          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, &quot;Hyderabad&quot;~
-## $ addr.housename     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ addr.housenumber   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ addr.postcode      &lt;chr&gt; NA, NA, NA, NA, NA, NA, &quot;500081&quot;, NA, NA, NA, &quot;5000~
-## $ addr.street        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, &quot;Hitec City - Konda~
-## $ air_conditioning   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ amenity            &lt;chr&gt; &quot;restaurant&quot;, &quot;restaurant&quot;, &quot;restaurant&quot;, &quot;restaura~
-## $ brewery            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ capacity           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, &quot;70&quot;, NA, NA, NA, N~
-## $ changing_table     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ created_by         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ cuisine            &lt;chr&gt; &quot;italian&quot;, &quot;indian&quot;, &quot;pizza&quot;, &quot;international&quot;, &quot;cof~
-## $ diet.vegan         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ diet.vegetarian    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ internet_access    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ level              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ microbrewery       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ name.te            &lt;chr&gt; &quot;à°†à°²à°¿à°µà±\215 à°—à°¾à°°à±\215à°¡à±†à°¨à±\215&quot;~
-## $ opening_hours      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, &quot;11:00-22:00&quot;, &quot;11:00-2~
-## $ outdoor_seating    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, &quot;yes&quot;, NA, ~
-## $ payment.cash       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ payment.maestro    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ payment.notes      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ payment.visa       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ phone              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ reservation        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ smoking            &lt;chr&gt; NA, NA, NA, NA, NA, NA, &quot;outside&quot;, &quot;no&quot;, &quot;no&quot;, NA, ~
-## $ stars              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ takeaway           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ toilets            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ toilets.access     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ toilets.wheelchair &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ tourism            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ website            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
-## $ wheelchair         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, &quot;no&quot;, &quot;no&quot;, NA, NA, NA,~
-## $ geometry           &lt;POINT [°]&gt; POINT (78.38597 17.44503), POINT (78.39351 17~</code></pre>
-<p><img src="unnamed-chunk-9-1.png" width="480" /></p>
-<p><font size="3"> I wanted to show restaurants in Madhapur, which is a part of Hyderabad. As for the overall map, I waned to show buildings, parks, highways, trees, water bodes… I also represented them with suppurate colors which symbolizes them. The red triangular bullets are the named restraints in Madhapur along with their name.I also included a 8 star compass and a scale bar. </font></p>
-<p><br></p>
-<hr />
-<p><br></p>
+<div id="scatter-plot-representing-carat-and-clarity-of-diamonds" class="section level3">
+<h3><strong>Scatter Plot representing carat and clarity of diamonds</strong></h3>
+<p><img src="images/Pic%201.png" /></p>
+<pre class="r"><code>ggplot(diamonds) + geom_point(aes(x = carat, y = price, colour = clarity))</code></pre>
 </div>
-<div id="connections-between-the-characters" class="section level2">
-<h2>Connections between the characters</h2>
-<div id="the-boys" class="section level3">
-<h3><img src="https://www.militarypress.com/wp-content/uploads/2020/07/the-boys.jpg" alt="The Boys" /></h3>
-<pre><code>## # A tibble: 30 x 13
-##    name      id realname sex   race  birthyear sign  playedby height Citizenship
-##    &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;      
-##  1 Homel~     1 John     Male  White      1975 Scor~ Antony ~ 180 cm American   
-##  2 Starl~     2 Annie J~ Fema~ White      1994 Canc~ Erin Mo~ 168 cm American   
-##  3 Billy~     3 William~ Male  White      1972 Gemi~ Karl Ur~ 185 cm British    
-##  4 Hughi~     4 Hugh Ca~ Male  White      1992 Taur~ Jack Qu~ 185 cm American   
-##  5 Black~     5 &lt;NA&gt;     Male  Black      1988 Sagi~ Nathan ~ 188 cm American   
-##  6 Trans~     6 &lt;NA&gt;     Male  White      1980 Libra Alex Ha~ 176 cm American   
-##  7 Frenc~     7 Serge    Male  White      1985 Canc~ Tomer K~ 179 cm French Alg~
-##  8 Storm~     8 Klara R~ Fema~ White      1982 Canc~ Aya Cash 154 cm Nazi German
-##  9 The D~     9 Kevin M~ Male  White      1985 Canc~ Chace C~ 178 cm American   
-## 10 Mothe~    10 Marvin ~ Male  Black      1974 Aries Laz Alo~ 182 cm American   
-## # ... with 20 more rows, and 3 more variables: status &lt;chr&gt;, Species &lt;chr&gt;,
-## #   Affiliation &lt;chr&gt;</code></pre>
-<pre><code>## # A tibble: 73 x 4
-##    from       to                weight type        
-##    &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;       
-##  1 Homelander Starlight              3 Professional
-##  2 Homelander Billy Butcher          1 Enemy       
-##  3 Homelander The Deep               4 Competition 
-##  4 Homelander Madelyn Stillwell      5 Benefits    
-##  5 Homelander Queen Maeve            2 Friends     
-##  6 Homelander A-Train                3 Competition 
-##  7 Homelander Ashley Barrett         3 Professional
-##  8 Homelander Black Noir             2 Professional
-##  9 Starlight  Billy Butcher          1 Friends     
-## 10 Starlight  Hughie Campbell        6 Benefits    
-## # ... with 63 more rows</code></pre>
-<pre><code>## # A tbl_graph: 30 nodes and 73 edges
-## #
-## # An undirected simple graph with 5 components
-## #
-## # Node Data: 30 x 13 (active)
-##   name     id realname sex   race  birthyear sign  playedby height Citizenship
-##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;      
-## 1 Home~     1 John     Male  White      1975 Scor~ Antony ~ 180 cm American   
-## 2 Star~     2 Annie J~ Fema~ White      1994 Canc~ Erin Mo~ 168 cm American   
-## 3 Bill~     3 William~ Male  White      1972 Gemi~ Karl Ur~ 185 cm British    
-## 4 Hugh~     4 Hugh Ca~ Male  White      1992 Taur~ Jack Qu~ 185 cm American   
-## 5 Blac~     5 &lt;NA&gt;     Male  Black      1988 Sagi~ Nathan ~ 188 cm American   
-## 6 Tran~     6 &lt;NA&gt;     Male  White      1980 Libra Alex Ha~ 176 cm American   
-## # ... with 24 more rows, and 3 more variables: status &lt;chr&gt;, Species &lt;chr&gt;,
-## #   Affiliation &lt;chr&gt;
-## #
-## # Edge Data: 73 x 4
-##    from    to weight type        
-##   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;       
-## 1     1     2      3 Professional
-## 2     1     3      1 Enemy       
-## 3     1     9      4 Competition 
-## # ... with 70 more rows</code></pre>
-<p><img src="unnamed-chunk-12-1.png" width="480" /></p>
-<p><font size="3"> The graph above shows which of the characters in the shows, “The Boy’s” has the most connections with others, the bigger the circles in the graph, the more intense the relation between characters. Also, the thickness of the lines specifies the weight of the dialog in the particular episodes (S1 E1,2,3,4). </font></p>
-<p><br></p>
-<hr />
-<p><br></p>
-</div>
-<div id="reflection" class="section level3">
-<h3><strong><em>Reflection</em></strong></h3>
-<p><font size="3"> This course has been a great starter pack on data visualization using R. The viewpoint of of this course is of using R to create geometric metaphors. Diverse domains have their own uniquely structured data.</p>
-<p>We understood the idea of data and types of variables in data. These lead us to creating different kinds of graphs based on variable type, using R. We looked at diverse domains, such as Geography, Networks and Education and plot geometric visuals based on the data we find in these domains. This helped us not only appreciate the data but give us a view of the underlying realities and ideas in each of these domains.</p>
-<p>We started off by learning about code chunks and how to run them, with this we plotted our first graph on baby names. Then we went through R markdown and created a short articales using all the features we learnt. We also learnt a great deal about graphs and maps in R markdown, and how to change their colour, size, shape… We also created our own datasets in Excel and then imported them into R and plotted grapes using the data we created. We also created maps on our hometown using tmaps and ggplot, and marked buildings, roads, parks… We mainly plotted a lot of grapes and maps in this course.</p>
-<p>I started off the course thinking that coding would be boring, but after the course I found myself being interested and curious about coding even thought some times it could be frustrating, if we get a lot of errors.</p>
-<p>Our facilitator Arvind has been a great help, he replies intently whenever we have any doubt related to coding.</p>
-<p>Overall this course has been a great starter kit for R. </font></p>
-<p><br></p>
-<hr />
-<p><br></p>
+<div id="mapping-restaurants-in-jubliee-hills-hyderabad" class="section level3">
+<h3><strong>Mapping restaurants in Jubliee Hills, Hyderabad</strong></h3>
+<p><img src="images/pic%203.png" /></p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = buildings, colour = &quot;burlywood1&quot;) +
+  geom_sf(data = roads, colour = &quot;gray80&quot;) +
+  geom_sf(
+    data = restaurants %&gt;% drop_na(cuisine),
+    aes(fill = cuisine),
+    colour = &quot;black&quot;,
+    shape = 21,
+    size = 3
+  ) +
+  theme(legend.position = &quot;right&quot;) +
+  labs(title = &quot;Restaurants in Jubille Hills&quot;,
+       caption = &quot;Based on osmdata&quot;)</code></pre>
+<p>```</p>
 </div>
 </div>

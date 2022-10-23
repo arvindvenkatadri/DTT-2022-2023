@@ -1,0 +1,137 @@
+---
+title: "We R the World!!"
+author: "Nithin Suresh"
+date: 22/October/2022
+output:
+  html_document:
+    theme: flatly
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 2
+    df_print: paged
+    code_folding: show
+    code_download: TRUE
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
+library(tidyverse)
+library(tmap)
+library(osmplotr)
+library(leaflet) 
+library(threejs)
+library(sf)
+
+```
+
+## A1 Graph
+
+## A2 Graph
+
+![Airports Plot](images/Airports.png)
+
+```{r Airport_Read, echo = FALSE, eval=FALSE}
+planes_nodes <- read_delim("AIRLINES-NODES.csv",delim = ";")
+planes_edges <- read_delim("AIRLINES-EDGES.csv", delim = ";")
+
+planes_nodes
+planes_edges
+
+planes_graph <- tbl_graph (nodes = planes_nodes, edges = planes_edges, directed = FALSE)
+planes_graph
+
+planes_nodes %>% select(latitude, longitude)
+
+airline2 <- planes_nodes %>% select(latitude, longitude) %>% transmute(Latitude = latitude / 1000000, Longitude = longitude / 1000000)
+           
+airline2
+
+
+
+```
+
+## A3 Graph
+
+![Restaurant Graph](images/NithinSuresh_Chennai.png)
+
+```{r Chennai_OSM_read, echo = FALSE, eval=FALSE}
+bbox_1 <- osmdata::getbb("Thousand Lights, Chennai, India")
+bbox_1
+
+
+dat_buildings <-extract_osm_objects (key = "building", 
+                                     bbox = bbox_1)
+
+dat_roads <- extract_osm_objects (key = 'highway', 
+                                  bbox = bbox_1)
+
+dat_parks <- extract_osm_objects (key = 'park', 
+                                  bbox = bbox_1)
+
+dat_greenery <- extract_osm_objects (key = 'landuse', 
+                                  value = 'grass', 
+                                  bbox = bbox_1)
+
+dat_amenities <- extract_osm_objects (key = 'amenity', 
+                                  value ="restaurant", 
+                                  return_type = "point",
+                                  bbox = bbox_1)
+
+dat_water <- extract_osm_objects (key = 'water', 
+                                  value ="waterway",
+                                  return_type = "polygon",
+                                  bbox = bbox_1)
+
+dat_river <- extract_osm_objects (key = 'water', 
+                                  value ="river",
+                                  return_type = "polygon",
+                                  bbox = bbox_1)
+
+st_write(dat_buildings, dsn = "buildings.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_parks, dsn = "parks.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_greenery, dsn = "greenery.gpkg", append = FALSE,quiet = FALSE)
+st_write(dat_roads, dsn = "roads.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_amenities, dsn = "amenities.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_water, dsn = "water.gpkg", append = FALSE, quiet = FALSE)
+st_write(dat_river, dsn = "river.gpkg", append = FALSE, quiet = FALSE)
+
+buildings <- st_read("./buildings.gpkg")
+parks <- st_read("./parks.gpkg")
+greenery <- st_read("./greenery.gpkg")
+roads <- st_read("./roads.gpkg")
+amenities <- st_read("./amenities.gpkg")
+water <- st_read("./water.gpkg")
+river <- st_read("./river.gpkg")
+
+restaurants <- amenities %>% drop_na(cuisine) %>% 
+  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ",") %>% 
+  separate(col = cuisine, into = c("cuisine", NA, NA), sep = ";")
+restaurants$cuisine
+
+nrow(buildings)
+buildings$geom
+class(buildings$geom)
+
+roads <- roads %>% filter(!osm_id == 69610248)
+
+ggplot() +
+  geom_sf(data = buildings, colour = "grey60") +    
+  geom_sf(data = roads, col = "black") +           
+  geom_sf(data = parks, col = "darkseagreen1") +    
+  geom_sf(data = greenery, col = "darkseagreen") +
+  geom_sf(data = amenities, col = "red") +
+  geom_sf(data = water, 
+          aes(fill = water),
+    colour = "lightblue") +
+  geom_sf(data = restaurants %>% drop_na(cuisine),
+    aes(fill = cuisine),
+    shape = 21,
+    size = 3) +
+  theme(legend.position = "right") +
+  labs(title = "Restaurants in Thousand Lights, Chennai") +
+  coord_sf(xlim = c(80.23571, 80.27571), ylim = c(13.03878, 13.07878), expand = FALSE)
+
+```
