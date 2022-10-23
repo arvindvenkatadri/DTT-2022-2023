@@ -20,31 +20,61 @@ preview: yes
 <div id="graph-1" class="section level2">
 <h2>Graph 1</h2>
 <p>This Graph is representing data from the diamonds dataset. It shows us the relantionship between price and carat through a line graph and also shows us the quality of the cut of the diamond with respect to the price and cut.</p>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre><code>## Rows: 66 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): names_from, names_to, relation, topic
-## dbl (1): duration
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 13 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (3): Names, Sex, profession
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>ggplot(diamonds, aes(x=carat, y=price, color=cut)) + geom_point() + geom_smooth() +theme_bw() + labs(title=&quot;Scatterplot line graph&quot;)</code></pre>
+<p><img src="images/graph1.png" /></p>
 <div id="graph-2" class="section level3">
 <h3>Graph 2</h3>
 <p>This graph was done on the show brooklyn “NINETY NINE” and it shows the duration of time characters interacted with each other, what they talked about and their proffession.</p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## # A tibble: 13 × 3
+##    Names          Sex   profession        
+##    &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;             
+##  1 Jake Peralta   M     Detective         
+##  2 Amy Santiago   F     Detective         
+##  3 Charles Boyle  M     Detective         
+##  4 Terry Jeffords M     Sergeant          
+##  5 Rosa Diaz      F     Detective         
+##  6 Captain Holt   M     Captain           
+##  7 Stranger 1     M     Unemployed        
+##  8 Stranger 2     M     Horseblood Seller 
+##  9 Stranger 3     M     Retired           
+## 10 Stranger 4     M     Unemployed        
+## 11 Ratko          M     Butcher           
+## 12 Gina Linetti   F     Personal Assistant
+## 13 Stranger       M     Shop Owner</code></pre>
+<pre><code>## # A tibble: 66 × 5
+##    names_from     names_to     duration relation  topic       
+##    &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;       
+##  1 Jake Peralta   Jake Peralta       16 N.A       Introduction
+##  2 Amy Santiago   Jake Peralta       13 Friends   Bantering   
+##  3 Amy Santiago   Stranger 1         16 Strangers Interogation
+##  4 Jake Peralta   Amy Santiago       48 Friends   Insulting   
+##  5 Jake Peralta   Amy Santiago       22 Friends   Insulting   
+##  6 Terry Jeffords Jake Peralta       20 Friends   Work        
+##  7 Rosa Diaz      Jake Peralta        2 Friends   Work        
+##  8 Charles Boyle  Jake Peralta        3 Friends   Work        
+##  9 Terry Jeffords Jake Peralta        5 Friends   Work        
+## 10 Charles Boyle  Gina Linetti       44 Friends   Insulting   
+## # … with 56 more rows</code></pre>
+<pre class="r"><code>ggraph(b99, layout = &quot;linear&quot;, circular = TRUE) + 
+  geom_edge_arc(aes(width = duration, color =topic), alpha = 0.8) + 
+  scale_edge_width(range = c(0.2, 2)) +
+  geom_node_point(aes(color =profession, size = 2)) + 
+  geom_node_text(aes(label = Names),repel = TRUE, 
+                 size = 3,
+                 max.overlaps = 20) +
+  labs(edge_width = &quot;duration&quot;) +
+  
+  theme_graph()+
+  theme(legend.position = &quot;right&quot;, 
+        aspect.ratio = 1)</code></pre>
+<p><img src="images/graph2.png" /></p>
 </div>
 </div>
 <div id="graph-3" class="section level2">
 <h2>Graph 3</h2>
 <p>This graph shows the frequency of arrivals and departures of flights in the USA.</p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>my_layout &lt;- cbind(x = airline2$Longitude, y = airline2$Latitude) %&gt;% as.matrix()
+g &lt;- tbl_graph(nodes = airlines_nodes, edges = airlines_edges)
+ggraph(g, layout = my_layout) + geom_edge_link0(alpha = 0.3) + geom_node_point(aes(color = Code), shape = 21, size = 1, stroke = 2) + theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="images/graph3.png" /></p>
 </div>

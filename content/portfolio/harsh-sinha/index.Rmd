@@ -9,7 +9,7 @@ preview: yes
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo =FALSE)
+knitr::opts_chunk$set()
 
 options(warn = -1)
 library(tidyverse)
@@ -36,28 +36,33 @@ Oh my what a rollercoaster were these 2 weeks were, lots of suffering and intern
 ## Graph 1
 
 This Graph is representing data from the diamonds dataset. It shows us the relantionship between price and carat through a line graph and also shows us the quality of the cut of the diamond with respect to the price and cut.
-```{r, echo=FALSE}
+
+```{r,eval=FALSE}
 ggplot(diamonds, aes(x=carat, y=price, color=cut)) + geom_point() + geom_smooth() +theme_bw() + labs(title="Scatterplot line graph")
-```
-
-```{r, include=FALSE}
-
-banned_items <- read.csv(file = "banned_items.csv")
 
 ```
 
-```{r echo=FALSE}
+![](images/graph1.png)
+
+
+### Graph 2
+
+This graph was done on the show brooklyn "NINETY NINE" and it shows the duration of time characters interacted with each other, what they talked about and their proffession. 
+
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
 b99_edges <- read_delim("b99_edges.csv", delim = ",")
 b99_nodes <- read_delim("b99_nodes.csv", delim = ",")
 ```
 
 
-```{r, include=FALSE}
+```{r,echo=FALSE}
 drop_na(b99_nodes)
-drop_na(b99_edges) %>% 
-  kable()
+drop_na(b99_edges)
 
 ```
+
+
 
 ```{r, include=FALSE}
 b99 <- tbl_graph(nodes = b99_nodes, 
@@ -66,11 +71,9 @@ b99 <- tbl_graph(nodes = b99_nodes,
 ```
 
 
-### Graph 2
 
-This graph was done on the show brooklyn "NINETY NINE" and it shows the duration of time characters interacted with each other, what they talked about and their proffession. 
 
-```{r, echo=FALSE}
+```{r,eval=FALSE}
 ggraph(b99, layout = "linear", circular = TRUE) + 
   geom_edge_arc(aes(width = duration, color =topic), alpha = 0.8) + 
   scale_edge_width(range = c(0.2, 2)) +
@@ -86,12 +89,16 @@ ggraph(b99, layout = "linear", circular = TRUE) +
 ```
 
 
+![](images/graph2.png)
 
 
 
 
 
 
+## Graph 3
+
+This graph shows the frequency of arrivals and departures of flights in the USA.
 
 
 
@@ -110,15 +117,18 @@ airline2
 ```
 
 
-## Graph 3
 
-This graph shows the frequency of arrivals and departures of flights in the USA.
 
-```{r, echo=FALSE}
+```{r,eval=FALSE}
 my_layout <- cbind(x = airline2$Longitude, y = airline2$Latitude) %>% as.matrix()
 g <- tbl_graph(nodes = airlines_nodes, edges = airlines_edges)
 ggraph(g, layout = my_layout) + geom_edge_link0(alpha = 0.3) + geom_node_point(aes(color = Code), shape = 21, size = 1, stroke = 2) + theme(legend.position = "none")
 
 ```
+
+![](images/graph3.png)
+
+
+
 
 

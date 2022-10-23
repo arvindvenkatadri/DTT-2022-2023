@@ -42,7 +42,7 @@ monopoly</code></pre>
 ## 22             Boardwalk   50     200     600    1400    1700  2000       400        200       blue   39</code></pre>
 <p>This is a qualitative vs quantitative bar graph and shows the relationship between the colour of the property with the deed cost, aka the cost of the property. The property colour is plotted on the X axis while the deed cost is on the Y axis. The bars are coloured by the name of the property.</p>
 <pre class="r"><code>ggplot(monopoly, aes(x = color, y = deed_cost)) + geom_col(aes(fill=name)) + ggtitle(label = &quot;Color Vs Deed Cost&quot;, subtitle = &quot;Plotted as a Bar Graph&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-1-1.png" width="672" /></p>
+<p><img src="images/graph1.png" /></p>
 <p>I picked this graph as it struck the right balance between presenting information clearly while also being aesthetically pleasing. Plus, the sheer number of individual properties gives the graph a colourful look, which is always a good thing.</p>
 </div>
 <div id="graph-2-alices-favourite" class="section level2">
@@ -121,119 +121,32 @@ tgp</code></pre>
   theme(legend.position = &quot;right&quot;, aspect.ratio = 0.75) +
   labs(title = &quot;Circular Graph Plotted Using Straight Lines&quot;,
        subtitle = &quot;Using Character Names for Nodes&quot;)</code></pre>
-<pre><code>## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database
-
-## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database</code></pre>
-<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database</code></pre>
-<pre><code>## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database
-
-## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not found in Windows font database</code></pre>
-<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database
-
-## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font family not found in Windows font database</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-2-1.png" width="672" /></p>
+<p><img src="images/graph2.png" /></p>
 <p>This graph looks very organised, and also makes it very clear that Eleanor and Michael have the most one-on-one interactions in this episode.</p>
 </div>
 <div id="graph-3-the-hatters-favourite" class="section level2">
 <h2>GRAPH 3: THE HATTER’S FAVOURITE</h2>
 <p>The data being plotted here is the list of restaurants in Adyar, Chennai, which is the city I grew up in. The dataset is quite lengthy and has many subsections that were of interest, but we worked on plotting the map based on the cuisine offered by each restaurant.</p>
 <pre class="r"><code>bbox &lt;- osmdata::getbb(&quot;Adyar, Chennai, India&quot;)
-bbox</code></pre>
-<pre><code>##        min      max
-## x 80.23778 80.27778
-## y 12.98645 13.02645</code></pre>
-<pre class="r"><code>buildings &lt;- st_read(&quot;./buildings.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `buildings&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\buildings.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 8735 features and 80 fields
-## Geometry type: POLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 80.237 ymin: 12.98617 xmax: 80.27802 ymax: 13.02679
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>parks &lt;- st_read(&quot;./parks.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `parks&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\parks.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 36 features and 15 fields
-## Geometry type: POLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 80.23649 ymin: 12.98878 xmax: 80.2735 ymax: 13.02736
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>greenery &lt;- st_read(&quot;./greenery.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `greenery&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\greenery.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 6 features and 2 fields
-## Geometry type: POLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 80.23714 ymin: 13.00533 xmax: 80.26304 ymax: 13.02118
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>trees &lt;- st_read(&quot;./trees.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `trees&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\trees.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 10 features and 2 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 80.2457 ymin: 13.00832 xmax: 80.24876 ymax: 13.01969
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>roads &lt;- st_read(&quot;./roads.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `roads&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\roads.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 663 features and 23 fields
-## Geometry type: LINESTRING
-## Dimension:     XY
-## Bounding box:  xmin: 80.23345 ymin: 12.98573 xmax: 80.27808 ymax: 13.02868
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>restaurants &lt;- st_read(&quot;./restaurants.gpkg&quot;)</code></pre>
-<pre><code>## Reading layer `restaurants&#39; from data source 
-##   `G:\My Drive\R work\MyWebsites\DTT-2022-2023\content\portfolio\alamelu-karthikeyan\restaurants.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 84 features and 32 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 80.23862 ymin: 12.98703 xmax: 80.2741 ymax: 13.02588
-## Geodetic CRS:  WGS 84</code></pre>
-<pre class="r"><code>osmplotr::osm_structures()</code></pre>
-<pre><code>##     structure      key value suffix      cols
-## 1    building building           BU #646464FF
-## 2     amenity  amenity            A #787878FF
-## 3    waterway waterway            W #646478FF
-## 4       grass  landuse grass      G #64A064FF
-## 5     natural  natural            N #647864FF
-## 6        park  leisure  park      P #647864FF
-## 7     highway  highway            H #000000FF
-## 8    boundary boundary           BO #C8C8C8FF
-## 9        tree  natural  tree      T #64A064FF
-## 10 background                          gray20</code></pre>
-<pre class="r"><code>restaurants$cuisine %&gt;% unique()</code></pre>
-<pre><code>##  [1] &quot;pizza&quot;           &quot;regional&quot;        &quot;japanese&quot;        NA                &quot;indian&quot;          &quot;chinese&quot;         &quot;ice_cream&quot;      
-##  [8] &quot;regional;indian&quot; &quot;hungarian&quot;       &quot;italian&quot;</code></pre>
-<pre class="r"><code>restaurants &lt;- restaurants %&gt;% 
+bbox
+
+buildings &lt;- st_read(&quot;./buildings.gpkg&quot;)
+parks &lt;- st_read(&quot;./parks.gpkg&quot;)
+greenery &lt;- st_read(&quot;./greenery.gpkg&quot;)
+trees &lt;- st_read(&quot;./trees.gpkg&quot;)
+roads &lt;- st_read(&quot;./roads.gpkg&quot;)
+restaurants &lt;- st_read(&quot;./restaurants.gpkg&quot;)
+
+osmplotr::osm_structures()
+
+restaurants$cuisine %&gt;% unique()
+
+restaurants &lt;- restaurants %&gt;% 
   drop_na(cuisine) %&gt;%
   separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;;&quot;) %&gt;% 
-  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;,&quot;)</code></pre>
-<pre><code>## Warning: Expected 3 pieces. Missing pieces filled with `NA` in 13 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].
-## Expected 3 pieces. Missing pieces filled with `NA` in 13 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].</code></pre>
-<pre class="r"><code>restaurants$cuisine</code></pre>
-<pre><code>##  [1] &quot;pizza&quot;     &quot;regional&quot;  &quot;japanese&quot;  &quot;indian&quot;    &quot;indian&quot;    &quot;chinese&quot;   &quot;regional&quot;  &quot;ice_cream&quot; &quot;regional&quot;  &quot;indian&quot;   
-## [11] &quot;hungarian&quot; &quot;italian&quot;   &quot;italian&quot;</code></pre>
-<p>The map here shows the buildings, roads, trees and greenery present in Adyar, on top of which you can see coloured points that represent the cuisines of the restaurants present there. There are eight types of cuisines available in this area, and you can see these scattered across the map.</p>
-<p>I quite like this graph, but mostly because it invokes a vague sense of nostalgia [even if I’m terrible at geography and wouldn’t be able to guess which place is which on the map].</p>
+  separate(col = cuisine, into = c(&quot;cuisine&quot;, NA, NA), sep = &quot;,&quot;)
+
+restaurants$cuisine</code></pre>
 <pre class="r"><code>ggplot() +
   geom_sf(data = buildings, colour = &quot;gray15&quot;) +
   geom_sf(data = roads, colour = &quot;gray50&quot;) +
@@ -243,7 +156,9 @@ bbox</code></pre>
   theme(legend.position = &quot;right&quot;) +
   labs(title = &quot;Culinary Bounty Aplenty in Adyar!&quot;,
        caption = &quot;miss the times when ice cream used to be\nmy cuisine of choice for breakfast,\n lunch and dinner&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-3-1.png" width="672" /></p>
+<p><img src="images/graph3.png" /></p>
+<p>The map here shows the buildings, roads, trees and greenery present in Adyar, on top of which you can see coloured points that represent the cuisines of the restaurants present there. There are eight types of cuisines available in this area, and you can see these scattered across the map.</p>
+<p>I quite like this graph, but mostly because it invokes a vague sense of nostalgia [even if I’m terrible at geography and wouldn’t be able to guess which place is which on the map].</p>
 </div>
 <div id="through-the-looking-glass" class="section level2">
 <h2>THROUGH THE LOOKING GLASS</h2>

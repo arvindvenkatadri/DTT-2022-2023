@@ -47,11 +47,12 @@ This is a qualitative vs quantitative bar graph and shows the relationship betwe
 
 
 
-```{r plot-1}
+```{r plot-1, eval=FALSE}
 ggplot(monopoly, aes(x = color, y = deed_cost)) + geom_col(aes(fill=name)) + ggtitle(label = "Color Vs Deed Cost", subtitle = "Plotted as a Bar Graph")
 
 ```
 
+![](images/graph1.png)
 
 I picked this graph as it struck the right balance between presenting information clearly while also being aesthetically pleasing. Plus, the sheer number of individual properties gives the graph a colourful look, which is always a good thing.
 
@@ -68,13 +69,14 @@ tgp <- tbl_graph(nodes = tgp_nodes,
                  edges = tgp_edges,
                  directed = FALSE)
 tgp
+
 ```
 
 This network graph is a linear graph where the nodes are arranged in a circular manner. The edges are plotted as straight lines. The data is plotted so that it represents the interactions [aka the edges] between the characters [aka the nodes], and the width of the edges shows the frequency of the interactions. 
 
 
 
-```{r plot-2}
+```{r plot-2, eval=FALSE}
 ggraph(tgp, layout = "linear", circular = TRUE) + 
   geom_edge_link(aes(width = interactions, color = "coral"), alpha = 0.5) + 
   scale_edge_width(range = c(1, 3)) +
@@ -88,13 +90,16 @@ ggraph(tgp, layout = "linear", circular = TRUE) +
 ```
 
 
+![](images/graph2.png)
+
 This graph looks very organised, and also makes it very clear that Eleanor and Michael have the most one-on-one interactions in this episode.
+
 
 ## GRAPH 3: THE HATTER'S FAVOURITE
 
 The data being plotted here is the list of restaurants in Adyar, Chennai, which is the city I grew up in. The dataset is quite lengthy and has many subsections that were of interest, but we worked on plotting the map based on the cuisine offered by each restaurant.
 
-```{r read-3}
+```{r read-3,eval=FALSE}
 bbox <- osmdata::getbb("Adyar, Chennai, India")
 bbox
 
@@ -118,11 +123,7 @@ restaurants$cuisine
 
 ```
 
-The map here shows the buildings, roads, trees and greenery present in Adyar, on top of which you can see coloured points that represent the cuisines of the restaurants present there. There are eight types of cuisines available in this area, and you can see these scattered across the map.
-
-I quite like this graph, but mostly because it invokes a vague sense of nostalgia [even if I'm terrible at geography and wouldn't be able to guess which place is which on the map].
-
-```{r plot-3}
+```{r plot-3, eval=FALSE}
 ggplot() +
   geom_sf(data = buildings, colour = "gray15") +
   geom_sf(data = roads, colour = "gray50") +
@@ -134,6 +135,15 @@ ggplot() +
        caption = "miss the times when ice cream used to be\nmy cuisine of choice for breakfast,\n lunch and dinner")
 
 ```
+
+
+![](images/graph3.png)
+
+The map here shows the buildings, roads, trees and greenery present in Adyar, on top of which you can see coloured points that represent the cuisines of the restaurants present there. There are eight types of cuisines available in this area, and you can see these scattered across the map.
+
+I quite like this graph, but mostly because it invokes a vague sense of nostalgia [even if I'm terrible at geography and wouldn't be able to guess which place is which on the map].
+
+
 
 ## THROUGH THE LOOKING GLASS
 
