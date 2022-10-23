@@ -18,7 +18,23 @@ preview: yes
 <!--more-->
 <p>Plotting the price of diamonds against density. I love the colors in this one (it took me hours to get.</p>
 <pre class="r"><code>ggplot(diamonds) + geom_density(aes(x = price, fill = cut)) + labs(title = &quot;Price vs Density&quot;) + scale_fill_viridis_d(option = &quot;magma&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="images/plot01.png" /></p>
+<pre class="r"><code># Relationship analysis of characters in the TV show Fleabag. (Note: the dataset was made based only on S2E1)
+# 
+ggraph(graph = fb, layout = &quot;circle&quot;) +
+  
+  
+  geom_edge_link(aes(width = Intensity), colour= &quot;antiquewhite3&quot;)  + scale_edge_width(range = c(0, 3)) +
+  
+  
+  geom_node_point(aes(fill = Relationship), shape = 23,
+                      size = 5.5,
+                      stroke = 2 ) +
+  geom_node_text(aes(label = Name), repel = TRUE, color = &quot;black&quot;)+
+  
+  
+  labs(title = &quot;Intensity&quot;)</code></pre>
+<p><img src="images/network.png" /></p>
 <p>Restaurants in my hometown mapped according to cuisine and location.</p>
 <pre class="r"><code>buildings &lt;- st_read(&quot;data/buildings.gpkg&quot;)</code></pre>
 <pre><code>## Reading layer `buildings&#39; from data source 
@@ -81,10 +97,8 @@ preview: yes
   theme(legend.position = &quot;right&quot;) +
   labs(title = &quot;Restaurants in North Central Kerala&quot;,
        caption = &quot;i recommend paragon biriyani&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="images/map.png" /></p>
 <div id="conclusion-thanks" class="section level4">
 <h4><strong>CONCLUSION &amp; THANKS</strong></h4>
-<div id="rstudio-is-not-easy-to-work-with-when-youre-a-beginner.-but-i-think-the-environment-we-were-in-and-the-facilitator-we-had-made-it-a-lot-easier-for-us-to-get-a-grip-on-things.-most-of-my-days-were-filled-with-cries-for-help-from-around-the-class-but-it-didnt-match-the-satisfaction-i-felt-when-a-code-i-typed-gave-me-a-result-in-the-end.-im-very-grateful-to-this-class-for-broadening-my-horizons-on-what-i-consider-art-and-helping-me-grow-as-a-student." class="section level5">
-<h5>RStudio is not easy to work with when you’re a beginner. But I think the environment we were in and the facilitator we had made it a lot easier for us to get a grip on things. Most of my days were filled with cries for help from around the class but it didn’t match the satisfaction I felt when a code I typed gave me a result in the end. I’m very grateful to this class for broadening my horizons on what I consider art and helping me grow as a student.</h5>
-</div>
+<p>RStudio is not easy to work with when you’re a beginner. But I think the environment we were in and the facilitator we had made it a lot easier for us to get a grip on things. Most of my days were filled with cries for help from around the class but it didn’t match the satisfaction I felt when a code I typed gave me a result in the end. I’m very grateful to this class for broadening my horizons on what I consider art and helping me grow as a student.</p>
 </div>
